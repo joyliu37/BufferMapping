@@ -1,0 +1,20 @@
+{
+"virtual buffer":
+    {
+    "input_port": 16, 
+    "output_port": 16, 
+    "capacity": 36992,
+    "access_pattern": 
+    {
+        "range": [6, 3, 32, 32], 
+        "stride": [1, 68, 2, 68], 
+        "start": 0
+    }
+},
+
+"hw config":{
+    "input_port": 1,
+    "output_port": 1,
+    "capacity": 512
+}
+}
