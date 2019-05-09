@@ -1,4 +1,4 @@
-from mem.virtualbuffer import VirtualDoubleBuffer, AccessIter
+from memory_core.BufferMapping.mem.virtualbuffer import VirtualDoubleBuffer, AccessIter
 import copy
 
 class HWBufferConfig:
