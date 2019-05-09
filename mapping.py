@@ -1,5 +1,5 @@
-from mem.virtualbuffer import *
-from mem.hardware import *
+from memory_core.BufferMapping.mem.virtualbuffer import *
+from memory_core.BufferMapping.mem.hardware import *
 
 def CreateVirtualBuffer(setup):
     return VirtualDoubleBuffer(setup['input_port'],
@@ -7,7 +7,8 @@ def CreateVirtualBuffer(setup):
                                setup['capacity'],
                                setup['access_pattern']['range'],
                                setup['access_pattern']['stride'],
-                               setup['access_pattern']['start'])
+                               setup['access_pattern']['start'],
+                               setup['manual_switch'])
 
 def CreateHWConfig(setup):
     return HWBufferConfig(setup['input_port'],
@@ -15,7 +16,6 @@ def CreateHWConfig(setup):
                           setup['capacity'])
 
 def HWMap(buf: VirtualDoubleBuffer, mem_config):
-
     # return value hold the banking and chainer mem_tile
     mem_tile_list = []
 
