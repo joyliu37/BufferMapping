@@ -4,7 +4,7 @@ from functools import reduce
 import json
 import pdb
 
-from mem.mapping import *
+from buffer_mapping.mapping import *
 
 def main():
     with open('../config/setup.json') as json_file:
