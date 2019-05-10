@@ -40,9 +40,14 @@ class VirtualDoubleBuffer:
 
     def write(self, data_in, offset = 0):
         assert self.write_iterator._done == 0, "No more write allowed!\n"
-        assert len(data_in) == self._input_port, "Input data size not match port number!\n"
-        for addr_in_word ,word_data in enumerate(data_in):
-            self._data[1-self._select][(self.write_iterator._addr - offset)\
+        if isinstance(data_in, int):
+            assert self._input_port == 1
+            self._data[1-self._select][(self.write_iterator._addr - offset)]\
+                    = data_in
+        else:
+            assert len(data_in) == self._input_port, "Input data size not match port number!\n"
+            for addr_in_word ,word_data in enumerate(data_in):
+                self._data[1-self._select][(self.write_iterator._addr - offset)\
                                    * self._input_port + addr_in_word] = word_data
         self.write_iterator.update()
         if(self._manual_switch == 0):
