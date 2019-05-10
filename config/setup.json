@@ -4,6 +4,7 @@
     "input_port": 16, 
     "output_port": 16, 
     "capacity": 36992,
+    "manual_switch": 0,
     "access_pattern": 
     {
         "range": [6, 3, 32, 32], 

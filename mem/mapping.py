@@ -1,5 +1,5 @@
-from memory_core.BufferMapping.mem.virtualbuffer import *
-from memory_core.BufferMapping.mem.hardware import *
+from mem.virtualbuffer import *
+from mem.hardware import *
 
 def CreateVirtualBuffer(setup):
     return VirtualDoubleBuffer(setup['input_port'],

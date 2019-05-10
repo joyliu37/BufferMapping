@@ -1,10 +1,13 @@
-from mapping import *
+import sys
+sys.path.insert(0,'..')
 from functools import reduce
 import json
 import pdb
 
+from mem.mapping import *
+
 def main():
-    with open('config/test.json') as json_file:
+    with open('../config/test.json') as json_file:
         setup= json.load(json_file)
     v_setup = setup["virtual buffer"]
     v_buf = CreateVirtualBuffer(setup["virtual buffer"])

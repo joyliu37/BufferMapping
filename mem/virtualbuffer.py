@@ -7,11 +7,11 @@ class VirtualDoubleBuffer:
         self._input_port = input_port
         self._output_port = output_port
         self._capacity = capacity
-        self.read_iterator = AccessIter(_range, stride, start)
+        self.read_iterator = AccessIter(_range, stride, start, manual_switch)
         #no read need for empty buffer
         self.read_iterator._done = 1
-        self.write_iterator = AccessIter([capacity / output_port], [1], 0)
-        self.write_iterator._done = 0
+        #initial all read access pattern to be linear contiguous
+        self.write_iterator = AccessIter([capacity / output_port], [1], 0, manual_switch)
         self._data = [[655355 for _ in range(self._capacity)] for _ in range(self._bank_num)]
         self._manual_switch = manual_switch
 
@@ -40,15 +40,10 @@ class VirtualDoubleBuffer:
 
     def write(self, data_in, offset = 0):
         assert self.write_iterator._done == 0, "No more write allowed!\n"
-        if(self._input_port > 1):
-            assert len(data_in) == self._input_port, "Input data size not match port number!\n"
-        if(self._input_port > 1):
-            for addr_in_word ,word_data in enumerate(data_in):
-                self._data[1-self._select][(self.write_iterator._addr - offset)\
-                                       * self._input_port + addr_in_word] = word_data
-        else:
-            self._data[1-self._select][(self.write_iterator._addr - offset)]\
-                                    = data_in
+        assert len(data_in) == self._input_port, "Input data size not match port number!\n"
+        for addr_in_word ,word_data in enumerate(data_in):
+            self._data[1-self._select][(self.write_iterator._addr - offset)\
+                                   * self._input_port + addr_in_word] = word_data
         self.write_iterator.update()
         if(self._manual_switch == 0):
             self.check_switch()
@@ -61,11 +56,12 @@ class AccessPattern:
         self._start = start
 
 class AccessIter(AccessPattern):
-    def __init__(self, _range, stride, start):
+    def __init__(self, _range, stride, start, manual_switch=0):
         super().__init__(_range, stride, start)
         self._iter = [0 for _ in range(len(_range))]
         self._addr = sum([i*j for i, j in zip(self._iter, self._st)]) + self._start
         self._done = 0
+        self._manual_switch = manual_switch
 
     def restart(self):
         self._iter = [0 for _ in range(len(self._rng))]
@@ -73,8 +69,7 @@ class AccessIter(AccessPattern):
         self._addr = sum([i*j for i, j in zip(self._iter, self._st)]) + self._start
 
     def update(self):
-        # ignore done for test purpose
-        #assert self._done == 0, "Error: no more read can make according to access pattern"
+        assert self._done == 0, "Error: no more read can make according to access pattern"
         for dim in range(len(self._iter)):
             self._iter[dim] += 1
             if dim > 0:
@@ -84,12 +79,14 @@ class AccessIter(AccessPattern):
                     break
                 elif self._rng[dim + 1] == 0:
                     self._done = 1
-                    self.restart()
+                    if self._manual_switch:
+                        self.restart()
                     break
             else:
                 if self._iter[dim] == self._rng[dim]:
                     self._done = 1
-                    self.restart()
+                    if self._manual_switch:
+                        self.restart()
                     break
         self._addr = sum([i*j for i, j in zip(self._iter, self._st)]) + self._start
 

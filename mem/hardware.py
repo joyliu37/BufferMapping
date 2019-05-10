@@ -1,4 +1,4 @@
-from memory_core.BufferMapping.mem.virtualbuffer import VirtualDoubleBuffer, AccessIter
+from mem.virtualbuffer import VirtualDoubleBuffer, AccessIter
 import copy
 
 class HWBufferConfig:
@@ -106,15 +106,16 @@ class MemoryTile(VirtualDoubleBuffer):
     has the valid signal for chaining
     '''
     #FIXME mem_tile_config should be only one, not share by all mem_tile
-    def __init__(self, mem_tile_config, read_access_iter, start_addr, end_addr, chain_capacity):
+    def __init__(self, mem_tile_config, read_access_iter, start_addr, end_addr, chain_capacity, manual_switch=0):
         super().__init__(mem_tile_config._input_port,
                          mem_tile_config._output_port,
                          mem_tile_config._capacity,
                          read_access_iter._rng,
                          read_access_iter._st,
-                         read_access_iter._start)
+                         read_access_iter._start,
+                         manual_switch)
         #overwrite the write iterator
-        self.write_iterator = AccessIter([int(chain_capacity / self._input_port)], [1], 0)
+        self.write_iterator = AccessIter([int(chain_capacity / self._input_port)], [1], 0, manual_switch)
 
         #control signal tell if we read the valid signal
         self.addr_domain = [start_addr, end_addr]
