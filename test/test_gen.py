@@ -6,8 +6,9 @@ import pdb
 
 from buffer_mapping.mapping import *
 
-def main():
-    with open('../config/test.json') as json_file:
+def test_doublebuffer():
+    dir_path = '/users/joeyliu/Documents/work/DBmapping/'
+    with open(dir_path+'config/test.json') as json_file:
         setup= json.load(json_file)
     v_setup = setup["virtual buffer"]
     v_buf = CreateVirtualBuffer(setup["virtual buffer"])
@@ -30,4 +31,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    test_doublebuffer()
