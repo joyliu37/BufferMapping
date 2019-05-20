@@ -24,6 +24,7 @@ class VirtualDoubleBuffer:
 
     def check_switch(self):
         if self.read_iterator._done and self.write_iterator._done:
+            print("switching")
             self._select = self._select ^ 1
             self.read_iterator.restart()
             self.write_iterator.restart()
@@ -88,13 +89,13 @@ class AccessIter(AccessPattern):
                     break
                 elif self._rng[dim + 1] == 0:
                     self._done = 1
-                    if self._manual_switch:
+                    if self._manual_switch == 1:
                         self.restart()
                     break
             else:
                 if self._iter[dim] == self._rng[dim]:
                     self._done = 1
-                    if self._manual_switch:
+                    if self._manual_switch == 1:
                         self.restart()
                     break
         self._addr = sum([i*j for i, j in zip(self._iter, self._st)]) + self._start
