@@ -24,7 +24,6 @@ class VirtualDoubleBuffer:
 
     def check_switch(self):
         if self.read_iterator._done and self.write_iterator._done:
-            print("switching")
             self._select = self._select ^ 1
             self.read_iterator.restart()
             self.write_iterator.restart()
