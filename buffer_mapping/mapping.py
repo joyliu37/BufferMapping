@@ -1,5 +1,5 @@
-from buffer_mapping.virtualbuffer import *
 from buffer_mapping.hardware import *
+from buffer_mapping.virtualbuffer import *
 
 def CreateVirtualBuffer(setup):
     return VirtualDoubleBuffer(setup['input_port'],

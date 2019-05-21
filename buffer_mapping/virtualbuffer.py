@@ -68,6 +68,9 @@ class AccessIter(AccessPattern):
         self._done = 0
         self._manual_switch = manual_switch
 
+    def getaddr(self):
+        return self._addr
+
     def restart(self):
         self._iter = [0 for _ in range(len(self._rng))]
         self._done = 0
