@@ -10,9 +10,11 @@ def test_flatten():
     dir_path = '/users/joeyliu/Documents/work/DBmapping/'
     with open(dir_path+'config/testIR.json') as json_file:
         setup= json.load(json_file)
-    v_setup = setup["virtual buffer IR"]
-    vbuf_config = IR2Interface(v_setup)
-    vbuf_config.pretty_print()
+
+    for key, buffer_setup in setup.items():
+        vbuf_config = IR2Interface(buffer_setup)
+        print("\n-----buffer params----\nname: {}".format(key))
+        vbuf_config.pretty_print()
 
 '''
     for i in range(v_setup['capacity'] // v_setup['input_port']):

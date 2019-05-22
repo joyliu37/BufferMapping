@@ -15,13 +15,16 @@ def IR2Interface(setup):
     accumulate_dim = [ reduce(lambda x, y: x*y, setup['capacity'][0:i+1]) \
                       for i in range(len(setup['capacity']) - 1)]
     accumulate_dim = [1] + accumulate_dim
-    #stride in 1D for each iterator
+
+
+    #check the input legality
     access_dict = setup['access_pattern']
     assert len(access_dict["range"]) == len(access_dict["ref_dim"]), \
         "Check json file, range length not equal to ref_dim"
     assert len(access_dict["range"]) == len(access_dict["stride_in_dim"]),\
         "Check json file, range length not equal to stride in dim"
 
+    #Calculate absolute stride in 1D for each iterator
     abs_stride = [ accumulate_dim[ref_dim] * stride_in_dim \
               for ref_dim, stride_in_dim \
               in zip(access_dict['ref_dim'], access_dict['stride_in_dim'])]
@@ -36,12 +39,20 @@ def IR2Interface(setup):
         if abs_range[dim] == abs_stride[dim + 1]:
             MergeIterator(abs_range, abs_stride, iteration, dim)
 
-    SimplyIterator(abs_range, abs_stride, iteration)
+    SimplifyIterator(abs_range, abs_stride, iteration)
+
     input_port_1D = reduce(lambda x, y: x*y, setup["input_port"])
     output_port_1D = reduce(lambda x, y: x*y, setup["output_port"])
     capacity_1D = reduce(lambda x, y: x*y, setup["capacity"])
 
-    return VirtualBufferConfig(input_port_1D, output_port_1D, capacity_1D, iteration, abs_stride)
+    #caculate the start position for output_port
+    start_addr = [0]
+    for dim, port_in_dim in enumerate(setup['output_port']):
+        start_addr_addition = [start * accumulate_dim[dim] for start in range(port_in_dim)
+                               for _ in range(len(start_addr))]
+        start_addr = [x + y for x, y in zip(start_addr * port_in_dim, start_addr_addition)]
+
+    return VirtualBufferConfig(input_port_1D, output_port_1D, capacity_1D, iteration, abs_stride, start_addr)
 
 
 def MergeIterator(_range, stride, iteration, i):
@@ -51,9 +62,9 @@ def MergeIterator(_range, stride, iteration, i):
     stride[i] = 0
     _range[i] = 0
 
-def SimplyIterator(_range, stride, iteration):
+def SimplifyIterator(_range, stride, iteration):
     '''
-    Simply the access iterator we merged
+    Simplify the access iterator we merged
     condition: All 3 value is 0,
     note: There is a special situation when _range and stride is 0 but iteration is not 0,
           which is revisit the same address
