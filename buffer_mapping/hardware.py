@@ -1,11 +1,6 @@
 from buffer_mapping.virtualbuffer import VirtualDoubleBuffer, AccessIter
 import copy
 
-class HWBufferConfig:
-    def __init__(self, input_port, output_port, capacity):
-        self._input_port = input_port
-        self._output_port = output_port
-        self._capacity = capacity
 
 class BankedChainedMemoryTile:
     '''
@@ -106,16 +101,20 @@ class MemoryTile(VirtualDoubleBuffer):
     has the valid signal for chaining
     '''
     #FIXME mem_tile_config should be only one, not share by all mem_tile
-    def __init__(self, mem_tile_config, read_access_iter, start_addr, end_addr, chain_capacity, manual_switch=0):
+    def __init__(self, mem_tile_config, read_access_pattern, start_addr, end_addr, chain_capacity, manual_switch=0):
         super().__init__(mem_tile_config._input_port,
                          mem_tile_config._output_port,
                          mem_tile_config._capacity,
-                         read_access_iter._rng,
-                         read_access_iter._st,
-                         read_access_iter._start,
+                         read_access_pattern._rng,
+                         read_access_pattern._st,
+                         read_access_pattern._start,
                          manual_switch)
         #overwrite the write iterator
-        self.write_iterator = AccessIter([int(chain_capacity / self._input_port)], [1], 0, manual_switch)
+        #FIXME Possible bug if input port not equals output_port
+        self.write_iterator = AccessIter([int(chain_capacity / self._input_port)],
+                                         [1],
+                                         list(range(self._input_port)),
+                                         manual_switch)
 
         #control signal tell if we read the valid signal
         self.addr_domain = [start_addr, end_addr]
@@ -128,8 +127,8 @@ class MemoryTile(VirtualDoubleBuffer):
         wrapper the super class read method
         return type: valid, data_out
         '''
-        if self.read_iterator._addr >= self.addr_domain[0] and\
-                self.read_iterator._addr < self.addr_domain[1]:
+        if self.read_iterator._addr[0] >= self.addr_domain[0] and\
+                self.read_iterator._addr[-1] < self.addr_domain[1]:
             self.read_val = 1
         else:
             self.read_val = 0
@@ -149,8 +148,8 @@ class MemoryTile(VirtualDoubleBuffer):
         wrap the super class write method
         return type: if write is valid
         '''
-        if self.write_iterator._addr >= self.addr_domain[0] and\
-                self.write_iterator._addr < self.addr_domain[1]:
+        if self.write_iterator._addr[0] >= self.addr_domain[0] and\
+                self.write_iterator._addr[-1] < self.addr_domain[1]:
             self.write_val = 1
         else:
             self.write_val = 0
