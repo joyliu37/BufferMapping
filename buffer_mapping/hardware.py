@@ -1,4 +1,5 @@
 from buffer_mapping.virtualbuffer import VirtualDoubleBuffer, AccessIter
+from buffer_mapping.util import Counter
 import copy
 
 
@@ -14,22 +15,32 @@ class BankedChainedMemoryTile:
         self._num_bank = num_bank
         self._in_port_per_bank = chained_mem_tile._input_port
         self._out_port_per_bank = chained_mem_tile._output_port
-        #FIXME: need port information if there is a mismatch between input port and output port
         self._in_port = in_port
         self._out_port = out_port
 
+        self.write_counter = Counter(self._num_bank // self._in_port)
+        self.read_counter = Counter(self._num_bank // self._out_port)
+
+
     def read(self):
         out_data_chain = []
-        for bank in self.banked_mem_tile:
+        start_bank = self.read_counter.read() * self._out_port
+        end_bank = (self.read_counter.read() + 1 ) * self._out_port
+        for bank in self.banked_mem_tile[start_bank: end_bank]:
             out_data_chain.extend(bank.read())
+        self.read_counter.update()
         return out_data_chain
 
 
     def write(self, data):
-        for bank_id, bank in enumerate(self.banked_mem_tile):
+        start_bank = self.write_counter.read() * self._in_port
+        end_bank = (self.write_counter.read() + 1 ) * self._in_port
+        for bank_id, bank in enumerate(self.banked_mem_tile[start_bank: end_bank]):
+            #TODO: currently only support contigous write pattern
             start = bank_id * self._in_port_per_bank
             end = (bank_id + 1) * self._in_port_per_bank
             bank.write(data[start: end])
+        self.write_counter.update()
 
     def write_bank(self, data, bank_no):
         '''

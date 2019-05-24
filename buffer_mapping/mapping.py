@@ -1,6 +1,7 @@
 from buffer_mapping.hardware import *
 from buffer_mapping.virtualbuffer import *
 from buffer_mapping.config import HWBufferConfig
+from buffer_mapping.util import AccessPattern
 
 def CreateVirtualBuffer(setup):
     return VirtualDoubleBuffer(setup['input_port'],
@@ -37,7 +38,7 @@ def HWMap(buf: VirtualDoubleBuffer, mem_config):
     output_multiplier = buf._output_port // mem_config._output_port
     num_bank = max(input_multiplier, output_multiplier)
 
-    #TODO: need a pass to get the access pattern for each port, we need to split the stride
+    #A pass to get the access pattern for each port, split the stride
     bank_access_pattern = SliceAccessPattern(buf.read_iterator._rng,
                                              buf.read_iterator._st,
                                              buf.read_iterator._start,
@@ -47,12 +48,8 @@ def HWMap(buf: VirtualDoubleBuffer, mem_config):
     #check capacity requirement to do chaining
     capacity_per_bank = buf._capacity / num_bank
     if capacity_per_bank > mem_config._capacity:
-        #FIXME: need more test case to try if this heruistic based capacity assign is bug free
-        # Assign the data with the granularity at the largest stride
-        '''
-        max_stride = max(buf.read_iterator._st)
-        capacity_per_tile =int( mem_config._capacity / max_stride) * max_stride
-        '''
+        #TODO: Currently just divide the capacity to be the size of memtile and some redundancy in the last tile
+        # need more test case
         capacity_per_tile = mem_config._capacity
         capacity_reminder = capacity_per_bank
         capacity_start_addr = 0
