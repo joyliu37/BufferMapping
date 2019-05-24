@@ -5,6 +5,7 @@
     "output_port": [4, 1, 1], 
     "capacity": [8, 6, 6],
     "manual_switch":0,
+    "arbitrary_addr": 0,
     "access_pattern": 
     {
         "range": [2, 3, 3, 2, 2], 
@@ -19,6 +20,7 @@
     "output_port": [1, 1, 1], 
     "capacity": [8, 6, 6],
     "manual_switch":0,
+    "arbitrary_addr": 0,
     "access_pattern": 
     {
         "range": [8, 3, 3, 2, 2], 
@@ -33,6 +35,7 @@
     "output_port": [3, 3],
     "capacity": [66, 66],
     "manual_switch": 0,
+    "arbitrary_addr": 0,
     "access_pattern":
     {
         "range": [64, 64],
@@ -47,7 +50,8 @@
     "input_port": [1, 1], 
     "output_port": [1, 1], 
     "capacity": [258, 258],
-    "manual_switch":0,
+    "manual_switch": 0,
+    "arbitrary_addr": 0,
     "access_pattern": 
     {
         "range": [66, 66, 4, 4], 

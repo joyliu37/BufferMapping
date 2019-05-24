@@ -9,7 +9,7 @@ class VirtualDoubleBuffer:
         else:
             self.initFromParams(*args)
 
-    def initFromParams(self, input_port, output_port, capacity, _range, stride, start, manual_switch):
+    def initFromParams(self, input_port, output_port, capacity, _range, stride, start, manual_switch=0, arbitrary_addr=0):
         assert capacity % input_port == 0, "capacity is not divisible by input_port number!\n"
         assert capacity % output_port == 0, "capacity is not divisible by output_port number!\n"
         self._bank_num = 2
@@ -24,6 +24,7 @@ class VirtualDoubleBuffer:
         self.write_iterator = AccessIter([capacity / input_port], [input_port], list(range(input_port)), manual_switch)
         self._data = [[655355 for _ in range(self._capacity)] for _ in range(self._bank_num)]
         self._manual_switch = manual_switch
+        self._arbitrary_addr = arbitrary_addr
 
     # Another object constructor from config
     def initFromConfig(self, config:VirtualBufferConfig):
@@ -42,6 +43,7 @@ class VirtualDoubleBuffer:
                                          config._manual_switch)
         self._data = [[655355 for _ in range(self._capacity)] for _ in range(self._bank_num)]
         self._manual_switch = config._manual_switch
+        self._arbitrary_addr = config._arbitrary_addr
 
     def switch(self):
       if (self._manual_switch == 1):
@@ -55,19 +57,20 @@ class VirtualDoubleBuffer:
             self.read_iterator.restart()
             self.write_iterator.restart()
 
-    def read(self, offset = 0):
+    def read(self, offset = 0, read_addr = 0):
         '''
         read a list data:<out_data> out of virtual buffer, return data_out
         '''
         if(self._manual_switch == 0):
             assert self.read_iterator._done == 0, "No more read allowed!\n"
-        '''
-        start_addr = (self.read_iterator._addr - offset) * self._output_port
-        end_addr = start_addr + self._output_port
-        out = self._data[self._select][start_addr: end_addr]
-        '''
-        #print (self.read_iterator._addr)
-        out_data = [self._data[self._select][addr_in_word - offset] for addr_in_word in self.read_iterator._addr]
+        if(self._arbitrary_addr):
+            #FIXME: I change the output rule to specify multiple port access by
+            #using an array of starting address
+            start_addr = read_addr
+            end_addr = start_addr + self._output_port
+            out_data = self._data[self._select][start_addr: end_addr]
+        else:
+            out_data = [self._data[self._select][addr_in_word - offset] for addr_in_word in self.read_iterator._addr]
         self.read_iterator.update()
         if(self._manual_switch == 0):
             self.check_switch()

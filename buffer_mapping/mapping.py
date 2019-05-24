@@ -10,7 +10,8 @@ def CreateVirtualBuffer(setup):
                                setup['access_pattern']['range'],
                                setup['access_pattern']['stride'],
                                setup['access_pattern']['start'],
-                               setup['manual_switch'])
+                               setup['manual_switch'],
+                               setup['arbitrary_addr'])
 
 def CreateHWConfig(setup):
     return HWBufferConfig(setup['input_port'],
