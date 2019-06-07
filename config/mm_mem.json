@@ -1,0 +1,128 @@
+{
+    "input_buffer": {
+        "mem_bankid_0": {
+            "mem_chainid0": {
+                "dimensionality": ["int", 1],
+                "stride_0": ["int", 1],
+                "range_0": ["int", 256],
+                "depth": ["int", 0],
+                "mode": ["int", 3],
+                "tile_en": ["bool", 1],
+                "rate_matched": ["bool", 0],
+                "stencil_width": ["int", 0],
+                "iter_cnt": ["int", 256],
+                "chain_idx": ["int,", 0]
+            }
+        },
+        "mem_bankid_1": {
+            "mem_chainid0": {
+                "dimensionality": ["int", 1],
+                "stride_0": ["int", 1],
+                "range_0": ["int", 256],
+                "depth": ["int", 0],
+                "mode": ["int", 3],
+                "tile_en": ["bool", 1],
+                "rate_matched": ["bool", 0],
+                "stencil_width": ["int", 0],
+                "iter_cnt": ["int", 256],
+                "chain_idx": ["int,", 0]
+            }
+        }
+    },
+    "weight_buffer": {
+        "mem_bankid_0": {
+            "mem_chainid0": {
+                "dimensionality": ["int", 2],
+                "stride_0": ["int", 1],
+                "range_0": ["int", 2],
+                "stride_1": ["int", 0],
+                "range_1": ["int", 256],
+                "depth": ["int", 0],
+                "mode": ["int", 3],
+                "tile_en": ["bool", 1],
+                "rate_matched": ["bool", 0],
+                "stencil_width": ["int", 0],
+                "iter_cnt": ["int", 512],
+                "chain_idx": ["int,", 0]
+            }
+        },
+        "mem_bankid_1": {
+            "mem_chainid0": {
+                "dimensionality": ["int", 2],
+                "stride_0": ["int", 1],
+                "range_0": ["int", 2],
+                "stride_1": ["int", 0],
+                "range_1": ["int", 256],
+                "depth": ["int", 0],
+                "mode": ["int", 3],
+                "tile_en": ["bool", 1],
+                "rate_matched": ["bool", 0],
+                "stencil_width": ["int", 0],
+                "iter_cnt": ["int", 512],
+                "chain_idx": ["int,", 0]
+            }
+        },
+        "mem_bankid_2": {
+            "mem_chainid0": {
+                "dimensionality": ["int", 2],
+                "stride_0": ["int", 1],
+                "range_0": ["int", 2],
+                "stride_1": ["int", 0],
+                "range_1": ["int", 256],
+                "depth": ["int", 0],
+                "mode": ["int", 3],
+                "tile_en": ["bool", 1],
+                "rate_matched": ["bool", 0],
+                "stencil_width": ["int", 0],
+                "iter_cnt": ["int", 512],
+                "chain_idx": ["int,", 0]
+            }
+        },
+        "mem_bankid_3": {
+            "mem_chainid0": {
+                "dimensionality": ["int", 2],
+                "stride_0": ["int", 1],
+                "range_0": ["int", 2],
+                "stride_1": ["int", 0],
+                "range_1": ["int", 256],
+                "depth": ["int", 0],
+                "mode": ["int", 3],
+                "tile_en": ["bool", 1],
+                "rate_matched": ["bool", 0],
+                "stencil_width": ["int", 0],
+                "iter_cnt": ["int", 512],
+                "chain_idx": ["int,", 0]
+            }
+        }
+    },
+    "output_buffer": {
+        "mem_bankid_0": {
+            "mem_chainid0": {
+                "dimensionality": ["int", 1],
+                "stride_0": ["int", 1],
+                "range_0": ["int", 512],
+                "depth": ["int", 0],
+                "mode": ["int", 3],
+                "tile_en": ["bool", 1],
+                "rate_matched": ["bool", 0],
+                "stencil_width": ["int", 0],
+                "iter_cnt": ["int", 512],
+                "chain_idx": ["int,", 0]
+            }
+        },
+        "mem_bankid_1": {
+            "mem_chainid0": {
+                "dimensionality": ["int", 1],
+                "stride_0": ["int", 1],
+                "range_0": ["int", 512],
+                "depth": ["int", 0],
+                "mode": ["int", 3],
+                "tile_en": ["bool", 1],
+                "rate_matched": ["bool", 0],
+                "stencil_width": ["int", 0],
+                "iter_cnt": ["int", 512],
+                "chain_idx": ["int,", 0]
+            }
+        }
+    }
+}

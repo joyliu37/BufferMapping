@@ -7,7 +7,7 @@ import pdb
 from buffer_mapping.mapping import *
 
 def test_buffer_mapping():
-    dir_path = '/Users/joeyliu/Documents/work/DBmapping/'
+    dir_path = '/Users/joeyliu/Documents/work/Mapper/DBmapping/'
     with open(dir_path+'config/setup.json') as json_file:
         setup= json.load(json_file)
     v_setup = setup["virtual buffer"]
@@ -19,6 +19,8 @@ def test_buffer_mapping():
     #buf = VirtualDoubleBuffer(16, 16, 34*34*32, [6,3,32,32], [1, 68, 2, 68], 0)
     #mem_tile_config = HWBufferConfig(1, 1, 512)
 
+    with open(dir_path + 'config/mem_tile.json', 'w') as out_file:
+        json.dump(mem_tile_hw.dump_json(), out_file, indent=4)
 
     for i in range(v_setup['capacity'] // v_setup['input_port']):
         tmp = [i*v_setup['input_port'] + j for j in range(v_setup['input_port'])]

@@ -47,7 +47,7 @@ def HWMap(buf: VirtualDoubleBuffer, mem_config):
                                              mem_config._output_port)
 
     #check capacity requirement to do chaining
-    capacity_per_bank = buf._capacity / num_bank
+    capacity_per_bank = buf._capacity // num_bank
     if capacity_per_bank > mem_config._capacity:
         #TODO: Currently just divide the capacity to be the size of memtile and some redundancy in the last tile
         # need more test case

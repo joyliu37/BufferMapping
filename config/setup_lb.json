@@ -1,0 +1,22 @@
+{
+"virtual buffer":
+    {
+    "input_port": 1, 
+    "output_port": 9, 
+    "capacity": 4356,
+    "manual_switch": 0,
+    "arbitrary_addr": 0,
+    "access_pattern": 
+    {
+        "range": [64, 64], 
+        "stride": [1, 66], 
+        "start": [0, 1, 2, 66, 67, 68, 132, 133, 134]
+    }
+},
+
+"hw config":{
+    "input_port": 1,
+    "output_port": 1,
+    "capacity": 512
+}
+}

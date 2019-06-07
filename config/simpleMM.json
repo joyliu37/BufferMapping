@@ -1,0 +1,52 @@
+{
+"input buffer":
+    {
+    "input_port": 2, 
+    "output_port": 2, 
+    "capacity": 512,
+    "manual_switch": 0,
+    "arbitrary_addr": 0,
+    "access_pattern": 
+    {
+        "range": [256], 
+        "stride": [2], 
+        "start": [0, 1]
+    }
+},
+
+"weight buffer":
+    {
+    "input_port": 4, 
+    "output_port": 4, 
+    "capacity": 8,
+    "manual_switch": 0,
+    "arbitrary_addr": 0,
+    "access_pattern": 
+    {
+        "range": [2, 256], 
+        "stride": [4, 0], 
+        "start": [0, 1, 2, 3]
+    }
+},
+
+"output buffer":
+    {
+    "input_port": 2, 
+    "output_port": 2, 
+    "capacity": 1024,
+    "manual_switch": 0,
+    "arbitrary_addr": 0,
+    "access_pattern": 
+    {
+        "range": [512], 
+        "stride": [2], 
+        "start": [0, 1]
+    }
+},
+
+"hw config":{
+    "input_port": 1,
+    "output_port": 1,
+    "capacity": 512
+}
+}

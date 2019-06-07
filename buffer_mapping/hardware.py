@@ -1,6 +1,8 @@
 from buffer_mapping.virtualbuffer import VirtualDoubleBuffer, AccessIter
 from buffer_mapping.util import Counter
+from buffer_mapping.pretty_print import NoIndent
 import copy
+from functools import reduce
 
 
 class BankedChainedMemoryTile:
@@ -21,6 +23,11 @@ class BankedChainedMemoryTile:
         self.write_counter = Counter(self._num_bank // self._in_port)
         self.read_counter = Counter(self._num_bank // self._out_port)
 
+    def dump_json(self)->dict:
+        mem_bank = {}
+        for idx, mem_chain in enumerate(self.banked_mem_tile):
+            mem_bank["mem_bankid_"+str(idx)] = mem_chain.dump_json()
+        return mem_bank
 
     def read(self):
         out_data_chain = []
@@ -71,6 +78,15 @@ class ChainedMemoryTile:
         self._mem_tile_chain = mem_tile_list
         self._input_port = mem_tile_list[0]._input_port
         self._output_port = mem_tile_list[0]._output_port
+
+    def dump_json(self)->dict:
+        mem_chain = {}
+        for idx, mem_tile in enumerate(self._mem_tile_chain):
+            mem_tile_config = mem_tile.dump_json()
+            mem_tile_config.update({'chain_idx':  NoIndent(['int', idx])})
+            mem_chain["mem_chainid" + str(idx)] = mem_tile_config
+
+        return mem_chain
 
     def read(self):
         '''
@@ -131,6 +147,25 @@ class MemoryTile(VirtualDoubleBuffer):
         self.addr_domain = [start_addr, end_addr]
         self.read_val = 0
         self.write_val = 0
+
+    def dump_json(self)->dict:
+        '''
+        Method to dump a diction into json
+        '''
+        mem_tile = {}
+        dimension = len(self.read_iterator._rng)
+        mem_tile['dimensionality'] = NoIndent(['int', dimension])
+        for idx in range(dimension):
+            mem_tile['stride_'+str(idx)] = NoIndent(['int', self.read_iterator._st[idx]])
+            mem_tile['range_'+str(idx)] = NoIndent(['int', self.read_iterator._rng[idx]])
+        #TODO: not hardcode if we are going to support line buffer
+        mem_tile['depth'] = NoIndent(['int', 0])
+        mem_tile['mode'] = NoIndent(['int', 3]) # DB is mode = 3
+        mem_tile['tile_en'] = NoIndent(['bool', 1])
+        mem_tile['rate_matched'] = NoIndent(['bool', 0])
+        mem_tile['stencil_width'] = NoIndent(['int', 0])
+        mem_tile['iter_cnt'] = NoIndent(['int', reduce((lambda x, y: x * y), self.read_iterator._rng)])
+        return mem_tile
 
     def read(self):
         '''

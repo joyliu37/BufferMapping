@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 class Counter:
     def __init__(self, bound):
         self._bound = bound
@@ -73,3 +75,29 @@ class AccessIter(AccessPattern):
                     break
         addr_offset = sum([i*j for i, j in zip(self._iter, self._st)])
         self._addr = [addr_offset + start_pos for start_pos in self._start]
+
+    def fifo_optimization(self):
+        '''
+        Reuse between port
+        This method check if there is data port overlapping between access iteration,
+        if true, return true
+        '''
+        #TODO: currently only check the inner most dimension for the fifo optimization
+        # only support continous write the data which means +1
+        next_start = [addr + self._st[0] for addr in self._start]
+
+        #Compare the data accessed in next iteration with starting addr
+        #see if we could use fifo to buffer
+        fifo_depth = OrderedDict({addr: 0 for addr in self._start})
+
+        for next_addr in next_start:
+            if fifo_depth.get(next_start) != None:
+                key_list = list(fifo_depth.keys())
+                index = key_list.index(next_start)
+                fifo_depth[key_list[index-1]] += 1
+                fifo_depth.pop(next_start)
+
+'''
+Add bank reuse when we map to different bank
+'''
+

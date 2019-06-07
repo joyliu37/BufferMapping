@@ -1,4 +1,5 @@
 import sys
+import os
 sys.path.insert(0,'..')
 from functools import reduce
 import json
@@ -8,8 +9,8 @@ from buffer_mapping.flatten import IR2Interface
 from buffer_mapping.virtualbuffer import VirtualDoubleBuffer
 
 def test_doublebuffer():
-    dir_path = '/users/joeyliu/Documents/work/DBmapping/'
-    with open(dir_path+'config/testIR.json') as json_file:
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    with open(dir_path+'/../config/testIR.json') as json_file:
         setup= json.load(json_file)
     #v_setup = setup["virtual buffer"]
     #v_buf = CreateVirtualBuffer(setup["virtual buffer"])

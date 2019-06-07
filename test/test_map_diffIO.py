@@ -1,4 +1,5 @@
 import sys
+import os
 sys.path.insert(0, '..')
 from functools import reduce
 import json
@@ -7,8 +8,8 @@ import pdb
 from buffer_mapping.mapping import *
 
 def test_buffer_mapping():
-    dir_path = '/Users/joeyliu/Documents/work/DBmapping/'
-    with open(dir_path+'config/setup_diff.json') as json_file:
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    with open(dir_path+'/../config/setup_diff.json') as json_file:
         setup= json.load(json_file)
     v_setup = setup["virtual buffer"]
     hw_setup = setup["hw config"]

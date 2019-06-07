@@ -7,7 +7,7 @@ import pdb
 from buffer_mapping.flatten import IR2Interface
 
 def test_flatten():
-    dir_path = '/users/joeyliu/Documents/work/DBmapping/'
+    dir_path = '/users/joeyliu/Documents/work/mapper/DBmapping/'
     with open(dir_path+'config/testIR.json') as json_file:
         setup= json.load(json_file)
 
