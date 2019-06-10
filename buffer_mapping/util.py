@@ -62,11 +62,14 @@ class AccessIter(AccessPattern):
             if dim <len(self._iter) - 1:
                 if self._iter[dim] < self._rng[dim]:
                     break
+                '''
+
                 elif self._rng[dim + 1] == 0:
                     self._done = 1
                     if self._manual_switch:
                         self.restart()
                     break
+                '''
             else:
                 if self._iter[dim] == self._rng[dim]:
                     self._done = 1
@@ -78,6 +81,7 @@ class AccessIter(AccessPattern):
 
     def fifo_optimization(self):
         '''
+        TODO:this is not tested
         Reuse between port
         This method check if there is data port overlapping between access iteration,
         if true, return true

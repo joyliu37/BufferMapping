@@ -1,3 +1,7 @@
+#C++ Compiled Bin
+cfunc/bin
+*.o
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

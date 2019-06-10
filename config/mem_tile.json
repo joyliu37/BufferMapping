@@ -1,1714 +1,1474 @@
 {
-    "mem_chain_0": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_0": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_1": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_1": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_2": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_2": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_3": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_3": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_4": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_4": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_5": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_5": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_6": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_6": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_7": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_7": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_8": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_8": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_9": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_9": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_10": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_10": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_11": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_11": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_12": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_12": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_13": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_13": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_14": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_14": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     },
-    "mem_chain_15": {
-        "mem_tile_0": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 0,
-            "end_addr": 512
+    "mem_bankid_15": {
+        "mem_chainid0": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 0]
         },
-        "mem_tile_1": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 512,
-            "end_addr": 1024
+        "mem_chainid1": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 1]
         },
-        "mem_tile_2": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1024,
-            "end_addr": 1536
+        "mem_chainid2": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 2]
         },
-        "mem_tile_3": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 1536,
-            "end_addr": 2048
+        "mem_chainid3": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 3]
         },
-        "mem_tile_4": {
-            "access_pattern": {
-                "range": [
-                    6,
-                    3,
-                    32,
-                    32
-                ],
-                "stride": [
-                    1,
-                    68,
-                    2,
-                    68
-                ],
-                "start": [
-                    0
-                ]
-            },
-            "start_addr": 2048,
-            "end_addr": 2560
+        "mem_chainid4": {
+            "dimensionality": ["int", 4],
+            "stride_0": ["int", 1],
+            "range_0": ["int", 6],
+            "stride_1": ["int", 68],
+            "range_1": ["int", 3],
+            "stride_2": ["int", 2],
+            "range_2": ["int", 32],
+            "stride_3": ["int", 68],
+            "range_3": ["int", 32],
+            "depth": ["int", 0],
+            "mode": ["int", 3],
+            "tile_en": ["bool", 1],
+            "rate_matched": ["bool", 0],
+            "stencil_width": ["int", 0],
+            "iter_cnt": ["int", 18432],
+            "chain_idx": ["int", 4]
         }
     }
 }

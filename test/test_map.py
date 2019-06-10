@@ -5,6 +5,7 @@ import json
 import pdb
 
 from buffer_mapping.mapping import *
+from buffer_mapping.pretty_print import MyEncoder
 
 def test_buffer_mapping():
     dir_path = '/Users/joeyliu/Documents/work/Mapper/DBmapping/'
@@ -20,7 +21,8 @@ def test_buffer_mapping():
     #mem_tile_config = HWBufferConfig(1, 1, 512)
 
     with open(dir_path + 'config/mem_tile.json', 'w') as out_file:
-        json.dump(mem_tile_hw.dump_json(), out_file, indent=4)
+        data = json.dumps(mem_tile_hw.dump_json(), cls=MyEncoder, indent=4)
+        out_file.write(data)
 
     for i in range(v_setup['capacity'] // v_setup['input_port']):
         tmp = [i*v_setup['input_port'] + j for j in range(v_setup['input_port'])]
