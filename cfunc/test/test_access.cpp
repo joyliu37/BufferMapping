@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
     vector<vector<int>> gold_stream(18432, vector<int>(4));
     GenAddrStream(gold_stream);
     db_iter->restart();
-    for (int itr = 0; itr < 9; itr ++) {
+    for (int itr = 0; itr < 18432; itr ++) {
         vector<int> addr = db_iter->getAddr();
         vector<int> ref_addr = gold_stream[itr];
         for (int i = 0; i < addr.size(); i ++) {

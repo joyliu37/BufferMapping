@@ -13,6 +13,7 @@ class AccessPattern {
         vector<int> start;
         int dimension;
         int port;
+        int total_iter;
 };
 
 class AccessIter {
@@ -22,6 +23,9 @@ class AccessIter {
         void restart();
         void update();
         bool getDone() {return done;}
+        int getPort() {return acc_pattern.port;}
+        int getTotalIteration() {return acc_pattern.total_iter;}
+        void forceDone() {done = true;}
         vector<int> getAddr() {return addr;}
 
     private:

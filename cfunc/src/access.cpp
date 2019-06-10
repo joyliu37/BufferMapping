@@ -1,6 +1,5 @@
 #include "access.h"
 #include <assert.h>
-#include <stdio.h>
 
 using namespace std;
 
@@ -8,9 +7,11 @@ AccessPattern::AccessPattern(vector<int> _range, vector<int> _stride, vector<int
     assert(_range.size() == _stride.size() && "range and stride must has same dimension in Access Pattern definition.\n");
     dimension = _range.size();
     port = _start.size();
+    total_iter = 1;
 
     for (auto _rng: _range) {
         this->range.push_back(_rng);
+        total_iter *= _rng;
     }
 
     for (auto _st: _stride) {
@@ -23,7 +24,7 @@ AccessPattern::AccessPattern(vector<int> _range, vector<int> _stride, vector<int
 }
 
 AccessIter::AccessIter(vector<int> _range, vector<int> _stride, vector<int> _start) :
-    done(false) {
+    done(false){
     acc_pattern = AccessPattern(_range, _stride, _start);
 
     for (int i = 0; i < acc_pattern.dimension; i ++) {
@@ -36,7 +37,7 @@ AccessIter::AccessIter(vector<int> _range, vector<int> _stride, vector<int> _sta
 }
 
 void AccessIter::restart() {
-    for (int iter : iter_list) {
+    for (int & iter : iter_list) {
         iter = 0;
     }
 
@@ -44,7 +45,7 @@ void AccessIter::restart() {
         addr[i] = acc_pattern.start[i];
     }
 
-    done = 0;
+    done = false;
 }
 
 void AccessIter::update() {
