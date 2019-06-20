@@ -1,5 +1,6 @@
 from buffer_mapping.config import VirtualBufferConfig
 from buffer_mapping.util import AccessIter, Counter
+from functools import reduce
 
 class VirtualBuffer:
     def __init__(self, input_port, output_port, capacity, _range, stride, start, manual_switch=0, arbitrary_addr=0):
@@ -62,6 +63,7 @@ class VirtualBuffer:
             for addr ,word_data in zip(wr_addr, data_in):
                 write_bank[(addr - offset) % self._capacity] = word_data
         self.write_iterator.update()
+        #print ("base class write: size: ",self._capacity, self.write_iterator._done, self.write_iterator._iter, self.read_iterator._done, self.read_iterator._iter)
         if(self._manual_switch == 0):
             self.check_switch()
 
@@ -114,6 +116,39 @@ class VirtualDoubleBuffer(VirtualBuffer):
     def getWriteBank(self):
         return self._data[1-self._select]
 
+class VirtualRowBuffer(VirtualBuffer):
+    def __init__(self, input_port, output_port, capacity, _range, stride, start, read_delay, counter_bound,
+                 manual_switch=0, arbitrary_addr=0):
+        super().__init__(input_port, output_port, capacity, _range, stride, start, manual_switch, arbitrary_addr)
+        #count how much write you need to wait beforeread out data
+        self._read_delay = read_delay
+        self.write_iterator._rng[0] = reduce((lambda x,y : x*y), self.read_iterator._rng)
+        self.stencil_valid_counter = Counter(counter_bound)
+        self.delay_counter = 0
 
+    def write(self, data_in, offset = 0):
+        self.delay_counter += 1
+        #print (self._output_port, data_in)
+        super().write(data_in, offset)
+        #print ("size: ",self._capacity,
+        #       self.write_iterator._done, self.write_iterator._iter, self.read_iterator._done, self.read_iterator._iter)
+
+    def read(self, offset = 0, read_addr = 0):
+        #need to return two valid, one for read valid, one for stencil valid
+        data = []
+        stencil_valid = self.stencil_valid_counter.read() >= self._read_delay
+        read_valid = self.delay_counter >= self._capacity
+        self.stencil_valid_counter.update()
+        #if read_valid:
+        #no matter if it's valid, we will read the row buffer and may get invalid data
+        data = super().read()
+        return stencil_valid, read_valid, data
+
+    def check_switch(self):
+        if self.write_iterator._done and self.read_iterator._done:
+            self.delay_counter = 0
+            self.stencil_valid_counter.restart()
+            self.read_iterator.restart()
+            self.write_iterator.restart()
 
 

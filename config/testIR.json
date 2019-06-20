@@ -45,6 +45,22 @@
 
 },
 
+"simple line buffer":
+{
+    "input_port": [1, 1],
+    "output_port": [3, 3],
+    "capacity": [6, 6],
+    "manual_switch": 0,
+    "arbitrary_addr": 0,
+    "access_pattern":
+    {
+        "range": [4, 4],
+        "ref_dim": [0, 1],
+        "stride_in_dim": [1, 1]
+    }
+
+},
+
 "global buffer":
     {
     "input_port": [1, 1], 
