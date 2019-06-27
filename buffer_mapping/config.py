@@ -1,7 +1,6 @@
 class VirtualBufferConfig:
     def __init__(self, input_port, output_port, capacity, _range, stride, start=[0], manual_switch=0, arbitrary_addr=0):
         assert capacity % input_port == 0, "capacity is not divisible by input_port number!\n"
-        assert capacity % output_port == 0, "capacity is not divisible by output_port number!\n"
         self._input_port = input_port
         self._output_port = output_port
         self._capacity = capacity

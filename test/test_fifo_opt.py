@@ -14,7 +14,7 @@ def test_linebuffer():
     #v_setup = setup["virtual buffer"]
     #v_buf = CreateVirtualBuffer(setup["virtual buffer"])
 
-    IR_setup = setup['line buffer']
+    IR_setup = setup['strided line buffer']
     v_setup = IR2Interface(IR_setup)
     v_buf = VirtualBuffer(v_setup._input_port,
                           v_setup._output_port,
@@ -26,7 +26,7 @@ def test_linebuffer():
     #define what underline hw like
     hw_input_port = 1
     hw_output_port = 1
-    linebuffer = VirtualLineBuffer(v_buf, hw_input_port, hw_output_port, IR_setup['capacity'])
+    linebuffer = VirtualLineBuffer(v_buf, hw_input_port, hw_output_port, IR_setup['capacity'], IR_setup['access_pattern']['stride_in_dim'])
 
     for blockid in range(3):
         for i in range(v_setup._capacity // v_setup._input_port):
@@ -37,9 +37,9 @@ def test_linebuffer():
             #print (valid, data_out)
             if valid:
                 data_out_ref = v_buf.read()
-                assert data_out_ref== data_out,\
+                assert data_out_ref == data_out,\
                 "Data read is not matched, \nLine buffer read data ="+ str(data_out) + "\n, virtual buffer read data = " + str(data_out_ref)
-                #print (data_out_ref)
+                print (data_out_ref, data_out)
         print("Finish read all data from line buffer, move to the next tile.")
 
 

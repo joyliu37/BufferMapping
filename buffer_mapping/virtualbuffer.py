@@ -8,11 +8,12 @@ class VirtualBuffer:
         The base class of double buffer and line buffer, a dual port sram
         Has method read and write, has a valid field which prevent read before write
         '''
+        #TODO: Add constrain of the initial parameter to the base class
         self._input_port = input_port
         self._output_port = output_port
         self._capacity = capacity
         self.read_iterator = AccessIter(_range, stride, start, manual_switch)
-        self.write_iterator = AccessIter([capacity / input_port], [input_port], list(range(input_port)), manual_switch)
+        self.write_iterator = AccessIter([capacity // input_port], [input_port], list(range(input_port)), manual_switch)
         self._data = [65535 for _ in range(self._capacity)]
         self._manual_switch = manual_switch
         self._arbitrary_addr = arbitrary_addr
@@ -58,7 +59,8 @@ class VirtualBuffer:
             assert self._input_port == 1
             write_bank[(self.write_iterator._addr[0] - offset)] = data_in
         else:
-            assert len(data_in) == self._input_port, "Input data size not match port number!\n"
+            assert len(data_in) == self._input_port, "Input data size:"+str(len(data_in))+\
+            " not match port number"+str(self._input_port)+"!\n"
             wr_addr = self.write_iterator._addr
             for addr ,word_data in zip(wr_addr, data_in):
                 write_bank[(addr - offset) % self._capacity] = word_data
@@ -66,6 +68,65 @@ class VirtualBuffer:
         #print ("base class write: size: ",self._capacity, self.write_iterator._done, self.write_iterator._iter, self.read_iterator._done, self.read_iterator._iter)
         if(self._manual_switch == 0):
             self.check_switch()
+
+class VirtualValidBuffer(VirtualBuffer):
+    '''
+    This is the buffer with read valid not synchronized for every output port.
+    It's the base buffer in swap buffer/line buffer, which has output port = stride size
+    It will be the data layout transformation buffer in the future
+    '''
+    def __init__(self, input_port, output_port, capacity, _range, stride, start, manual_switch=0, arbitrary_addr=0):
+        super().__init__(input_port, output_port, capacity, _range, stride, start, manual_switch, arbitrary_addr)
+        #TODO: Add constrain
+        self._data_valid = [True for _ in self._data]
+
+    def shiftTopLeft(self, offset, capacity_dim):
+        '''
+        This method will add an invalid boundary pad to the top-left of the area
+        which will responsible for the situation with output stencil not divisible by input chunk
+        '''
+        #invalid the position within -offset to the left top boudary
+        for idx, data_valid in enumerate(self._data_valid):
+            idx_copy = idx
+            for dim in capacity_dim:
+                if idx_copy % dim == dim - 1:
+                    self._data_valid[idx] = False
+                else:
+                    idx_copy //= dim
+
+
+
+    def read(self, offset = 0, read_addr = 0):
+        '''
+        read a list data:<out_data> out of virtual buffer, return data_out
+        '''
+        out_data = []
+        valid = []
+        if(self._manual_switch == 0):
+            assert self.read_iterator._done == 0, "No more read allowed!\n"
+        if(self._arbitrary_addr):
+            #FIXME: I change the output rule to specify multiple port access by
+            #using an array of starting address
+            start_addr = read_addr
+            end_addr = start_addr + self._output_port
+            valid = True
+            out_data = self.getReadBank()[start_addr: end_addr]
+        else:
+            for addr_in_word in self.read_iterator._addr:
+                if self._data_valid[(addr_in_word - offset) % self._capacity]:
+                    valid.append(True)
+                    out_data.append(self.getReadBank()[(addr_in_word - offset) % self._capacity])
+                else:
+                    valid.append(False)
+                    out_data.append(65536)
+
+        self.read_iterator.update()
+        if(self._manual_switch == 0):
+            self.check_switch()
+
+        return valid, out_data
+
+
 
 class VirtualDoubleBuffer(VirtualBuffer):
 
@@ -117,8 +178,16 @@ class VirtualDoubleBuffer(VirtualBuffer):
         return self._data[1-self._select]
 
 class VirtualRowBuffer(VirtualBuffer):
+    '''
+    Row buffer is a contrained buffer, you have a read delay and also a stencil valid signal.
+    Read and write access iterator can only be contiguous
+    '''
     def __init__(self, input_port, output_port, capacity, _range, stride, start, read_delay, counter_bound,
                  manual_switch=0, arbitrary_addr=0):
+        '''
+        When you create the row buffer, you keep the range in each dimension,
+        and flatten it in the very end
+        '''
         super().__init__(input_port, output_port, capacity, _range, stride, start, manual_switch, arbitrary_addr)
         #count how much write you need to wait beforeread out data
         self._read_delay = read_delay
@@ -128,7 +197,7 @@ class VirtualRowBuffer(VirtualBuffer):
 
     def write(self, data_in, offset = 0):
         self.delay_counter += 1
-        #print (self._output_port, data_in)
+        print ("write to row buffer:",self._output_port, data_in)
         super().write(data_in, offset)
         #print ("size: ",self._capacity,
         #       self.write_iterator._done, self.write_iterator._iter, self.read_iterator._done, self.read_iterator._iter)
@@ -136,12 +205,13 @@ class VirtualRowBuffer(VirtualBuffer):
     def read(self, offset = 0, read_addr = 0):
         #need to return two valid, one for read valid, one for stencil valid
         data = []
+        print (self.read_iterator._addr, self._capacity)
         stencil_valid = self.stencil_valid_counter.read() >= self._read_delay
         read_valid = self.delay_counter >= self._capacity
         self.stencil_valid_counter.update()
         #if read_valid:
         #no matter if it's valid, we will read the row buffer and may get invalid data
-        data = super().read()
+        data = super().read(offset, read_addr)
         return stencil_valid, read_valid, data
 
     def check_switch(self):
