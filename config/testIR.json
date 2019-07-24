@@ -77,6 +77,21 @@
 
 },
 
+"strided line buffer 2":
+{
+    "input_port": [16, 1],
+    "output_port": [4, 4],
+    "capacity": [16, 16],
+    "manual_switch": 0,
+    "arbitrary_addr": 0,
+    "access_pattern":
+    {
+        "range": [4, 4],
+        "ref_dim": [0, 1],
+        "stride_in_dim": [2, 2]
+    }
+
+},
 "simple line buffer":
 {
     "input_port": [1, 1],

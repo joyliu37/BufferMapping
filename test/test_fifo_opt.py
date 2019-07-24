@@ -39,7 +39,6 @@ def test_linebuffer():
                 data_out_ref = v_buf.read()
                 assert data_out_ref == data_out,\
                 "Data read is not matched, \nLine buffer read data ="+ str(data_out) + "\n, virtual buffer read data = " + str(data_out_ref)
-                print (data_out_ref, data_out)
         print("Finish read all data from line buffer, move to the next tile.")
 
 

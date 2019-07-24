@@ -89,7 +89,7 @@ class VirtualValidBuffer(VirtualBuffer):
         for idx, data_valid in enumerate(self._data_valid):
             idx_copy = idx
             for dim in capacity_dim:
-                if idx_copy % dim == dim - 1:
+                if idx_copy % dim == dim - offset:
                     self._data_valid[idx] = False
                 else:
                     idx_copy //= dim
@@ -148,7 +148,7 @@ class VirtualDoubleBuffer(VirtualBuffer):
         self._data = [[65535 for _ in range(self._capacity)] for _ in range(self._bank_num)]
 
     # Another object constructor from config
-    def initFromConfig(self, config:VirtualBufferConfig):
+    def initFromConfig(self, config: VirtualBufferConfig):
         self._bank_num = 2
         self._select = 0
         super().__init__(config._input_port, config._output_port, config._capacity,
@@ -197,7 +197,7 @@ class VirtualRowBuffer(VirtualBuffer):
 
     def write(self, data_in, offset = 0):
         self.delay_counter += 1
-        print ("write to row buffer:",self._output_port, data_in)
+        #print ("write to row buffer:",self._output_port, data_in)
         super().write(data_in, offset)
         #print ("size: ",self._capacity,
         #       self.write_iterator._done, self.write_iterator._iter, self.read_iterator._done, self.read_iterator._iter)
@@ -205,7 +205,6 @@ class VirtualRowBuffer(VirtualBuffer):
     def read(self, offset = 0, read_addr = 0):
         #need to return two valid, one for read valid, one for stencil valid
         data = []
-        print (self.read_iterator._addr, self._capacity)
         stencil_valid = self.stencil_valid_counter.read() >= self._read_delay
         read_valid = self.delay_counter >= self._capacity
         self.stencil_valid_counter.update()

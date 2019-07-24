@@ -164,18 +164,26 @@ class VirtualLineBuffer:
 
         new_start_size = len(self.base_buf.read_iterator._start)
 
+        #TODO: make this in a method
         if old_start_size % new_start_size:
-            print ("Shift for non divisible input output size", old_start_size, new_start_size)
+            #FIXME:should we use the single dimension size?
             self.base_buf.shiftTopLeft(old_start_size % new_start_size, capacity_dim)
-            for idx, start in enumerate(self.base_buf.read_iterator._start):
-                #FIXME: a hack may not work for other circumstance
-                flip_start = 0 - start
+            for idx_port, start in enumerate(self.base_buf.read_iterator._start):
+                #compare with the base buf iterator rang to change the starting pos of base buf
+                shift_start = start
+                for idx_dim, (base_rng_in_dim, start_port_rng_in_dim) in enumerate(zip(self.base_buf.read_iterator._rng,
+                                                                  self.port_access_iter[start]._rng)):
+                    stride_in_dim = self.base_buf.read_iterator._st[idx_dim]
+                    shift_start -= (base_rng_in_dim - start_port_rng_in_dim) * stride_in_dim
                 if start in self.meta_fifo_dict:
                     #chances are the start point do not have fifo
-                    self.meta_fifo_dict[flip_start] = self.meta_fifo_dict.pop(start)
-                self.base_buf.read_iterator._start[idx] = flip_start
+                    self.meta_fifo_dict[shift_start] = self.meta_fifo_dict.pop(start)
+                if start in self.port_map:
+                    self.port_map[shift_start] = self.port_map.pop(start)
+
+                self.base_buf.read_iterator._start[idx_port] = shift_start
+
         self.base_buf.read_iterator.restart()
-        print (self.base_buf.read_iterator._st)
 
     def fifo_optimize(self, hw_input_port, hw_output_port):
 
@@ -203,7 +211,6 @@ class VirtualLineBuffer:
             longest_merge_port_list_size = 0
 
             # mutate the buffer tree
-            #new_meta_fifo_dict = {}
             for new_start_port, merge_port_list in root_dict.items():
                 #update the longest fifo length for range update
                 if len(merge_port_list) > longest_merge_port_list_size:
@@ -212,10 +219,8 @@ class VirtualLineBuffer:
                 #nothing to merge just single port
                 if len(merge_port_list) == 1:
                     continue
-                #print (stride)
-                #print (new_start_port, merge_port_list)
+
                 child_buf_list = [self.meta_fifo_dict.pop(port) for port in merge_port_list if port in self.meta_fifo_dict]
-                print("child buf list: ", child_buf_list)
 
                 #update the port map
                 for merge_port in merge_port_list:
@@ -268,10 +273,9 @@ class VirtualLineBuffer:
             #self.meta_fifo_dict = new_meta_fifo_dict
             self.base_buf.read_iterator._start = list(root_dict.keys())
 
-            # update the iterator range for the base buffer
-            #TODO: keep a seperate read iterator for each port
+            # update the iterator range for the base buffer, it will keep the largest range
+            # Further in the final it will be the reference to shift the start
             self.base_buf.read_iterator._rng[stride_dim] += longest_merge_port_list_size - 1
-            print (self.base_buf.read_iterator._rng, merge_port_list)
 
         #update the write iterator because of the delay
         for _, root in self.meta_fifo_dict.items():
@@ -288,11 +292,7 @@ class VirtualLineBuffer:
         also associate with a valid signal
         '''
         self.base_buf.write(data_in)
-        print (self.base_buf.read_iterator._addr)
         valid_from_base, data_from_base = self.base_buf.read()
-
-        print (data_from_base)
-        #print (self.base_buf._data)
 
         valid = True
         data = []
@@ -306,7 +306,7 @@ class VirtualLineBuffer:
                     fifo_entry = self.meta_fifo_dict[start_addr_after_opt]
                     valid_from_port, data_from_port = fifo_entry.read_write([data_from_base[idx]])
                     valid &= valid_from_port
-                    for idx, port in enumerate(self.port_map[-start_addr_after_opt]):
+                    for idx, port in enumerate(self.port_map[start_addr_after_opt]):
                         data_dict[port] = [data_from_port[idx]]
                     #data.extend(data_from_port)
                     #print("port ", idx, data_from_port)
