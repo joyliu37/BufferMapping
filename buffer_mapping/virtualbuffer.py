@@ -1,6 +1,8 @@
 from buffer_mapping.config import VirtualBufferConfig
 from buffer_mapping.util import AccessIter, Counter
 from functools import reduce
+import random
+import string
 
 class VirtualBuffer:
     def __init__(self, input_port, output_port, capacity, _range, stride, start, manual_switch=0, arbitrary_addr=0):
@@ -219,5 +221,48 @@ class VirtualRowBuffer(VirtualBuffer):
             self.stencil_valid_counter.restart()
             self.read_iterator.restart()
             self.write_iterator.restart()
+
+    def dump_json(self, last_in_chain:bool):
+        mem_tile = {}
+        #name = ''.join([random.choice(string.acii_letters + string.digits) for n in range(6)])
+        if self._capacity == 1:
+            mem_tile["modref"] = "coreir.reg"
+            args = {"width" : ["Int", 16]}
+            mem_tile["genargs"] = args
+            mem_tile["modargs"] = {"clk_posedge": ["Bool", True], "init": [["BitVector", 16], "16'hxxxx"]}
+            #in_port.extend(["in", "clk"])
+            #out_port.extend(["out"])
+        else:
+            mem_tile["genref"] = "commonlib.unified_buffer"
+            args = {}
+            args["width"] = ["Int", 16]
+            args["depth"] = ["Int", self._capacity]
+            args["rate_matched"] = ["Bool", True]
+            dimension = len(self.read_iterator._rng)
+            args["dimensionality"] = ["Int", dimension]
+            #FIXME: hack
+            args["iter_cnt"] = ['Int', self._capacity]
+            #args["iter_cnt"] = ['Int', reduce((lambda x, y: x* y), self.read_iterator._rng)]
+            if last_in_chain:
+                #FIXME:hardcode here, we need child node information
+                args["stencil_width"] = ['Int', 2]
+            else:
+                args["stencil_width"] = ['Int', 2]
+
+            for idx in range(dimension):
+                args["stride_"+str(idx)] = ['Int', self.read_iterator._st[idx]]
+                #FIXME: hack, why 64
+                args["range_"+str(idx)] = ['Int', self._capacity]
+            #FIXME: hardcode variable
+            args["chain_en"] = ["Bool", False]
+            args["chain_idx"] = ["Int", 0]
+            assert len(self.read_iterator._start) == 1, "Need banking!\n"
+            args["starting_addr"] = ["Int", self.read_iterator._start[0]]
+            #args["init"] = ["Json", {"init":[0]}]
+            mem_tile["genargs"] = args
+
+
+        return mem_tile, self._capacity == 1
+
 
 

@@ -37,6 +37,52 @@ class LineBufferNode:
         '''
         self.child_fifo = buf_list
 
+    def dump_json(self, name, data_in, valid, out_id, port_list):
+        #do not forget add top level connection
+        instance = {}
+        connection = []
+        for idx, row_buffer in enumerate(self.row_buffer_chain):
+            #add connect from input to
+            buffer_instance, is_reg = row_buffer.dump_json(idx == len(self.row_buffer_chain) - 1)
+            buffer_name = name + "_" + str(idx)
+            instance[buffer_name] = buffer_instance
+            #FIXME connection to output id is not clear
+            if is_reg:
+                if idx == 0:
+                    #connect the input with this in
+                    connection.append([data_in, buffer_name+".in"])
+                else:
+                    #connect previou out with this datain
+                    connection.append([name+"_"+str(idx-1)+".out", buffer_name+".in"])
+                connection.append([name+"_"+str(idx)+".out",str(port_list[out_id] + ".in")])
+                connection.append([name+"_"+str(idx)+".clk", "self.clk"])
+                out_id += 1
+            else:
+                if idx == 0:
+                    instance_child , connection_child, out_id = self.child_fifo[idx].dump_json(buffer_name, data_in, valid, out_id, port_list)
+                    instance.update(instance_child)
+                    connection.extend(connection_child)
+                    #connect the input with this in
+                    connection.append([data_in, buffer_name+".data_in"])
+                    connection.append([valid, buffer_name+".wen"])
+                    connection.append([valid, buffer_name+".ren"])
+                else:
+                    #connect previou out with this datain
+                    connection.append([name+"_"+str(idx-1)+".dataout", buffer_name+".datain"])
+                    connection.append([name+"_"+str(idx-1)+".valid", buffer_name+".wen"])
+                    connection.append([name+"_"+str(idx-1)+".valid", buffer_name+".ren"])
+                connection.append([name+"_"+str(idx)+".dataout", str(port_list[out_id])+".in"])
+                connection.append([name+"_"+str(idx)+".flush", "self.flush"])
+                out_id += 1
+                prev_buffer_name = name + "_" + str(idx)
+                next_buffer_name = name + "_" + str(idx+1)
+                instance_child , connection_child, out_id = self.child_fifo[idx+1].dump_json(next_buffer_name, prev_buffer_name+".dataout", valid, out_id, port_list)
+                instance.update(instance_child)
+                connection.extend(connection_child)
+
+
+        return instance, connection, out_id
+
     def recursive_update_read_iterator(self, dim, fifo_depth):
         '''
         Helper function when we doing fifo optimization
@@ -83,13 +129,16 @@ class LineBufferNode:
         #pull the last data read from the last chain into to the next level fifo
         stencil_valid, read_valid, last_data_read = self.row_buffer_chain[-1].read()
         valid &= stencil_valid
-        #print ("fifo_size: ",self._fifo_size,  stencil_valid,  read_valid, last_data_read)
+        #print ("counter_bound:", self.row_buffer_chain[-1].stencil_valid_counter._bound,"fifo_size: ",self._fifo_size,  stencil_valid,  read_valid, last_data_read)
         if (child_size > 0):
             #always read and write the child node, because we need to update the read iterator
             child_valid, data_from_child =  self.child_fifo[-1].read_write(last_data_read, read_valid)
+            #And valid signal from children node
             valid &= child_valid
+            #pad data into the out put(this is the oldest data)
             data_out.extend(data_from_child)
         else:
+            #pad the data from node, because there is child node
             data_out.extend(last_data_read)
 
         # update data in the current level row buffer chain, from the last fifo to the first
@@ -164,6 +213,7 @@ class VirtualLineBuffer:
 
         new_start_size = len(self.base_buf.read_iterator._start)
 
+        #shift the starting port in the situation that optimized port number is not divisible by original port size
         #TODO: make this in a method
         if old_start_size % new_start_size:
             #FIXME:should we use the single dimension size?
@@ -184,6 +234,24 @@ class VirtualLineBuffer:
                 self.base_buf.read_iterator._start[idx_port] = shift_start
 
         self.base_buf.read_iterator.restart()
+
+    def dump_json(self, name, data_in, valid, port_list):
+        instance = {}
+        connection = []
+        out_id = 0
+        connection.append([data_in, "self.out"+str(port_list[out_id])])
+        out_id += 1
+        for _, buffer_node in self.meta_fifo_dict.items():
+            entry_instance, entry_connection, out_id= buffer_node.dump_json(name, data_in, valid, out_id, port_list)
+            instance.update(entry_instance)
+            connection.extend(entry_connection)
+
+        #FIXME: for the base buf, currently just hack
+        json_dict = {}
+        json_dict["instances"] = instance
+        json_dict["connections"] = connection
+        return json_dict
+
 
     def fifo_optimize(self, hw_input_port, hw_output_port):
 
@@ -253,6 +321,7 @@ class VirtualLineBuffer:
                 row_buf_stride = []
                 row_buf_range = self.port_access_iter[new_start_port]._rng.copy()
 
+                #size for nd line buffer component, could be reg row or plane
                 row_buf_size = 1 if stride_dim == 0 \
                 else reduce((lambda x,y : x*y), self.port_access_iter[new_start_port]._rng[:stride_dim])
 
@@ -262,7 +331,7 @@ class VirtualLineBuffer:
                         LineBufferNode(hw_input_port, hw_output_port,
                                        row_buf_range,
                                        row_buf_stride,
-                                       self._capacity_dim[stride_dim],
+                                       self._capacity_dim[stride_dim]//self._stride_in_dim[stride_dim],
                                        child_buf_list,
                                        stride_dim, len(merge_port_list)-1,
                                        row_buf_size)

@@ -1,0 +1,1034 @@
+{
+    "top": "global.DesignTop",
+    "namespaces": {
+        "global": {
+            "modules": {
+                "DesignTop": {
+                    "type": [
+                        "Record",
+                        [
+                            [
+                                "clk",
+                                [
+                                    "Named",
+                                    "coreir.clkIn"
+                                ]
+                            ],
+                            [
+                                "in_arg_0_0_0",
+                                [
+                                    "Array",
+                                    16,
+                                    "BitIn"
+                                ]
+                            ],
+                            [
+                                "in_en",
+                                "BitIn"
+                            ],
+                            [
+                                "out_0_0",
+                                [
+                                    "Array",
+                                    16,
+                                    "Bit"
+                                ]
+                            ],
+                            [
+                                "reset",
+                                "BitIn"
+                            ],
+                            [
+                                "valid",
+                                "Bit"
+                            ]
+                        ]
+                    ],
+                    "instances": {
+                        "add_287_291_292": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_293_297_298": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_299_303_304": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_305_309_310": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_311_315_316": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_317_321_322": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_323_327_328": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_329_333_334": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_335_339_340": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "const0_0": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0000"
+                                ]
+                            }
+                        },
+                        "const0_0$1": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0000"
+                                ]
+                            }
+                        },
+                        "const11_11": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h000b"
+                                ]
+                            }
+                        },
+                        "const12_12": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h000c"
+                                ]
+                            }
+                        },
+                        "const13_13": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h000d"
+                                ]
+                            }
+                        },
+                        "const14_14": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h000e"
+                                ]
+                            }
+                        },
+                        "const16_16": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0010"
+                                ]
+                            }
+                        },
+                        "const17_17": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0011"
+                                ]
+                            }
+                        },
+                        "const18_18": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0012"
+                                ]
+                            }
+                        },
+                        "const19_19": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0013"
+                                ]
+                            }
+                        },
+                        "lb_hw_input_stencil_update_stream$lb_recurse$lb1d_0$reset_term": {
+                            "modref": "corebit.term"
+                        },
+                        "lb_hw_input_stencil_update_stream$lb_recurse$lb1d_1$reset_term": {
+                            "modref": "corebit.term"
+                        },
+                        "lb_hw_input_stencil_update_stream$lb_recurse$lb1d_2$reset_term": {
+                            "modref": "corebit.term"
+                        },
+                        "lb_hw_input_stencil_update_stream$lb_recurse$lbmem_1_0_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "lb_hw_input_stencil_update_stream$lb_recurse$lbmem_2_0_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "stencil_size": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h002"
+                                ]
+                            }
+                        },
+                        "row_counter": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "max": [
+                                    "Int",
+                                    63
+                                ],
+                                "inc": [
+                                    "Int",
+                                    1
+                                ]
+                            }
+                        },
+                        "col_counter": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "max": [
+                                    "Int",
+                                    63
+                                ],
+                                "inc": [
+                                    "Int",
+                                    1
+                                ]
+                            }
+                        },
+                        "lb_hw_input_stencil_update_stream$lb_recurse$valid_andr$_join": {
+                            "modref": "corebit.and"
+                        },
+                        "lb_hw_input_stencil_update_stream$lb_recurse$valid_andr$opN_0$_join": {
+                            "modref": "corebit.and"
+                        },
+                        "row_compare": {
+                            "genref": "coreir.ule",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "col_compare": {
+                            "genref": "coreir.ule",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_288_290_291": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_294_296_297": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_300_302_303": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_306_308_309": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_312_314_315": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_318_320_321": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_324_326_327": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_330_332_333": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_336_338_339": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "linebuffer_0": {
+                            "genref": "commonlib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    64
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    true
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    1
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    64
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    2
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    64
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "starting_addr": [
+                                    "Int",
+                                    0
+                                ]
+                            }
+                        },
+                        "linebuffer_0_0": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "linebuffer_0_1": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "linebuffer_1_0": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "linebuffer_1_1": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "linebuffer_1": {
+                            "genref": "commonlib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    64
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    true
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    1
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    64
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    2
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    64
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "starting_addr": [
+                                    "Int",
+                                    0
+                                ]
+                            }
+                        },
+                        "linebuffer_2_0": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "linebuffer_2_1": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        }
+                    },
+                    "connections": [
+                        [
+                            "const0_0.out",
+                            "add_287_291_292.in0"
+                        ],
+                        [
+                            "mul_288_290_291.out",
+                            "add_287_291_292.in1"
+                        ],
+                        [
+                            "add_293_297_298.in0",
+                            "add_287_291_292.out"
+                        ],
+                        [
+                            "mul_294_296_297.out",
+                            "add_293_297_298.in1"
+                        ],
+                        [
+                            "add_299_303_304.in0",
+                            "add_293_297_298.out"
+                        ],
+                        [
+                            "mul_300_302_303.out",
+                            "add_299_303_304.in1"
+                        ],
+                        [
+                            "add_305_309_310.in0",
+                            "add_299_303_304.out"
+                        ],
+                        [
+                            "mul_306_308_309.out",
+                            "add_305_309_310.in1"
+                        ],
+                        [
+                            "add_311_315_316.in0",
+                            "add_305_309_310.out"
+                        ],
+                        [
+                            "mul_312_314_315.out",
+                            "add_311_315_316.in1"
+                        ],
+                        [
+                            "add_317_321_322.in0",
+                            "add_311_315_316.out"
+                        ],
+                        [
+                            "mul_318_320_321.out",
+                            "add_317_321_322.in1"
+                        ],
+                        [
+                            "add_323_327_328.in0",
+                            "add_317_321_322.out"
+                        ],
+                        [
+                            "mul_324_326_327.out",
+                            "add_323_327_328.in1"
+                        ],
+                        [
+                            "add_329_333_334.in0",
+                            "add_323_327_328.out"
+                        ],
+                        [
+                            "mul_330_332_333.out",
+                            "add_329_333_334.in1"
+                        ],
+                        [
+                            "add_335_339_340.in0",
+                            "add_329_333_334.out"
+                        ],
+                        [
+                            "mul_336_338_339.out",
+                            "add_335_339_340.in1"
+                        ],
+                        [
+                            "self.out_0_0",
+                            "add_335_339_340.out"
+                        ],
+                        [
+                            "mul_312_314_315.in0",
+                            "const0_0$1.out"
+                        ],
+                        [
+                            "mul_288_290_291.in0",
+                            "const11_11.out"
+                        ],
+                        [
+                            "mul_306_308_309.in0",
+                            "const12_12.out"
+                        ],
+                        [
+                            "mul_324_326_327.in0",
+                            "const13_13.out"
+                        ],
+                        [
+                            "mul_294_296_297.in0",
+                            "const14_14.out"
+                        ],
+                        [
+                            "mul_330_332_333.in0",
+                            "const16_16.out"
+                        ],
+                        [
+                            "mul_300_302_303.in0",
+                            "const17_17.out"
+                        ],
+                        [
+                            "mul_318_320_321.in0",
+                            "const18_18.out"
+                        ],
+                        [
+                            "mul_336_338_339.in0",
+                            "const19_19.out"
+                        ],
+                        [
+                            "self.reset",
+                            "lb_hw_input_stencil_update_stream$lb_recurse$lb1d_0$reset_term.in"
+                        ],
+                        [
+                            "self.reset",
+                            "lb_hw_input_stencil_update_stream$lb_recurse$lb1d_1$reset_term.in"
+                        ],
+                        [
+                            "self.reset",
+                            "lb_hw_input_stencil_update_stream$lb_recurse$lb1d_2$reset_term.in"
+                        ],
+                        [
+                            "self.in_arg_0_0_0",
+                            "mul_336_338_339.in1"
+                        ],
+                        [
+                            "row_compare.in0",
+                            "stencil_size.out"
+                        ],
+                        [
+                            "row_compare.in1",
+                            "row_counter.out"
+                        ],
+                        [
+                            "col_compare.in0",
+                            "stencil_size.out"
+                        ],
+                        [
+                            "col_compare.in1",
+                            "col_counter.out"
+                        ],
+                        [
+                            "row_counter.reset",
+                            "self.reset"
+                        ],
+                        [
+                            "row_counter.en",
+                            "self.in_en"
+                        ],
+                        [
+                            "col_counter.reset",
+                            "self.reset"
+                        ],
+                        [
+                            "col_counter.en",
+                            "row_counter.overflow"
+                        ],
+                        [
+                            "lb_hw_input_stencil_update_stream$lb_recurse$valid_andr$opN_0$_join.in1",
+                            "row_compare.out"
+                        ],
+                        [
+                            "lb_hw_input_stencil_update_stream$lb_recurse$valid_andr$_join.in1",
+                            "col_compare.out"
+                        ],
+                        [
+                            "lb_hw_input_stencil_update_stream$lb_recurse$valid_andr$opN_0$_join.out",
+                            "lb_hw_input_stencil_update_stream$lb_recurse$valid_andr$_join.in0"
+                        ],
+                        [
+                            "self.valid",
+                            "lb_hw_input_stencil_update_stream$lb_recurse$valid_andr$_join.out"
+                        ],
+                        [
+                            "self.in_en",
+                            "lb_hw_input_stencil_update_stream$lb_recurse$valid_andr$opN_0$_join.in0"
+                        ],
+                        [
+                            "self.in_arg_0_0_0",
+                            "self.outmul_336_338_339"
+                        ],
+                        [
+                            "self.in_arg_0_0_0",
+                            "linebuffer_0_0.in"
+                        ],
+                        [
+                            "linebuffer_0_0.out",
+                            "mul_330_332_333.in"
+                        ],
+                        [
+                            "linebuffer_0_0.clk",
+                            "self.clk"
+                        ],
+                        [
+                            "linebuffer_0_0.out",
+                            "linebuffer_0_1.in"
+                        ],
+                        [
+                            "linebuffer_0_1.out",
+                            "mul_324_326_327.in"
+                        ],
+                        [
+                            "linebuffer_0_1.clk",
+                            "self.clk"
+                        ],
+                        [
+                            "self.in_arg_0_0_0",
+                            "linebuffer_0.data_in"
+                        ],
+                        [
+                            "self.in_en",
+                            "linebuffer_0.wen"
+                        ],
+                        [
+                            "self.in_en",
+                            "linebuffer_0.ren"
+                        ],
+                        [
+                            "linebuffer_0.dataout",
+                            "mul_318_320_321.in"
+                        ],
+                        [
+                            "linebuffer_0.flush",
+                            "self.flush"
+                        ],
+                        [
+                            "linebuffer_0.dataout",
+                            "linebuffer_1_0.in"
+                        ],
+                        [
+                            "linebuffer_1_0.out",
+                            "mul_312_314_315.in"
+                        ],
+                        [
+                            "linebuffer_1_0.clk",
+                            "self.clk"
+                        ],
+                        [
+                            "linebuffer_1_0.out",
+                            "linebuffer_1_1.in"
+                        ],
+                        [
+                            "linebuffer_1_1.out",
+                            "mul_306_308_309.in"
+                        ],
+                        [
+                            "linebuffer_1_1.clk",
+                            "self.clk"
+                        ],
+                        [
+                            "linebuffer_0.dataout",
+                            "linebuffer_1.datain"
+                        ],
+                        [
+                            "linebuffer_0.valid",
+                            "linebuffer_1.wen"
+                        ],
+                        [
+                            "linebuffer_0.valid",
+                            "linebuffer_1.ren"
+                        ],
+                        [
+                            "linebuffer_1.dataout",
+                            "mul_300_302_303.in"
+                        ],
+                        [
+                            "linebuffer_1.flush",
+                            "self.flush"
+                        ],
+                        [
+                            "linebuffer_1.dataout",
+                            "linebuffer_2_0.in"
+                        ],
+                        [
+                            "linebuffer_2_0.out",
+                            "mul_294_296_297.in"
+                        ],
+                        [
+                            "linebuffer_2_0.clk",
+                            "self.clk"
+                        ],
+                        [
+                            "linebuffer_2_0.out",
+                            "linebuffer_2_1.in"
+                        ],
+                        [
+                            "linebuffer_2_1.out",
+                            "mul_288_290_291.in"
+                        ],
+                        [
+                            "linebuffer_2_1.clk",
+                            "self.clk"
+                        ]
+                    ]
+                }
+            }
+        }
+    }
+}

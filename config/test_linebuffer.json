@@ -19,12 +19,12 @@
 {
     "input_port": [1, 1],
     "output_port": [3, 3],
-    "capacity": [66, 66],
+    "capacity": [64, 64],
     "manual_switch": 0,
     "arbitrary_addr": 0,
     "access_pattern":
     {
-        "range": [64, 64],
+        "range": [62, 62],
         "ref_dim": [0, 1],
         "stride_in_dim": [1, 1]
     }
