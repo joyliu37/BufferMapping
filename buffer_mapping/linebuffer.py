@@ -1,4 +1,5 @@
 from buffer_mapping.virtualbuffer import VirtualBuffer, VirtualValidBuffer, VirtualRowBuffer
+from buffer_mapping.hardware import HardwarePort, HardwareNode, BufferNode, HardwareWire
 from functools import reduce
 from collections import defaultdict
 from copy import deepcopy
@@ -11,6 +12,15 @@ class LineBufferNode:
         #fifo size and fifo depth
         self._fifo_depth = fifo_depth
         self._fifo_size = fifo_size
+        '''
+        use the recursive data structure to save the row buffer that are hooked up,
+        There is <fifo_depth> + 1 child of row buffer hooked up
+        which are all the output of fifo + one input
+        '''
+        read_delay = 0
+        self.child_fifo = buf_list
+        if self.child_fifo:
+            read_delay = buf_list[0]._fifo_depth * buf_list[0]._fifo_size
 
         #a list of VirtualRowBuffer that save data
         self.row_buffer_chain = [ VirtualRowBuffer(input_port,
@@ -20,9 +30,9 @@ class LineBufferNode:
                                                    read_iterator_range.copy(),
                                                    read_iterator_stride.copy(),
                                                    [0] * output_port,
-                                                   fifo_depth * fifo_size,
-                                                   counter_bound)
-                                 for _ in range(self._fifo_depth)]
+                                                   read_delay * (idx == self._fifo_depth - 1),
+                                                   fifo_size)
+                                 for idx in range(self._fifo_depth)]
         '''
         move the update iterator to out side
         #changing range of address pattern to adapt to the fifo input
@@ -30,12 +40,35 @@ class LineBufferNode:
             row_buffer.read_iterator._rng[stride_dim] += self._fifo_depth
 
         '''
-        '''
-        use the recursive data structure to save the row buffer that are hooked up,
-        There is <fifo_depth> + 1 child of row buffer hooked up
-        which are all the output of fifo + one input
-        '''
-        self.child_fifo = buf_list
+
+    def GenGraph(self, name, data_in, valid):
+        node_dict = {}
+        connection_dict = {}
+        child_datain_list = []
+        child_valid_list = []
+        prev_buffer = None
+        for idx, row_buffer in enumerate(self.row_buffer_chain):
+            node_name = name+"_"+str(idx)
+            node_dict[node_name] = BufferNode(node_name, row_buffer)
+            if idx == 0:
+                connection_dict.update(node_dict[node_name].connectInput(data_in, valid))
+                child_datain_list.append(data_in)
+                child_valid_list.append(valid)
+            else:
+                connection_dict.update(node_dict[node_name].connectBuffer(prev_buffer))
+            child_datain_list.append(node_dict[node_name].output_port["dataout"])
+            child_valid_list.append(node_dict[node_name].output_port["valid"])
+            prev_buffer = node_dict[node_name]
+
+        for idx, child in enumerate(self.child_fifo):
+            node_name = name + "_" + str(idx)
+
+            node, connection = child.GenGraph(node_name, child_datain_list[idx], child_valid_list[idx])
+            node_dict.update(node)
+            connection_dict.update(connection)
+
+        return node_dict, connection_dict
+
 
     def dump_json(self, name, data_in, valid, out_id, port_list):
         #do not forget add top level connection
@@ -129,6 +162,7 @@ class LineBufferNode:
         #pull the last data read from the last chain into to the next level fifo
         stencil_valid, read_valid, last_data_read = self.row_buffer_chain[-1].read()
         valid &= stencil_valid
+        valid &= read_valid
         #print ("counter_bound:", self.row_buffer_chain[-1].stencil_valid_counter._bound,"fifo_size: ",self._fifo_size,  stencil_valid,  read_valid, last_data_read)
         if (child_size > 0):
             #always read and write the child node, because we need to update the read iterator
@@ -145,9 +179,9 @@ class LineBufferNode:
         for idx, row_buffer in enumerate(reversed(self.row_buffer_chain)):
             if idx == self._fifo_depth - 1:
                 #write data in to the first fifo
-                if in_valid:
+                #if in_valid:
                     #print ("write to fifo, size = ", self._fifo_size)
-                    row_buffer.write(data_in)
+                row_buffer.write(in_valid, data_in)
                 if child_size > 0:
                     child_valid, data_from_child =  self.child_fifo[-idx - 2].read_write(data_in, in_valid)
                     valid &= child_valid
@@ -156,10 +190,11 @@ class LineBufferNode:
                     data_out.extend(data_in)
             else:
                 stencil_valid, read_valid, data_from_prev_fifo = self.row_buffer_chain[-idx-2].read()
-                valid &= stencil_valid
+                #do not need this valid signal because buffer chain valid will depend on the last one
+                #valid &= stencil_valid
                 #print ("fifo_size: ",self._fifo_size, "fifo id:", idx, stencil_valid,  read_valid, data_from_prev_fifo)
-                if read_valid:
-                    row_buffer.write(data_from_prev_fifo)
+                #if read_valid:
+                row_buffer.write(read_valid, data_from_prev_fifo)
                 if child_size > 0:
                     child_valid, data_from_child = self.child_fifo[-idx - 2].read_write(data_from_prev_fifo, read_valid)
                     valid &= child_valid
@@ -252,6 +287,14 @@ class VirtualLineBuffer:
         json_dict["connections"] = connection
         return json_dict
 
+    def GenGraph(self, name, data_in, valid):
+        node_dict = {}
+        connection = {}
+        for _, buffer_node in self.meta_fifo_dict.items():
+            entry_node, entry_connection = buffer_node.GenGraph(name, data_in, valid)
+            node_dict.update(entry_node)
+            connection.update(entry_connection)
+        return node_dict, connection
 
     def fifo_optimize(self, hw_input_port, hw_output_port):
 

@@ -197,7 +197,9 @@ class VirtualRowBuffer(VirtualBuffer):
         self.stencil_valid_counter = Counter(counter_bound)
         self.delay_counter = 0
 
-    def write(self, data_in, offset = 0):
+    def write(self, valid, data_in, offset = 0):
+        if valid == False:
+            return
         self.delay_counter += 1
         #print ("write to row buffer:",self._output_port, data_in)
         super().write(data_in, offset)
