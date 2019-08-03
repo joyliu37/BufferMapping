@@ -498,7 +498,7 @@
                                 ]
                             }
                         },
-                        "linebuffer_0": {
+                        "linebuffer_bank_0_0": {
                             "genref": "commonlib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -523,15 +523,7 @@
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    2
-                                ],
-                                "stride_0": [
-                                    "Int",
-                                    1
-                                ],
-                                "range_0": [
-                                    "Int",
-                                    64
+                                    0
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -542,100 +534,12 @@
                                     0
                                 ],
                                 "starting_addr": [
-                                    "Int",
+                                    "int",
                                     0
                                 ]
                             }
                         },
-                        "linebuffer_0_0": {
-                            "modref": "coreir.reg",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "clk_posedge": [
-                                    "Bool",
-                                    true
-                                ],
-                                "init": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'hxxxx"
-                                ]
-                            }
-                        },
-                        "linebuffer_0_1": {
-                            "modref": "coreir.reg",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "clk_posedge": [
-                                    "Bool",
-                                    true
-                                ],
-                                "init": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'hxxxx"
-                                ]
-                            }
-                        },
-                        "linebuffer_1_0": {
-                            "modref": "coreir.reg",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "clk_posedge": [
-                                    "Bool",
-                                    true
-                                ],
-                                "init": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'hxxxx"
-                                ]
-                            }
-                        },
-                        "linebuffer_1_1": {
-                            "modref": "coreir.reg",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "clk_posedge": [
-                                    "Bool",
-                                    true
-                                ],
-                                "init": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'hxxxx"
-                                ]
-                            }
-                        },
-                        "linebuffer_1": {
+                        "linebuffer_bank_0_1": {
                             "genref": "commonlib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -660,15 +564,7 @@
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    2
-                                ],
-                                "stride_0": [
-                                    "Int",
-                                    1
-                                ],
-                                "range_0": [
-                                    "Int",
-                                    64
+                                    0
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -679,12 +575,12 @@
                                     0
                                 ],
                                 "starting_addr": [
-                                    "Int",
+                                    "int",
                                     0
                                 ]
                             }
                         },
-                        "linebuffer_2_0": {
+                        "linebuffer_bank_0_0_0": {
                             "modref": "coreir.reg",
                             "genargs": {
                                 "width": [
@@ -706,7 +602,95 @@
                                 ]
                             }
                         },
-                        "linebuffer_2_1": {
+                        "linebuffer_bank_0_0_1": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "linebuffer_bank_0_1_0": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "linebuffer_bank_0_1_1": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "linebuffer_bank_0_2_0": {
+                            "modref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "linebuffer_bank_0_2_1": {
                             "modref": "coreir.reg",
                             "genargs": {
                                 "width": [
@@ -911,120 +895,116 @@
                             "lb_hw_input_stencil_update_stream$lb_recurse$valid_andr$opN_0$_join.in0"
                         ],
                         [
-                            "self.in_arg_0_0_0",
-                            "self.outmul_336_338_339"
+                            "linebuffer_bank_0_0_flush.flush",
+                            "linebuffer_bank_0_0.flush"
                         ],
                         [
-                            "self.in_arg_0_0_0",
-                            "linebuffer_0_0.in"
+                            "mul_330_332_333.in",
+                            "linebuffer_bank_0_0.dataout"
                         ],
                         [
-                            "linebuffer_0_0.out",
-                            "mul_330_332_333.in"
+                            "linebuffer_bank_0_1.wen",
+                            "linebuffer_bank_0_0.valid"
                         ],
                         [
-                            "linebuffer_0_0.clk",
+                            "linebuffer_bank_0_1.ren",
+                            "linebuffer_bank_0_0.valid"
+                        ],
+                        [
+                            "linebuffer_bank_0_1.datain",
+                            "linebuffer_bank_0_0.dataout"
+                        ],
+                        [
+                            "linebuffer_bank_0_1_flush.flush",
+                            "linebuffer_bank_0_1.flush"
+                        ],
+                        [
+                            "mul_324_326_327.in",
+                            "linebuffer_bank_0_1.dataout"
+                        ],
+                        [
+                            "linebuffer_bank_0_0.wen",
+                            "self.in_en"
+                        ],
+                        [
+                            "linebuffer_bank_0_0.ren",
+                            "self.in_en"
+                        ],
+                        [
+                            "linebuffer_bank_0_0.datain",
+                            "self.datain"
+                        ],
+                        [
+                            "linebuffer_bank_0_0_0.clk",
                             "self.clk"
                         ],
                         [
-                            "linebuffer_0_0.out",
-                            "linebuffer_0_1.in"
+                            "linebuffer_bank_0_0_0.in",
+                            "self.datain"
                         ],
                         [
-                            "linebuffer_0_1.out",
-                            "mul_324_326_327.in"
+                            "mul_318_320_321.in",
+                            "linebuffer_bank_0_0_0.out"
                         ],
                         [
-                            "linebuffer_0_1.clk",
+                            "linebuffer_bank_0_0_1.clk",
                             "self.clk"
                         ],
                         [
-                            "self.in_arg_0_0_0",
-                            "linebuffer_0.data_in"
+                            "linebuffer_bank_0_0_1.in",
+                            "linebuffer_bank_0_0_0.out"
                         ],
                         [
-                            "self.in_en",
-                            "linebuffer_0.wen"
+                            "mul_312_314_315.in",
+                            "linebuffer_bank_0_0_1.out"
                         ],
                         [
-                            "self.in_en",
-                            "linebuffer_0.ren"
-                        ],
-                        [
-                            "linebuffer_0.dataout",
-                            "mul_318_320_321.in"
-                        ],
-                        [
-                            "linebuffer_0.flush",
-                            "self.flush"
-                        ],
-                        [
-                            "linebuffer_0.dataout",
-                            "linebuffer_1_0.in"
-                        ],
-                        [
-                            "linebuffer_1_0.out",
-                            "mul_312_314_315.in"
-                        ],
-                        [
-                            "linebuffer_1_0.clk",
+                            "linebuffer_bank_0_1_0.clk",
                             "self.clk"
                         ],
                         [
-                            "linebuffer_1_0.out",
-                            "linebuffer_1_1.in"
+                            "linebuffer_bank_0_1_0.in",
+                            "linebuffer_bank_0_0.dataout"
                         ],
                         [
-                            "linebuffer_1_1.out",
-                            "mul_306_308_309.in"
+                            "mul_306_308_309.in",
+                            "linebuffer_bank_0_1_0.out"
                         ],
                         [
-                            "linebuffer_1_1.clk",
+                            "linebuffer_bank_0_1_1.clk",
                             "self.clk"
                         ],
                         [
-                            "linebuffer_0.dataout",
-                            "linebuffer_1.datain"
+                            "linebuffer_bank_0_1_1.in",
+                            "linebuffer_bank_0_1_0.out"
                         ],
                         [
-                            "linebuffer_0.valid",
-                            "linebuffer_1.wen"
+                            "mul_300_302_303.in",
+                            "linebuffer_bank_0_1_1.out"
                         ],
                         [
-                            "linebuffer_0.valid",
-                            "linebuffer_1.ren"
-                        ],
-                        [
-                            "linebuffer_1.dataout",
-                            "mul_300_302_303.in"
-                        ],
-                        [
-                            "linebuffer_1.flush",
-                            "self.flush"
-                        ],
-                        [
-                            "linebuffer_1.dataout",
-                            "linebuffer_2_0.in"
-                        ],
-                        [
-                            "linebuffer_2_0.out",
-                            "mul_294_296_297.in"
-                        ],
-                        [
-                            "linebuffer_2_0.clk",
+                            "linebuffer_bank_0_2_0.clk",
                             "self.clk"
                         ],
                         [
-                            "linebuffer_2_0.out",
-                            "linebuffer_2_1.in"
+                            "linebuffer_bank_0_2_0.in",
+                            "linebuffer_bank_0_1.dataout"
                         ],
                         [
-                            "linebuffer_2_1.out",
-                            "mul_288_290_291.in"
+                            "mul_294_296_297.in",
+                            "linebuffer_bank_0_2_0.out"
                         ],
                         [
-                            "linebuffer_2_1.clk",
+                            "linebuffer_bank_0_2_1.clk",
                             "self.clk"
+                        ],
+                        [
+                            "linebuffer_bank_0_2_1.in",
+                            "linebuffer_bank_0_2_0.out"
+                        ],
+                        [
+                            "mul_288_290_291.in",
+                            "linebuffer_bank_0_2_1.out"
                         ]
                     ]
                 }

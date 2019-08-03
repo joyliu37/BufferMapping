@@ -1,4 +1,13 @@
 {
+"hw config":
+{
+    "input_port": 1,
+    "output_port": 1,
+    "capacity": 512
+},
+
+"buffer config":
+{
 "3D line buffer":
 {
     "input_port": [1, 1, 1],
@@ -59,7 +68,21 @@
         "ref_dim": [0, 1],
         "stride_in_dim": [1, 1]
     }
+},
 
+"banked line buffer":
+{
+    "input_port": [2, 1, 1],
+    "output_port": [2, 3, 3],
+    "capacity": [2, 6, 6],
+    "manual_switch": 0,
+    "arbitrary_addr": 0,
+    "access_pattern":
+    {
+        "range": [1, 4, 4],
+        "ref_dim": [0, 1, 2],
+        "stride_in_dim": [2, 1, 1]
+    }
 }
-
+}
 }

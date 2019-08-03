@@ -29,6 +29,7 @@ def IR2Interface(setup):
               for ref_dim, stride_in_dim \
               in zip(access_dict['ref_dim'], access_dict['stride_in_dim'])]
 
+    '''
     #range in 1D for each iterator
     abs_range = [stride * _range for stride, _range in zip(abs_stride, access_dict['range'])]
 
@@ -40,6 +41,9 @@ def IR2Interface(setup):
             MergeIterator(abs_range, abs_stride, iteration, dim)
 
     SimplifyIterator(abs_range, abs_stride, iteration)
+
+    '''
+    iteration, abs_stride = FlattenAccessPattern(access_dict['range'], abs_stride)
 
     input_port_1D = reduce(lambda x, y: x*y, setup["input_port"])
     output_port_1D = reduce(lambda x, y: x*y, setup["output_port"])
@@ -53,6 +57,22 @@ def IR2Interface(setup):
         start_addr = [x + y for x, y in zip(start_addr * port_in_dim, start_addr_addition)]
 
     return VirtualBufferConfig(input_port_1D, output_port_1D, capacity_1D, iteration, abs_stride, start_addr)
+
+def FlattenAccessPattern(acc_range, acc_stride):
+    #range in 1D for each iterator
+    abs_range = [stride * _range for stride, _range in zip(acc_stride, acc_range)]
+
+    iteration = deepcopy(acc_range)
+    stride = deepcopy(acc_stride)
+
+    #walk from the lower loop up and finding the iterator could be merged
+    for dim in range(len(abs_range)-1):
+        if abs_range[dim] == stride[dim + 1]:
+            MergeIterator(abs_range, stride, iteration, dim)
+
+    SimplifyIterator(abs_range, stride, iteration)
+
+    return iteration, stride
 
 
 def MergeIterator(_range, stride, iteration, i):

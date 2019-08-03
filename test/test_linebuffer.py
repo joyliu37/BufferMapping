@@ -11,7 +11,7 @@ def test_linebuffer():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     with open(dir_path+'/../config/test_linebuffer.json') as json_file:
         setup= json.load(json_file)
-    #v_setup = setup["virtual buffer"]
+    setup = setup["buffer config"]
     #v_buf = CreateVirtualBuffer(setup["virtual buffer"])
 
     for key, IR_setup in setup.items():

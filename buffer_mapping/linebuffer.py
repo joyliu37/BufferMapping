@@ -3,6 +3,7 @@ from buffer_mapping.hardware import HardwarePort, HardwareNode, BufferNode, Hard
 from functools import reduce
 from collections import defaultdict
 from copy import deepcopy
+from buffer_mapping.flatten import FlattenAccessPattern
 
 class LineBufferNode:
 
@@ -41,31 +42,50 @@ class LineBufferNode:
 
         '''
 
-    def GenGraph(self, name, data_in, valid):
+    def GenGraph(self, name, input_node, output_node_list):
         node_dict = {}
         connection_dict = {}
-        child_datain_list = []
-        child_valid_list = []
         prev_buffer = None
         for idx, row_buffer in enumerate(self.row_buffer_chain):
             node_name = name+"_"+str(idx)
             node_dict[node_name] = BufferNode(node_name, row_buffer)
+            if idx == len(self.row_buffer_chain) - 1:
+                node_dict[node_name].assertLastOfChain()
             if idx == 0:
-                connection_dict.update(node_dict[node_name].connectInput(data_in, valid))
-                child_datain_list.append(data_in)
-                child_valid_list.append(valid)
+                if len(self.child_fifo):
+                    node, connection = self.child_fifo[0].GenGraph(node_name, input_node, output_node_list)
+                    node_dict.update(node)
+                    connection_dict.update(connection)
+                connection_dict.update(node_dict[node_name].connectNode(input_node))
             else:
-                connection_dict.update(node_dict[node_name].connectBuffer(prev_buffer))
-            child_datain_list.append(node_dict[node_name].output_port["dataout"])
-            child_valid_list.append(node_dict[node_name].output_port["valid"])
-            prev_buffer = node_dict[node_name]
+                connection_dict.update(node_dict[node_name].connectNode(prev_buffer))
 
+            #Connect to the output
+            cur_output_node_list = output_node_list.pop()
+            for output_node in cur_output_node_list:
+                connection_dict.update(output_node.connectNode(node_dict[node_name]))
+            if len(self.child_fifo):
+                #update the name for child buffer
+                child_node_name = name+"_"+str(idx+1)
+                node, connection = self.child_fifo[idx+1].GenGraph(child_node_name, node_dict[node_name], output_node_list)
+                node_dict.update(node)
+                connection_dict.update(connection)
+
+            #update the prev node
+            prev_buffer = node_dict[node_name]
+        '''
         for idx, child in enumerate(self.child_fifo):
             node_name = name + "_" + str(idx)
-
-            node, connection = child.GenGraph(node_name, child_datain_list[idx], child_valid_list[idx])
+            node = {}
+            connection = {}
+            if idx == 0:
+                node, connection = child.GenGraph(node_name, input_node, output_node_list)
+            else:
+                node, connection = child.GenGraph(node_name, buffer_list[idx-1], output_node_list)
             node_dict.update(node)
             connection_dict.update(connection)
+
+        '''
 
         return node_dict, connection_dict
 
@@ -140,7 +160,7 @@ class LineBufferNode:
                                                        row_buffer.read_iterator._rng) - deduct
             row_buffer.read_iterator._rng = [reduce((lambda x, y: x* y),
                                                     row_buffer.read_iterator._rng)]
-            row_buffer.read_iterator._st = [1]
+            row_buffer.read_iterator._st = [row_buffer._output_port]
             row_buffer.read_iterator.restart()
         for idx, child in enumerate(self.child_fifo):
             child.recursive_postprocess_iterator(incremental_delay + idx*self._fifo_size)
@@ -225,7 +245,7 @@ class VirtualLineBuffer:
 
         #Get a original copy of the start address
         self.original_start = self.base_buf.read_iterator._start.copy()
-        print (self.original_start)
+        #print (self.original_start)
 
         #the entry to root of line buffer tree
         self.meta_fifo_dict = {}
@@ -287,11 +307,22 @@ class VirtualLineBuffer:
         json_dict["connections"] = connection
         return json_dict
 
-    def GenGraph(self, name, data_in, valid):
+    def GenGraph(self, name, input_node, output_node_dict):
         node_dict = {}
         connection = {}
-        for _, buffer_node in self.meta_fifo_dict.items():
-            entry_node, entry_connection = buffer_node.GenGraph(name, data_in, valid)
+
+        #gen node for base buffer and add to the graph:
+        base_buf_node = BufferNode(name+"_base", self.base_buf)
+        connection.update(base_buf_node.connectNode(input_node))
+        node_dict[base_buf_node.name] = base_buf_node
+
+        for bank_idx, buffer_node in self.meta_fifo_dict.items():
+            #this is a 2D list each contains the set of line buffer output port from which it can have fanout
+            output_node_list = output_node_dict[bank_idx]
+            for output_node in output_node_list[-1]:
+                connection.update(output_node.connectNode(base_buf_node))
+            output_node_list.pop()
+            entry_node, entry_connection = buffer_node.GenGraph(name+"_bank_"+str(bank_idx), base_buf_node, output_node_list)
             node_dict.update(entry_node)
             connection.update(entry_connection)
         return node_dict, connection
@@ -424,7 +455,8 @@ class VirtualLineBuffer:
                     #print("port ", idx, data_from_port)
                 else:
                     #there is no fifo, add the data from base buffer directly to output
-                    data_dict[-start_addr_after_opt] = [data_from_base[idx]]
+                    #change the to the port map version
+                    data_dict[self.port_map[start_addr_after_opt][0]] = [data_from_base[idx]]
             else:
                 valid = False
 
