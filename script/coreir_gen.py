@@ -60,6 +60,10 @@ def test_linebuffer():
         input_coreir = json.load(coreir_file)
     mem_config = CreateHWConfig(setup["hw config"])
 
+    with open(dir_path + '/output/output_coreir_golden.json' , 'w') as json_out_file:
+        data = json.dumps(input_coreir, indent=4)
+        json_out_file.write(data)
+    print("Json File dump to " + dir_path +"/output")
     IR_setup, v_setup, instance, connection, valid_list, output_list, input_port, inen_port = preprocessCoreIR(input_coreir)
 
         #v_setup = IR2Interface(IR_setup)
@@ -80,7 +84,7 @@ def test_linebuffer():
     valid_node_list = [OutputValidNode(valid_instance_name[0], valid_instance_name[1]) for valid_instance_name in valid_list]
     #data_in = HardwarePort("self.datain", 0)
     #valid = HardwarePort("self.inen", True)
-    input_node = InputNode("self", input_port[0]+"."+input_port[1], inen_port[0]+"."+inen_port[1])
+    input_node = InputNode("self", input_port[0]+"."+input_port[1]+'.0', inen_port[0]+"."+inen_port[1])
     node_dict, connection_dict = linebuffer.GenGraph("linebuffer", input_node, output_dict)
 
     #set of compiler pass optimize the graph
@@ -99,8 +103,8 @@ def test_linebuffer():
             element["pred"] = node.pred.name
         element["succ"] = [succ.name for succ in node.succ]
         node_list_dict.update({key: element})
-    #print (node_list_dict)
-    #print (connection_list)
+    print (node_list_dict)
+    print (connection_list)
     #print (instance)
     connection.extend(connection_list)
     '''
