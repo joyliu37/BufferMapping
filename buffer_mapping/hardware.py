@@ -77,8 +77,12 @@ class HardwareNode:
 
 class InputNode(HardwareNode):
 
-    def __init__(self, name, size=1):
-        super().__init__(name, [], [HardwarePort(name+".datain", [0]*size), HardwarePort(name+".in_en", False)])
+    def __init__(self, name, data_port_name, valid_port_name, size=1):
+        self.data_port_name = data_port_name
+        self.valid_port_name = valid_port_name
+        super().__init__(name, [], [HardwarePort(name+"."+"datain", [0]*size), HardwarePort(name+".in_en", False)])
+        self.output_port["datain"].key = self.data_port_name
+        self.output_port["in_en"].key = self.valid_port_name
 
     def update(self, datain_val, in_en_val):
         self.output_port["datain"].val = datain_val
@@ -123,7 +127,7 @@ class OutputNode(HardwareNode):
         elif type(node) == InputNode:
             self.input_port[self.port_name].makePred(node.output_port["datain"])
             node.output_port["datain"].addSucc(self.input_port[self.port_name])
-            connection_dict[(self.input_port[self.port_name].key, node.output_port["datain"].key)] = \
+            connection_dict[(self.input_port[self.port_name].key, node.data_port_name)] = \
                 HardwareWire(self.input_port[self.port_name], node.output_port["datain"])
             self.makePred( node)
             node.addSucc(self)
@@ -289,7 +293,7 @@ class BufferNode(HardwareNode):
 
         return mem_tile
 
-    def connectInput(self, data_in, valid):
+    def connectInput(self, data_in, valid, data_key, valid_key):
         '''
         connecting method to wire input with buffer
         '''
@@ -300,11 +304,11 @@ class BufferNode(HardwareNode):
         valid.addSucc(self.input_port["wen"])
         valid.addSucc(self.input_port["ren"])
         data_in.addSucc(self.input_port["datain"])
-        connection_dict[(self.input_port["wen"].key, valid.key)] = \
+        connection_dict[(self.input_port["wen"].key, valid_key)] = \
             HardwareWire(self.input_port["wen"], valid)
-        connection_dict[(self.input_port["ren"].key, valid.key)] = \
+        connection_dict[(self.input_port["ren"].key, valid_key)] = \
             HardwareWire(self.input_port["ren"], valid)
-        connection_dict[(self.input_port["datain"].key, data_in.key)] = \
+        connection_dict[(self.input_port["datain"].key, data_key)] = \
             HardwareWire(self.input_port["datain"], data_in)
         return connection_dict
 
@@ -330,7 +334,7 @@ class BufferNode(HardwareNode):
             #    DummyWire(self.name+"flush.flush", self.name+".flush")
 
         elif type(node) == InputNode:
-            connection_dict = self.connectInput(node.output_port["datain"], node.output_port["in_en"])
+            connection_dict = self.connectInput(node.output_port["datain"], node.output_port["in_en"], node.data_port_name, node.valid_port_name)
 
         self.makePred(node)
         node.addSucc(self)

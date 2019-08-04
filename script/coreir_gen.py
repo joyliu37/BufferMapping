@@ -30,6 +30,8 @@ def preprocessCoreIR(hand_craft):
                 new_connection = [wire for wire in core["connections"] if key != wire[0].split(".")[0] and key != wire[1].split(".")[0]]
                 valid_list = []
                 output_list = []
+                input_port = []
+                inen_port = []
                 for wire in core["connections"]:
                     def findConnection(name):
                         target_list = []
@@ -40,11 +42,13 @@ def preprocessCoreIR(hand_craft):
                         return target_list
                     valid_list.extend(findConnection("valid"))
                     output_list.extend(findConnection("dataout"))
+                    input_port.extend(findConnection("datain"))
+                    inen_port.extend(findConnection("wen"))
 
                 core["connections"] = new_connection
                 del instance[key]
     connection = core["connections"]
-    return buffer_config, v_buf_config, instance, connection , valid_list, output_list
+    return buffer_config, v_buf_config, instance, connection , valid_list, output_list, input_port[0], inen_port[0]
 
 
 
@@ -56,7 +60,7 @@ def test_linebuffer():
         input_coreir = json.load(coreir_file)
     mem_config = CreateHWConfig(setup["hw config"])
 
-    IR_setup, v_setup, instance, connection, valid_list, output_list = preprocessCoreIR(input_coreir)
+    IR_setup, v_setup, instance, connection, valid_list, output_list, input_port, inen_port = preprocessCoreIR(input_coreir)
 
         #v_setup = IR2Interface(IR_setup)
     v_buf = VirtualBuffer(v_setup._input_port,
@@ -76,7 +80,7 @@ def test_linebuffer():
     valid_node_list = [OutputValidNode(valid_instance_name[0], valid_instance_name[1]) for valid_instance_name in valid_list]
     #data_in = HardwarePort("self.datain", 0)
     #valid = HardwarePort("self.inen", True)
-    input_node = InputNode("self")
+    input_node = InputNode("self", input_port[0]+"."+input_port[1], inen_port[0]+"."+inen_port[1])
     node_dict, connection_dict = linebuffer.GenGraph("linebuffer", input_node, output_dict)
 
     #set of compiler pass optimize the graph
