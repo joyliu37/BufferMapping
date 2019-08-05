@@ -2702,7 +2702,7 @@
                                     "Int",
                                     0
                                 ],
-                                "starting_addr": [
+                                "output_starting_addrs": [
                                     "Int",
                                     0
                                 ]
@@ -2839,7 +2839,7 @@
                                     "Int",
                                     0
                                 ],
-                                "starting_addr": [
+                                "output_starting_addrs": [
                                     "Int",
                                     0
                                 ]

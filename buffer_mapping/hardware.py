@@ -286,7 +286,7 @@ class BufferNode(HardwareNode):
         #TODO: add chainning
         args["chain_en"] = ["Bool", False]
         args["chain_idx"] = ["Int", 0]
-        args["starting_addr"] = ["Int", self.kernel.read_iterator._start[0]]
+        args["output_starting_addrs"] = ["Int", self.kernel.read_iterator._start[0]]
         mem_tile["genargs"] = args
 
         #TODO: add dummy node flush
