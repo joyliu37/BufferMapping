@@ -21,7 +21,10 @@ def preprocessCoreIR(hand_craft):
      #remove reg and general buffer
     for key, value in list(instance.items()):
         if value.get("genref"):
-            if value["genref"] == "commonlib.unified_buffer":
+            if value["genref"] == "commonlib.abstract_unified_buffer":
+                del instance[key]
+
+            elif value["genref"] == "commonlib.unified_buffer":
                 #get the unified_buffer node
                 buffer_config = CoreIRUnifiedBufferConfig(value["genargs"])
                 v_buf_config = buffer_config.getVirtualBufferConfig()
@@ -103,8 +106,8 @@ def test_linebuffer():
             element["pred"] = node.pred.name
         element["succ"] = [succ.name for succ in node.succ]
         node_list_dict.update({key: element})
-    print (node_list_dict)
-    print (connection_list)
+    #print (node_list_dict)
+    #print (connection_list)
     #print (instance)
     connection.extend(connection_list)
     '''

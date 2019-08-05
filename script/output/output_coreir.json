@@ -786,91 +786,6 @@
                                 ]
                             }
                         },
-                        "abstract_ub_hw_input_stencil_update_stream": {
-                            "genref": "commonlib.abstract_unified_buffer",
-                            "genargs": {
-                                "capacity": [
-                                    "CoreIRType",
-                                    [
-                                        "Array",
-                                        64,
-                                        [
-                                            "Array",
-                                            64,
-                                            "Bit"
-                                        ]
-                                    ]
-                                ],
-                                "dim_ref": [
-                                    "CoreIRType",
-                                    [
-                                        "Array",
-                                        1,
-                                        [
-                                            "Array",
-                                            0,
-                                            "Bit"
-                                        ]
-                                    ]
-                                ],
-                                "input_ports": [
-                                    "CoreIRType",
-                                    [
-                                        "Array",
-                                        1,
-                                        [
-                                            "Array",
-                                            1,
-                                            [
-                                                "Array",
-                                                16,
-                                                "BitIn"
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                "output_ports": [
-                                    "CoreIRType",
-                                    [
-                                        "Array",
-                                        3,
-                                        [
-                                            "Array",
-                                            3,
-                                            [
-                                                "Array",
-                                                16,
-                                                "Bit"
-                                            ]
-                                        ]
-                                    ]
-                                ],
-                                "range": [
-                                    "CoreIRType",
-                                    [
-                                        "Array",
-                                        62,
-                                        [
-                                            "Array",
-                                            62,
-                                            "Bit"
-                                        ]
-                                    ]
-                                ],
-                                "stride": [
-                                    "CoreIRType",
-                                    [
-                                        "Array",
-                                        1,
-                                        [
-                                            "Array",
-                                            1,
-                                            "Bit"
-                                        ]
-                                    ]
-                                ]
-                            }
-                        },
                         "add_242_246_247": {
                             "genref": "coreir.add",
                             "genargs": {
@@ -2794,7 +2709,7 @@
                             }
                         },
                         "linebuffer_bank_0_0_0": {
-                            "modref": "coreir.reg",
+                            "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
                                     "Int",
@@ -2816,7 +2731,7 @@
                             }
                         },
                         "linebuffer_bank_0_0_1": {
-                            "modref": "coreir.reg",
+                            "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
                                     "Int",
@@ -2838,7 +2753,7 @@
                             }
                         },
                         "linebuffer_bank_0_1_0": {
-                            "modref": "coreir.reg",
+                            "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
                                     "Int",
@@ -2860,7 +2775,7 @@
                             }
                         },
                         "linebuffer_bank_0_1_1": {
-                            "modref": "coreir.reg",
+                            "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
                                     "Int",
@@ -2931,7 +2846,7 @@
                             }
                         },
                         "linebuffer_bank_0_2_0": {
-                            "modref": "coreir.reg",
+                            "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
                                     "Int",
@@ -2953,7 +2868,7 @@
                             }
                         },
                         "linebuffer_bank_0_2_1": {
-                            "modref": "coreir.reg",
+                            "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
                                     "Int",

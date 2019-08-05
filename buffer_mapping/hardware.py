@@ -152,7 +152,7 @@ class RegNode(HardwareNode):
 
     def dump_json(self):
         mem_tile = {}
-        mem_tile["modref"] = "coreir.reg"
+        mem_tile["genref"] = "coreir.reg"
         args = {"width": ["Int", 16]}
         mem_tile["genargs"] = args
         mem_tile["modargs"] = {"clk_posedge": ["Bool", True], "init": [["BitVector", 16], "16'hxxxx"]}
