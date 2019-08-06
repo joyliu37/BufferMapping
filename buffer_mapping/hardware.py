@@ -28,6 +28,31 @@ class HardwarePort:
     def removeSucc(self, succ):
         self.succ.remove(succ)
 
+class DummyNode:
+    def __init__(self, name):
+        self.name = name
+
+class FlushNode(DummyNode):
+    def __init__(self, name):
+        super().__init__(name)
+
+    def dump_json(self):
+        mem_tile = {}
+        mem_tile["modref"] = "corebit.const"
+        mem_tile["modargs"] = {"value": ["Bool", False]}
+
+        return mem_tile
+
+    def connectNode(self, node):
+        connection_dict = {}
+        if type(node) == BufferNode:
+            connection_dict[(self.name+".out", node.name+".flush")] = \
+                DummyWire(self.name+".out", node.name+".flush")
+
+        else:
+            assert True, "Connection between flush node to"+ str(type(node))+" node is not implemented"
+        return connection_dict
+
 class HardwareNode:
     '''
     class wrapper for functional model check
@@ -175,8 +200,8 @@ class RegNode(HardwareNode):
             self.addSucc(succ)
             succ.makePred(self)
 
-        #remove the flush connection, add clk signal
-        #connection_dict.pop((substitue_node.name+"_flush.flush", substitue_node.name+".flush"))
+        #remove the flush connection, reset, add clk signal
+        connection_dict.pop(("self.reset", substitue_node.name + ".reset"))
         connection_dict[(self.name+".clk", "self.clk")] = DummyWire("self.clk", self.name+".clk")
 
         #update the output path connection
@@ -271,6 +296,7 @@ class BufferNode(HardwareNode):
         args = {}
         args["width"] = ["Int", 16]
         args["depth"] = ["Int", self.kernel._capacity]
+        args["logical_size"] = ["Json", {"capacity": [self.kernel._capacity]}]
         args["rate_matched"] = ["Bool", type(self.kernel) == VirtualRowBuffer]
         dimension = len(self.kernel.read_iterator._rng)
         args["dimensionality"] = ["Int", dimension]
@@ -282,11 +308,13 @@ class BufferNode(HardwareNode):
 
         for idx in range(dimension):
             args["stride_" + str(idx)] = ["Int", self.kernel.read_iterator._st[idx]]
+            args["input_stride_" + str(idx)] = ["Int", self.kernel.write_iterator._st[idx]]
             args["range_" + str(idx)] = ["Int", self.kernel._capacity]
+            args["input_range_" + str(idx)] = ["Int", self.kernel._capacity]
         #TODO: add chainning
         args["chain_en"] = ["Bool", False]
         args["chain_idx"] = ["Int", 0]
-        args["output_starting_addrs"] = ["Int", self.kernel.read_iterator._start[0]]
+        args["output_starting_addrs"] = ["Json", {"output_start": self.kernel.read_iterator._start}]
         mem_tile["genargs"] = args
 
         #TODO: add dummy node flush
@@ -330,8 +358,8 @@ class BufferNode(HardwareNode):
                 HardwareWire(self.input_port["ren"], node.output_port["valid"])
             connection_dict[(self.input_port["datain"].key, node.output_port["dataout"].key)] = \
                 HardwareWire(self.input_port["datain"], node.output_port["dataout"])
-            #connection_dict[(self.name+"_flush.flush", self.name+".flush")] = \
-            #    DummyWire(self.name+"flush.flush", self.name+".flush")
+            connection_dict[("self.reset", self.name+".reset")] = \
+                DummyWire("self.reset", self.name+".reset")
 
         elif type(node) == InputNode:
             connection_dict = self.connectInput(node.output_port["datain"], node.output_port["in_en"], node.data_port_name, node.valid_port_name)

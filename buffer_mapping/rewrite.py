@@ -1,4 +1,4 @@
-from buffer_mapping.hardware import HardwareWire, BufferNode, RegNode
+from buffer_mapping.hardware import HardwareWire, BufferNode, RegNode, FlushNode
 from buffer_mapping.util import AccessPattern
 from buffer_mapping.virtualbuffer import VirtualValidBuffer
 
@@ -45,6 +45,14 @@ def flattenValidBuffer(node_dict, connection_dict):
                         connection_dict.pop(del_key)
                     # delete node
                     del node_dict[key]
+    return node_dict, connection_dict
+
+def addFlush(node_dict, connection_dict):
+    for key, node in list(node_dict.items()):
+        if type(node) == BufferNode:
+            dummy_node_name = key+"_flush"
+            node_dict[dummy_node_name] = FlushNode(dummy_node_name)
+            connection_dict.update(node_dict[dummy_node_name].connectNode(node))
     return node_dict, connection_dict
 
 def banking(node_dict, connection_dict, mem_config):

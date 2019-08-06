@@ -6,8 +6,8 @@ import json
 from buffer_mapping.flatten import IR2Interface
 from buffer_mapping.virtualbuffer import VirtualBuffer
 from buffer_mapping.linebuffer import VirtualLineBuffer
-from buffer_mapping.hardware import InputNode, OutputNode, OutputValidNode
-from buffer_mapping.rewrite import connectValidSignal, regOptmization, banking, flattenValidBuffer
+from buffer_mapping.hardware import InputNode, OutputNode, OutputValidNode, HardwareNode
+from buffer_mapping.rewrite import connectValidSignal, regOptmization, banking, flattenValidBuffer, addFlush
 from buffer_mapping.mapping import CreateHWConfig
 from buffer_mapping.config import CoreIRUnifiedBufferConfig
 
@@ -59,7 +59,7 @@ def test_linebuffer():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     with open(dir_path+'/HWConfig.json') as setup_file:
         setup = json.load(setup_file)
-    with open(dir_path+'/coreir_input.json') as coreir_file:
+    with open(dir_path+'/new_input.json') as coreir_file:
         input_coreir = json.load(coreir_file)
     mem_config = CreateHWConfig(setup["hw config"])
 
@@ -94,6 +94,7 @@ def test_linebuffer():
     node_dict, connection_dict = flattenValidBuffer(node_dict, connection_dict)
     node_dict, connection_dict = regOptmization(node_dict, connection_dict)
     node_dict, connection_dict = connectValidSignal(node_dict, connection_dict, valid_node_list)
+    node_dict, connection_dict = addFlush(node_dict, connection_dict)
     #node_dict, connection_dict = banking(node_dict, connection_dict, mem_config)
 
     connection_list = [[key[0], key[1]] for key, _ in connection_dict.items()]
@@ -102,9 +103,10 @@ def test_linebuffer():
     for key, node in node_dict.items():
         instance.update({node.name: node.dump_json()})
         element = {}
-        if node.pred:
-            element["pred"] = node.pred.name
-        element["succ"] = [succ.name for succ in node.succ]
+        if type(node) == HardwareNode:
+            if node.pred:
+                element["pred"] = node.pred.name
+            element["succ"] = [succ.name for succ in node.succ]
         node_list_dict.update({key: element})
     #print (node_list_dict)
     #print (connection_list)
