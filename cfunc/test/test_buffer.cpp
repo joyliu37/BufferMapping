@@ -14,9 +14,9 @@ void ReadBlockCheck(const vector<int> & data, const vector<vector<int> > & read_
 int main(int argc, char* argv[]) {
     //define a access iterator for double buffer with
     //8 channels, 3x3 conv window , with 32x32 spatial dimension, 4 port at channel dimension
-    shared_ptr<VirtualBuffer<int> > db(new VirtualBuffer<int>({9248}, {1}, {0},
-                {6, 3, 32, 32}, {4, 272, 8, 272}, {0, 1, 2, 3}, 9248));
-
+    shared_ptr<VirtualBuffer<int> > db(new VirtualBuffer<int>({8, 34, 34}, {1, 8, 272}, {0},
+                {2, 3, 3, 32, 32}, {4, 8, 272, 8, 272}, {0, 1, 2, 3},
+                {8, 34, 34}, {8, 34, 34}, {8, 34, 34}, 5));
     vector<int> random_data_cube(73728, 0);
     GenRandomBufferData(random_data_cube);
 
@@ -76,16 +76,20 @@ void WriteBlock(const vector<int> & data, const vector<vector<int> > & write_str
         vector<int> in_data(buffer->getInPort(), 0);
         for (int port = 0; port < buffer->getInPort(); port ++){
             in_data[port] = data[write_stream[i][port]];
-            buffer->write(in_data);
         }
+        buffer->write(in_data);
     }
 }
 
 void ReadBlockCheck(const vector<int> & data, const vector<vector<int> > & read_stream, shared_ptr<VirtualBuffer<int> > & buffer) {
     for (int i = 0; i < buffer->getReadIteration(); i ++) {
-        vector<int> out_data = buffer->read();
-        for (int port = 0; port < buffer->getOutPort(); port ++){
-            assert(out_data[port] == data[read_stream[i][port]] && "read data does not match");
+        auto out_data_pack = buffer->read();
+        auto out_data = out_data_pack.data;
+        bool out_valid = out_data_pack.valid;
+        if (out_valid){
+            for (int port = 0; port < buffer->getOutPort(); port ++){
+                assert(out_data[port] == data[read_stream[i][port]] && "read data does not match");
+            }
         }
     }
 }
