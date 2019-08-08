@@ -21,7 +21,7 @@ all:$(TEST_BINS)
 
 $(TEST_BINS): $(BUILD_DIR)/% : %.cpp $(OBJS)
 	@mkdir -p $(BUILD_DIR)/test
-	$(CC) $^ $(CFLAGS) $(FLAGS) -g -o $@ $(LDFLGAS)
+	$(CC) $^ $(CFLAGS) $(FLAGS)  -o $@ $(LDFLGAS)
 
 $(OBJS): $(BUILD_DIR)/%.o : src/%.cpp include/*.h
 	@mkdir -p $(BUILD_DIR)

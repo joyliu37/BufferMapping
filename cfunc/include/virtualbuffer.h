@@ -29,7 +29,7 @@ class VirtualBuffer {
         int input_port, output_port, capacity, dimensionality, stencil_acc_dim;
         int preload_bound, read_in_stencil_bound;
         bool select, is_db;
-        AccessIter write_iterator, read_iterator;
+        AccessIter write_iterator, read_iterator, stencil_iterator;
         Counter preload_done, stencil_read_done;
         std::vector<vector<Dtype> > data;
         std::vector<bool> valid_domain;

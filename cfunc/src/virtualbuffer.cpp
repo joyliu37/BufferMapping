@@ -19,6 +19,18 @@ VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride,
     auto mul = [&](int a, int b){return a*b; };
     capacity = accumulate(dimension.begin(), dimension.end(), 1, mul);
 
+    //create acc_iter for read_stencil_iterator
+    vector<int> stencil_range, stencil_stride, stencil_start;
+    assignValIfEmpty<int>(stencil_range, out_range, stencil_acc_dim, 1);
+    assignValIfEmpty<int>(stencil_stride, out_stride, stencil_acc_dim, 1);
+    vector<int> acc_dim;
+    for (int i = 0; i < dimensionality; i ++) {
+        acc_dim.push_back(accumulate(dimension.begin(), dimension.begin()+i, 1, mul));
+    }
+    int stencil_size= accumulate(out_stencil.begin(), out_stencil.end(), 1, mul);
+    AddrGen(stencil_start, out_stencil, acc_dim, stencil_size);
+    stencil_iterator = AccessIter(stencil_range, stencil_stride, stencil_start);
+
     input_port = write_iterator.getPort();
     output_port = read_iterator.getPort();
 
@@ -27,9 +39,10 @@ VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride,
     read_in_stencil_bound = accumulate(out_range.begin(), out_range.begin()+stencil_acc_dim, 1, mul);
     stencil_read_done = Counter(read_in_stencil_bound);
 
+    //for double buffer initialization
     if (is_db)
         read_iterator.forceDone();
-    stencil_read_done.forceDone();
+
     // The data bank you have, 0 is for active working set, 1 for preload data
     // here we have an optimization for double buffer, do not move around, just change the pointer
     data = vector<vector<Dtype> >(2, vector<Dtype>(capacity, (Dtype)0));
@@ -40,7 +53,7 @@ VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride,
 template<typename Dtype>
 bool VirtualBuffer<Dtype>::getStencilValid() {
     bool valid = true;
-    for (auto read_addr : read_iterator.getAddr()) {
+    for (auto read_addr : stencil_iterator.getAddr()) {
         valid = valid && valid_domain[read_addr];
     }
     return valid;
@@ -109,6 +122,13 @@ void VirtualBuffer<Dtype>::switch_check() {
     }
     // Condition to copy data, either both input chunk stencil finished or stencil is not valid when we are feeding data
     if (preload_done.reachBound() && (stencil_read_done.reachBound() || !getStencilValid()) ) {
+        if (stencil_read_done.reachBound() ) {
+            //update the stencil iterator if we finish read all the data from output stencil
+            stencil_iterator.update();
+            if (stencil_iterator.getDone())
+                stencil_iterator.restart();
+        }
+
         copy2writebank();
         preload_done.restart();
         stencil_read_done.restart();
