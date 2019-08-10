@@ -149,7 +149,7 @@ class VirtualDoubleBuffer(VirtualBuffer):
     def initFromParams(self, input_port, output_port, capacity, _range, stride, start, manual_switch=0, arbitrary_addr=0):
         assert capacity % input_port == 0, "capacity is not divisible by input_port number!\n"
         assert capacity % output_port == 0, "capacity is not divisible by output_port number!\n"
-        super().__init__(input_port, output_port, capacity, _range, stride, start, manual_switch)
+        super().__init__(input_port, output_port, capacity, _range, stride, start, manual_switch, arbitrary_addr)
         self._bank_num = 2
         self._select = 0
         #no read need for empty buffer
