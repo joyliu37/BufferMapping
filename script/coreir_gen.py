@@ -2,11 +2,13 @@ import sys
 import os
 sys.path.insert(0,'..')
 import json
+import argparse
 
 from buffer_mapping.flatten import IR2Interface
 from buffer_mapping.virtualbuffer import VirtualBuffer
 from buffer_mapping.linebuffer import VirtualLineBuffer
-from buffer_mapping.hardware import InputNode, OutputNode, OutputValidNode, HardwareNode
+from buffer_mapping.hardware import InputNode, OutputNode, OutputValidNode, SelectorNode, HardwareNode
+from buffer_mapping.graph import initializeGraph
 from buffer_mapping.rewrite import connectValidSignal, regOptmization, banking, flattenValidBuffer, addFlush
 from buffer_mapping.mapping import CreateHWConfig
 from buffer_mapping.config import CoreIRUnifiedBufferConfig
@@ -38,9 +40,9 @@ def preprocessCoreIR(hand_craft):
                 for wire in core["connections"]:
                     def findConnection(name):
                         target_list = []
-                        if wire[0].split(".")[0] == key and wire[0].split(".")[1] == name:
+                        if wire[0].split(".")[0] == key and (name in wire[0].split(".")[1]):
                             target_list.append((wire[1].split(".", 1)[0], wire[1].split(".", 1)[1]))
-                        elif wire[1].split(".")[0] == key and wire[1].split(".")[1] == name:
+                        elif wire[1].split(".")[0] == key and (name in wire[1].split(".")[1]):
                             target_list.append((wire[0].split(".", 1)[0], wire[0].split(".", 1)[1]))
                         return target_list
                     valid_list.extend(findConnection("valid"))
@@ -55,11 +57,14 @@ def preprocessCoreIR(hand_craft):
 
 
 
-def test_linebuffer():
+def test_buffer_mapping():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("file_dir", help="input coreir file", type=str)
+    args = parser.parse_args()
     dir_path = os.path.dirname(os.path.realpath(__file__))
     with open(dir_path+'/HWConfig.json') as setup_file:
         setup = json.load(setup_file)
-    with open(dir_path+'/new_input.json') as coreir_file:
+    with open(args.file_dir) as coreir_file:
         input_coreir = json.load(coreir_file)
     mem_config = CreateHWConfig(setup["hw config"])
 
@@ -69,40 +74,33 @@ def test_linebuffer():
     print("Json File dump to " + dir_path +"/output")
     IR_setup, v_setup, instance, connection, valid_list, output_list, input_port, inen_port = preprocessCoreIR(input_coreir)
 
-        #v_setup = IR2Interface(IR_setup)
-    v_buf = VirtualBuffer(v_setup._input_port,
-                              v_setup._output_port,
-                              v_setup._capacity,
-                              v_setup._range,
-                              v_setup._stride,
-                              v_setup._start)
+    print (output_list, input_port)
 
     #define what underline hw like
-    #TODO: make this a rewrite pass
-    linebuffer = VirtualLineBuffer(v_buf, mem_config._input_port, mem_config._output_port, IR_setup.config_dict["logical_size"][1]['capacity'], IR_setup.stride_in_dim)
-    #print (output_list, valid_list)
-
-    output_dict = {}
-    output_dict[0] = [[OutputNode(out_instance_name[0],out_instance_name[1]+"."+str(i)) for out_instance_name in output_list] for i in range(v_setup._output_port)]
+    #TODO: make this inside a rewrite pass
     valid_node_list = [OutputValidNode(valid_instance_name[0], valid_instance_name[1]) for valid_instance_name in valid_list]
-    #data_in = HardwarePort("self.datain", 0)
-    #valid = HardwarePort("self.inen", True)
-    input_node = InputNode("self", input_port[0]+"."+input_port[1]+'.0', inen_port[0]+"."+inen_port[1])
-    node_dict, connection_dict = linebuffer.GenGraph("linebuffer", input_node, output_dict)
+
+    node_dict, connection_dict = initializeGraph(v_setup, mem_config, IR_setup, output_list, valid_list, input_port, inen_port)
 
     #set of compiler pass optimize the graph
+    node_dict, connection_dict = banking(node_dict, connection_dict, mem_config)
     node_dict, connection_dict = flattenValidBuffer(node_dict, connection_dict)
     node_dict, connection_dict = regOptmization(node_dict, connection_dict)
     node_dict, connection_dict = connectValidSignal(node_dict, connection_dict, valid_node_list)
     node_dict, connection_dict = addFlush(node_dict, connection_dict)
-    #node_dict, connection_dict = banking(node_dict, connection_dict, mem_config)
 
     connection_list = [[key[0], key[1]] for key, _ in connection_dict.items()]
 
     node_list_dict = {}
     for key, node in node_dict.items():
-        instance.update({node.name: node.dump_json()})
+        if type(node) == SelectorNode:
+            bank_selector, internal_connection = node.dump_json()
+            instance.update(bank_selector)
+            connection_list.extend(internal_connection)
+        else:
+            instance.update({node.name: node.dump_json()})
         element = {}
+
         if type(node) == HardwareNode:
             if node.pred:
                 element["pred"] = node.pred.name
@@ -120,6 +118,8 @@ def test_linebuffer():
         json_out_file.write(data)
     print("Json File dump to " + dir_path +"/output")
 
+    '''
+
     for blockid in range(3):
         for i in range(v_setup._capacity // v_setup._input_port):
             tmp = [i*v_setup._input_port + j for j in range(v_setup._input_port)]
@@ -133,6 +133,7 @@ def test_linebuffer():
                 #print (data_out_ref)
         #print("Finish read all data from line buffer, move to the next tile.")
     print("Internal Fucntionality test passed.")
+    '''
 
 if __name__ == '__main__':
-    test_linebuffer()
+    test_buffer_mapping()

@@ -265,6 +265,8 @@ class VirtualLineBuffer:
         old_start_size = len(self.base_buf.read_iterator._start)
 
         self.fifo_optimize(hw_input_port, hw_output_port)
+        print (self.meta_fifo_dict)
+        print (self.base_buf)
 
         new_start_size = len(self.base_buf.read_iterator._start)
 

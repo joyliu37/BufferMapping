@@ -99,7 +99,7 @@ class VirtualValidBuffer(VirtualBuffer):
 
     def isPassThrough(self):
         read_rng_flatten, read_st_flatten = FlattenAccessPattern(self.read_iterator._rng, self.read_iterator._st)
-        write_rng_flatten, write_st_flatten = FlattenAccessPattern(self.read_iterator._rng, self.read_iterator._st)
+        write_rng_flatten, write_st_flatten = FlattenAccessPattern(self.write_iterator._rng, self.write_iterator._st)
         isPassThrough = True
         isPassThrough &= (read_rng_flatten == write_rng_flatten)
         isPassThrough &= (read_st_flatten == write_st_flatten)

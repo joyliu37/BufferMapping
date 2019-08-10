@@ -733,7 +733,7 @@
                                 "input_starting_addrs": [
                                     "Json",
                                     {
-                                        "addr": [
+                                        "input_start": [
                                             0
                                         ]
                                     }
@@ -786,7 +786,7 @@
                                 "output_starting_addrs": [
                                     "Json",
                                     {
-                                        "addr": [
+                                        "output_start": [
                                             0,
                                             1,
                                             2,
@@ -895,7 +895,7 @@
                             }
                         },
                         "ub_hw_input_stencil_update_stream_out_reshape": {
-                            "genref": "commonlib.reshape",
+                            "genref": "commonlib.transpose_reshape",
                             "genargs": {
                                 "input_type": [
                                     "CoreIRType",
@@ -1171,12 +1171,44 @@
                             "self.valid"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_in_reshape.out",
-                            "ub_hw_input_stencil_update_stream.datain"
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0",
+                            "ub_hw_input_stencil_update_stream.datain0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in",
-                            "ub_hw_input_stencil_update_stream.dataout"
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
+                            "ub_hw_input_stencil_update_stream.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
+                            "ub_hw_input_stencil_update_stream.dataout1"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
+                            "ub_hw_input_stencil_update_stream.dataout2"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
+                            "ub_hw_input_stencil_update_stream.dataout3"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
+                            "ub_hw_input_stencil_update_stream.dataout4"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
+                            "ub_hw_input_stencil_update_stream.dataout5"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
+                            "ub_hw_input_stencil_update_stream.dataout6"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
+                            "ub_hw_input_stencil_update_stream.dataout7"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
+                            "ub_hw_input_stencil_update_stream.dataout8"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_wen.out",

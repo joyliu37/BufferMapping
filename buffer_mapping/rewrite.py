@@ -1,4 +1,4 @@
-from buffer_mapping.hardware import HardwareWire, BufferNode, RegNode, FlushNode
+from buffer_mapping.hardware import HardwareWire, BufferNode, RegNode, FlushNode, SelectorNode
 from buffer_mapping.util import AccessPattern
 from buffer_mapping.virtualbuffer import VirtualValidBuffer
 
@@ -26,6 +26,7 @@ def flattenValidBuffer(node_dict, connection_dict):
         if type(node) == BufferNode:
             if type(node.kernel) == VirtualValidBuffer:
                 if node.kernel.isPassThrough():
+                    print ("Flatten Valid buffer!")
                     #TODO: build a graph class and make this delete node method
                     '''
                     node.pred.removeSucc(node)
@@ -82,7 +83,7 @@ def banking(node_dict, connection_dict, mem_config):
                     assert True, "Need chaining which is not implemented. \n"
 
                 #create the set of memory node and recursive connect to its successor
-                banked_buffer_node = [BufferNode(node.name+"_bank_"+str(bank_id), node.kernel, num_bank)
+                banked_buffer_node = [BufferNode(node.name+"_bank_"+str(bank_id), node.kernel, num_bank, bank_id)
                                       for bank_id in range(num_bank)]
 
                 return banked_buffer_node
@@ -90,11 +91,28 @@ def banking(node_dict, connection_dict, mem_config):
             if num_bank == 1:
                 continue
             banked_buffer_node = createBankFromNode(node)
-            banked_buffer_node_dict = {node.name: node for node in banked_buffer_node}
-            new_node_dict.update(banked_buffer_node_dict)
-            #TODO connect to input
+            if banked_buffer_node[0].input_bank_select[0]:
+                #create the bank select node
+                bankselect_tmp = SelectorNode(key+ "_selector", num_bank)
+                new_connection_dict.update( bankselect_tmp.connectNode(node.pred) )
+                new_connection_dict.update( bankselect_tmp.connectOutput(banked_buffer_node) )
+                new_node_dict[bankselect_tmp.name] = bankselect_tmp
+                banked_buffer_node_dict = {node.name: node for node in banked_buffer_node}
+                new_node_dict.update(banked_buffer_node_dict)
+            if banked_buffer_node[0].output_bank_select[0]:
+                assert False, "Not implemented output bank selector"
+            #TODO connect to input, also need to connect the bank slector
+
+            #connect the banked buffer node with input and output
+            for buffer_node, output_node in zip(banked_buffer_node, node.succ):
+                #only connect data port
+                new_connection_dict.update(buffer_node.connectNode(node.pred, True))
+                new_connection_dict.update(output_node.connectNode(buffer_node))
+
+            banked_buffer_node[-1].assertLastOfChain()
 
             #FIXME: Maybe do not need thisThe DFS to create graoh
+            '''
             def connect2succ(node, bank_node_list):
                 for succ in node.succ:
                     if check_bank(succ) == 1:
@@ -107,7 +125,13 @@ def banking(node_dict, connection_dict, mem_config):
                     connect2succ(succ, succ_banked_buffer_node)
 
             connect2succ(node, banked_buffer_node_dict)
-    return new_node_dict, connection_dict
+            '''
+    if new_node_dict == {}:
+        new_node_dict = node_dict
+    if new_connection_dict == {}:
+        new_connection_dict = connection_dict
+
+    return new_node_dict, new_connection_dict
 
 
 

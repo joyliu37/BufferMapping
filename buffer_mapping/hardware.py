@@ -158,6 +158,80 @@ class OutputNode(HardwareNode):
             node.addSucc(self)
         return connection_dict
 
+class SelectorNode(HardwareNode):
+    def __init__(self, name, total_bank):
+        #TODO kernel of bank selector not implemented
+        self.kernel = None
+        self.bank_num = total_bank
+        input_list = []
+        output_list = []
+        input_list.append(HardwarePort(name+"_counter.en", 0))
+        input_list.append(HardwarePort(name+"_mux.in1", 0))
+        for bank in range(total_bank):
+            output_list.append(HardwarePort(name+"_mux_"+str(bank)+".out."+str(bank), 0))
+        super().__init__(name, input_list, output_list)
+
+    def update(self):
+        pass
+
+    def connectNode(self, node):
+        if type(node) != InputNode:
+            assert True ,"can only connect to input enable!"
+        connection_dict = {}
+        connection_dict[(self.input_port["in1"].key, node.output_port["in_en"].key)] = \
+            HardwareWire(self.input_port["in1"], node.output_port["in_en"])
+        connection_dict[(self.input_port["en"].key, node.output_port["in_en"].key)] = \
+            HardwareWire(self.input_port["en"], node.output_port["in_en"])
+        return connection_dict
+
+    def connectOutput(self, output_node_list):
+        connection_dict = {}
+        for bank_id, output_node in enumerate(output_node_list):
+            out_port = output_node.input_port["wen"]
+            connection_dict[(out_port.key, self.output_port["out."+str(bank_id)].key.rsplit(".",1)[0])] = \
+                HardwareWire(out_port, self.output_port["out."+str(bank_id)])
+        print (connection_dict)
+        return connection_dict
+
+
+    def dump_json(self):
+        node = {}
+        dummy_connection = []
+
+        input_counter = {}
+        input_counter["genref"] = "commonlib.counter"
+        input_counter["genargs"] = {"width": ["Int", 16], "min": ["Int", 0], "max": ["Int", self.bank_num], "inc":["Int", 1]}
+        node[self.name+"_counter"] = input_counter
+
+        invalid_bit = {}
+        invalid_bit["modref"] = "corebit.const"
+        invalid_bit["modargs"] = {"value": ["Bool", False]}
+        node[self.name+"_invalidbit"] = invalid_bit
+
+        for i in range(self.bank_num):
+            eq = {}
+            eq["genref"] = "coreir.eq"
+            eq["genargs"] = {"width": ["Int", 16]}
+            node[self.name+"_eq_"+str(i)] = eq
+
+            mux = {}
+            mux["modref"] = "corebit.mux"
+            node[self.name+"_mux_"+str(i)] = mux
+
+            value = {}
+            value["genref"] = "coreir.const"
+            value["genargs"] = {"width": ["Int", 16]}
+            value["modargs"] = {"value":[["BitVector", 16], "16'h000"+str(i)]}
+            node[self.name+"_value_"+str(i)] = value
+            dummy_connection.append([self.name+"_value_"+str(i)+".out", self.name+"_eq_"+str(i)+".in1"])
+            dummy_connection.append([self.name+"_counter.out", self.name+"_eq_"+str(i)+".in0"])
+            dummy_connection.append([self.name+"_invalidbit.out", self.name+"_mux_"+str(i)+".in0"])
+            dummy_connection.append([self.name+"_eq_"+str(i)+".out", self.name+"_mux_"+str(i)+".sel"])
+
+        return node, dummy_connection
+
+
+
 
 class RegNode(HardwareNode):
     def __init__(self, name, virtualbuffer: VirtualBuffer):
@@ -232,7 +306,9 @@ class RegNode(HardwareNode):
             connection_dict.pop((succ.key, substitue_node.output_port["valid"].key))
 
 class BufferNode(HardwareNode):
-    def __init__(self, name, virtualbuffer: VirtualBuffer, num_bank = 1):
+    def __init__(self, name, virtualbuffer: VirtualBuffer, num_bank = 1, bank_id = 0):
+        self.input_bank_select = [False, num_bank, bank_id]
+        self.output_bank_select = [False, num_bank, bank_id]
         if num_bank > 1:
             virtualbuffer = self.initBanking(name, virtualbuffer, num_bank)
         self.last_in_chain = False
@@ -252,28 +328,50 @@ class BufferNode(HardwareNode):
 
     def initBanking(self, name, virtualbuffer, num_bank):
         kernel_for_bank = copy.deepcopy(virtualbuffer)
-        #FIXME: possible bug, ohter line buffer hyper parameter may need changing
-        kernel_for_bank._input_port = virtualbuffer._input_port // num_bank
-        kernel_for_bank._output_port = virtualbuffer._output_port // num_bank
-        kernel_for_bank._capacity = virtualbuffer._capacity // num_bank
 
         def sliceAccessIter(access_pattern: AccessIter, num_bank, num_port):
             '''
             method that recreate a new access pattern for banked buffer
             '''
-            bank_stride = []
-            for st_in_dim in access_pattern._st:
-                #print (access_pattern._st)
-                assert st_in_dim % num_bank == 0, "stride is not divisible by number of bank"
-                bank_stride.append(st_in_dim // num_bank)
 
-            bank_start = access_pattern._start[0 : num_port]
-            bank_range = [rng for rng in access_pattern._rng]
-            return AccessIter(bank_range, bank_stride, bank_start)
+            if access_pattern._st[0] >= num_bank:
+                #normal situation
+                bank_stride = []
+                for st_in_dim in access_pattern._st:
+                    assert st_in_dim % num_bank == 0, "stride is not divisible by number of bank"
+                    bank_stride.append(st_in_dim // num_bank)
+
+                bank_start = access_pattern._start[0 : num_port]
+                bank_range = [rng for rng in access_pattern._rng]
+                return False, AccessIter(bank_range, bank_stride, bank_start)
+            else:
+                #need add bank selector
+                bank_stride = []
+                for st_in_dim in access_pattern._st:
+                    if st_in_dim >= num_bank:
+                        assert st_in_dim % num_bank == 0, "stride is not divisible by number of bank"
+                        bank_stride.append(st_in_dim // num_bank)
+                    else:
+                        bank_stride.append(st_in_dim)
+                bank_start = access_pattern._start[0:num_port]
+                bank_range = [rng for rng in access_pattern._rng]
+                bank_range[0] = bank_range[0] // num_bank
+                return True, AccessIter(bank_range, bank_stride, bank_start)
+
 
         #update the read write iterator
-        kernel_for_bank.read_iterator = sliceAccessIter(virtualbuffer.read_iterator, num_bank, kernel_for_bank._output_port)
-        kernel_for_bank.write_iterator = sliceAccessIter(virtualbuffer.write_iterator, num_bank, kernel_for_bank._input_port)
+        need_read_select, kernel_for_bank.read_iterator = sliceAccessIter(virtualbuffer.read_iterator, num_bank, kernel_for_bank._output_port)
+        need_write_select, kernel_for_bank.write_iterator = sliceAccessIter(virtualbuffer.write_iterator, num_bank, kernel_for_bank._input_port)
+        self.input_bank_select[0] = need_write_select
+        self.output_bank_select[0] = need_read_select
+
+        #update port and capacity
+        #FIXME: possible bug, ohter line buffer hyper parameter may need changing
+        kernel_for_bank._capacity = virtualbuffer._capacity // num_bank
+        if need_write_select == False:
+            kernel_for_bank._input_port = virtualbuffer._input_port // num_bank
+        if need_read_select == False:
+            kernel_for_bank._output_port = virtualbuffer._output_port // num_bank
 
         return kernel_for_bank
 
@@ -306,11 +404,18 @@ class BufferNode(HardwareNode):
         else:
             args["stencil_width"] = ["Int", self.kernel._read_delay+1]
 
-        for idx in range(dimension):
+        for idx in range(len(self.kernel.read_iterator._st)):
             args["stride_" + str(idx)] = ["Int", self.kernel.read_iterator._st[idx]]
+            if type(self.kernel) == VirtualRowBuffer:
+                args["range_" + str(idx)] = ["Int", self.kernel._capacity]
+            else:
+                args["range_" + str(idx)] = ["Int", self.kernel.read_iterator._rng[idx]]
+        for idx in range(len(self.kernel.write_iterator._st)):
             args["input_stride_" + str(idx)] = ["Int", self.kernel.write_iterator._st[idx]]
-            args["range_" + str(idx)] = ["Int", self.kernel._capacity]
-            args["input_range_" + str(idx)] = ["Int", self.kernel._capacity]
+            if type(self.kernel) == VirtualRowBuffer:
+                args["input_range_" + str(idx)] = ["Int", self.kernel._capacity]
+            else:
+                args["input_range_" + str(idx)] = ["Int", self.kernel.write_iterator._rng[idx]]
         #TODO: add chainning
         args["chain_en"] = ["Bool", False]
         args["chain_idx"] = ["Int", 0]
@@ -321,28 +426,30 @@ class BufferNode(HardwareNode):
 
         return mem_tile
 
-    def connectInput(self, data_in, valid, data_key, valid_key):
+    def connectInput(self, data_in, valid, data_key, valid_key, data_only):
         '''
         connecting method to wire input with buffer
         '''
         connection_dict = {}
-        self.input_port["wen"].makePred(valid)
-        self.input_port["ren"].makePred(valid)
+        if data_only == False:
+            self.input_port["wen"].makePred(valid)
+            self.input_port["ren"].makePred(valid)
+            valid.addSucc(self.input_port["wen"])
+            valid.addSucc(self.input_port["ren"])
+            connection_dict[(self.input_port["wen"].key, valid_key)] = \
+                HardwareWire(self.input_port["wen"], valid)
+            connection_dict[(self.input_port["ren"].key, valid_key)] = \
+                HardwareWire(self.input_port["ren"], valid)
         self.input_port["datain"].makePred(data_in)
-        valid.addSucc(self.input_port["wen"])
-        valid.addSucc(self.input_port["ren"])
         data_in.addSucc(self.input_port["datain"])
-        connection_dict[(self.input_port["wen"].key, valid_key)] = \
-            HardwareWire(self.input_port["wen"], valid)
-        connection_dict[(self.input_port["ren"].key, valid_key)] = \
-            HardwareWire(self.input_port["ren"], valid)
         connection_dict[(self.input_port["datain"].key, data_key)] = \
             HardwareWire(self.input_port["datain"], data_in)
         return connection_dict
 
-    def connectNode(self, node):
+    def connectNode(self, node, data_only = False):
         '''
         method connect buffer with predecessor buffer
+        data_only flag is added for banked buffer need bank selector
         '''
         if type(node) == BufferNode:
             connection_dict = {}
@@ -362,7 +469,7 @@ class BufferNode(HardwareNode):
                 DummyWire("self.reset", self.name+".reset")
 
         elif type(node) == InputNode:
-            connection_dict = self.connectInput(node.output_port["datain"], node.output_port["in_en"], node.data_port_name, node.valid_port_name)
+            connection_dict = self.connectInput(node.output_port["datain"], node.output_port["in_en"], node.data_port_name, node.valid_port_name, data_only)
 
         self.makePred(node)
         node.addSucc(self)

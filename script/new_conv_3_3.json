@@ -198,7 +198,7 @@
             "genargs":{"input_type":["CoreIRType",["Array",1,["Array",1,["Array",16,"BitIn"]]]], "output_type":["CoreIRType",["Array",1,["Array",16,"Bit"]]]}
           },
           "ub_hw_input_stencil_update_stream_out_reshape":{
-            "genref":"commonlib.reshape",
+            "genref":"commonlib.transpose_reshape",
             "genargs":{"input_type":["CoreIRType",["Array",9,["Array",16,"BitIn"]]], "output_type":["CoreIRType",["Array",3,["Array",3,["Array",16,"Bit"]]]]}
           },
           "ub_hw_input_stencil_update_stream_wen":{
@@ -265,8 +265,16 @@
           ["ub_hw_input_stencil_update_stream_in_reshape.in","self.in.arg_0"],
           ["ub_hw_input_stencil_update_stream.reset","self.reset"],
           ["ub_hw_input_stencil_update_stream.valid","self.valid"],
-          ["ub_hw_input_stencil_update_stream_in_reshape.out","ub_hw_input_stencil_update_stream.datain"],
-          ["ub_hw_input_stencil_update_stream_out_reshape.in","ub_hw_input_stencil_update_stream.dataout"],
+          ["ub_hw_input_stencil_update_stream_in_reshape.out.0","ub_hw_input_stencil_update_stream.datain0"],
+          ["ub_hw_input_stencil_update_stream_out_reshape.in.0","ub_hw_input_stencil_update_stream.dataout0"],
+          ["ub_hw_input_stencil_update_stream_out_reshape.in.1","ub_hw_input_stencil_update_stream.dataout1"],
+          ["ub_hw_input_stencil_update_stream_out_reshape.in.2","ub_hw_input_stencil_update_stream.dataout2"],
+          ["ub_hw_input_stencil_update_stream_out_reshape.in.3","ub_hw_input_stencil_update_stream.dataout3"],
+          ["ub_hw_input_stencil_update_stream_out_reshape.in.4","ub_hw_input_stencil_update_stream.dataout4"],
+          ["ub_hw_input_stencil_update_stream_out_reshape.in.5","ub_hw_input_stencil_update_stream.dataout5"],
+          ["ub_hw_input_stencil_update_stream_out_reshape.in.6","ub_hw_input_stencil_update_stream.dataout6"],
+          ["ub_hw_input_stencil_update_stream_out_reshape.in.7","ub_hw_input_stencil_update_stream.dataout7"],
+          ["ub_hw_input_stencil_update_stream_out_reshape.in.8","ub_hw_input_stencil_update_stream.dataout8"],
           ["ub_hw_input_stencil_update_stream_wen.out","ub_hw_input_stencil_update_stream.wen"]
         ]
       }

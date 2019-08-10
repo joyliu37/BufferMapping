@@ -52,7 +52,7 @@ class CoreIRUnifiedBufferConfig:
         self.acc_capacity = [1] + acc_capacity
         #capacity = reduce(lambda x, y: x*y, capacity_list)
         capacity = self.acc_capacity[-1]
-        start = self.config_dict["output_starting_addrs"][1]["addr"]
+        start = self.config_dict["output_starting_addrs"][1]["output_start"]
         for i in range(dimension):
             stride.append(self.config_dict["stride_"+str(i)][1])
             rng.append(self.config_dict["range_"+str(i)][1])
