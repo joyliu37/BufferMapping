@@ -22,8 +22,12 @@
                                                     1,
                                                     [
                                                         "Array",
-                                                        16,
-                                                        "BitIn"
+                                                        1,
+                                                        [
+                                                            "Array",
+                                                            16,
+                                                            "BitIn"
+                                                        ]
                                                     ]
                                                 ]
                                             ]
@@ -45,8 +49,12 @@
                                         1,
                                         [
                                             "Array",
-                                            16,
-                                            "Bit"
+                                            1,
+                                            [
+                                                "Array",
+                                                16,
+                                                "Bit"
+                                            ]
                                         ]
                                     ]
                                 ]
@@ -84,6 +92,106 @@
                                 ]
                             }
                         },
+                        "_conv_stencil2_mux1_0": {
+                            "genref": "commonlib.muxn",
+                            "genargs": {
+                                "N": [
+                                    "Int",
+                                    1
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "_hw_input_stencil1_mux1_0": {
+                            "genref": "commonlib.muxn",
+                            "genargs": {
+                                "N": [
+                                    "Int",
+                                    1
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "_hw_input_stencil1_mux1_0$1": {
+                            "genref": "commonlib.muxn",
+                            "genargs": {
+                                "N": [
+                                    "Int",
+                                    1
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "_hw_input_stencil1_mux1_0$2": {
+                            "genref": "commonlib.muxn",
+                            "genargs": {
+                                "N": [
+                                    "Int",
+                                    1
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "_hw_input_stencil2_mux1_0": {
+                            "genref": "commonlib.muxn",
+                            "genargs": {
+                                "N": [
+                                    "Int",
+                                    1
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "_hw_input_stencil2_mux1_0$1": {
+                            "genref": "commonlib.muxn",
+                            "genargs": {
+                                "N": [
+                                    "Int",
+                                    1
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "_hw_input_stencil2_mux1_0$2": {
+                            "genref": "commonlib.muxn",
+                            "genargs": {
+                                "N": [
+                                    "Int",
+                                    1
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "_kernela0_wen": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
                         "abstract_ub_hw_input_stencil_update_stream": {
                             "genref": "commonlib.abstract_unified_buffer",
                             "genargs": {
@@ -91,11 +199,15 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        64,
+                                        2,
                                         [
                                             "Array",
                                             64,
-                                            "Bit"
+                                            [
+                                                "Array",
+                                                64,
+                                                "Bit"
+                                            ]
                                         ]
                                     ]
                                 ],
@@ -107,7 +219,19 @@
                                         [
                                             "Array",
                                             0,
-                                            "Bit"
+                                            [
+                                                "Array",
+                                                0,
+                                                [
+                                                    "Array",
+                                                    2,
+                                                    [
+                                                        "Array",
+                                                        1,
+                                                        "Bit"
+                                                    ]
+                                                ]
+                                            ]
                                         ]
                                     ]
                                 ],
@@ -121,8 +245,12 @@
                                             1,
                                             [
                                                 "Array",
-                                                16,
-                                                "BitIn"
+                                                1,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "BitIn"
+                                                ]
                                             ]
                                         ]
                                     ]
@@ -131,14 +259,18 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        3,
+                                        1,
                                         [
                                             "Array",
-                                            3,
+                                            1,
                                             [
                                                 "Array",
-                                                16,
-                                                "Bit"
+                                                3,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "Bit"
+                                                ]
                                             ]
                                         ]
                                     ]
@@ -151,7 +283,19 @@
                                         [
                                             "Array",
                                             62,
-                                            "Bit"
+                                            [
+                                                "Array",
+                                                4,
+                                                [
+                                                    "Array",
+                                                    2,
+                                                    [
+                                                        "Array",
+                                                        3,
+                                                        "Bit"
+                                                    ]
+                                                ]
+                                            ]
                                         ]
                                     ]
                                 ],
@@ -163,13 +307,25 @@
                                         [
                                             "Array",
                                             1,
-                                            "Bit"
+                                            [
+                                                "Array",
+                                                0,
+                                                [
+                                                    "Array",
+                                                    1,
+                                                    [
+                                                        "Array",
+                                                        1,
+                                                        "Bit"
+                                                    ]
+                                                ]
+                                            ]
                                         ]
                                     ]
                                 ]
                             }
                         },
-                        "add_242_246_247": {
+                        "add_352_351_353": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -178,7 +334,7 @@
                                 ]
                             }
                         },
-                        "add_248_252_253": {
+                        "add_354_353_355": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -187,7 +343,7 @@
                                 ]
                             }
                         },
-                        "add_254_258_259": {
+                        "add_357_conv_s1_r_z_358": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -196,7 +352,7 @@
                                 ]
                             }
                         },
-                        "add_260_264_265": {
+                        "add_361_367_368": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -205,7 +361,7 @@
                                 ]
                             }
                         },
-                        "add_266_270_271": {
+                        "add_369_376_377": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -214,7 +370,7 @@
                                 ]
                             }
                         },
-                        "add_272_276_277": {
+                        "add_3711_372": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -223,7 +379,7 @@
                                 ]
                             }
                         },
-                        "add_278_282_283": {
+                        "add_378_385_386": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -232,7 +388,7 @@
                                 ]
                             }
                         },
-                        "add_284_288_289": {
+                        "add_3802_381": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -241,7 +397,7 @@
                                 ]
                             }
                         },
-                        "add_290_294_295": {
+                        "add_conv_s1_r_y_359_362": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -250,7 +406,25 @@
                                 ]
                             }
                         },
-                        "add_kernel_s0_x_240_241": {
+                        "add_conv_s1_r_y_359_370": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_conv_s1_r_y_359_379": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_kernel_s0_x_355_356": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -295,114 +469,6 @@
                                 ]
                             }
                         },
-                        "const11_11": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h000b"
-                                ]
-                            }
-                        },
-                        "const12_12": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h000c"
-                                ]
-                            }
-                        },
-                        "const13_13": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h000d"
-                                ]
-                            }
-                        },
-                        "const14_14": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h000e"
-                                ]
-                            }
-                        },
-                        "const16_16": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0010"
-                                ]
-                            }
-                        },
-                        "const17_17": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0011"
-                                ]
-                            }
-                        },
                         "const18_18": {
                             "genref": "coreir.const",
                             "genargs": {
@@ -421,7 +487,7 @@
                                 ]
                             }
                         },
-                        "const19_19": {
+                        "const1_1": {
                             "genref": "coreir.const",
                             "genargs": {
                                 "width": [
@@ -435,7 +501,43 @@
                                         "BitVector",
                                         16
                                     ],
-                                    "16'h0013"
+                                    "16'h0001"
+                                ]
+                            }
+                        },
+                        "const2_2": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0002"
+                                ]
+                            }
+                        },
+                        "const2_2$1": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0002"
                                 ]
                             }
                         },
@@ -454,6 +556,222 @@
                                         16
                                     ],
                                     "16'h0003"
+                                ]
+                            }
+                        },
+                        "const3_3$1": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0003"
+                                ]
+                            }
+                        },
+                        "const3_3$2": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0003"
+                                ]
+                            }
+                        },
+                        "const3_3$3": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0003"
+                                ]
+                            }
+                        },
+                        "const3_3$4": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0003"
+                                ]
+                            }
+                        },
+                        "const9_9": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0009"
+                                ]
+                            }
+                        },
+                        "count__conv_s1_r_y": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    2
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "count__conv_s1_r_z": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    1
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "count__conv_w___scan_dim_2": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    3
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "count__conv_x___scan_dim_0": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    61
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "count__conv_y___scan_dim_1": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    61
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "count__hw_output_w___scan_dim_2": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    3
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
                                 ]
                             }
                         },
@@ -497,6 +815,27 @@
                                 "max": [
                                     "Int",
                                     61
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "count__kernel_s0_w": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    3
                                 ],
                                 "min": [
                                     "Int",
@@ -559,7 +898,28 @@
                                 ]
                             }
                         },
-                        "mul_243_245_246": {
+                        "count__kernel_s0_z": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    1
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_3583_359": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -568,7 +928,7 @@
                                 ]
                             }
                         },
-                        "mul_249_251_252": {
+                        "mul_3623_363": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -577,7 +937,7 @@
                                 ]
                             }
                         },
-                        "mul_255_257_258": {
+                        "mul_364_366_367": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -586,7 +946,7 @@
                                 ]
                             }
                         },
-                        "mul_261_263_264": {
+                        "mul_3703_371": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -595,7 +955,7 @@
                                 ]
                             }
                         },
-                        "mul_267_269_270": {
+                        "mul_373_375_376": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -604,7 +964,7 @@
                                 ]
                             }
                         },
-                        "mul_273_275_276": {
+                        "mul_3793_380": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -613,7 +973,7 @@
                                 ]
                             }
                         },
-                        "mul_279_281_282": {
+                        "mul_382_384_385": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -622,7 +982,7 @@
                                 ]
                             }
                         },
-                        "mul_285_287_288": {
+                        "mul_conv_w___scan_dim_22_357": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -631,7 +991,7 @@
                                 ]
                             }
                         },
-                        "mul_291_293_294": {
+                        "mul_kernel_s0_w18_351": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -640,7 +1000,16 @@
                                 ]
                             }
                         },
-                        "mul_kernel_s0_y3_240": {
+                        "mul_kernel_s0_y3_354": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_kernel_s0_z9_352": {
                             "genref": "coreir.mul",
                             "genargs": {
                                 "width": [
@@ -683,6 +1052,156 @@
                                 ]
                             }
                         },
+                        "selslice_conv_stencil2_mux1_0": {
+                            "genref": "coreir.slice",
+                            "genargs": {
+                                "hi": [
+                                    "Int",
+                                    1
+                                ],
+                                "lo": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "selslice_hw_input_stencil1_mux1_0": {
+                            "genref": "coreir.slice",
+                            "genargs": {
+                                "hi": [
+                                    "Int",
+                                    1
+                                ],
+                                "lo": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "selslice_hw_input_stencil1_mux1_0$1": {
+                            "genref": "coreir.slice",
+                            "genargs": {
+                                "hi": [
+                                    "Int",
+                                    1
+                                ],
+                                "lo": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "selslice_hw_input_stencil1_mux1_0$2": {
+                            "genref": "coreir.slice",
+                            "genargs": {
+                                "hi": [
+                                    "Int",
+                                    1
+                                ],
+                                "lo": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "selslice_hw_input_stencil2_mux1_0": {
+                            "genref": "coreir.slice",
+                            "genargs": {
+                                "hi": [
+                                    "Int",
+                                    1
+                                ],
+                                "lo": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "selslice_hw_input_stencil2_mux1_0$1": {
+                            "genref": "coreir.slice",
+                            "genargs": {
+                                "hi": [
+                                    "Int",
+                                    1
+                                ],
+                                "lo": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "selslice_hw_input_stencil2_mux1_0$2": {
+                            "genref": "coreir.slice",
+                            "genargs": {
+                                "hi": [
+                                    "Int",
+                                    1
+                                ],
+                                "lo": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "sram__kernela0": {
+                            "genref": "memory.ram2",
+                            "genargs": {
+                                "depth": [
+                                    "Int",
+                                    72
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "sram__kernela0_ren": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    true
+                                ]
+                            }
+                        },
+                        "sub_conv_s1_r_z_conv_w___scan_dim_2_360": {
+                            "genref": "coreir.sub",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
                         "ub_hw_input_stencil_update_stream": {
                             "genref": "commonlib.unified_buffer",
                             "genargs": {
@@ -696,11 +1215,11 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    4096
+                                    8192
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    2
+                                    5
                                 ],
                                 "init": [
                                     "Json",
@@ -716,7 +1235,7 @@
                                 ],
                                 "input_range_2": [
                                     "Int",
-                                    0
+                                    1
                                 ],
                                 "input_range_3": [
                                     "Int",
@@ -748,7 +1267,7 @@
                                 ],
                                 "input_stride_2": [
                                     "Int",
-                                    0
+                                    1
                                 ],
                                 "input_stride_3": [
                                     "Int",
@@ -764,14 +1283,15 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    3844
+                                    92256
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
                                             64,
-                                            64
+                                            64,
+                                            2
                                         ]
                                     }
                                 ],
@@ -781,7 +1301,7 @@
                                 ],
                                 "num_output_ports": [
                                     "Int",
-                                    9
+                                    3
                                 ],
                                 "output_starting_addrs": [
                                     "Json",
@@ -789,13 +1309,7 @@
                                         "output_start": [
                                             0,
                                             1,
-                                            2,
-                                            64,
-                                            65,
-                                            66,
-                                            128,
-                                            129,
-                                            130
+                                            2
                                         ]
                                     }
                                 ],
@@ -805,19 +1319,19 @@
                                 ],
                                 "range_1": [
                                     "Int",
-                                    62
+                                    3
                                 ],
                                 "range_2": [
                                     "Int",
-                                    0
+                                    2
                                 ],
                                 "range_3": [
                                     "Int",
-                                    0
+                                    4
                                 ],
                                 "range_4": [
                                     "Int",
-                                    0
+                                    62
                                 ],
                                 "range_5": [
                                     "Int",
@@ -841,7 +1355,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    0
+                                    4096
                                 ],
                                 "stride_3": [
                                     "Int",
@@ -849,7 +1363,7 @@
                                 ],
                                 "stride_4": [
                                     "Int",
-                                    0
+                                    64
                                 ],
                                 "stride_5": [
                                     "Int",
@@ -874,8 +1388,12 @@
                                             1,
                                             [
                                                 "Array",
-                                                16,
-                                                "BitIn"
+                                                1,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "BitIn"
+                                                ]
                                             ]
                                         ]
                                     ]
@@ -901,7 +1419,7 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        9,
+                                        3,
                                         [
                                             "Array",
                                             16,
@@ -913,14 +1431,18 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        3,
+                                        1,
                                         [
                                             "Array",
-                                            3,
+                                            1,
                                             [
                                                 "Array",
-                                                16,
-                                                "Bit"
+                                                3,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "Bit"
+                                                ]
                                             ]
                                         ]
                                     ]
@@ -939,7 +1461,7 @@
                     },
                     "connections": [
                         [
-                            "add_290_294_295.out",
+                            "add_378_385_386.out",
                             "_conv_stencil0_mux1_0.in.data.0"
                         ],
                         [
@@ -955,128 +1477,312 @@
                             "_conv_stencil1_mux1_0.in.sel"
                         ],
                         [
-                            "self.out.0.0",
+                            "_conv_stencil2_mux1_0.in.data.0",
                             "_conv_stencil1_mux1_0.out"
                         ],
                         [
-                            "const0_0.out",
-                            "add_242_246_247.in0"
+                            "selslice_conv_stencil2_mux1_0.out",
+                            "_conv_stencil2_mux1_0.in.sel"
                         ],
                         [
-                            "mul_243_245_246.out",
-                            "add_242_246_247.in1"
+                            "self.out.0.0.0",
+                            "_conv_stencil2_mux1_0.out"
                         ],
                         [
-                            "add_248_252_253.in0",
-                            "add_242_246_247.out"
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0.1",
+                            "_hw_input_stencil1_mux1_0$1.in.data.0"
                         ],
                         [
-                            "mul_249_251_252.out",
-                            "add_248_252_253.in1"
+                            "selslice_hw_input_stencil1_mux1_0$1.out",
+                            "_hw_input_stencil1_mux1_0$1.in.sel"
                         ],
                         [
-                            "add_254_258_259.in0",
-                            "add_248_252_253.out"
+                            "_hw_input_stencil2_mux1_0$1.in.data.0",
+                            "_hw_input_stencil1_mux1_0$1.out"
                         ],
                         [
-                            "mul_255_257_258.out",
-                            "add_254_258_259.in1"
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0.2",
+                            "_hw_input_stencil1_mux1_0$2.in.data.0"
                         ],
                         [
-                            "add_260_264_265.in0",
-                            "add_254_258_259.out"
+                            "selslice_hw_input_stencil1_mux1_0$2.out",
+                            "_hw_input_stencil1_mux1_0$2.in.sel"
                         ],
                         [
-                            "mul_261_263_264.out",
-                            "add_260_264_265.in1"
+                            "_hw_input_stencil2_mux1_0$2.in.data.0",
+                            "_hw_input_stencil1_mux1_0$2.out"
                         ],
                         [
-                            "add_266_270_271.in0",
-                            "add_260_264_265.out"
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0.0",
+                            "_hw_input_stencil1_mux1_0.in.data.0"
                         ],
                         [
-                            "mul_267_269_270.out",
-                            "add_266_270_271.in1"
+                            "selslice_hw_input_stencil1_mux1_0.out",
+                            "_hw_input_stencil1_mux1_0.in.sel"
                         ],
                         [
-                            "add_272_276_277.in0",
-                            "add_266_270_271.out"
+                            "_hw_input_stencil2_mux1_0.in.data.0",
+                            "_hw_input_stencil1_mux1_0.out"
                         ],
                         [
-                            "mul_273_275_276.out",
-                            "add_272_276_277.in1"
+                            "selslice_hw_input_stencil2_mux1_0$1.out",
+                            "_hw_input_stencil2_mux1_0$1.in.sel"
                         ],
                         [
-                            "add_278_282_283.in0",
-                            "add_272_276_277.out"
+                            "mul_373_375_376.in1",
+                            "_hw_input_stencil2_mux1_0$1.out"
                         ],
                         [
-                            "mul_279_281_282.out",
-                            "add_278_282_283.in1"
+                            "selslice_hw_input_stencil2_mux1_0$2.out",
+                            "_hw_input_stencil2_mux1_0$2.in.sel"
                         ],
                         [
-                            "add_284_288_289.in0",
-                            "add_278_282_283.out"
+                            "mul_382_384_385.in1",
+                            "_hw_input_stencil2_mux1_0$2.out"
                         ],
                         [
-                            "mul_285_287_288.out",
-                            "add_284_288_289.in1"
+                            "selslice_hw_input_stencil2_mux1_0.out",
+                            "_hw_input_stencil2_mux1_0.in.sel"
                         ],
                         [
-                            "add_290_294_295.in0",
-                            "add_284_288_289.out"
+                            "mul_364_366_367.in1",
+                            "_hw_input_stencil2_mux1_0.out"
                         ],
                         [
-                            "mul_291_293_294.out",
-                            "add_290_294_295.in1"
+                            "sram__kernela0.wen",
+                            "_kernela0_wen.out"
+                        ],
+                        [
+                            "mul_kernel_s0_z9_352.out",
+                            "add_352_351_353.in0"
+                        ],
+                        [
+                            "mul_kernel_s0_w18_351.out",
+                            "add_352_351_353.in1"
+                        ],
+                        [
+                            "add_354_353_355.in1",
+                            "add_352_351_353.out"
+                        ],
+                        [
+                            "mul_kernel_s0_y3_354.out",
+                            "add_354_353_355.in0"
+                        ],
+                        [
+                            "add_kernel_s0_x_355_356.in1",
+                            "add_354_353_355.out"
+                        ],
+                        [
+                            "mul_conv_w___scan_dim_22_357.out",
+                            "add_357_conv_s1_r_z_358.in0"
+                        ],
+                        [
+                            "count__conv_s1_r_z.out",
+                            "add_357_conv_s1_r_z_358.in1"
+                        ],
+                        [
+                            "mul_3583_359.in0",
+                            "add_357_conv_s1_r_z_358.out"
+                        ],
+                        [
+                            "const0_0$1.out",
+                            "add_361_367_368.in0"
+                        ],
+                        [
+                            "mul_364_366_367.out",
+                            "add_361_367_368.in1"
+                        ],
+                        [
+                            "add_369_376_377.in0",
+                            "add_361_367_368.out"
+                        ],
+                        [
+                            "mul_373_375_376.out",
+                            "add_369_376_377.in1"
+                        ],
+                        [
+                            "add_378_385_386.in0",
+                            "add_369_376_377.out"
+                        ],
+                        [
+                            "mul_3703_371.out",
+                            "add_3711_372.in0"
+                        ],
+                        [
+                            "const1_1.out",
+                            "add_3711_372.in1"
+                        ],
+                        [
+                            "mul_382_384_385.out",
+                            "add_378_385_386.in1"
+                        ],
+                        [
+                            "mul_3793_380.out",
+                            "add_3802_381.in0"
+                        ],
+                        [
+                            "const2_2$1.out",
+                            "add_3802_381.in1"
+                        ],
+                        [
+                            "sram__kernela0.raddr",
+                            "add_3802_381.out"
+                        ],
+                        [
+                            "count__conv_s1_r_y.out",
+                            "add_conv_s1_r_y_359_362.in0"
+                        ],
+                        [
+                            "mul_3583_359.out",
+                            "add_conv_s1_r_y_359_362.in1"
+                        ],
+                        [
+                            "mul_3623_363.in0",
+                            "add_conv_s1_r_y_359_362.out"
+                        ],
+                        [
+                            "count__conv_s1_r_y.out",
+                            "add_conv_s1_r_y_359_370.in0"
+                        ],
+                        [
+                            "mul_3583_359.out",
+                            "add_conv_s1_r_y_359_370.in1"
+                        ],
+                        [
+                            "mul_3703_371.in0",
+                            "add_conv_s1_r_y_359_370.out"
+                        ],
+                        [
+                            "count__conv_s1_r_y.out",
+                            "add_conv_s1_r_y_359_379.in0"
+                        ],
+                        [
+                            "mul_3583_359.out",
+                            "add_conv_s1_r_y_359_379.in1"
+                        ],
+                        [
+                            "mul_3793_380.in0",
+                            "add_conv_s1_r_y_359_379.out"
                         ],
                         [
                             "count__kernel_s0_x.out",
-                            "add_kernel_s0_x_240_241.in0"
+                            "add_kernel_s0_x_355_356.in0"
                         ],
                         [
-                            "mul_kernel_s0_y3_240.out",
-                            "add_kernel_s0_x_240_241.in1"
+                            "sram__kernela0.waddr",
+                            "add_kernel_s0_x_355_356.out"
                         ],
                         [
-                            "mul_267_269_270.in0",
-                            "const0_0$1.out"
+                            "sram__kernela0.wdata",
+                            "const0_0.out"
                         ],
                         [
-                            "mul_243_245_246.in0",
-                            "const11_11.out"
-                        ],
-                        [
-                            "mul_261_263_264.in0",
-                            "const12_12.out"
-                        ],
-                        [
-                            "mul_279_281_282.in0",
-                            "const13_13.out"
-                        ],
-                        [
-                            "mul_249_251_252.in0",
-                            "const14_14.out"
-                        ],
-                        [
-                            "mul_285_287_288.in0",
-                            "const16_16.out"
-                        ],
-                        [
-                            "mul_255_257_258.in0",
-                            "const17_17.out"
-                        ],
-                        [
-                            "mul_273_275_276.in0",
+                            "mul_kernel_s0_w18_351.in1",
                             "const18_18.out"
                         ],
                         [
-                            "mul_291_293_294.in0",
-                            "const19_19.out"
+                            "mul_conv_w___scan_dim_22_357.in1",
+                            "const2_2.out"
                         ],
                         [
-                            "mul_kernel_s0_y3_240.in1",
+                            "mul_3583_359.in1",
+                            "const3_3$1.out"
+                        ],
+                        [
+                            "mul_3623_363.in1",
+                            "const3_3$2.out"
+                        ],
+                        [
+                            "mul_3703_371.in1",
+                            "const3_3$3.out"
+                        ],
+                        [
+                            "mul_3793_380.in1",
+                            "const3_3$4.out"
+                        ],
+                        [
+                            "mul_kernel_s0_y3_354.in1",
                             "const3_3.out"
+                        ],
+                        [
+                            "mul_kernel_s0_z9_352.in1",
+                            "const9_9.out"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream.valid",
+                            "count__conv_s1_r_y.en"
+                        ],
+                        [
+                            "selslice_hw_input_stencil1_mux1_0$1.in",
+                            "count__conv_s1_r_y.out"
+                        ],
+                        [
+                            "selslice_hw_input_stencil1_mux1_0$2.in",
+                            "count__conv_s1_r_y.out"
+                        ],
+                        [
+                            "selslice_hw_input_stencil1_mux1_0.in",
+                            "count__conv_s1_r_y.out"
+                        ],
+                        [
+                            "count__conv_s1_r_z.en",
+                            "count__conv_s1_r_y.overflow"
+                        ],
+                        [
+                            "self.reset",
+                            "count__conv_s1_r_y.reset"
+                        ],
+                        [
+                            "sub_conv_s1_r_z_conv_w___scan_dim_2_360.in0",
+                            "count__conv_s1_r_z.out"
+                        ],
+                        [
+                            "count__conv_x___scan_dim_0.en",
+                            "count__conv_s1_r_z.overflow"
+                        ],
+                        [
+                            "self.reset",
+                            "count__conv_s1_r_z.reset"
+                        ],
+                        [
+                            "count__conv_y___scan_dim_1.overflow",
+                            "count__conv_w___scan_dim_2.en"
+                        ],
+                        [
+                            "mul_conv_w___scan_dim_22_357.in0",
+                            "count__conv_w___scan_dim_2.out"
+                        ],
+                        [
+                            "sub_conv_s1_r_z_conv_w___scan_dim_2_360.in1",
+                            "count__conv_w___scan_dim_2.out"
+                        ],
+                        [
+                            "self.reset",
+                            "count__conv_w___scan_dim_2.reset"
+                        ],
+                        [
+                            "count__conv_y___scan_dim_1.en",
+                            "count__conv_x___scan_dim_0.overflow"
+                        ],
+                        [
+                            "self.reset",
+                            "count__conv_x___scan_dim_0.reset"
+                        ],
+                        [
+                            "self.reset",
+                            "count__conv_y___scan_dim_1.reset"
+                        ],
+                        [
+                            "count__hw_output_y___scan_dim_1.overflow",
+                            "count__hw_output_w___scan_dim_2.en"
+                        ],
+                        [
+                            "selslice_conv_stencil2_mux1_0.in",
+                            "count__hw_output_w___scan_dim_2.out"
+                        ],
+                        [
+                            "self.reset",
+                            "count__hw_output_w___scan_dim_2.reset"
                         ],
                         [
                             "count__hw_output_x___scan_dim_0_wen.out",
@@ -1103,6 +1809,18 @@
                             "count__hw_output_y___scan_dim_1.reset"
                         ],
                         [
+                            "count__kernel_s0_z.overflow",
+                            "count__kernel_s0_w.en"
+                        ],
+                        [
+                            "mul_kernel_s0_w18_351.in0",
+                            "count__kernel_s0_w.out"
+                        ],
+                        [
+                            "self.reset",
+                            "count__kernel_s0_w.reset"
+                        ],
+                        [
                             "count__kernel_s0_x_wen.out",
                             "count__kernel_s0_x.en"
                         ],
@@ -1115,48 +1833,36 @@
                             "count__kernel_s0_x.reset"
                         ],
                         [
-                            "mul_kernel_s0_y3_240.in0",
+                            "mul_kernel_s0_y3_354.in0",
                             "count__kernel_s0_y.out"
+                        ],
+                        [
+                            "count__kernel_s0_z.en",
+                            "count__kernel_s0_y.overflow"
                         ],
                         [
                             "self.reset",
                             "count__kernel_s0_y.reset"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "mul_243_245_246.in1"
+                            "mul_kernel_s0_z9_352.in0",
+                            "count__kernel_s0_z.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "mul_249_251_252.in1"
+                            "self.reset",
+                            "count__kernel_s0_z.reset"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "mul_255_257_258.in1"
+                            "sram__kernela0.rdata",
+                            "mul_364_366_367.in0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "mul_261_263_264.in1"
+                            "sram__kernela0.rdata",
+                            "mul_373_375_376.in0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "mul_267_269_270.in1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "mul_273_275_276.in1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "mul_279_281_282.in1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "mul_285_287_288.in1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "mul_291_293_294.in1"
+                            "sram__kernela0.rdata",
+                            "mul_382_384_385.in0"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_in_reshape.in",
@@ -1169,6 +1875,22 @@
                         [
                             "ub_hw_input_stencil_update_stream.valid",
                             "self.valid"
+                        ],
+                        [
+                            "sub_conv_s1_r_z_conv_w___scan_dim_2_360.out",
+                            "selslice_hw_input_stencil2_mux1_0$1.in"
+                        ],
+                        [
+                            "sub_conv_s1_r_z_conv_w___scan_dim_2_360.out",
+                            "selslice_hw_input_stencil2_mux1_0$2.in"
+                        ],
+                        [
+                            "sub_conv_s1_r_z_conv_w___scan_dim_2_360.out",
+                            "selslice_hw_input_stencil2_mux1_0.in"
+                        ],
+                        [
+                            "sram__kernela0_ren.out",
+                            "sram__kernela0.ren"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_in_reshape.out.0",
@@ -1185,30 +1907,6 @@
                         [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.2",
                             "ub_hw_input_stencil_update_stream.dataout2"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "ub_hw_input_stencil_update_stream.dataout3"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "ub_hw_input_stencil_update_stream.dataout4"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "ub_hw_input_stencil_update_stream.dataout5"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "ub_hw_input_stencil_update_stream.dataout6"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "ub_hw_input_stencil_update_stream.dataout7"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
-                            "ub_hw_input_stencil_update_stream.dataout8"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_wen.out",

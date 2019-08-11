@@ -21,7 +21,13 @@ def initializeGraph(v_setup, mem_config, IR_setup,
     if linebuffer.meta_fifo_dict:
         #has the port optimization and create a line buffer
         output_dict = {}
-        output_dict[0] = [[OutputNode(out_instance_name[0],out_instance_name[1])] for out_instance_name in output_list]
+        print (linebuffer.port_map)
+        output_dict_tmp = {start_addr: [OutputNode(out_instance_name[0],out_instance_name[1])] for out_instance_name, start_addr in zip(output_list, v_setup._start)}
+        for start_addr, port_list in linebuffer.port_map.items():
+            output_dict[start_addr] = []
+            for port in port_list:
+                output_dict[start_addr].append(output_dict_tmp[port])
+        print (output_dict)
         #data_in = HardwarePort("self.datain", 0)
         #valid = HardwarePort("self.inen", True)
         node_dict, connection_dict = linebuffer.GenGraph("linebuffer", input_node, output_dict)
