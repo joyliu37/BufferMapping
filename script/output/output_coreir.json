@@ -1192,40 +1192,8 @@
                             "linebuffer_bank_0_0.reset"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "linebuffer_bank_0_0.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "linebuffer_bank_0_0.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "linebuffer_bank_0_0.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "linebuffer_bank_0_0.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "linebuffer_bank_0_0.dataout"
-                        ],
-                        [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "linebuffer_bank_0_0.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "linebuffer_bank_0_0.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "linebuffer_bank_0_0.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
-                            "linebuffer_bank_0_0.dataout"
+                            "linebuffer_bank_0_0.dataout0"
                         ],
                         [
                             "linebuffer_bank_0_1.wen",
@@ -1236,80 +1204,16 @@
                             "linebuffer_bank_0_0.valid"
                         ],
                         [
-                            "linebuffer_bank_0_1.datain",
-                            "linebuffer_bank_0_0.dataout"
+                            "linebuffer_bank_0_1.datain0",
+                            "linebuffer_bank_0_0.dataout0"
                         ],
                         [
                             "self.reset",
                             "linebuffer_bank_0_1.reset"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                            "linebuffer_bank_0_1.dataout0"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.8",
@@ -1324,7 +1228,7 @@
                             "ub_hw_input_stencil_update_stream_wen.out"
                         ],
                         [
-                            "linebuffer_bank_0_0.datain",
+                            "linebuffer_bank_0_0.datain0",
                             "ub_hw_input_stencil_update_stream_in_reshape.out.0"
                         ],
                         [
@@ -1336,39 +1240,7 @@
                             "ub_hw_input_stencil_update_stream_in_reshape.out.0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "linebuffer_bank_0_0_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "linebuffer_bank_0_0_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "linebuffer_bank_0_0_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "linebuffer_bank_0_0_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "linebuffer_bank_0_0_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "linebuffer_bank_0_0_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "linebuffer_bank_0_0_0.out"
-                        ],
-                        [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "linebuffer_bank_0_0_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
                             "linebuffer_bank_0_0_0.out"
                         ],
                         [
@@ -1380,39 +1252,7 @@
                             "linebuffer_bank_0_0_0.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "linebuffer_bank_0_0_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "linebuffer_bank_0_0_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "linebuffer_bank_0_0_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "linebuffer_bank_0_0_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "linebuffer_bank_0_0_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "linebuffer_bank_0_0_1.out"
-                        ],
-                        [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "linebuffer_bank_0_0_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "linebuffer_bank_0_0_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
                             "linebuffer_bank_0_0_1.out"
                         ],
                         [
@@ -1421,42 +1261,10 @@
                         ],
                         [
                             "linebuffer_bank_0_1_0.in",
-                            "linebuffer_bank_0_0.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "linebuffer_bank_0_1_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "linebuffer_bank_0_1_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "linebuffer_bank_0_1_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "linebuffer_bank_0_1_0.out"
+                            "linebuffer_bank_0_0.dataout0"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "linebuffer_bank_0_1_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "linebuffer_bank_0_1_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "linebuffer_bank_0_1_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "linebuffer_bank_0_1_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
                             "linebuffer_bank_0_1_0.out"
                         ],
                         [
@@ -1468,39 +1276,7 @@
                             "linebuffer_bank_0_1_0.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "linebuffer_bank_0_1_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "linebuffer_bank_0_1_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "linebuffer_bank_0_1_1.out"
-                        ],
-                        [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "linebuffer_bank_0_1_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "linebuffer_bank_0_1_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "linebuffer_bank_0_1_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "linebuffer_bank_0_1_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "linebuffer_bank_0_1_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
                             "linebuffer_bank_0_1_1.out"
                         ],
                         [
@@ -1509,42 +1285,10 @@
                         ],
                         [
                             "linebuffer_bank_0_2_0.in",
-                            "linebuffer_bank_0_1.dataout"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "linebuffer_bank_0_2_0.out"
+                            "linebuffer_bank_0_1.dataout0"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "linebuffer_bank_0_2_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "linebuffer_bank_0_2_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "linebuffer_bank_0_2_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "linebuffer_bank_0_2_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "linebuffer_bank_0_2_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "linebuffer_bank_0_2_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "linebuffer_bank_0_2_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
                             "linebuffer_bank_0_2_0.out"
                         ],
                         [
@@ -1557,38 +1301,6 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "linebuffer_bank_0_2_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "linebuffer_bank_0_2_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "linebuffer_bank_0_2_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "linebuffer_bank_0_2_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "linebuffer_bank_0_2_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "linebuffer_bank_0_2_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "linebuffer_bank_0_2_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "linebuffer_bank_0_2_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
                             "linebuffer_bank_0_2_1.out"
                         ],
                         [
