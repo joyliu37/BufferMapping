@@ -24,10 +24,10 @@ def regOptmization(node_dict, connection_dict):
                 new_node = RegNode(node.name, node.kernel)
                 new_node.connect(node, connection_dict)
                 node_dict[key] = new_node
-                if type(new_node.pred.kernel) != VirtualRowBuffer and new_node.kernel:
+                if type(new_node.pred.kernel) != VirtualRowBuffer and new_node.pred.kernel:
                     #Add the valid logic
-                    kernel = new_node.kerne
-                    valid_gen = ValidGenNode(key+"_val_gen", kernel._read_delay-1, kernel._counter_bound)
+                    print (new_node.pred.name)
+                    valid_gen = ValidGenNode(key+"_val_gen", new_node.stencil_delay-1, new_node.counter_bound)
                     new_node_dict[valid_gen.name] = valid_gen
                     connection_dict.update(valid_gen.connectNode(new_node.pred))
     node_dict.update(new_node_dict)

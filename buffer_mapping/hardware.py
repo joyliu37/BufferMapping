@@ -31,6 +31,7 @@ class HardwarePort:
 class DummyNode:
     def __init__(self, name):
         self.name = name
+        self.contain_node = False
 
 class FlushNode(DummyNode):
     def __init__(self, name):
@@ -62,6 +63,7 @@ class HardwareNode:
         '''
         input/output is a list of name, type tuple
         '''
+        self.contain_node = False
         self.name = name
         self.kernel = None
         self.input_port = {port.key.split(".",1)[-1]: port  for port in input_list}
@@ -164,6 +166,7 @@ class OutputNode(HardwareNode):
             node.addSucc(self)
         return connection_dict
 
+
 class ValidGenNode(HardwareNode):
     def __init__(self, name, stencil_width, iter_cnt):
         self.stencil_width = stencil_width
@@ -173,6 +176,7 @@ class ValidGenNode(HardwareNode):
         input_list.append(HardwarePort(name+"_counter.en", 0))
         output_list.append(HardwarePort(name+"_ult.out", 0))
         super().__init__(name, input_list, output_list)
+        self.contain_node = True
 
     def update(self):
         pass
@@ -209,6 +213,8 @@ class ValidGenNode(HardwareNode):
         dummy_connection.append([self.name+"_counter.out", self.name+"_ult"+".in0"])
         dummy_connection.append([self.name+"_counter.reset", "self.reset"])
 
+        return node, dummy_connection
+
 
 
 class SelectorNode(HardwareNode):
@@ -222,6 +228,7 @@ class SelectorNode(HardwareNode):
         for bank in range(total_bank):
             output_list.append(HardwarePort(name+"_mux_"+str(bank)+".out."+str(bank), 0))
         super().__init__(name, input_list, output_list)
+        self.contain_node = True
 
     def update(self):
         pass
@@ -288,12 +295,12 @@ class SelectorNode(HardwareNode):
 
 class RegNode(HardwareNode):
     def __init__(self, name, virtualbuffer: VirtualBuffer):
-        self.kernel = virtualbuffer
         input_list = []
         output_list = []
         input_list.append(HardwarePort(name+".in", [0]*virtualbuffer._input_port))
         output_list.append(HardwarePort(name+".out", [0]*virtualbuffer._output_port))
         super().__init__(name, input_list, output_list)
+        self.kernel = virtualbuffer
 
     def update(self):
         stencil_valid, read_valid, dataout = self.kernel.read()
@@ -314,6 +321,9 @@ class RegNode(HardwareNode):
         return mem_tile
 
     def connect(self, substitue_node, connection_dict):
+        #FIXME: hack for stencil valid
+        self.stencil_delay = substitue_node.stencil_delay
+        self.counter_bound = substitue_node.counter_bound
         '''
         Get input connected from original node
         '''
@@ -375,6 +385,11 @@ class BufferNode(HardwareNode):
         output_list.append(HardwarePort(name+".stencil_valid", False))
         super().__init__(name, input_list, output_list)
         self.kernel = virtualbuffer
+        self.stencil_delay = 0
+
+    def setStencilConfig(self, counter_bound, fifo_depth):
+        self.stencil_delay = fifo_depth
+        self.counter_bound = counter_bound
 
     def assertLastOfChain(self):
         self.last_in_chain = True

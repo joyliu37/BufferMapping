@@ -93,8 +93,9 @@ def test_buffer_mapping():
 
     node_list_dict = {}
     for key, node in node_dict.items():
-        if type(node) == SelectorNode:
+        if node.contain_node:
             bank_selector, internal_connection = node.dump_json()
+            print (bank_selector)
             instance.update(bank_selector)
             connection_list.extend(internal_connection)
         else:

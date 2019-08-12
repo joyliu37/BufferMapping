@@ -10,6 +10,8 @@ class LineBufferNode:
     def __init__(self, input_port, output_port, read_iterator_range, read_iterator_stride,
                  counter_bound, buf_list=[], stride_dim=0, fifo_depth=0, fifo_size = 0):
 
+        #FIXME: Hack to get the valid counter bound
+        self._counter_bound = counter_bound
         #fifo size and fifo depth
         self._fifo_depth = fifo_depth
         self._fifo_size = fifo_size
@@ -31,7 +33,7 @@ class LineBufferNode:
                                                    read_iterator_range.copy(),
                                                    read_iterator_stride.copy(),
                                                    [0] * output_port,
-                                                   read_delay * (idx == self._fifo_depth - 1),
+                                                   read_delay * (idx == (self._fifo_depth - 1)),
                                                    fifo_size)
                                  for idx in range(self._fifo_depth)]
         '''
@@ -49,6 +51,8 @@ class LineBufferNode:
         for idx, row_buffer in enumerate(self.row_buffer_chain):
             node_name = name+"_"+str(idx)
             node_dict[node_name] = BufferNode(node_name, row_buffer)
+            #FIXME: hack for stencil valid signal
+            node_dict[node_name].setStencilConfig(self._counter_bound, self._fifo_depth)
             if idx == len(self.row_buffer_chain) - 1:
                 node_dict[node_name].assertLastOfChain()
             if idx == 0:
