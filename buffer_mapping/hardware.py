@@ -63,6 +63,7 @@ class HardwareNode:
         input/output is a list of name, type tuple
         '''
         self.name = name
+        self.kernel = None
         self.input_port = {port.key.split(".",1)[-1]: port  for port in input_list}
         self.output_port = {port.key.split(".",1)[-1]: port for port in output_list}
         self.pred = None
@@ -129,6 +130,11 @@ class OutputValidNode(HardwareNode):
             connection_dict[(self.input_port[self.port_name].key, node.output_port["valid"].key)] = \
                 HardwareWire(self.input_port[self.port_name], node.output_port["valid"])
             #FIXME: name is repeated so, do not add node connection for output va;ld
+        elif type(node) == ValidGenNode:
+            #connect with the ult out port
+            self.input_port[self.port_name].makePred(node.output_port["out"])
+            connection_dict[(self.input_port[self.port_name].key, node.output_port["out"].key)] = \
+                HardwareWire(self.input_port[self.port_name], node.output_port["out"])
         return connection_dict
 
 class OutputNode(HardwareNode):
@@ -158,10 +164,56 @@ class OutputNode(HardwareNode):
             node.addSucc(self)
         return connection_dict
 
+class ValidGenNode(HardwareNode):
+    def __init__(self, name, stencil_width, iter_cnt):
+        self.stencil_width = stencil_width
+        self.iter_cnt = iter_cnt
+        input_list = []
+        output_list = []
+        input_list.append(HardwarePort(name+"_counter.en", 0))
+        output_list.append(HardwarePort(name+"_ult.out", 0))
+        super().__init__(name, input_list, output_list)
+
+    def update(self):
+        pass
+
+    def connectNode(self, node_pred):
+        if type(node_pred) != BufferNode:
+            assert True, "can only connect to buffernode"
+        connection_dict = {}
+        connection_dict[self.input_port["en"].key, node_pred.output_port["valid"].key] = \
+            HardwareWire(self.input_port["en"].key, node_pred.output_port["valid"])
+        return connection_dict
+
+    def dump_json(self):
+        node = {}
+        dummy_connection = []
+        input_counter = {}
+        input_counter["genref"] = "commonlib.counter"
+        input_counter["genargs"] = {"width": ["Int", 16], "min": ["Int", 0], "max": ["Int", self.iter_cnt], "inc": ["Int", 1]}
+        node[self.name+"_counter"] = input_counter
+
+        ult_cmp = {}
+        ult_cmp["genref"] = "coreir.ult"
+        ult_cmp["genargs"] = {"width": ["int", 16]}
+        node[self.name+"_ult"] = ult_cmp
+
+        value = {}
+        value["genref"] = "coreir.const"
+        value["genargs"] = {"width": ["Int", 16]}
+        #TODO: not work with large stencil width, but may be ok for reg
+        value["modargs"] = {"value":[["BitVector", 16], "16'h000"+str(self.stencil_width)]}
+        node[self.name+"_value_"+str(self.stencil_width)] = value
+
+        dummy_connection.append([self.name+"_value_"+str(self.stencil_width)+".out", self.name+"_ult"+".in1"])
+        dummy_connection.append([self.name+"_counter.out", self.name+"_ult"+".in0"])
+        dummy_connection.append([self.name+"_counter.reset", "self.reset"])
+
+
+
 class SelectorNode(HardwareNode):
     def __init__(self, name, total_bank):
         #TODO kernel of bank selector not implemented
-        self.kernel = None
         self.bank_num = total_bank
         input_list = []
         output_list = []
@@ -225,6 +277,7 @@ class SelectorNode(HardwareNode):
             node[self.name+"_value_"+str(i)] = value
             dummy_connection.append([self.name+"_value_"+str(i)+".out", self.name+"_eq_"+str(i)+".in1"])
             dummy_connection.append([self.name+"_counter.out", self.name+"_eq_"+str(i)+".in0"])
+            dummy_connection.append([self.name+"_counter.reset", "self.reset"])
             dummy_connection.append([self.name+"_invalidbit.out", self.name+"_mux_"+str(i)+".in0"])
             dummy_connection.append([self.name+"_eq_"+str(i)+".out", self.name+"_mux_"+str(i)+".sel"])
 
@@ -312,7 +365,6 @@ class BufferNode(HardwareNode):
         if num_bank > 1:
             virtualbuffer = self.initBanking(name, virtualbuffer, num_bank)
         self.last_in_chain = False
-        self.kernel = virtualbuffer
         input_list = []
         output_list = []
         input_list.append(HardwarePort(name+".datain0", [0]*virtualbuffer._input_port))
@@ -322,6 +374,7 @@ class BufferNode(HardwareNode):
         output_list.append(HardwarePort(name+".valid", False))
         output_list.append(HardwarePort(name+".stencil_valid", False))
         super().__init__(name, input_list, output_list)
+        self.kernel = virtualbuffer
 
     def assertLastOfChain(self):
         self.last_in_chain = True
@@ -469,12 +522,13 @@ class BufferNode(HardwareNode):
                 HardwareWire(self.input_port["ren"], node.output_port["valid"])
             connection_dict[(self.input_port["datain0"].key, node.output_port["dataout0"].key)] = \
                 HardwareWire(self.input_port["datain0"], node.output_port["dataout0"])
-            connection_dict[("self.reset", self.name+".reset")] = \
-                DummyWire("self.reset", self.name+".reset")
 
         elif type(node) == InputNode:
             connection_dict = self.connectInput(node.output_port["datain"], node.output_port["in_en"], node.data_port_name, node.valid_port_name, data_only)
 
+        #dummy connection not in data path
+        connection_dict[("self.reset", self.name+".reset")] = \
+            DummyWire("self.reset", self.name+".reset")
         self.makePred(node)
         node.addSucc(self)
         return connection_dict

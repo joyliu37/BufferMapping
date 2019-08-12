@@ -201,6 +201,7 @@ class VirtualRowBuffer(VirtualBuffer):
         super().__init__(input_port, output_port, capacity, _range, stride, start, manual_switch, arbitrary_addr)
         #count how much write you need to wait beforeread out data
         self._read_delay = read_delay
+        self._counter_bound = counter_bound
         self.write_iterator._rng[0] = reduce((lambda x,y : x*y), self.read_iterator._rng)
         self.stencil_valid_counter = Counter(counter_bound)
         self.delay_counter = 0

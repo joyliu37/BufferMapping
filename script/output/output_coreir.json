@@ -1741,6 +1741,10 @@
                             "ub_hw_input_stencil_update_stream_in_reshape.out.0"
                         ],
                         [
+                            "self.reset",
+                            "linebuffer_base.reset"
+                        ],
+                        [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.2",
                             "linebuffer_base.dataout0"
                         ],

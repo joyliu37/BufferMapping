@@ -1,16 +1,21 @@
-from buffer_mapping.hardware import HardwareWire, BufferNode, RegNode, FlushNode, SelectorNode
+from buffer_mapping.hardware import HardwareWire, BufferNode, RegNode, FlushNode, SelectorNode, ValidGenNode
 from buffer_mapping.util import AccessPattern
-from buffer_mapping.virtualbuffer import VirtualValidBuffer
+from buffer_mapping.virtualbuffer import VirtualValidBuffer, VirtualRowBuffer
 
 def connectValidSignal(node_dict, connection_dict, valid_node_list):
     for key, node in node_dict.items():
+        #FIXME: cannot support multiple output valid
         if type(node) == BufferNode:
             if node.last_in_chain:
                 for valid_node in valid_node_list:
                     connection_dict.update(valid_node.connectNode(node))
+        elif type(node) == ValidGenNode:
+            for valid_node in valid_node_list:
+                connection_dict.update(valid_node.connectNode(node))
     return node_dict, connection_dict
 
 def regOptmization(node_dict, connection_dict):
+    new_node_dict = {}
     for key, node in node_dict.items():
         if type(node) == BufferNode:
             #TODO: adding a bank parameter for virtual buffer
@@ -19,6 +24,13 @@ def regOptmization(node_dict, connection_dict):
                 new_node = RegNode(node.name, node.kernel)
                 new_node.connect(node, connection_dict)
                 node_dict[key] = new_node
+                if type(new_node.pred.kernel) != VirtualRowBuffer and new_node.kernel:
+                    #Add the valid logic
+                    kernel = new_node.kerne
+                    valid_gen = ValidGenNode(key+"_val_gen", kernel._read_delay-1, kernel._counter_bound)
+                    new_node_dict[valid_gen.name] = valid_gen
+                    connection_dict.update(valid_gen.connectNode(new_node.pred))
+    node_dict.update(new_node_dict)
     return node_dict, connection_dict
 
 def flattenValidBuffer(node_dict, connection_dict):
