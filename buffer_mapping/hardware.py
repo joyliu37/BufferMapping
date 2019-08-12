@@ -96,6 +96,10 @@ class HardwareNode:
             for succ in out_port.succ:
                 remove_wire_list.append((succ.key, out_port.key))
 
+        #remove dummy reset wire if it's buffernode
+        if type(self) == BufferNode:
+            remove_wire_list.append(("self.reset", self.name+".reset"))
+
         return remove_wire_list
     def update(self):
         '''
@@ -199,7 +203,7 @@ class ValidGenNode(HardwareNode):
 
         ult_cmp = {}
         ult_cmp["genref"] = "coreir.ult"
-        ult_cmp["genargs"] = {"width": ["int", 16]}
+        ult_cmp["genargs"] = {"width": ["Int", 16]}
         node[self.name+"_ult"] = ult_cmp
 
         value = {}

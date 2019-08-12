@@ -1189,10 +1189,6 @@
                         ],
                         [
                             "self.reset",
-                            "linebuffer_base.reset"
-                        ],
-                        [
-                            "self.reset",
                             "linebuffer_bank_0_0.reset"
                         ],
                         [
