@@ -22,7 +22,7 @@
                                                     1,
                                                     [
                                                         "Array",
-                                                        4,
+                                                        1,
                                                         [
                                                             "Array",
                                                             16,
@@ -310,7 +310,7 @@
                                             1,
                                             [
                                                 "Array",
-                                                4,
+                                                1,
                                                 [
                                                     "Array",
                                                     16,
@@ -374,7 +374,7 @@
                                 ]
                             }
                         },
-                        "add_353_355_356": {
+                        "add_327_329_330": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -383,7 +383,7 @@
                                 ]
                             }
                         },
-                        "add_357_360_361": {
+                        "add_331_334_335": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -392,7 +392,7 @@
                                 ]
                             }
                         },
-                        "add_362_365_366": {
+                        "add_336_339_340": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -401,7 +401,7 @@
                                 ]
                             }
                         },
-                        "add_367_371_372": {
+                        "add_341_345_346": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -410,7 +410,7 @@
                                 ]
                             }
                         },
-                        "add_avg_pool_y___scan_dim_11_363": {
+                        "add_avg_pool_y___scan_dim_11_337": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -419,7 +419,7 @@
                                 ]
                             }
                         },
-                        "add_avg_pool_y___scan_dim_11_369": {
+                        "add_avg_pool_y___scan_dim_11_343": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -428,7 +428,7 @@
                                 ]
                             }
                         },
-                        "add_avg_pool_z___scan_dim_21_358": {
+                        "add_avg_pool_z___scan_dim_21_332": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -437,7 +437,7 @@
                                 ]
                             }
                         },
-                        "add_avg_pool_z___scan_dim_21_368": {
+                        "add_avg_pool_z___scan_dim_21_342": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -446,7 +446,7 @@
                                 ]
                             }
                         },
-                        "ashr_373_374_375": {
+                        "ashr_347_348_349": {
                             "genref": "coreir.ashr",
                             "genargs": {
                                 "width": [
@@ -545,7 +545,7 @@
                                 ]
                             }
                         },
-                        "const2__374$1": {
+                        "const2__348": {
                             "genref": "coreir.const",
                             "genargs": {
                                 "width": [
@@ -966,7 +966,7 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    16384
+                                    4096
                                 ],
                                 "dimensionality": [
                                     "Int",
@@ -1034,14 +1034,14 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    4096
+                                    1024
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            64,
-                                            64,
+                                            32,
+                                            32,
                                             4
                                         ]
                                     }
@@ -1054,24 +1054,28 @@
                                     "Int",
                                     4
                                 ],
+                                "num_reduction_iter": [
+                                    "Int",
+                                    1
+                                ],
                                 "output_starting_addrs": [
                                     "Json",
                                     {
                                         "output_start": [
                                             0,
                                             1,
-                                            64,
-                                            65
+                                            32,
+                                            33
                                         ]
                                     }
                                 ],
                                 "range_0": [
                                     "Int",
-                                    32
+                                    16
                                 ],
                                 "range_1": [
                                     "Int",
-                                    32
+                                    16
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1103,11 +1107,11 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    128
+                                    64
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    4096
+                                    1024
                                 ],
                                 "stride_3": [
                                     "Int",
@@ -1140,7 +1144,7 @@
                                             1,
                                             [
                                                 "Array",
-                                                4,
+                                                1,
                                                 [
                                                     "Array",
                                                     16,
@@ -1154,7 +1158,7 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        4,
+                                        1,
                                         [
                                             "Array",
                                             16,
@@ -1204,7 +1208,7 @@
                     },
                     "connections": [
                         [
-                            "add_367_371_372.out",
+                            "add_341_345_346.out",
                             "_avg_pool_stencil0_mux1_0.in.data.0"
                         ],
                         [
@@ -1228,7 +1232,7 @@
                             "_avg_pool_stencil2_mux1_0.in.sel"
                         ],
                         [
-                            "ashr_373_374_375.in0",
+                            "ashr_347_348_349.in0",
                             "_avg_pool_stencil2_mux1_0.out"
                         ],
                         [
@@ -1364,7 +1368,7 @@
                             "_hw_input_stencil1_mux2_0$1.in.sel"
                         ],
                         [
-                            "add_357_360_361.in1",
+                            "add_331_334_335.in1",
                             "_hw_input_stencil1_mux2_0$1.out"
                         ],
                         [
@@ -1372,7 +1376,7 @@
                             "_hw_input_stencil1_mux2_0$2.in.sel"
                         ],
                         [
-                            "add_362_365_366.in1",
+                            "add_336_339_340.in1",
                             "_hw_input_stencil1_mux2_0$2.out"
                         ],
                         [
@@ -1380,7 +1384,7 @@
                             "_hw_input_stencil1_mux2_0$3.in.sel"
                         ],
                         [
-                            "add_367_371_372.in1",
+                            "add_341_345_346.in1",
                             "_hw_input_stencil1_mux2_0$3.out"
                         ],
                         [
@@ -1388,88 +1392,88 @@
                             "_hw_input_stencil1_mux2_0.in.sel"
                         ],
                         [
-                            "add_353_355_356.in1",
+                            "add_327_329_330.in1",
                             "_hw_input_stencil1_mux2_0.out"
                         ],
                         [
                             "const0_0.out",
-                            "add_353_355_356.in0"
+                            "add_327_329_330.in0"
                         ],
                         [
-                            "add_357_360_361.in0",
-                            "add_353_355_356.out"
+                            "add_331_334_335.in0",
+                            "add_327_329_330.out"
                         ],
                         [
-                            "add_362_365_366.in0",
-                            "add_357_360_361.out"
+                            "add_336_339_340.in0",
+                            "add_331_334_335.out"
                         ],
                         [
-                            "add_367_371_372.in0",
-                            "add_362_365_366.out"
+                            "add_341_345_346.in0",
+                            "add_336_339_340.out"
                         ],
                         [
                             "count__avg_pool_y___scan_dim_1.out",
-                            "add_avg_pool_y___scan_dim_11_363.in0"
+                            "add_avg_pool_y___scan_dim_11_337.in0"
                         ],
                         [
                             "const1_1$1.out",
-                            "add_avg_pool_y___scan_dim_11_363.in1"
+                            "add_avg_pool_y___scan_dim_11_337.in1"
                         ],
                         [
                             "selslice_hw_input_stencil1_mux2_0$2.in",
-                            "add_avg_pool_y___scan_dim_11_363.out"
+                            "add_avg_pool_y___scan_dim_11_337.out"
                         ],
                         [
                             "count__avg_pool_y___scan_dim_1.out",
-                            "add_avg_pool_y___scan_dim_11_369.in0"
+                            "add_avg_pool_y___scan_dim_11_343.in0"
                         ],
                         [
                             "const1_1$3.out",
-                            "add_avg_pool_y___scan_dim_11_369.in1"
+                            "add_avg_pool_y___scan_dim_11_343.in1"
                         ],
                         [
                             "selslice_hw_input_stencil1_mux2_0$3.in",
-                            "add_avg_pool_y___scan_dim_11_369.out"
+                            "add_avg_pool_y___scan_dim_11_343.out"
                         ],
                         [
                             "count__avg_pool_z___scan_dim_2.out",
-                            "add_avg_pool_z___scan_dim_21_358.in0"
+                            "add_avg_pool_z___scan_dim_21_332.in0"
                         ],
                         [
                             "const1_1.out",
-                            "add_avg_pool_z___scan_dim_21_358.in1"
+                            "add_avg_pool_z___scan_dim_21_332.in1"
                         ],
                         [
                             "selslice_hw_input_stencil0_mux2_0$1.in",
-                            "add_avg_pool_z___scan_dim_21_358.out"
+                            "add_avg_pool_z___scan_dim_21_332.out"
                         ],
                         [
                             "selslice_hw_input_stencil0_mux2_1$1.in",
-                            "add_avg_pool_z___scan_dim_21_358.out"
+                            "add_avg_pool_z___scan_dim_21_332.out"
                         ],
                         [
                             "count__avg_pool_z___scan_dim_2.out",
-                            "add_avg_pool_z___scan_dim_21_368.in0"
+                            "add_avg_pool_z___scan_dim_21_342.in0"
                         ],
                         [
                             "const1_1$2.out",
-                            "add_avg_pool_z___scan_dim_21_368.in1"
+                            "add_avg_pool_z___scan_dim_21_342.in1"
                         ],
                         [
                             "selslice_hw_input_stencil0_mux2_0$3.in",
-                            "add_avg_pool_z___scan_dim_21_368.out"
+                            "add_avg_pool_z___scan_dim_21_342.out"
                         ],
                         [
                             "selslice_hw_input_stencil0_mux2_1$3.in",
-                            "add_avg_pool_z___scan_dim_21_368.out"
+                            "add_avg_pool_z___scan_dim_21_342.out"
                         ],
                         [
-                            "const2__374$1.out",
-                            "ashr_373_374_375.in1"
+                            "const2__348.out",
+                            "ashr_347_348_349.in1"
                         ],
                         [
                             "self.out.0.0.0",
-                            "ashr_373_374_375.out"
+                            "ashr_347_348_349.out"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream.valid",

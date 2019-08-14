@@ -11,6 +11,8 @@ class VirtualBuffer:
         Has method read and write, has a valid field which prevent read before write
         '''
         #TODO: Add constrain of the initial parameter to the base class
+        self._chain_id = 0
+        self._chain_en = False
         self._input_port = input_port
         self._output_port = output_port
         self._capacity = capacity
@@ -73,14 +75,18 @@ class VirtualBuffer:
 
     def produce_banking(self, num_bank, bank_per_dim, capacity_per_dim, acc_capacity, bank_stride, bank_id):
         bank_buffer = copy.deepcopy(self)
+        if bank_buffer._input_port < num_bank:
+            bank_buffer._chain_id = bank_id
+            bank_buffer._chain_en = True
         write_range = []
         write_stride = []
         acc_bank = 1
         for idx, (bank, capacity) in enumerate(zip(bank_per_dim, capacity_per_dim)):
             if bank_buffer._input_port < num_bank:
                 assert capacity % bank == 0, "capacity in dimension should be divisible by bank number"
-                write_range.append(bank)
-                write_stride.append(bank_stride * acc_bank)
+                if bank != 1:
+                    write_range.append(bank)
+                    write_stride.append(bank_stride * acc_bank)
                 write_range.append(capacity // bank)
                 write_stride.append(acc_capacity[idx] // acc_bank)
                 #update bank we current use

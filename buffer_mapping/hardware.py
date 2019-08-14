@@ -560,8 +560,8 @@ class BufferNode(HardwareNode):
             else:
                 args["input_range_" + str(idx)] = ["Int", self.kernel.write_iterator._rng[idx]]
         #TODO: add chainning
-        args["chain_en"] = ["Bool", False]
-        args["chain_idx"] = ["Int", 0]
+        args["chain_en"] = ["Bool", self.kernel._chain_en]
+        args["chain_idx"] = ["Int", self.kernel._chain_id]
         args["output_starting_addrs"] = ["Json", {"output_start": self.kernel.read_iterator._start}]
         mem_tile["genargs"] = args
 
