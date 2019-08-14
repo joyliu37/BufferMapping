@@ -2,8 +2,7 @@ from buffer_mapping.config import VirtualBufferConfig
 from buffer_mapping.util import AccessIter, Counter
 from functools import reduce
 from buffer_mapping.flatten import FlattenAccessPattern
-import random
-import string
+import copy
 
 class VirtualBuffer:
     def __init__(self, input_port, output_port, capacity, _range, stride, start, manual_switch=0, arbitrary_addr=0):
@@ -71,6 +70,40 @@ class VirtualBuffer:
         #print ("base class write: size: ",self._capacity, self.write_iterator._done, self.write_iterator._iter, self.read_iterator._done, self.read_iterator._iter)
         if(self._manual_switch == 0):
             self.check_switch()
+
+    def produce_banking(self, num_bank, bank_per_dim, capacity_per_dim, acc_capacity, bank_stride, bank_id):
+        bank_buffer = copy.deepcopy(self)
+        write_range = []
+        write_stride = []
+        acc_bank = 1
+        for idx, (bank, capacity) in enumerate(zip(bank_per_dim, capacity_per_dim)):
+            if bank_buffer._input_port < num_bank:
+                assert capacity % bank == 0, "capacity in dimension should be divisible by bank number"
+                write_range.append(bank)
+                write_stride.append(bank_stride * acc_bank)
+                write_range.append(capacity // bank)
+                write_stride.append(acc_capacity[idx] // acc_bank)
+                #update bank we current use
+            else:
+                write_range.append(capacity // bank)
+                write_stride.append(acc_capacity[idx] // acc_bank)
+                #update assigned bank
+            acc_bank *= bank
+
+        for st_dim, st in enumerate(bank_buffer.read_iterator._st):
+            stride_divisor = 1
+            for idx, acc_capacity_per_dim in enumerate(acc_capacity):
+                if st > acc_capacity_per_dim:
+                    stride_divisor *= bank_per_dim[idx]
+            bank_buffer.read_iterator._st[st_dim] //= stride_divisor
+        bank_buffer.read_iterator._start = [bank_stride * bank_id]
+        bank_buffer.write_iterator._rng = write_range
+        bank_buffer.write_iterator._st = write_stride
+        bank_buffer._capacity //= num_bank
+        bank_buffer._output_port //= num_bank
+
+        return bank_buffer
+
 
 class VirtualValidBuffer(VirtualBuffer):
     '''

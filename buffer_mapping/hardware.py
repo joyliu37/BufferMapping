@@ -222,16 +222,22 @@ class ValidGenNode(HardwareNode):
 
 
 class SelectorNode(HardwareNode):
-    def __init__(self, name, total_bank):
+    def __init__(self, name, total_bank, bank_per_dim, capacity_per_dim):
         #TODO kernel of bank selector not implemented
         self.bank_num = total_bank
+        self.bank_per_dim = bank_per_dim
+        self.capacity_per_dim = capacity_per_dim
+        print (bank_per_dim, capacity_per_dim)
         input_list = []
         output_list = []
         input_list.append(HardwarePort(name+"_counter.en", 0))
-        input_list.append(HardwarePort(name+"_mux.in1", 0))
+        #input_list.append(HardwarePort(name+"_mux.in1", 0))
         for bank in range(total_bank):
             output_list.append(HardwarePort(name+"_mux_"+str(bank)+".out."+str(bank), 0))
         super().__init__(name, input_list, output_list)
+        #TODO: hack to add port
+        for bank in range(total_bank):
+            self.input_port["mux_in"+str(bank)] = HardwarePort(name+"_mux_" +str(bank)+".in1", 0)
         self.contain_node = True
 
     def update(self):
@@ -241,8 +247,9 @@ class SelectorNode(HardwareNode):
         if type(node) != InputNode:
             assert True ,"can only connect to input enable!"
         connection_dict = {}
-        connection_dict[(self.input_port["in1"].key, node.output_port["in_en"].key)] = \
-            HardwareWire(self.input_port["in1"], node.output_port["in_en"])
+        for bank in range(self.bank_num):
+            connection_dict[(self.input_port["mux_in"+str(bank)].key, node.output_port["in_en"].key)] = \
+                HardwareWire(self.input_port["mux_in"+str(bank)], node.output_port["in_en"])
         connection_dict[(self.input_port["en"].key, node.output_port["in_en"].key)] = \
             HardwareWire(self.input_port["en"], node.output_port["in_en"])
         return connection_dict
@@ -261,36 +268,80 @@ class SelectorNode(HardwareNode):
         node = {}
         dummy_connection = []
 
-        input_counter = {}
-        input_counter["genref"] = "commonlib.counter"
-        input_counter["genargs"] = {"width": ["Int", 16], "min": ["Int", 0], "max": ["Int", self.bank_num], "inc":["Int", 1]}
-        node[self.name+"_counter"] = input_counter
-
         invalid_bit = {}
         invalid_bit["modref"] = "corebit.const"
         invalid_bit["modargs"] = {"value": ["Bool", False]}
         node[self.name+"_invalidbit"] = invalid_bit
+        bank_dim = 0
 
-        for i in range(self.bank_num):
-            eq = {}
-            eq["genref"] = "coreir.eq"
-            eq["genargs"] = {"width": ["Int", 16]}
-            node[self.name+"_eq_"+str(i)] = eq
+        for idx, (bank_in_dim, capacity_in_dim) in enumerate(zip(self.bank_per_dim, self.capacity_per_dim)):
+            bank_dim += 1
+            if bank_in_dim == 1 :
+                continue
 
-            mux = {}
-            mux["modref"] = "corebit.mux"
-            node[self.name+"_mux_"+str(i)] = mux
+            input_counter = {}
+            input_counter["genref"] = "commonlib.counter"
+            input_counter["genargs"] = {"width": ["Int", 16], "min": ["Int", 0], "max": ["Int", bank_in_dim], "inc":["Int", 1]}
+            node[self.name+"_counter_"+str(idx)] = input_counter
 
-            value = {}
-            value["genref"] = "coreir.const"
-            value["genargs"] = {"width": ["Int", 16]}
-            value["modargs"] = {"value":[["BitVector", 16], "16'h000"+str(i)]}
-            node[self.name+"_value_"+str(i)] = value
-            dummy_connection.append([self.name+"_value_"+str(i)+".out", self.name+"_eq_"+str(i)+".in1"])
-            dummy_connection.append([self.name+"_counter.out", self.name+"_eq_"+str(i)+".in0"])
-            dummy_connection.append([self.name+"_counter.reset", "self.reset"])
-            dummy_connection.append([self.name+"_invalidbit.out", self.name+"_mux_"+str(i)+".in0"])
-            dummy_connection.append([self.name+"_eq_"+str(i)+".out", self.name+"_mux_"+str(i)+".sel"])
+            if idx > 0:
+                #add base counter
+                input_counter = {}
+                input_counter["genref"] = "commonlib.counter"
+                input_counter["genargs"] = {"width": ["Int", 16], "min": ["Int", 0], "max": ["Int", self.capacity_per_dim[idx-1]], "inc":["Int", 1]}
+                node[self.name+"_counter_base_"+str(idx)] = input_counter
+
+                #add another input port
+                self.input_port["base_en"] = HardwarePort(self.name+"_counter_base_"+str(idx)+".en", 0)
+
+                #add reset to the previous counter
+                dummy_connection.append([self.name+"_counter_"+str(idx-1)+".reset",
+                                         self.name+"_counter_base_"+str(idx)+".overflow"])
+                dummy_connection.append([self.name+"_counter_"+str(idx)+".en",
+                                         self.name+"_counterbase_"+str(idx)+".overflow"])
+
+            for i in range(bank_in_dim):
+                eq = {}
+                eq["genref"] = "coreir.eq"
+                eq["genargs"] = {"width": ["Int", 16]}
+                node[self.name+"_eq_"+str(idx)+"_"+str(i)] = eq
+
+
+                value = {}
+                value["genref"] = "coreir.const"
+                value["genargs"] = {"width": ["Int", 16]}
+                value["modargs"] = {"value":[["BitVector", 16], "16'h000"+str(i)]}
+                node[self.name+"_value_"+str(idx) + "_" + str(i)] = value
+                dummy_connection.append([self.name+"_value_"+str(idx)+"_"+str(i)+".out",
+                                         self.name+"_eq_"+str(idx)+"_"+str(i)+".in1"])
+                dummy_connection.append([self.name+"_counter"+str(idx)+".out",
+                                         self.name+"_eq_"+str(idx)+"_"+str(i)+".in0"])
+
+        cur_port = 0
+        for dim, bank_in_dim in enumerate(self.bank_per_dim):
+            for i in range(bank_in_dim):
+                mux = {}
+                mux["modref"] = "corebit.mux"
+                node[self.name+"_mux_" + str(dim) + "_" + str(i)] = mux
+
+                if bank_dim > 1:
+                    _and = {}
+                    _and["modref"] = "corebit.and"
+                    node[self.name+"_and_" + str(dim) + "_" + str(i)] = _and
+                    index = [i, dim]
+                    for idx in range(len(self.bank_per_dim)):
+                        dummy_connection.append([self.name+"_and_"+str(dim)+"_"+str(i)+".in"+str(idx),
+                                                  self.name+"_eq_"+str(idx)+"_"+str(index[idx])+".out"])
+                    dummy_connection.append([self.name+"_and_"+str(dim)+"_"+str(i)+".out",
+                                             self.name+"_mux_"+str(cur_port)+".sel"])
+                    dummy_connection.append([self.name+"_invalidbit.out", self.name+"_mux_"+str(cur_port)+".in0"])
+                    cur_port+=1
+
+
+                else:
+                    dummy_connection.append([self.name+"_invalidbit.out", self.name+"_mux_"+str(i)+".in0"])
+                    dummy_connection.append([self.name+"_eq_"+str(cur_port)+".out", self.name+"_mux_"+str(i)+".sel"])
+
 
         return node, dummy_connection
 
@@ -374,10 +425,10 @@ class RegNode(HardwareNode):
 
 class BufferNode(HardwareNode):
     def __init__(self, name, virtualbuffer: VirtualBuffer, num_bank = 1, bank_id = 0):
-        self.input_bank_select = [False, num_bank, bank_id]
-        self.output_bank_select = [False, num_bank, bank_id]
-        if num_bank > 1:
-            virtualbuffer = self.initBanking(name, virtualbuffer, num_bank)
+        #self.input_bank_select = [False, num_bank, bank_id]
+        #self.output_bank_select = [False, num_bank, bank_id]
+        #if num_bank > 1:
+        #    virtualbuffer = self.initBanking(name, virtualbuffer, num_bank)
         self.last_in_chain = False
         input_list = []
         output_list = []
@@ -398,24 +449,39 @@ class BufferNode(HardwareNode):
     def assertLastOfChain(self):
         self.last_in_chain = True
 
-    def initBanking(self, name, virtualbuffer, num_bank):
+    def initBanking(self, name, virtualbuffer, num_bank, ):
         kernel_for_bank = copy.deepcopy(virtualbuffer)
 
-        def sliceAccessIter(access_pattern: AccessIter, num_bank, num_port):
+        def sliceAccessIter(access_pattern: AccessIter, num_bank, num_port, bank_id):
             '''
             method that recreate a new access pattern for banked buffer
             '''
 
-            if access_pattern._st[0] >= num_bank:
+            if num_port >= num_bank:
                 #normal situation
+                bank_per_dim = [0]*len(access_pattern._st)
                 bank_stride = []
-                for st_in_dim in access_pattern._st:
-                    assert st_in_dim % num_bank == 0, "stride is not divisible by number of bank"
-                    bank_stride.append(st_in_dim // num_bank)
+                bank_assign = 1
+                bank_remain = num_bank
+                print (access_pattern._st)
+                #TODO: only support 2D down sample
+                for idx, st_in_dim in enumerate(access_pattern._st):
+                    if st_in_dim >= num_bank:
+                        #assert st_in_dim % num_bank == 0, "stride is not divisible by number of bank"
+                        bank_stride.append(st_in_dim // num_bank)
+                        bank_assign = num_bank
+                        bank_per_dim[idx] =  bank_remain
+                        bank_remain = 1
+                    else:
+                        bank_stride.append(1)
+                        bank_assign =  bank_assign * st_in_dim
+                        bank_remain = bank_remain // st_in_dim
+                        bank_per_dim[idx] = st_in_dim
 
-                bank_start = access_pattern._start[0 : num_port]
+
+                bank_start = [access_pattern._start[bank_id]]
                 bank_range = [rng for rng in access_pattern._rng]
-                return False, AccessIter(bank_range, bank_stride, bank_start)
+                return False, bank_per_dim, AccessIter(bank_range, bank_stride, bank_start)
             else:
                 #need add bank selector
                 bank_stride = []
@@ -428,14 +494,15 @@ class BufferNode(HardwareNode):
                 bank_start = access_pattern._start[0:num_port]
                 bank_range = [rng for rng in access_pattern._rng]
                 bank_range[0] = bank_range[0] // num_bank
-                return True, AccessIter(bank_range, bank_stride, bank_start)
+                return True, [], AccessIter(bank_range, bank_stride, bank_start)
 
 
         #update the read write iterator
-        need_read_select, kernel_for_bank.read_iterator = sliceAccessIter(virtualbuffer.read_iterator, num_bank, kernel_for_bank._output_port)
-        need_write_select, kernel_for_bank.write_iterator = sliceAccessIter(virtualbuffer.write_iterator, num_bank, kernel_for_bank._input_port)
+        need_read_select, bank_per_dim, kernel_for_bank.read_iterator = sliceAccessIter(virtualbuffer.read_iterator, num_bank, kernel_for_bank._output_port, self.output_bank_select[2])
+        need_write_select, _, kernel_for_bank.write_iterator = sliceAccessIter(virtualbuffer.write_iterator, num_bank, kernel_for_bank._input_port, self.input_bank_select[2])
         self.input_bank_select[0] = need_write_select
         self.output_bank_select[0] = need_read_select
+        self.bank_in_dim = bank_per_dim
 
         #update port and capacity
         #FIXME: possible bug, ohter line buffer hyper parameter may need changing

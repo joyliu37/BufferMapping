@@ -83,8 +83,9 @@ def test_buffer_mapping():
     node_dict, connection_dict = initializeGraph(v_setup, mem_config, IR_setup, output_list, valid_list, input_port, inen_port)
 
     #set of compiler pass optimize the graph
-    node_dict, connection_dict = banking(node_dict, connection_dict, mem_config)
-    node_dict, connection_dict = flattenValidBuffer(node_dict, connection_dict)
+    capacity_per_dim = IR_setup.config_dict["logical_size"][1]['capacity']
+    node_dict, connection_dict = banking(node_dict, connection_dict, mem_config, IR_setup.acc_capacity, capacity_per_dim)
+    #node_dict, connection_dict = flattenValidBuffer(node_dict, connection_dict)
     node_dict, connection_dict = regOptmization(node_dict, connection_dict)
     node_dict, connection_dict = connectValidSignal(node_dict, connection_dict, valid_node_list)
     node_dict, connection_dict = addFlush(node_dict, connection_dict)

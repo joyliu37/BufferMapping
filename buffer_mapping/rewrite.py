@@ -1,6 +1,7 @@
 from buffer_mapping.hardware import HardwareWire, BufferNode, RegNode, FlushNode, SelectorNode, ValidGenNode
 from buffer_mapping.util import AccessPattern
 from buffer_mapping.virtualbuffer import VirtualValidBuffer, VirtualRowBuffer
+from functools import reduce
 
 def connectValidSignal(node_dict, connection_dict, valid_node_list):
     for key, node in node_dict.items():
@@ -68,7 +69,7 @@ def addFlush(node_dict, connection_dict):
             connection_dict.update(node_dict[dummy_node_name].connectNode(node))
     return node_dict, connection_dict
 
-def banking(node_dict, connection_dict, mem_config):
+def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_dim):
     #TODO: currently it's buggy need to rewrite this not support double buffer well
     '''
     [Call this method before regOptimiztion]
@@ -83,29 +84,51 @@ def banking(node_dict, connection_dict, mem_config):
             vbuffer = node.kernel
             def check_bank(vbuffer_):
                 #check the bandwidth requirement to create banking
-                input_multiplier = vbuffer_._input_port // mem_config._input_port
-                output_multiplier = vbuffer_._output_port // mem_config._output_port
-                num_bank = max(input_multiplier, output_multiplier)
-                return num_bank
-            def createBankFromNode(node):
 
+                def check_bank_for_dim(iterator, capacity_prev_dim, capacity_this_dim):
+                    cnt = 0
+                    for start_addr in iterator._start:
+                        if start_addr // capacity_this_dim == 0 and (start_addr+1) // capacity_prev_dim > 0:
+                            cnt += 1
+                    return cnt
+
+                print (acc_capacity)
+                read_bank_per_dim = [check_bank_for_dim(vbuffer_.read_iterator, acc_capacity[i], acc_capacity[i+1]) for i in range(len(capacity_per_dim))]
+                write_bank_per_dim = [check_bank_for_dim(vbuffer_.write_iterator, acc_capacity[i], acc_capacity[i+1]) for i in range(len(capacity_per_dim))]
+                print (read_bank_per_dim, write_bank_per_dim)
+
+                bank_per_dim = [max(max(read_bank, write_bank), 1) for read_bank, write_bank in zip(read_bank_per_dim, write_bank_per_dim)]
+
+                #input_multiplier = vbuffer_._input_port // mem_config._input_port
+                #output_multiplier = vbuffer_._output_port // mem_config._output_port
+                num_bank = reduce(lambda x, y: x*y, bank_per_dim)
+                return num_bank, bank_per_dim
+            num_bank, bank_per_dim = check_bank(vbuffer)
+            if num_bank == 1:
+                continue
+            def createBankFromNode(node, num_bank):
+                print (num_bank)
                 capacity_per_bank = node.kernel._capacity // num_bank
 
                 if capacity_per_bank > mem_config._capacity:
                     assert True, "Need chaining which is not implemented. \n"
 
                 #create the set of memory node and recursive connect to its successor
-                banked_buffer_node = [BufferNode(node.name+"_bank_"+str(bank_id), node.kernel, num_bank, bank_id)
-                                      for bank_id in range(num_bank)]
+                banked_buffer_node = []
+                for bank_id in range(num_bank):
+                    banked_buffer = vbuffer.produce_banking(num_bank, bank_per_dim, capacity_per_dim, acc_capacity, 512, bank_id)
+                    banked_buffer_node.append(BufferNode(node.name+"_bank_"+str(bank_id), banked_buffer, bank_id))
 
                 return banked_buffer_node
-            num_bank = check_bank(vbuffer)
-            if num_bank == 1:
-                continue
-            banked_buffer_node = createBankFromNode(node)
+            banked_buffer_node_list = createBankFromNode(node, num_bank)
+            for banked_buffer_node in banked_buffer_node_list:
+                new_node_dict[banked_buffer_node.name] = banked_buffer_node
+            '''
+
             if banked_buffer_node[0].input_bank_select[0]:
                 #create the bank select node
-                bankselect_tmp = SelectorNode(key+ "_selector", num_bank)
+                #TODO, use bank_in_dim and capacity_
+                bankselect_tmp = SelectorNode(key+ "_selector", num_bank, banked_buffer_node[0].bank_in_dim, capacity_per_dim)
                 new_connection_dict.update( bankselect_tmp.connectNode(node.pred) )
                 new_connection_dict.update( bankselect_tmp.connectOutput(banked_buffer_node) )
                 new_node_dict[bankselect_tmp.name] = bankselect_tmp
@@ -113,15 +136,17 @@ def banking(node_dict, connection_dict, mem_config):
                 new_node_dict.update(banked_buffer_node_dict)
             if banked_buffer_node[0].output_bank_select[0]:
                 assert False, "Not implemented output bank selector"
+            '''
             #TODO connect to input, also need to connect the bank slector
 
             #connect the banked buffer node with input and output
-            for buffer_node, output_node in zip(banked_buffer_node, node.succ):
+            for buffer_node, output_node in zip(banked_buffer_node_list, node.succ):
                 #only connect data port
-                new_connection_dict.update(buffer_node.connectNode(node.pred, True))
+                print (node.pred)
+                new_connection_dict.update(buffer_node.connectNode(node.pred))
                 new_connection_dict.update(output_node.connectNode(buffer_node))
 
-            banked_buffer_node[-1].assertLastOfChain()
+            banked_buffer_node_list[-1].assertLastOfChain()
 
             #FIXME: Maybe do not need thisThe DFS to create graoh
             '''
