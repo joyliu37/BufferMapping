@@ -966,7 +966,7 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    4096
+                                    1024
                                 ],
                                 "dimensionality": [
                                     "Int",
@@ -1034,14 +1034,14 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            32,
-                                            32,
+                                            16,
+                                            16,
                                             4
                                         ]
                                     }
@@ -1064,18 +1064,18 @@
                                         "output_start": [
                                             0,
                                             1,
-                                            32,
-                                            33
+                                            16,
+                                            17
                                         ]
                                     }
                                 ],
                                 "range_0": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "range_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1107,11 +1107,11 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    64
+                                    32
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "stride_3": [
                                     "Int",

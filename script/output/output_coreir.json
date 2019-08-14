@@ -927,13 +927,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            1024
+                                            256
                                         ]
                                     }
                                 ],
@@ -947,7 +947,7 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "stencil_width": [
                                     "Int",
@@ -959,19 +959,19 @@
                                 ],
                                 "range_0": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "range_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    256
+                                    64
                                 ],
                                 "range_2": [
                                     "Int",
@@ -991,7 +991,7 @@
                                 ],
                                 "input_range_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_stride_2": [
                                     "Int",
@@ -1003,15 +1003,15 @@
                                 ],
                                 "input_stride_3": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_range_3": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_stride_4": [
                                     "Int",
-                                    256
+                                    64
                                 ],
                                 "input_range_4": [
                                     "Int",
@@ -1044,13 +1044,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            1024
+                                            256
                                         ]
                                     }
                                 ],
@@ -1064,7 +1064,7 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "stencil_width": [
                                     "Int",
@@ -1076,19 +1076,19 @@
                                 ],
                                 "range_0": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "range_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    256
+                                    64
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1108,7 +1108,7 @@
                                 ],
                                 "input_range_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_stride_2": [
                                     "Int",
@@ -1120,15 +1120,15 @@
                                 ],
                                 "input_stride_3": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_range_3": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_stride_4": [
                                     "Int",
-                                    256
+                                    64
                                 ],
                                 "input_range_4": [
                                     "Int",
@@ -1161,13 +1161,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            1024
+                                            256
                                         ]
                                     }
                                 ],
@@ -1181,7 +1181,7 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "stencil_width": [
                                     "Int",
@@ -1193,19 +1193,19 @@
                                 ],
                                 "range_0": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "range_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    256
+                                    64
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1225,7 +1225,7 @@
                                 ],
                                 "input_range_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_stride_2": [
                                     "Int",
@@ -1237,15 +1237,15 @@
                                 ],
                                 "input_stride_3": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_range_3": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_stride_4": [
                                     "Int",
-                                    256
+                                    64
                                 ],
                                 "input_range_4": [
                                     "Int",
@@ -1278,13 +1278,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            1024
+                                            256
                                         ]
                                     }
                                 ],
@@ -1298,7 +1298,7 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    1024
+                                    256
                                 ],
                                 "stencil_width": [
                                     "Int",
@@ -1310,19 +1310,19 @@
                                 ],
                                 "range_0": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "range_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    256
+                                    64
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1342,7 +1342,7 @@
                                 ],
                                 "input_range_1": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_stride_2": [
                                     "Int",
@@ -1354,15 +1354,15 @@
                                 ],
                                 "input_stride_3": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_range_3": [
                                     "Int",
-                                    16
+                                    8
                                 ],
                                 "input_stride_4": [
                                     "Int",
-                                    256
+                                    64
                                 ],
                                 "input_range_4": [
                                     "Int",
