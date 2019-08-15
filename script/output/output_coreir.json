@@ -3931,6 +3931,26 @@
                             "linebuffer_base_bank_2.dataout0"
                         ],
                         [
+                            "linebuffer_base_bank_3.wen",
+                            "self.in_en"
+                        ],
+                        [
+                            "linebuffer_base_bank_3.ren",
+                            "self.in_en"
+                        ],
+                        [
+                            "linebuffer_base_bank_3.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "linebuffer_base_bank_3.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
+                            "linebuffer_base_bank_3.dataout0"
+                        ],
+                        [
                             "linebuffer_bank_0_0_0.in",
                             "linebuffer_base_bank_0.dataout0"
                         ],

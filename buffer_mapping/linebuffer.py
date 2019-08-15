@@ -328,15 +328,18 @@ class VirtualLineBuffer:
         connection.update(base_buf_node.connectNode(input_node))
         node_dict[base_buf_node.name] = base_buf_node
 
-        for idx, (bank_idx, buffer_node) in enumerate(self.meta_fifo_dict.items()):
+        for idx, bank_idx in enumerate(self.base_buf.read_iterator._start):
+        #for idx, (bank_idx, buffer_node) in enumerate(self.meta_fifo_dict.items()):
             #this is a 2D list each contains the set of line buffer output port from which it can have fanout
             output_node_list = output_node_dict[bank_idx]
             for output_node in output_node_list[-1]:
                 connection.update(output_node.connectNode(base_buf_node, idx))
             output_node_list.pop()
-            entry_node, entry_connection = buffer_node.GenGraph(name+"_bank_"+str(bank_idx), base_buf_node, output_node_list, idx)
-            node_dict.update(entry_node)
-            connection.update(entry_connection)
+            if bank_idx in self.meta_fifo_dict.keys():
+                buffer_node = self.meta_fifo_dict[bank_idx]
+                entry_node, entry_connection = buffer_node.GenGraph(name+"_bank_"+str(bank_idx), base_buf_node, output_node_list, idx)
+                node_dict.update(entry_node)
+                connection.update(entry_connection)
         return node_dict, connection
 
     def fifo_optimize(self, hw_input_port, hw_output_port):
