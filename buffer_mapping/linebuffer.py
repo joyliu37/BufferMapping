@@ -8,10 +8,10 @@ from buffer_mapping.flatten import FlattenAccessPattern
 class LineBufferNode:
 
     def __init__(self, input_port, output_port, read_iterator_range, read_iterator_stride,
-                 counter_bound, buf_list=[], stride_dim=0, fifo_depth=0, fifo_size = 0):
+                 buf_list=[], stride_dim=0, fifo_depth=0, fifo_size = 0):
 
         #FIXME: Hack to get the valid counter bound
-        self._counter_bound = counter_bound
+        #self._counter_bound = counter_bound
         #fifo size and fifo depth
         self._fifo_depth = fifo_depth
         self._fifo_size = fifo_size
@@ -52,7 +52,7 @@ class LineBufferNode:
             node_name = name+"_"+str(idx)
             node_dict[node_name] = BufferNode(node_name, row_buffer)
             #FIXME: hack for stencil valid signal
-            node_dict[node_name].setStencilConfig(self._counter_bound, self._fifo_depth)
+            #node_dict[node_name].setStencilConfig(self._counter_bound, self._fifo_depth)
             if idx == len(self.row_buffer_chain) - 1:
                 node_dict[node_name].assertLastOfChain()
             if idx == 0:
@@ -337,6 +337,9 @@ class VirtualLineBuffer:
 
         #update the port number
         for stride_dim, stride in enumerate(self.base_buf.read_iterator._st):
+            if stride == 0:
+                continue
+            print (stride_dim, stride, self._stride_in_dim)
             #dictionary from original port to the connected fifo start addr
             root = {addr: addr for addr in self.base_buf.read_iterator._start}
             next_start = self.base_buf.read_iterator._start.copy()
@@ -411,7 +414,7 @@ class VirtualLineBuffer:
                         LineBufferNode(hw_input_port, hw_output_port,
                                        row_buf_range,
                                        row_buf_stride,
-                                       self._capacity_dim[stride_dim]//self._stride_in_dim[stride_dim],
+                                       #self._capacity_dim[stride_dim]//self._stride_in_dim[stride_dim],
                                        child_buf_list,
                                        stride_dim, len(merge_port_list)-1,
                                        row_buf_size)
