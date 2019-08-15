@@ -2,6 +2,7 @@ from buffer_mapping.hardware import HardwareWire, BufferNode, RegNode, FlushNode
 from buffer_mapping.util import AccessPattern
 from buffer_mapping.virtualbuffer import VirtualValidBuffer, VirtualRowBuffer
 from functools import reduce
+import copy
 
 def connectValidSignal(node_dict, connection_dict, valid_node_list):
     for key, node in node_dict.items():
@@ -68,6 +69,31 @@ def addFlush(node_dict, connection_dict):
             node_dict[dummy_node_name] = FlushNode(dummy_node_name)
             connection_dict.update(node_dict[dummy_node_name].connectNode(node))
     return node_dict, connection_dict
+'''
+
+def chaining(node_dict, connection_dict, mem_config):
+    #FIXME not finish this chaining pass
+    new_connection_dict = {}
+    new_node_dict = {}
+    for key, node in node_dict.items():
+        if type(node) == BufferNode:
+            vbuffer = node.kernel
+            if vbuffer._capacity > mem_config._capacity:
+                #TODO: add rewrite rule if cannot divisible need to rewrite the access pattern
+                assert mem_config._capacity % vbuffer._capacity == 0, "virtual capacity must large than memtile capacit."
+                chain_num = vbuffer._capacity // mem_config._capacity
+                for chain_id in range(chain_num):
+                   chain_buffer = copy.deep_copy(node.kernel)
+                   chain_buffer._chain_en = True
+                   chain_buffer._chain_id = chain_id
+                   chain_node = BufferNode(node.name+"_chain_"+str(chain_id), chain_buffer)
+                   new_node_dict[chain_node.name] = chain_node
+                   new_connection_dict.update(chain_node.coonectNode(node.pred))
+                   if chain_id > 0:
+                       new_connection_dict.update(chain_node.connectChainNode(new_node_dict[node.name +"_chain_"+str(chain_id-1)]))
+                       #TODO: finish this method
+'''
+
 
 def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_dim):
     #TODO: currently it's buggy need to rewrite this not support double buffer well
