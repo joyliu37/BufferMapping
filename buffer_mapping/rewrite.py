@@ -105,15 +105,19 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
     '''
     new_connection_dict = {}
     new_node_dict = {}
-    for key, node in node_dict.items():
+    for key, node in list(node_dict.items()):
         if type(node) == BufferNode:
             vbuffer = node.kernel
             def check_bank(vbuffer_):
                 #check the bandwidth requirement to create banking
 
+                #node.kernel.read_iterator._start.sort(key = lambda x: max(x, -x))
+
                 def check_bank_for_dim(iterator, capacity_prev_dim, capacity_this_dim):
                     cnt = 0
                     for start_addr in iterator._start:
+                        if start_addr < 0:
+                            start_addr = -start_addr
                         if start_addr // capacity_this_dim == 0 and (start_addr+1) // capacity_prev_dim > 0:
                             cnt += 1
                     return cnt
@@ -165,12 +169,20 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
             '''
             #TODO connect to input, also need to connect the bank slector
 
+            #remove the node connection and get the wire delete key list
+            del_connection_key_list = node.removeConnection()
+            # remove connection
+            for del_key in del_connection_key_list:
+                print (del_key)
+                connection_dict.pop(del_key)
+
             #connect the banked buffer node with input and output
-            for buffer_node, output_node in zip(banked_buffer_node_list, node.succ):
-                #only connect data port
-                print (node.pred)
+            print (node.succ)
+            for buffer_node, (port_id, output_node_list) in zip(banked_buffer_node_list, node.succ.items()):
                 new_connection_dict.update(buffer_node.connectNode(node.pred))
-                new_connection_dict.update(output_node.connectNode(buffer_node))
+                for output_node in output_node_list:
+                    print (output_node.name, buffer_node.name)
+                    new_connection_dict.update(output_node.connectNode(buffer_node))
 
             banked_buffer_node_list[-1].assertLastOfChain()
 
@@ -189,12 +201,11 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
 
             connect2succ(node, banked_buffer_node_dict)
             '''
-    if new_node_dict == {}:
-        new_node_dict = node_dict
-    if new_connection_dict == {}:
-        new_connection_dict = connection_dict
+            node_dict.pop(node.name)
+    node_dict.update(new_node_dict)
+    connection_dict.update(new_connection_dict)
 
-    return new_node_dict, new_connection_dict
+    return node_dict, connection_dict
 
 
 

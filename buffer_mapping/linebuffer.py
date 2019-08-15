@@ -10,8 +10,11 @@ class LineBufferNode:
     def __init__(self, input_port, output_port, read_iterator_range, read_iterator_stride,
                  buf_list=[], stride_dim=0, fifo_depth=0, fifo_size = 0):
 
-        #FIXME: Hack to get the valid counter bound
-        #self._counter_bound = counter_bound
+        #print ("read_iterator_range", read_iterator_range, fifo_depth, fifo_size, "stride_dim", stride_dim)
+
+        #get the valid counter bound, and stencil delay, meta data to create the valid counter
+        self._counter_bound = reduce(lambda x, y: x*y, read_iterator_range[:stride_dim+1])
+        self._read_delay = fifo_depth*fifo_size
         #fifo size and fifo depth
         self._fifo_depth = fifo_depth
         self._fifo_size = fifo_size
@@ -24,6 +27,7 @@ class LineBufferNode:
         self.child_fifo = buf_list
         if self.child_fifo:
             read_delay = buf_list[0]._fifo_depth * buf_list[0]._fifo_size
+        print ("read_delay",read_delay)
 
         #a list of VirtualRowBuffer that save data
         self.row_buffer_chain = [ VirtualRowBuffer(input_port,
@@ -44,23 +48,25 @@ class LineBufferNode:
 
         '''
 
-    def GenGraph(self, name, input_node, output_node_list):
+    def GenGraph(self, name, input_node, output_node_list, outside_bank_id = 0):
         node_dict = {}
         connection_dict = {}
         prev_buffer = None
         for idx, row_buffer in enumerate(self.row_buffer_chain):
             node_name = name+"_"+str(idx)
             node_dict[node_name] = BufferNode(node_name, row_buffer)
-            #FIXME: hack for stencil valid signal
-            #node_dict[node_name].setStencilConfig(self._counter_bound, self._fifo_depth)
+
+            #FIXME: need a beatiful data embeded schema for stencil valid signal
+            node_dict[node_name].setStencilConfig(self._counter_bound, self._fifo_depth)
+
             if idx == len(self.row_buffer_chain) - 1:
                 node_dict[node_name].assertLastOfChain()
             if idx == 0:
                 if len(self.child_fifo):
-                    node, connection = self.child_fifo[0].GenGraph(node_name, input_node, output_node_list)
+                    node, connection = self.child_fifo[0].GenGraph(node_name, input_node, output_node_list, outside_bank_id)
                     node_dict.update(node)
                     connection_dict.update(connection)
-                connection_dict.update(node_dict[node_name].connectNode(input_node))
+                connection_dict.update(node_dict[node_name].connectNode(input_node, outside_bank_id))
             else:
                 connection_dict.update(node_dict[node_name].connectNode(prev_buffer))
 
@@ -322,13 +328,13 @@ class VirtualLineBuffer:
         connection.update(base_buf_node.connectNode(input_node))
         node_dict[base_buf_node.name] = base_buf_node
 
-        for bank_idx, buffer_node in self.meta_fifo_dict.items():
+        for idx, (bank_idx, buffer_node) in enumerate(self.meta_fifo_dict.items()):
             #this is a 2D list each contains the set of line buffer output port from which it can have fanout
             output_node_list = output_node_dict[bank_idx]
             for output_node in output_node_list[-1]:
-                connection.update(output_node.connectNode(base_buf_node))
+                connection.update(output_node.connectNode(base_buf_node, idx))
             output_node_list.pop()
-            entry_node, entry_connection = buffer_node.GenGraph(name+"_bank_"+str(bank_idx), base_buf_node, output_node_list)
+            entry_node, entry_connection = buffer_node.GenGraph(name+"_bank_"+str(bank_idx), base_buf_node, output_node_list, idx)
             node_dict.update(entry_node)
             connection.update(entry_connection)
         return node_dict, connection

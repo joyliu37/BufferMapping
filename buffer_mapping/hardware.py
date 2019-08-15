@@ -3,7 +3,7 @@ from buffer_mapping.util import Counter, AccessPattern
 from buffer_mapping.pretty_print import NoIndent
 import copy
 from functools import reduce
-
+from collections import defaultdict
 
 class HardwarePort:
     '''
@@ -69,7 +69,7 @@ class HardwareNode:
         self.input_port = {port.key.split(".",1)[-1]: port  for port in input_list}
         self.output_port = {port.key.split(".",1)[-1]: port for port in output_list}
         self.pred = None
-        self.succ = []
+        self.succ = defaultdict(list)
 
     def makePred(self, pred):
         self.pred = pred
@@ -77,11 +77,12 @@ class HardwareNode:
     def removePred(self):
         self.pred = None
 
-    def addSucc(self, succ):
-        self.succ.append(succ)
+    def addSucc(self, succ, port_id=0):
+        self.succ[port_id].append(succ)
 
-    def removeSucc(self, succ):
-        self.succ.remove(succ)
+    def removeSucc(self, succ, port_id=0):
+        self.succ[port_id].remove(succ)
+
 
     def removeConnection(self):
         #no need to remove the succ's pred because pred update is always overwrite
@@ -152,7 +153,7 @@ class OutputNode(HardwareNode):
     def getval(self):
         return self.input_port
 
-    def connectNode(self, node):
+    def connectNode(self, node, port_id=0):
         connection_dict = {}
         if type(node) == BufferNode:
             self.input_port[self.port_name].makePred(node.output_port["dataout0"])
@@ -160,7 +161,7 @@ class OutputNode(HardwareNode):
             connection_dict[(self.input_port[self.port_name].key, node.output_port["dataout0"].key)] = \
                 HardwareWire(self.input_port[self.port_name], node.output_port["dataout0"])
             self.makePred( node)
-            node.addSucc(self)
+            node.addSucc(self, port_id)
         elif type(node) == InputNode:
             self.input_port[self.port_name].makePred(node.output_port["datain"])
             node.output_port["datain"].addSucc(self.input_port[self.port_name])
@@ -227,7 +228,6 @@ class SelectorNode(HardwareNode):
         self.bank_num = total_bank
         self.bank_per_dim = bank_per_dim
         self.capacity_per_dim = capacity_per_dim
-        print (bank_per_dim, capacity_per_dim)
         input_list = []
         output_list = []
         input_list.append(HardwarePort(name+"_counter.en", 0))
@@ -260,7 +260,6 @@ class SelectorNode(HardwareNode):
             out_port = output_node.input_port["wen"]
             connection_dict[(out_port.key, self.output_port["out."+str(bank_id)].key.rsplit(".",1)[0])] = \
                 HardwareWire(out_port, self.output_port["out."+str(bank_id)])
-        print (connection_dict)
         return connection_dict
 
 
@@ -388,7 +387,7 @@ class RegNode(HardwareNode):
             self.makePred(pred_node)
             self.pred.removeSucc(substitue_node)
             self.pred.addSucc(self)
-        for succ in substitue_node.succ:
+        for succ in substitue_node.succ[0]:
             self.addSucc(succ)
             succ.makePred(self)
 
@@ -463,7 +462,6 @@ class BufferNode(HardwareNode):
                 bank_stride = []
                 bank_assign = 1
                 bank_remain = num_bank
-                print (access_pattern._st)
                 #TODO: only support 2D down sample
                 for idx, st_in_dim in enumerate(access_pattern._st):
                     if st_in_dim >= num_bank:
@@ -589,7 +587,7 @@ class BufferNode(HardwareNode):
             HardwareWire(self.input_port["datain0"], data_in)
         return connection_dict
 
-    def connectNode(self, node, data_only = False):
+    def connectNode(self, node, bank_idx = 0, data_only = False):
         '''
         method connect buffer with predecessor buffer
         data_only flag is added for banked buffer need bank selector
@@ -616,7 +614,7 @@ class BufferNode(HardwareNode):
         connection_dict[("self.reset", self.name+".reset")] = \
             DummyWire("self.reset", self.name+".reset")
         self.makePred(node)
-        node.addSucc(self)
+        node.addSucc(self, bank_idx)
         return connection_dict
 
 
