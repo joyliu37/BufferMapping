@@ -110,6 +110,21 @@ class VirtualBuffer:
 
         return bank_buffer
 
+    def produce_banking_duplicate(self, num_bank, bank_per_dim, capacity_per_dim, acc_capacity, bank_stride, bank_id):
+        bank_buffer = copy.deepcopy(self)
+        '''
+
+        for st_dim, st in enumerate(bank_buffer.read_iterator._st):
+            stride_divisor = 1
+            for idx, acc_capacity_per_dim in enumerate(acc_capacity):
+                if st > acc_capacity_per_dim:
+                    stride_divisor *= bank_per_dim[idx]
+            bank_buffer.read_iterator._st[st_dim] //= stride_divisor
+        '''
+        bank_buffer.read_iterator._start = [self.read_iterator._start[bank_id]]
+        bank_buffer._output_port //= num_bank
+
+        return bank_buffer
 
 class VirtualValidBuffer(VirtualBuffer):
     '''

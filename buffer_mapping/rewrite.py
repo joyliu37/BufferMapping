@@ -142,7 +142,7 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
                 #create the set of memory node and recursive connect to its successor
                 banked_buffer_node = []
                 for bank_id in range(num_bank):
-                    banked_buffer = vbuffer.produce_banking(num_bank, bank_per_dim, capacity_per_dim, acc_capacity, 512, bank_id)
+                    banked_buffer = vbuffer.produce_banking_duplicate(num_bank, bank_per_dim, capacity_per_dim, acc_capacity, 512, bank_id)
                     banked_buffer_node.append(BufferNode(node.name+"_bank_"+str(bank_id), banked_buffer, bank_id))
 
                 return banked_buffer_node
