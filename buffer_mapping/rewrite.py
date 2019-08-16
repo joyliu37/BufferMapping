@@ -50,9 +50,10 @@ def flattenValidBuffer(node_dict, connection_dict):
                     for connection in connection_dict:
                         if connection.isLinkedTo(node.name):
                     '''
-                    for succ in node.succ:
-                        entry_connection_dict = succ.connectNode(node.pred)
-                        connection_dict.update(entry_connection_dict)
+                    for port, succ_list in node.succ.items():
+                        for succ in succ_list:
+                            entry_connection_dict = succ.connectNode(node.pred)
+                            connection_dict.update(entry_connection_dict)
                     #remove the node connection and get the wire delete key list
                     del_connection_key_list = node.removeConnection()
                     # remove connection
@@ -115,10 +116,11 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
 
                 def check_bank_for_dim(iterator, capacity_prev_dim, capacity_this_dim):
                     cnt = 0
+                    capacity = capacity_this_dim // capacity_prev_dim
                     for start_addr in iterator._start:
                         if start_addr < 0:
                             start_addr = -start_addr
-                        if start_addr // capacity_this_dim == 0 and (start_addr+1) // capacity_prev_dim > 0:
+                        if start_addr // capacity_prev_dim < capacity:
                             cnt += 1
                     return cnt
 
@@ -134,10 +136,10 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
                 num_bank = reduce(lambda x, y: x*y, bank_per_dim)
                 return num_bank, bank_per_dim
             num_bank, bank_per_dim = check_bank(vbuffer)
+            print ("bank number:",num_bank)
             if num_bank == 1:
                 continue
             def createBankFromNode(node, num_bank):
-                print (num_bank)
                 capacity_per_bank = node.kernel._capacity // num_bank
 
                 if capacity_per_bank > mem_config._capacity:

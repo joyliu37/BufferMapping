@@ -22,8 +22,12 @@
                                                     1,
                                                     [
                                                         "Array",
-                                                        16,
-                                                        "BitIn"
+                                                        1,
+                                                        [
+                                                            "Array",
+                                                            16,
+                                                            "BitIn"
+                                                        ]
                                                     ]
                                                 ]
                                             ]
@@ -49,8 +53,12 @@
                                         1,
                                         [
                                             "Array",
-                                            16,
-                                            "Bit"
+                                            1,
+                                            [
+                                                "Array",
+                                                16,
+                                                "Bit"
+                                            ]
                                         ]
                                     ]
                                 ]
@@ -88,12 +96,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_0": {
+                        "_conv_stencil2_mux1_0": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    1
                                 ],
                                 "width": [
                                     "Int",
@@ -101,12 +109,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_0$1": {
+                        "_hw_input_stencil0_mux1_0": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    1
                                 ],
                                 "width": [
                                     "Int",
@@ -114,12 +122,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_0$2": {
+                        "_hw_input_stencil0_mux1_0$1": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    1
                                 ],
                                 "width": [
                                     "Int",
@@ -127,12 +135,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_0$3": {
+                        "_hw_input_stencil0_mux1_1": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    1
                                 ],
                                 "width": [
                                     "Int",
@@ -140,12 +148,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_0$4": {
+                        "_hw_input_stencil0_mux1_1$1": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    1
                                 ],
                                 "width": [
                                     "Int",
@@ -153,12 +161,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_0$5": {
+                        "_hw_input_stencil1_mux1_0": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    1
                                 ],
                                 "width": [
                                     "Int",
@@ -166,12 +174,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_0$6": {
+                        "_hw_input_stencil1_mux1_0$1": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    1
                                 ],
                                 "width": [
                                     "Int",
@@ -179,12 +187,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_0$7": {
+                        "_hw_input_stencil1_mux1_1": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    1
                                 ],
                                 "width": [
                                     "Int",
@@ -192,12 +200,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_0$8": {
+                        "_hw_input_stencil1_mux1_1$1": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    1
                                 ],
                                 "width": [
                                     "Int",
@@ -205,12 +213,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_1": {
+                        "_hw_input_stencil2_mux2_0": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
+                                    2
                                 ],
                                 "width": [
                                     "Int",
@@ -218,337 +226,12 @@
                                 ]
                             }
                         },
-                        "_hw_input_stencil0_mux3_1$1": {
+                        "_hw_input_stencil2_mux2_0$1": {
                             "genref": "commonlib.muxn",
                             "genargs": {
                                 "N": [
                                     "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_1$2": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_1$3": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_1$4": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_1$5": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_1$6": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_1$7": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_1$8": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_2": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_2$1": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_2$2": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_2$3": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_2$4": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_2$5": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_2$6": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_2$7": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil0_mux3_2$8": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil1_mux3_0": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil1_mux3_0$1": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil1_mux3_0$2": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil1_mux3_0$3": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil1_mux3_0$4": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil1_mux3_0$5": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil1_mux3_0$6": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil1_mux3_0$7": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "_hw_input_stencil1_mux3_0$8": {
-                            "genref": "commonlib.muxn",
-                            "genargs": {
-                                "N": [
-                                    "Int",
-                                    3
+                                    2
                                 ],
                                 "width": [
                                     "Int",
@@ -563,11 +246,15 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        61,
+                                        2,
                                         [
                                             "Array",
-                                            61,
-                                            "Bit"
+                                            64,
+                                            [
+                                                "Array",
+                                                64,
+                                                "Bit"
+                                            ]
                                         ]
                                     ]
                                 ],
@@ -579,7 +266,19 @@
                                         [
                                             "Array",
                                             0,
-                                            "Bit"
+                                            [
+                                                "Array",
+                                                0,
+                                                [
+                                                    "Array",
+                                                    1,
+                                                    [
+                                                        "Array",
+                                                        0,
+                                                        "Bit"
+                                                    ]
+                                                ]
+                                            ]
                                         ]
                                     ]
                                 ],
@@ -593,8 +292,12 @@
                                             1,
                                             [
                                                 "Array",
-                                                16,
-                                                "BitIn"
+                                                1,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "BitIn"
+                                                ]
                                             ]
                                         ]
                                     ]
@@ -603,14 +306,18 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        3,
+                                        2,
                                         [
                                             "Array",
-                                            3,
+                                            1,
                                             [
                                                 "Array",
-                                                16,
-                                                "Bit"
+                                                1,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "Bit"
+                                                ]
                                             ]
                                         ]
                                     ]
@@ -619,11 +326,23 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        30,
+                                        62,
                                         [
                                             "Array",
-                                            30,
-                                            "Bit"
+                                            4,
+                                            [
+                                                "Array",
+                                                62,
+                                                [
+                                                    "Array",
+                                                    3,
+                                                    [
+                                                        "Array",
+                                                        3,
+                                                        "Bit"
+                                                    ]
+                                                ]
+                                            ]
                                         ]
                                     ]
                                 ],
@@ -631,17 +350,29 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        2,
+                                        1,
                                         [
                                             "Array",
-                                            2,
-                                            "Bit"
+                                            0,
+                                            [
+                                                "Array",
+                                                1,
+                                                [
+                                                    "Array",
+                                                    1,
+                                                    [
+                                                        "Array",
+                                                        1,
+                                                        "Bit"
+                                                    ]
+                                                ]
+                                            ]
                                         ]
                                     ]
                                 ]
                             }
                         },
-                        "add_242_246_247": {
+                        "add_354_351_355": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -650,7 +381,7 @@
                                 ]
                             }
                         },
-                        "add_248_253_254": {
+                        "add_356_361_362": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -659,7 +390,7 @@
                                 ]
                             }
                         },
-                        "add_255_260_261": {
+                        "add_363_369_370": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -668,7 +399,7 @@
                                 ]
                             }
                         },
-                        "add_262_267_268": {
+                        "add_3649_365": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -677,7 +408,7 @@
                                 ]
                             }
                         },
-                        "add_269_275_276": {
+                        "add_conv_s1_r_x_355_357": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -686,151 +417,7 @@
                                 ]
                             }
                         },
-                        "add_277_283_284": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_285_290_291": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_292_298_299": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_300_306_307": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_x___scan_dim_01_264": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_x___scan_dim_01_272": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_x___scan_dim_01_280": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_x___scan_dim_02_287": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_x___scan_dim_02_295": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_x___scan_dim_02_303": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_y___scan_dim_11_250": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_y___scan_dim_11_271": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_y___scan_dim_11_294": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_y___scan_dim_12_257": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_y___scan_dim_12_279": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_conv_y___scan_dim_12_302": {
-                            "genref": "coreir.add",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "add_kernel_s0_x_240_241": {
+                        "add_conv_s1_r_x_355_364": {
                             "genref": "coreir.add",
                             "genargs": {
                                 "width": [
@@ -875,114 +462,6 @@
                                 ]
                             }
                         },
-                        "const11_11": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h000b"
-                                ]
-                            }
-                        },
-                        "const12_12": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h000c"
-                                ]
-                            }
-                        },
-                        "const13_13": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h000d"
-                                ]
-                            }
-                        },
-                        "const14_14": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h000e"
-                                ]
-                            }
-                        },
-                        "const16_16": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0010"
-                                ]
-                            }
-                        },
-                        "const17_17": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0011"
-                                ]
-                            }
-                        },
                         "const18_18": {
                             "genref": "coreir.const",
                             "genargs": {
@@ -998,24 +477,6 @@
                                         16
                                     ],
                                     "16'h0012"
-                                ]
-                            }
-                        },
-                        "const19_19": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0013"
                                 ]
                             }
                         },
@@ -1037,204 +498,6 @@
                                 ]
                             }
                         },
-                        "const1_1$1": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0001"
-                                ]
-                            }
-                        },
-                        "const1_1$2": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0001"
-                                ]
-                            }
-                        },
-                        "const1_1$3": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0001"
-                                ]
-                            }
-                        },
-                        "const1_1$4": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0001"
-                                ]
-                            }
-                        },
-                        "const1_1$5": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0001"
-                                ]
-                            }
-                        },
-                        "const2_2": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0002"
-                                ]
-                            }
-                        },
-                        "const2_2$1": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0002"
-                                ]
-                            }
-                        },
-                        "const2_2$2": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0002"
-                                ]
-                            }
-                        },
-                        "const2_2$3": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0002"
-                                ]
-                            }
-                        },
-                        "const2_2$4": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0002"
-                                ]
-                            }
-                        },
-                        "const2_2$5": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0002"
-                                ]
-                            }
-                        },
                         "const3_3": {
                             "genref": "coreir.const",
                             "genargs": {
@@ -1253,6 +516,66 @@
                                 ]
                             }
                         },
+                        "const9_9": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0009"
+                                ]
+                            }
+                        },
+                        "count__conv_s1_r_x": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    2
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "count__conv_s1_r_y": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    2
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
                         "count__conv_x___scan_dim_0": {
                             "genref": "commonlib.counter",
                             "genargs": {
@@ -1262,7 +585,7 @@
                                 ],
                                 "max": [
                                     "Int",
-                                    29
+                                    61
                                 ],
                                 "min": [
                                     "Int",
@@ -1283,7 +606,28 @@
                                 ],
                                 "max": [
                                     "Int",
-                                    29
+                                    61
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "count__hw_output_w___scan_dim_2": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    3
                                 ],
                                 "min": [
                                     "Int",
@@ -1304,7 +648,7 @@
                                 ],
                                 "max": [
                                     "Int",
-                                    29
+                                    61
                                 ],
                                 "min": [
                                     "Int",
@@ -1334,7 +678,7 @@
                                 ],
                                 "max": [
                                     "Int",
-                                    29
+                                    61
                                 ],
                                 "min": [
                                     "Int",
@@ -1346,28 +690,231 @@
                                 ]
                             }
                         },
-                        "count__kernel_s0_x": {
-                            "genref": "commonlib.counter",
+                        "mul_358_360_361": {
+                            "genref": "coreir.mul",
                             "genargs": {
-                                "inc": [
-                                    "Int",
-                                    1
-                                ],
-                                "max": [
-                                    "Int",
-                                    2
-                                ],
-                                "min": [
-                                    "Int",
-                                    0
-                                ],
                                 "width": [
                                     "Int",
                                     16
                                 ]
                             }
                         },
-                        "count__kernel_s0_x_wen": {
+                        "mul_366_368_369": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_conv_s1_r_y3_354": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_conv_y___scan_dim_118_351": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "rom__kernela0": {
+                            "genref": "memory.rom2",
+                            "genargs": {
+                                "depth": [
+                                    "Int",
+                                    72
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "init": [
+                                    "Json",
+                                    {
+                                        "init": [
+                                            11,
+                                            14,
+                                            17,
+                                            12,
+                                            0,
+                                            18,
+                                            13,
+                                            16,
+                                            19,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "rom__kernela0$1": {
+                            "genref": "memory.rom2",
+                            "genargs": {
+                                "depth": [
+                                    "Int",
+                                    72
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "init": [
+                                    "Json",
+                                    {
+                                        "init": [
+                                            11,
+                                            14,
+                                            17,
+                                            12,
+                                            0,
+                                            18,
+                                            13,
+                                            16,
+                                            19,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0,
+                                            0
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "rom__kernela0$1_ren": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -1376,114 +923,12 @@
                                 ]
                             }
                         },
-                        "count__kernel_s0_y": {
-                            "genref": "commonlib.counter",
-                            "genargs": {
-                                "inc": [
-                                    "Int",
-                                    1
-                                ],
-                                "max": [
-                                    "Int",
-                                    2
-                                ],
-                                "min": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_243_245_246": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_249_252_253": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_256_259_260": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_263_266_267": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_270_274_275": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_278_282_283": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_286_289_290": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_293_297_298": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_301_305_306": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "mul_kernel_s0_y3_240": {
-                            "genref": "coreir.mul",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
+                        "rom__kernela0_ren": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    true
                                 ]
                             }
                         },
@@ -1521,12 +966,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_0": {
+                        "selslice_conv_stencil2_mux1_0": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1538,12 +983,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_0$1": {
+                        "selslice_hw_input_stencil0_mux1_0": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1555,12 +1000,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_0$2": {
+                        "selslice_hw_input_stencil0_mux1_0$1": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1572,12 +1017,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_0$3": {
+                        "selslice_hw_input_stencil0_mux1_1": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1589,12 +1034,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_0$4": {
+                        "selslice_hw_input_stencil0_mux1_1$1": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1606,12 +1051,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_0$5": {
+                        "selslice_hw_input_stencil1_mux1_0": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1623,12 +1068,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_0$6": {
+                        "selslice_hw_input_stencil1_mux1_0$1": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1640,12 +1085,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_0$7": {
+                        "selslice_hw_input_stencil1_mux1_1": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1657,12 +1102,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_0$8": {
+                        "selslice_hw_input_stencil1_mux1_1$1": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1674,12 +1119,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_1": {
+                        "selslice_hw_input_stencil2_mux2_0": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1691,12 +1136,12 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_1$1": {
+                        "selslice_hw_input_stencil2_mux2_0$1": {
                             "genref": "coreir.slice",
                             "genargs": {
                                 "hi": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "lo": [
                                     "Int",
@@ -1708,425 +1153,18 @@
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_1$2": {
-                            "genref": "coreir.slice",
+                        "sub0_conv_y___scan_dim_1_353": {
+                            "genref": "coreir.sub",
                             "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
                                 "width": [
                                     "Int",
                                     16
                                 ]
                             }
                         },
-                        "selslice_hw_input_stencil0_mux3_1$3": {
-                            "genref": "coreir.slice",
+                        "sub1_conv_y___scan_dim_1_352": {
+                            "genref": "coreir.sub",
                             "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_1$4": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_1$5": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_1$6": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_1$7": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_1$8": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_2": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_2$1": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_2$2": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_2$3": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_2$4": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_2$5": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_2$6": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_2$7": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil0_mux3_2$8": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil1_mux3_0": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil1_mux3_0$1": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil1_mux3_0$2": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil1_mux3_0$3": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil1_mux3_0$4": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil1_mux3_0$5": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil1_mux3_0$6": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil1_mux3_0$7": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "selslice_hw_input_stencil1_mux3_0$8": {
-                            "genref": "coreir.slice",
-                            "genargs": {
-                                "hi": [
-                                    "Int",
-                                    2
-                                ],
-                                "lo": [
-                                    "Int",
-                                    0
-                                ],
                                 "width": [
                                     "Int",
                                     16
@@ -2146,11 +1184,11 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    3721
+                                    8192
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    2
+                                    5
                                 ],
                                 "init": [
                                     "Json",
@@ -2166,7 +1204,7 @@
                                 ],
                                 "input_range_2": [
                                     "Int",
-                                    0
+                                    1
                                 ],
                                 "input_range_3": [
                                     "Int",
@@ -2198,7 +1236,7 @@
                                 ],
                                 "input_stride_2": [
                                     "Int",
-                                    0
+                                    1
                                 ],
                                 "input_stride_3": [
                                     "Int",
@@ -2214,14 +1252,15 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    900
+                                    138384
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            61,
-                                            61
+                                            64,
+                                            64,
+                                            2
                                         ]
                                     }
                                 ],
@@ -2231,6 +1270,10 @@
                                 ],
                                 "num_output_ports": [
                                     "Int",
+                                    2
+                                ],
+                                "num_reduction_iter": [
+                                    "Int",
                                     9
                                 ],
                                 "output_starting_addrs": [
@@ -2238,36 +1281,29 @@
                                     {
                                         "output_start": [
                                             0,
-                                            1,
-                                            2,
-                                            61,
-                                            62,
-                                            63,
-                                            122,
-                                            123,
-                                            124
+                                            4096
                                         ]
                                     }
                                 ],
                                 "range_0": [
                                     "Int",
-                                    30
+                                    3
                                 ],
                                 "range_1": [
                                     "Int",
-                                    30
+                                    3
                                 ],
                                 "range_2": [
                                     "Int",
-                                    0
+                                    62
                                 ],
                                 "range_3": [
                                     "Int",
-                                    0
+                                    4
                                 ],
                                 "range_4": [
                                     "Int",
-                                    0
+                                    62
                                 ],
                                 "range_5": [
                                     "Int",
@@ -2283,15 +1319,15 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    122
+                                    64
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    0
+                                    1
                                 ],
                                 "stride_3": [
                                     "Int",
@@ -2299,7 +1335,7 @@
                                 ],
                                 "stride_4": [
                                     "Int",
-                                    0
+                                    64
                                 ],
                                 "stride_5": [
                                     "Int",
@@ -2324,8 +1360,12 @@
                                             1,
                                             [
                                                 "Array",
-                                                16,
-                                                "BitIn"
+                                                1,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "BitIn"
+                                                ]
                                             ]
                                         ]
                                     ]
@@ -2345,13 +1385,13 @@
                             }
                         },
                         "ub_hw_input_stencil_update_stream_out_reshape": {
-                            "genref": "commonlib.transpose_reshape",
+                            "genref": "commonlib.reshape",
                             "genargs": {
                                 "input_type": [
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        9,
+                                        2,
                                         [
                                             "Array",
                                             16,
@@ -2363,14 +1403,18 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        3,
+                                        2,
                                         [
                                             "Array",
-                                            3,
+                                            1,
                                             [
                                                 "Array",
-                                                16,
-                                                "Bit"
+                                                1,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "Bit"
+                                                ]
                                             ]
                                         ]
                                     ]
@@ -2380,7 +1424,7 @@
                     },
                     "connections": [
                         [
-                            "add_300_306_307.out",
+                            "add_363_369_370.out",
                             "_conv_stencil0_mux1_0.in.data.0"
                         ],
                         [
@@ -2396,948 +1440,240 @@
                             "_conv_stencil1_mux1_0.in.sel"
                         ],
                         [
-                            "self.out.0.0",
+                            "_conv_stencil2_mux1_0.in.data.0",
                             "_conv_stencil1_mux1_0.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "_hw_input_stencil0_mux3_0$1.in.data.0"
+                            "selslice_conv_stencil2_mux1_0.out",
+                            "_conv_stencil2_mux1_0.in.sel"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "_hw_input_stencil0_mux3_0$1.in.data.1"
+                            "self.out.0.0.0",
+                            "_conv_stencil2_mux1_0.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "_hw_input_stencil0_mux3_0$1.in.data.2"
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0.0",
+                            "_hw_input_stencil0_mux1_0$1.in.data.0"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$1.out",
-                            "_hw_input_stencil0_mux3_0$1.in.sel"
+                            "selslice_hw_input_stencil0_mux1_0$1.out",
+                            "_hw_input_stencil0_mux1_0$1.in.sel"
                         ],
                         [
-                            "_hw_input_stencil1_mux3_0$1.in.data.0",
-                            "_hw_input_stencil0_mux3_0$1.out"
+                            "_hw_input_stencil1_mux1_0$1.in.data.0",
+                            "_hw_input_stencil0_mux1_0$1.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "_hw_input_stencil0_mux3_0$2.in.data.0"
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0.0",
+                            "_hw_input_stencil0_mux1_0.in.data.0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "_hw_input_stencil0_mux3_0$2.in.data.1"
+                            "selslice_hw_input_stencil0_mux1_0.out",
+                            "_hw_input_stencil0_mux1_0.in.sel"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "_hw_input_stencil0_mux3_0$2.in.data.2"
+                            "_hw_input_stencil1_mux1_0.in.data.0",
+                            "_hw_input_stencil0_mux1_0.out"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$2.out",
-                            "_hw_input_stencil0_mux3_0$2.in.sel"
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0.0",
+                            "_hw_input_stencil0_mux1_1$1.in.data.0"
                         ],
                         [
-                            "_hw_input_stencil1_mux3_0$2.in.data.0",
-                            "_hw_input_stencil0_mux3_0$2.out"
+                            "selslice_hw_input_stencil0_mux1_1$1.out",
+                            "_hw_input_stencil0_mux1_1$1.in.sel"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "_hw_input_stencil0_mux3_0$3.in.data.0"
+                            "_hw_input_stencil1_mux1_1$1.in.data.0",
+                            "_hw_input_stencil0_mux1_1$1.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "_hw_input_stencil0_mux3_0$3.in.data.1"
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0.0",
+                            "_hw_input_stencil0_mux1_1.in.data.0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "_hw_input_stencil0_mux3_0$3.in.data.2"
+                            "selslice_hw_input_stencil0_mux1_1.out",
+                            "_hw_input_stencil0_mux1_1.in.sel"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$3.out",
-                            "_hw_input_stencil0_mux3_0$3.in.sel"
+                            "_hw_input_stencil1_mux1_1.in.data.0",
+                            "_hw_input_stencil0_mux1_1.out"
                         ],
                         [
-                            "_hw_input_stencil1_mux3_0$3.in.data.0",
-                            "_hw_input_stencil0_mux3_0$3.out"
+                            "selslice_hw_input_stencil1_mux1_0$1.out",
+                            "_hw_input_stencil1_mux1_0$1.in.sel"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "_hw_input_stencil0_mux3_0$4.in.data.0"
+                            "_hw_input_stencil2_mux2_0$1.in.data.0",
+                            "_hw_input_stencil1_mux1_0$1.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "_hw_input_stencil0_mux3_0$4.in.data.1"
+                            "selslice_hw_input_stencil1_mux1_0.out",
+                            "_hw_input_stencil1_mux1_0.in.sel"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "_hw_input_stencil0_mux3_0$4.in.data.2"
+                            "_hw_input_stencil2_mux2_0.in.data.0",
+                            "_hw_input_stencil1_mux1_0.out"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$4.out",
-                            "_hw_input_stencil0_mux3_0$4.in.sel"
+                            "selslice_hw_input_stencil1_mux1_1$1.out",
+                            "_hw_input_stencil1_mux1_1$1.in.sel"
                         ],
                         [
-                            "_hw_input_stencil1_mux3_0$4.in.data.0",
-                            "_hw_input_stencil0_mux3_0$4.out"
+                            "_hw_input_stencil2_mux2_0$1.in.data.1",
+                            "_hw_input_stencil1_mux1_1$1.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "_hw_input_stencil0_mux3_0$5.in.data.0"
+                            "selslice_hw_input_stencil1_mux1_1.out",
+                            "_hw_input_stencil1_mux1_1.in.sel"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "_hw_input_stencil0_mux3_0$5.in.data.1"
+                            "_hw_input_stencil2_mux2_0.in.data.1",
+                            "_hw_input_stencil1_mux1_1.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "_hw_input_stencil0_mux3_0$5.in.data.2"
+                            "selslice_hw_input_stencil2_mux2_0$1.out",
+                            "_hw_input_stencil2_mux2_0$1.in.sel"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$5.out",
-                            "_hw_input_stencil0_mux3_0$5.in.sel"
+                            "mul_366_368_369.in1",
+                            "_hw_input_stencil2_mux2_0$1.out"
                         ],
                         [
-                            "_hw_input_stencil1_mux3_0$5.in.data.0",
-                            "_hw_input_stencil0_mux3_0$5.out"
+                            "selslice_hw_input_stencil2_mux2_0.out",
+                            "_hw_input_stencil2_mux2_0.in.sel"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "_hw_input_stencil0_mux3_0$6.in.data.0"
+                            "mul_358_360_361.in1",
+                            "_hw_input_stencil2_mux2_0.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "_hw_input_stencil0_mux3_0$6.in.data.1"
+                            "mul_conv_s1_r_y3_354.out",
+                            "add_354_351_355.in0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "_hw_input_stencil0_mux3_0$6.in.data.2"
+                            "mul_conv_y___scan_dim_118_351.out",
+                            "add_354_351_355.in1"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$6.out",
-                            "_hw_input_stencil0_mux3_0$6.in.sel"
+                            "add_conv_s1_r_x_355_357.in1",
+                            "add_354_351_355.out"
                         ],
                         [
-                            "_hw_input_stencil1_mux3_0$6.in.data.0",
-                            "_hw_input_stencil0_mux3_0$6.out"
+                            "add_conv_s1_r_x_355_364.in1",
+                            "add_354_351_355.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "_hw_input_stencil0_mux3_0$7.in.data.0"
+                            "const0_0$1.out",
+                            "add_356_361_362.in0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "_hw_input_stencil0_mux3_0$7.in.data.1"
+                            "mul_358_360_361.out",
+                            "add_356_361_362.in1"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "_hw_input_stencil0_mux3_0$7.in.data.2"
+                            "add_363_369_370.in0",
+                            "add_356_361_362.out"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$7.out",
-                            "_hw_input_stencil0_mux3_0$7.in.sel"
+                            "mul_366_368_369.out",
+                            "add_363_369_370.in1"
                         ],
                         [
-                            "_hw_input_stencil1_mux3_0$7.in.data.0",
-                            "_hw_input_stencil0_mux3_0$7.out"
+                            "add_conv_s1_r_x_355_364.out",
+                            "add_3649_365.in0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "_hw_input_stencil0_mux3_0$8.in.data.0"
+                            "const9_9.out",
+                            "add_3649_365.in1"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "_hw_input_stencil0_mux3_0$8.in.data.1"
+                            "rom__kernela0$1.raddr",
+                            "add_3649_365.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "_hw_input_stencil0_mux3_0$8.in.data.2"
+                            "count__conv_s1_r_x.out",
+                            "add_conv_s1_r_x_355_357.in0"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$8.out",
-                            "_hw_input_stencil0_mux3_0$8.in.sel"
+                            "rom__kernela0.raddr",
+                            "add_conv_s1_r_x_355_357.out"
                         ],
                         [
-                            "_hw_input_stencil1_mux3_0$8.in.data.0",
-                            "_hw_input_stencil0_mux3_0$8.out"
+                            "count__conv_s1_r_x.out",
+                            "add_conv_s1_r_x_355_364.in0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0",
-                            "_hw_input_stencil0_mux3_0.in.data.0"
+                            "sub0_conv_y___scan_dim_1_353.in0",
+                            "const0_0.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
-                            "_hw_input_stencil0_mux3_0.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2",
-                            "_hw_input_stencil0_mux3_0.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_0.out",
-                            "_hw_input_stencil0_mux3_0.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0.in.data.0",
-                            "_hw_input_stencil0_mux3_0.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "_hw_input_stencil0_mux3_1$1.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "_hw_input_stencil0_mux3_1$1.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "_hw_input_stencil0_mux3_1$1.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$1.out",
-                            "_hw_input_stencil0_mux3_1$1.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$1.in.data.1",
-                            "_hw_input_stencil0_mux3_1$1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "_hw_input_stencil0_mux3_1$2.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "_hw_input_stencil0_mux3_1$2.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "_hw_input_stencil0_mux3_1$2.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$2.out",
-                            "_hw_input_stencil0_mux3_1$2.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$2.in.data.1",
-                            "_hw_input_stencil0_mux3_1$2.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "_hw_input_stencil0_mux3_1$3.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "_hw_input_stencil0_mux3_1$3.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "_hw_input_stencil0_mux3_1$3.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$3.out",
-                            "_hw_input_stencil0_mux3_1$3.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$3.in.data.1",
-                            "_hw_input_stencil0_mux3_1$3.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "_hw_input_stencil0_mux3_1$4.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "_hw_input_stencil0_mux3_1$4.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "_hw_input_stencil0_mux3_1$4.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$4.out",
-                            "_hw_input_stencil0_mux3_1$4.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$4.in.data.1",
-                            "_hw_input_stencil0_mux3_1$4.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "_hw_input_stencil0_mux3_1$5.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "_hw_input_stencil0_mux3_1$5.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "_hw_input_stencil0_mux3_1$5.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$5.out",
-                            "_hw_input_stencil0_mux3_1$5.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$5.in.data.1",
-                            "_hw_input_stencil0_mux3_1$5.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "_hw_input_stencil0_mux3_1$6.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "_hw_input_stencil0_mux3_1$6.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "_hw_input_stencil0_mux3_1$6.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$6.out",
-                            "_hw_input_stencil0_mux3_1$6.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$6.in.data.1",
-                            "_hw_input_stencil0_mux3_1$6.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "_hw_input_stencil0_mux3_1$7.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "_hw_input_stencil0_mux3_1$7.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "_hw_input_stencil0_mux3_1$7.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$7.out",
-                            "_hw_input_stencil0_mux3_1$7.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$7.in.data.1",
-                            "_hw_input_stencil0_mux3_1$7.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "_hw_input_stencil0_mux3_1$8.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "_hw_input_stencil0_mux3_1$8.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "_hw_input_stencil0_mux3_1$8.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$8.out",
-                            "_hw_input_stencil0_mux3_1$8.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$8.in.data.1",
-                            "_hw_input_stencil0_mux3_1$8.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
-                            "_hw_input_stencil0_mux3_1.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.1",
-                            "_hw_input_stencil0_mux3_1.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.2",
-                            "_hw_input_stencil0_mux3_1.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1.out",
-                            "_hw_input_stencil0_mux3_1.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0.in.data.1",
-                            "_hw_input_stencil0_mux3_1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "_hw_input_stencil0_mux3_2$1.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "_hw_input_stencil0_mux3_2$1.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "_hw_input_stencil0_mux3_2$1.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$1.out",
-                            "_hw_input_stencil0_mux3_2$1.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$1.in.data.2",
-                            "_hw_input_stencil0_mux3_2$1.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "_hw_input_stencil0_mux3_2$2.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "_hw_input_stencil0_mux3_2$2.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "_hw_input_stencil0_mux3_2$2.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$2.out",
-                            "_hw_input_stencil0_mux3_2$2.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$2.in.data.2",
-                            "_hw_input_stencil0_mux3_2$2.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "_hw_input_stencil0_mux3_2$3.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "_hw_input_stencil0_mux3_2$3.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "_hw_input_stencil0_mux3_2$3.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$3.out",
-                            "_hw_input_stencil0_mux3_2$3.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$3.in.data.2",
-                            "_hw_input_stencil0_mux3_2$3.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "_hw_input_stencil0_mux3_2$4.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "_hw_input_stencil0_mux3_2$4.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "_hw_input_stencil0_mux3_2$4.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$4.out",
-                            "_hw_input_stencil0_mux3_2$4.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$4.in.data.2",
-                            "_hw_input_stencil0_mux3_2$4.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "_hw_input_stencil0_mux3_2$5.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "_hw_input_stencil0_mux3_2$5.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "_hw_input_stencil0_mux3_2$5.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$5.out",
-                            "_hw_input_stencil0_mux3_2$5.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$5.in.data.2",
-                            "_hw_input_stencil0_mux3_2$5.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "_hw_input_stencil0_mux3_2$6.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "_hw_input_stencil0_mux3_2$6.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "_hw_input_stencil0_mux3_2$6.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$6.out",
-                            "_hw_input_stencil0_mux3_2$6.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$6.in.data.2",
-                            "_hw_input_stencil0_mux3_2$6.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "_hw_input_stencil0_mux3_2$7.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "_hw_input_stencil0_mux3_2$7.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "_hw_input_stencil0_mux3_2$7.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$7.out",
-                            "_hw_input_stencil0_mux3_2$7.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$7.in.data.2",
-                            "_hw_input_stencil0_mux3_2$7.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "_hw_input_stencil0_mux3_2$8.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "_hw_input_stencil0_mux3_2$8.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "_hw_input_stencil0_mux3_2$8.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$8.out",
-                            "_hw_input_stencil0_mux3_2$8.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0$8.in.data.2",
-                            "_hw_input_stencil0_mux3_2$8.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.0",
-                            "_hw_input_stencil0_mux3_2.in.data.0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.1",
-                            "_hw_input_stencil0_mux3_2.in.data.1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.2.2",
-                            "_hw_input_stencil0_mux3_2.in.data.2"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2.out",
-                            "_hw_input_stencil0_mux3_2.in.sel"
-                        ],
-                        [
-                            "_hw_input_stencil1_mux3_0.in.data.2",
-                            "_hw_input_stencil0_mux3_2.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$1.out",
-                            "_hw_input_stencil1_mux3_0$1.in.sel"
-                        ],
-                        [
-                            "mul_249_252_253.in1",
-                            "_hw_input_stencil1_mux3_0$1.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$2.out",
-                            "_hw_input_stencil1_mux3_0$2.in.sel"
-                        ],
-                        [
-                            "mul_256_259_260.in1",
-                            "_hw_input_stencil1_mux3_0$2.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$3.out",
-                            "_hw_input_stencil1_mux3_0$3.in.sel"
-                        ],
-                        [
-                            "mul_263_266_267.in1",
-                            "_hw_input_stencil1_mux3_0$3.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$4.out",
-                            "_hw_input_stencil1_mux3_0$4.in.sel"
-                        ],
-                        [
-                            "mul_270_274_275.in1",
-                            "_hw_input_stencil1_mux3_0$4.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$5.out",
-                            "_hw_input_stencil1_mux3_0$5.in.sel"
-                        ],
-                        [
-                            "mul_278_282_283.in1",
-                            "_hw_input_stencil1_mux3_0$5.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$6.out",
-                            "_hw_input_stencil1_mux3_0$6.in.sel"
-                        ],
-                        [
-                            "mul_286_289_290.in1",
-                            "_hw_input_stencil1_mux3_0$6.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$7.out",
-                            "_hw_input_stencil1_mux3_0$7.in.sel"
-                        ],
-                        [
-                            "mul_293_297_298.in1",
-                            "_hw_input_stencil1_mux3_0$7.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$8.out",
-                            "_hw_input_stencil1_mux3_0$8.in.sel"
-                        ],
-                        [
-                            "mul_301_305_306.in1",
-                            "_hw_input_stencil1_mux3_0$8.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0.out",
-                            "_hw_input_stencil1_mux3_0.in.sel"
-                        ],
-                        [
-                            "mul_243_245_246.in1",
-                            "_hw_input_stencil1_mux3_0.out"
-                        ],
-                        [
-                            "const0_0.out",
-                            "add_242_246_247.in0"
-                        ],
-                        [
-                            "mul_243_245_246.out",
-                            "add_242_246_247.in1"
-                        ],
-                        [
-                            "add_248_253_254.in0",
-                            "add_242_246_247.out"
-                        ],
-                        [
-                            "mul_249_252_253.out",
-                            "add_248_253_254.in1"
-                        ],
-                        [
-                            "add_255_260_261.in0",
-                            "add_248_253_254.out"
-                        ],
-                        [
-                            "mul_256_259_260.out",
-                            "add_255_260_261.in1"
-                        ],
-                        [
-                            "add_262_267_268.in0",
-                            "add_255_260_261.out"
-                        ],
-                        [
-                            "mul_263_266_267.out",
-                            "add_262_267_268.in1"
-                        ],
-                        [
-                            "add_269_275_276.in0",
-                            "add_262_267_268.out"
-                        ],
-                        [
-                            "mul_270_274_275.out",
-                            "add_269_275_276.in1"
-                        ],
-                        [
-                            "add_277_283_284.in0",
-                            "add_269_275_276.out"
-                        ],
-                        [
-                            "mul_278_282_283.out",
-                            "add_277_283_284.in1"
-                        ],
-                        [
-                            "add_285_290_291.in0",
-                            "add_277_283_284.out"
-                        ],
-                        [
-                            "mul_286_289_290.out",
-                            "add_285_290_291.in1"
-                        ],
-                        [
-                            "add_292_298_299.in0",
-                            "add_285_290_291.out"
-                        ],
-                        [
-                            "mul_293_297_298.out",
-                            "add_292_298_299.in1"
-                        ],
-                        [
-                            "add_300_306_307.in0",
-                            "add_292_298_299.out"
-                        ],
-                        [
-                            "mul_301_305_306.out",
-                            "add_300_306_307.in1"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.out",
-                            "add_conv_x___scan_dim_01_264.in0"
-                        ],
-                        [
-                            "const1_1$1.out",
-                            "add_conv_x___scan_dim_01_264.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$3.in",
-                            "add_conv_x___scan_dim_01_264.out"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.out",
-                            "add_conv_x___scan_dim_01_272.in0"
-                        ],
-                        [
-                            "const1_1$3.out",
-                            "add_conv_x___scan_dim_01_272.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$4.in",
-                            "add_conv_x___scan_dim_01_272.out"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.out",
-                            "add_conv_x___scan_dim_01_280.in0"
-                        ],
-                        [
-                            "const1_1$4.out",
-                            "add_conv_x___scan_dim_01_280.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$5.in",
-                            "add_conv_x___scan_dim_01_280.out"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.out",
-                            "add_conv_x___scan_dim_02_287.in0"
-                        ],
-                        [
-                            "const2_2$2.out",
-                            "add_conv_x___scan_dim_02_287.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$6.in",
-                            "add_conv_x___scan_dim_02_287.out"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.out",
-                            "add_conv_x___scan_dim_02_295.in0"
-                        ],
-                        [
-                            "const2_2$3.out",
-                            "add_conv_x___scan_dim_02_295.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$7.in",
-                            "add_conv_x___scan_dim_02_295.out"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.out",
-                            "add_conv_x___scan_dim_02_303.in0"
-                        ],
-                        [
-                            "const2_2$5.out",
-                            "add_conv_x___scan_dim_02_303.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil1_mux3_0$8.in",
-                            "add_conv_x___scan_dim_02_303.out"
-                        ],
-                        [
-                            "count__conv_y___scan_dim_1.out",
-                            "add_conv_y___scan_dim_11_250.in0"
-                        ],
-                        [
-                            "const1_1.out",
-                            "add_conv_y___scan_dim_11_250.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_0$1.in",
-                            "add_conv_y___scan_dim_11_250.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$1.in",
-                            "add_conv_y___scan_dim_11_250.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$1.in",
-                            "add_conv_y___scan_dim_11_250.out"
-                        ],
-                        [
-                            "count__conv_y___scan_dim_1.out",
-                            "add_conv_y___scan_dim_11_271.in0"
-                        ],
-                        [
-                            "const1_1$2.out",
-                            "add_conv_y___scan_dim_11_271.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_0$4.in",
-                            "add_conv_y___scan_dim_11_271.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$4.in",
-                            "add_conv_y___scan_dim_11_271.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$4.in",
-                            "add_conv_y___scan_dim_11_271.out"
-                        ],
-                        [
-                            "count__conv_y___scan_dim_1.out",
-                            "add_conv_y___scan_dim_11_294.in0"
-                        ],
-                        [
-                            "const1_1$5.out",
-                            "add_conv_y___scan_dim_11_294.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_0$7.in",
-                            "add_conv_y___scan_dim_11_294.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$7.in",
-                            "add_conv_y___scan_dim_11_294.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$7.in",
-                            "add_conv_y___scan_dim_11_294.out"
-                        ],
-                        [
-                            "count__conv_y___scan_dim_1.out",
-                            "add_conv_y___scan_dim_12_257.in0"
-                        ],
-                        [
-                            "const2_2.out",
-                            "add_conv_y___scan_dim_12_257.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_0$2.in",
-                            "add_conv_y___scan_dim_12_257.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$2.in",
-                            "add_conv_y___scan_dim_12_257.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$2.in",
-                            "add_conv_y___scan_dim_12_257.out"
-                        ],
-                        [
-                            "count__conv_y___scan_dim_1.out",
-                            "add_conv_y___scan_dim_12_279.in0"
-                        ],
-                        [
-                            "const2_2$1.out",
-                            "add_conv_y___scan_dim_12_279.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_0$5.in",
-                            "add_conv_y___scan_dim_12_279.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$5.in",
-                            "add_conv_y___scan_dim_12_279.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$5.in",
-                            "add_conv_y___scan_dim_12_279.out"
-                        ],
-                        [
-                            "count__conv_y___scan_dim_1.out",
-                            "add_conv_y___scan_dim_12_302.in0"
-                        ],
-                        [
-                            "const2_2$4.out",
-                            "add_conv_y___scan_dim_12_302.in1"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_0$8.in",
-                            "add_conv_y___scan_dim_12_302.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$8.in",
-                            "add_conv_y___scan_dim_12_302.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$8.in",
-                            "add_conv_y___scan_dim_12_302.out"
-                        ],
-                        [
-                            "count__kernel_s0_x.out",
-                            "add_kernel_s0_x_240_241.in0"
-                        ],
-                        [
-                            "mul_kernel_s0_y3_240.out",
-                            "add_kernel_s0_x_240_241.in1"
-                        ],
-                        [
-                            "mul_270_274_275.in0",
-                            "const0_0$1.out"
-                        ],
-                        [
-                            "mul_243_245_246.in0",
-                            "const11_11.out"
-                        ],
-                        [
-                            "mul_263_266_267.in0",
-                            "const12_12.out"
-                        ],
-                        [
-                            "mul_286_289_290.in0",
-                            "const13_13.out"
-                        ],
-                        [
-                            "mul_249_252_253.in0",
-                            "const14_14.out"
-                        ],
-                        [
-                            "mul_293_297_298.in0",
-                            "const16_16.out"
-                        ],
-                        [
-                            "mul_256_259_260.in0",
-                            "const17_17.out"
-                        ],
-                        [
-                            "mul_278_282_283.in0",
+                            "mul_conv_y___scan_dim_118_351.in1",
                             "const18_18.out"
                         ],
                         [
-                            "mul_301_305_306.in0",
-                            "const19_19.out"
+                            "sub1_conv_y___scan_dim_1_352.in0",
+                            "const1_1.out"
                         ],
                         [
-                            "mul_kernel_s0_y3_240.in1",
+                            "mul_conv_s1_r_y3_354.in1",
                             "const3_3.out"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream.valid",
-                            "count__conv_x___scan_dim_0.en"
+                            "count__conv_s1_r_x.en"
                         ],
                         [
-                            "selslice_hw_input_stencil1_mux3_0$1.in",
-                            "count__conv_x___scan_dim_0.out"
+                            "selslice_hw_input_stencil0_mux1_0$1.in",
+                            "count__conv_s1_r_x.out"
                         ],
                         [
-                            "selslice_hw_input_stencil1_mux3_0$2.in",
-                            "count__conv_x___scan_dim_0.out"
+                            "selslice_hw_input_stencil0_mux1_0.in",
+                            "count__conv_s1_r_x.out"
                         ],
                         [
-                            "selslice_hw_input_stencil1_mux3_0.in",
-                            "count__conv_x___scan_dim_0.out"
+                            "selslice_hw_input_stencil0_mux1_1$1.in",
+                            "count__conv_s1_r_x.out"
+                        ],
+                        [
+                            "selslice_hw_input_stencil0_mux1_1.in",
+                            "count__conv_s1_r_x.out"
+                        ],
+                        [
+                            "count__conv_s1_r_y.en",
+                            "count__conv_s1_r_x.overflow"
+                        ],
+                        [
+                            "self.reset",
+                            "count__conv_s1_r_x.reset"
+                        ],
+                        [
+                            "mul_conv_s1_r_y3_354.in0",
+                            "count__conv_s1_r_y.out"
+                        ],
+                        [
+                            "selslice_hw_input_stencil1_mux1_0$1.in",
+                            "count__conv_s1_r_y.out"
+                        ],
+                        [
+                            "selslice_hw_input_stencil1_mux1_0.in",
+                            "count__conv_s1_r_y.out"
+                        ],
+                        [
+                            "selslice_hw_input_stencil1_mux1_1$1.in",
+                            "count__conv_s1_r_y.out"
+                        ],
+                        [
+                            "selslice_hw_input_stencil1_mux1_1.in",
+                            "count__conv_s1_r_y.out"
+                        ],
+                        [
+                            "count__conv_x___scan_dim_0.en",
+                            "count__conv_s1_r_y.overflow"
+                        ],
+                        [
+                            "self.reset",
+                            "count__conv_s1_r_y.reset"
                         ],
                         [
                             "count__conv_y___scan_dim_1.en",
@@ -3348,44 +1684,32 @@
                             "count__conv_x___scan_dim_0.reset"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$3.in",
+                            "mul_conv_y___scan_dim_118_351.in0",
                             "count__conv_y___scan_dim_1.out"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0$6.in",
+                            "sub0_conv_y___scan_dim_1_353.in1",
                             "count__conv_y___scan_dim_1.out"
                         ],
                         [
-                            "selslice_hw_input_stencil0_mux3_0.in",
-                            "count__conv_y___scan_dim_1.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$3.in",
-                            "count__conv_y___scan_dim_1.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1$6.in",
-                            "count__conv_y___scan_dim_1.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_1.in",
-                            "count__conv_y___scan_dim_1.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$3.in",
-                            "count__conv_y___scan_dim_1.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2$6.in",
-                            "count__conv_y___scan_dim_1.out"
-                        ],
-                        [
-                            "selslice_hw_input_stencil0_mux3_2.in",
+                            "sub1_conv_y___scan_dim_1_352.in1",
                             "count__conv_y___scan_dim_1.out"
                         ],
                         [
                             "self.reset",
                             "count__conv_y___scan_dim_1.reset"
+                        ],
+                        [
+                            "count__hw_output_y___scan_dim_1.overflow",
+                            "count__hw_output_w___scan_dim_2.en"
+                        ],
+                        [
+                            "selslice_conv_stencil0_mux1_0.in",
+                            "count__hw_output_w___scan_dim_2.out"
+                        ],
+                        [
+                            "self.reset",
+                            "count__hw_output_w___scan_dim_2.reset"
                         ],
                         [
                             "count__hw_output_x___scan_dim_0_wen.out",
@@ -3404,7 +1728,7 @@
                             "count__hw_output_x___scan_dim_0.reset"
                         ],
                         [
-                            "selslice_conv_stencil0_mux1_0.in",
+                            "selslice_conv_stencil2_mux1_0.in",
                             "count__hw_output_y___scan_dim_1.out"
                         ],
                         [
@@ -3412,24 +1736,20 @@
                             "count__hw_output_y___scan_dim_1.reset"
                         ],
                         [
-                            "count__kernel_s0_x_wen.out",
-                            "count__kernel_s0_x.en"
+                            "rom__kernela0.rdata",
+                            "mul_358_360_361.in0"
                         ],
                         [
-                            "count__kernel_s0_y.en",
-                            "count__kernel_s0_x.overflow"
+                            "rom__kernela0$1.rdata",
+                            "mul_366_368_369.in0"
                         ],
                         [
-                            "self.reset",
-                            "count__kernel_s0_x.reset"
+                            "rom__kernela0$1_ren.out",
+                            "rom__kernela0$1.ren"
                         ],
                         [
-                            "mul_kernel_s0_y3_240.in0",
-                            "count__kernel_s0_y.out"
-                        ],
-                        [
-                            "self.reset",
-                            "count__kernel_s0_y.reset"
+                            "rom__kernela0_ren.out",
+                            "rom__kernela0.ren"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_in_reshape.in",
@@ -3448,6 +1768,14 @@
                             "self.valid"
                         ],
                         [
+                            "sub1_conv_y___scan_dim_1_352.out",
+                            "selslice_hw_input_stencil2_mux2_0$1.in"
+                        ],
+                        [
+                            "sub0_conv_y___scan_dim_1_353.out",
+                            "selslice_hw_input_stencil2_mux2_0.in"
+                        ],
+                        [
                             "ub_hw_input_stencil_update_stream_in_reshape.out.0",
                             "ub_hw_input_stencil_update_stream.datain0"
                         ],
@@ -3458,34 +1786,6 @@
                         [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.1",
                             "ub_hw_input_stencil_update_stream.dataout1"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "ub_hw_input_stencil_update_stream.dataout2"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "ub_hw_input_stencil_update_stream.dataout3"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "ub_hw_input_stencil_update_stream.dataout4"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "ub_hw_input_stencil_update_stream.dataout5"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "ub_hw_input_stencil_update_stream.dataout6"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "ub_hw_input_stencil_update_stream.dataout7"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
-                            "ub_hw_input_stencil_update_stream.dataout8"
                         ]
                     ]
                 }
