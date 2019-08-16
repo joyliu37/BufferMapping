@@ -40,7 +40,12 @@ def initializeGraph(v_setup, mem_config, IR_setup,
         connection.update(double_buffer_node.connectNode(input_node))
         node_dict[double_buffer_node.name] = double_buffer_node
         output_list = [OutputNode(out_instance_name[0], out_instance_name[1]) for i, out_instance_name in enumerate(output_list)]
-        for node in output_list:
-            node.connectNode(double_buffer_node)
+        for idx, node in enumerate(output_list):
+            print (node.name)
+            connection_dict.update(node.connectNode(double_buffer_node, idx))
+
+        #connect input port and connect the valid signal
+        connection_dict.update(double_buffer_node.connectNode(input_node))
+        double_buffer_node.last_in_chain = True
 
     return node_dict, connection_dict
