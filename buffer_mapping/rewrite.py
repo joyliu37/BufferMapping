@@ -5,15 +5,25 @@ from functools import reduce
 import copy
 
 def connectValidSignal(node_dict, connection_dict, valid_node_list):
+    #valid_pred_node_list = []
     for key, node in node_dict.items():
         #FIXME: cannot support multiple output valid
         if type(node) == BufferNode:
             if node.last_in_chain:
+                #valid_pred_node_list.append(node)
+                print ("Connect valid signal of [", key, "] BUF for the last bank")
                 for valid_node in valid_node_list:
                     connection_dict.update(valid_node.connectNode(node))
         elif type(node) == ValidGenNode:
+            #valid_pred_node_list.append(node)
             for valid_node in valid_node_list:
+                print ("Connect valid signal of [", key, "] validGen for the last bank")
                 connection_dict.update(valid_node.connectNode(node))
+
+    #Adding a AND node valid node
+    #for node in valid_pred_node_list:
+    #    print (node.name)
+
     return node_dict, connection_dict
 
 def regOptmization(node_dict, connection_dict):
@@ -28,7 +38,7 @@ def regOptmization(node_dict, connection_dict):
                 node_dict[key] = new_node
                 if type(new_node.pred.kernel) != VirtualRowBuffer and new_node.pred.kernel:
                     #Add the valid logic
-                    print (new_node.pred.name)
+                    print ("Generate valid signal for [", new_node.pred.name, "]")
                     valid_gen = ValidGenNode(key+"_val_gen", new_node.stencil_delay-1, new_node.counter_bound)
                     new_node_dict[valid_gen.name] = valid_gen
                     connection_dict.update(valid_gen.connectNode(new_node.pred))
@@ -117,11 +127,18 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
                 def check_bank_for_dim(iterator, capacity_prev_dim, capacity_this_dim):
                     cnt = 0
                     capacity = capacity_this_dim // capacity_prev_dim
+
+                    #keep track of the port that are reduced
+                    recur_list = []
+
+                    #get the port number in each dimension
                     for start_addr in iterator._start:
                         if start_addr < 0:
                             start_addr = -start_addr
                         if start_addr // capacity_prev_dim < capacity:
-                            cnt += 1
+                            if start_addr//capacity_prev_dim not in recur_list:
+                                cnt += 1
+                                recur_list.append(start_addr//capacity_prev_dim)
                     return cnt
 
                 print (acc_capacity)
@@ -183,10 +200,25 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
             for buffer_node, (port_id, output_node_list) in zip(banked_buffer_node_list, node.succ.items()):
                 new_connection_dict.update(buffer_node.connectNode(node.pred))
                 for output_node in output_node_list:
-                    print (output_node.name, buffer_node.name)
+                    print ("succ node:[", output_node.name,"], connected bank name:[", buffer_node.name,"]")
                     new_connection_dict.update(output_node.connectNode(buffer_node))
 
-            banked_buffer_node_list[-1].assertLastOfChain()
+            #mark the last of chain which is the valid control bank
+            max_start_addr = -512
+            min_id = -1
+            for idx, bank_buffer_node in enumerate(banked_buffer_node_list):
+                temp = min(banked_buffer_node.kernel.read_iterator._start)
+                if temp > max_start_addr:
+                    min_id = idx
+                    max_start_addr = temp
+            banked_buffer_node_list[min_id].assertLastOfChain()
+
+            #transform negative starting address to positive
+            #TODO: make this a rewrite rule in the future
+            for banked_buffer_node in banked_buffer_node_list:
+                for idx, start in enumerate(banked_buffer_node.kernel.read_iterator._start):
+                    if start < 0:
+                        start += 512
 
             #FIXME: Maybe do not need thisThe DFS to create graoh
             '''

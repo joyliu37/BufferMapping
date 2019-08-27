@@ -220,6 +220,22 @@ class ValidGenNode(HardwareNode):
 
         return node, dummy_connection
 
+class NAndNode(HardwareNode):
+    def __init__(self, name, num_input):
+        input_list =[]
+        output_list = []
+        for i in num_input:
+            input_list.append(HardwarePort(name+".in"+str(i), 0))
+        output_list.append(HardwarePort(name+".out", 0))
+        super().__init__(name, input_list, output_list)
+
+    def update(self):
+        pass
+
+    def connectInput(self, node_list):
+        for node in node_list:
+            node.addSucc(self)
+
 
 
 class SelectorNode(HardwareNode):

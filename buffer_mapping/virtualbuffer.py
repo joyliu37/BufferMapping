@@ -122,9 +122,9 @@ class VirtualBuffer:
             bank_buffer.read_iterator._st[st_dim] //= stride_divisor
         '''
         bank_buffer.read_iterator._start = [self.read_iterator._start[bank_id]]
-        for idx, st in enumerate(self.read_iterator._start):
-            if st < 0:
-                self.read_iterator._start[idx]+= bank_stride
+        #for idx, st in enumerate(self.read_iterator._start):
+        #    if st < 0:
+        #        self.read_iterator._start[idx]+= bank_stride
         bank_buffer._output_port //= num_bank
 
         return bank_buffer
