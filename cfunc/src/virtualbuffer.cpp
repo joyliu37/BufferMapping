@@ -12,7 +12,7 @@ VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride,
     dimensionality(dimension.size()),
     stencil_acc_dim(stencil_acc_dim),
     select(false),
-    is_db(isEqual(in_chunk, out_stencil)),
+    is_db(isEqual(in_chunk, dimension)),
     write_iterator(in_range, in_stride, in_start),
     read_iterator(out_range, out_stride, out_start)
 {
