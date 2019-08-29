@@ -1,6 +1,7 @@
 #include "access.h"
 #include <iostream>
 #include <assert.h>
+#include <memory>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ int main(int argc, char* argv[]) {
     for (int itr = 0; itr < 18432; itr ++) {
         vector<int> addr = db_iter->getAddr();
         vector<int> ref_addr = gold_stream[itr];
-        for (int i = 0; i < addr.size(); i ++) {
+        for (size_t i = 0; i < addr.size(); i ++) {
             //cout << addr[i] << "," << ref_addr[i] <<endl;
             assert(addr[i] == ref_addr[i] && "Generated address did not match");
         }

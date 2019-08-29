@@ -41,7 +41,7 @@ void AccessIter::restart() {
         iter = 0;
     }
 
-    for (int i = 0; i < acc_pattern.start.size(); i ++) {
+    for (size_t i = 0; i < acc_pattern.start.size(); i ++) {
         addr[i] = acc_pattern.start[i];
     }
 
