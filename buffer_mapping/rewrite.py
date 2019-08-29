@@ -36,7 +36,7 @@ def regOptmization(node_dict, connection_dict):
                 new_node = RegNode(node.name, node.kernel)
                 new_node.connect(node, connection_dict)
                 node_dict[key] = new_node
-                if type(new_node.pred.kernel) != VirtualRowBuffer and new_node.pred.kernel:
+                if type(new_node.pred.kernel) != VirtualRowBuffer and new_node.pred.last_in_chain:
                     #Add the valid logic
                     print ("Generate valid signal for [", new_node.pred.name, "]")
                     valid_gen = ValidGenNode(key+"_val_gen", new_node.stencil_delay-1, new_node.counter_bound)
@@ -195,14 +195,6 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
                 print (del_key)
                 connection_dict.pop(del_key)
 
-            #connect the banked buffer node with input and output
-            print (node.succ)
-            for buffer_node, (port_id, output_node_list) in zip(banked_buffer_node_list, node.succ.items()):
-                new_connection_dict.update(buffer_node.connectNode(node.pred))
-                for output_node in output_node_list:
-                    print ("succ node:[", output_node.name,"], connected bank name:[", buffer_node.name,"]")
-                    new_connection_dict.update(output_node.connectNode(buffer_node))
-
             #mark the last of chain which is the valid control bank
             max_start_addr = -512
             min_id = -1
@@ -212,6 +204,26 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
                     min_id = idx
                     max_start_addr = temp
             banked_buffer_node_list[min_id].assertLastOfChain()
+
+            #connect the banked buffer node with input and output
+            print (node.succ)
+            for buffer_node, (port_id, output_node_list) in zip(banked_buffer_node_list, node.succ.items()):
+                new_connection_dict.update(buffer_node.connectNode(node.pred))
+
+                #update the last of chain information
+                if buffer_node.last_in_chain == False:
+                    for output_node in output_node_list:
+                        if type(output_node) == BufferNode:
+                            output_node.last_in_chain = False
+                else:
+                    for output_node in output_node_list:
+                        if type(output_node) == BufferNode:
+                            output_node.last_in_chain = True
+                    buffer_node.last_in_chain = False
+                #connecting all the wire
+                for output_node in output_node_list:
+                    print ("succ node:[", output_node.name,"], connected bank name:[", buffer_node.name,"]")
+                    new_connection_dict.update(output_node.connectNode(buffer_node))
 
             #transform negative starting address to positive
             #TODO: make this a rewrite rule in the future

@@ -2260,7 +2260,7 @@
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "stride_0": [
                                     "Int",
@@ -2623,102 +2623,6 @@
                                             -62
                                         ]
                                     }
-                                ]
-                            }
-                        },
-                        "linebuffer_bank_0_0_0_val_gen_counter": {
-                            "genref": "commonlib.counter",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ],
-                                "min": [
-                                    "Int",
-                                    0
-                                ],
-                                "max": [
-                                    "Int",
-                                    31
-                                ],
-                                "inc": [
-                                    "Int",
-                                    1
-                                ]
-                            }
-                        },
-                        "linebuffer_bank_0_0_0_val_gen_ult": {
-                            "genref": "coreir.ult",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "linebuffer_bank_0_0_0_val_gen_value_0": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0000"
-                                ]
-                            }
-                        },
-                        "linebuffer_bank_-61_0_val_gen_counter": {
-                            "genref": "commonlib.counter",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ],
-                                "min": [
-                                    "Int",
-                                    0
-                                ],
-                                "max": [
-                                    "Int",
-                                    31
-                                ],
-                                "inc": [
-                                    "Int",
-                                    1
-                                ]
-                            }
-                        },
-                        "linebuffer_bank_-61_0_val_gen_ult": {
-                            "genref": "coreir.ult",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            }
-                        },
-                        "linebuffer_bank_-61_0_val_gen_value_0": {
-                            "genref": "coreir.const",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "value": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'h0000"
                                 ]
                             }
                         },
@@ -3959,10 +3863,6 @@
                             "linebuffer_bank_0_0_0.out"
                         ],
                         [
-                            "linebuffer_bank_0_0_0_val_gen_counter.en",
-                            "linebuffer_base_bank_0.valid"
-                        ],
-                        [
                             "linebuffer_bank_0_1_0.in",
                             "linebuffer_bank_0_0.dataout0"
                         ],
@@ -3979,48 +3879,12 @@
                             "linebuffer_bank_-61_0.out"
                         ],
                         [
-                            "linebuffer_bank_-61_0_val_gen_counter.en",
-                            "linebuffer_base_bank_2.valid"
-                        ],
-                        [
                             "count__conv_x___scan_dim_0.en",
                             "linebuffer_bank_0_0.valid"
                         ],
                         [
                             "self.valid",
                             "linebuffer_bank_0_0.valid"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.en",
-                            "linebuffer_bank_-1_0.valid"
-                        ],
-                        [
-                            "self.valid",
-                            "linebuffer_bank_-1_0.valid"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.en",
-                            "linebuffer_base_bank_0.valid"
-                        ],
-                        [
-                            "self.valid",
-                            "linebuffer_base_bank_0.valid"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.en",
-                            "linebuffer_bank_0_0_0_val_gen_ult.out"
-                        ],
-                        [
-                            "self.valid",
-                            "linebuffer_bank_0_0_0_val_gen_ult.out"
-                        ],
-                        [
-                            "count__conv_x___scan_dim_0.en",
-                            "linebuffer_bank_-61_0_val_gen_ult.out"
-                        ],
-                        [
-                            "self.valid",
-                            "linebuffer_bank_-61_0_val_gen_ult.out"
                         ],
                         [
                             "linebuffer_bank_0_0_flush.out",
@@ -4045,30 +3909,6 @@
                         [
                             "linebuffer_base_bank_3_flush.out",
                             "linebuffer_base_bank_3.flush"
-                        ],
-                        [
-                            "linebuffer_bank_0_0_0_val_gen_value_0.out",
-                            "linebuffer_bank_0_0_0_val_gen_ult.in1"
-                        ],
-                        [
-                            "linebuffer_bank_0_0_0_val_gen_counter.out",
-                            "linebuffer_bank_0_0_0_val_gen_ult.in0"
-                        ],
-                        [
-                            "linebuffer_bank_0_0_0_val_gen_counter.reset",
-                            "self.reset"
-                        ],
-                        [
-                            "linebuffer_bank_-61_0_val_gen_value_0.out",
-                            "linebuffer_bank_-61_0_val_gen_ult.in1"
-                        ],
-                        [
-                            "linebuffer_bank_-61_0_val_gen_counter.out",
-                            "linebuffer_bank_-61_0_val_gen_ult.in0"
-                        ],
-                        [
-                            "linebuffer_bank_-61_0_val_gen_counter.reset",
-                            "self.reset"
                         ]
                     ]
                 }
