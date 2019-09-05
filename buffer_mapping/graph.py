@@ -3,7 +3,7 @@ from buffer_mapping.hardware import InputNode, OutputNode, OutputValidNode, Buff
 from buffer_mapping.virtualbuffer import VirtualBuffer, VirtualDoubleBuffer
 
 def initializeGraph(v_setup, mem_config, IR_setup,
-                    output_list, valid_list, input_port, inen_port):
+                    output_list, valid_list, input_port, inen_port, origin_key):
     node_dict = {}
     connection_dict = {}
     v_buf = v_buf = VirtualBuffer(v_setup._input_port,
@@ -30,13 +30,13 @@ def initializeGraph(v_setup, mem_config, IR_setup,
         print (output_dict)
         #data_in = HardwarePort("self.datain", 0)
         #valid = HardwarePort("self.inen", True)
-        node_dict, connection_dict = linebuffer.GenGraph("linebuffer", input_node, output_dict)
+        node_dict, connection_dict = linebuffer.GenGraph(origin_key+"linebuffer", input_node, output_dict)
         print (node_dict)
     else:
         connection = {}
         node_dict = {}
         double_buffer = VirtualDoubleBuffer(v_setup)
-        double_buffer_node = BufferNode("double_buffer", double_buffer)
+        double_buffer_node = BufferNode(origin_key+"double_buffer", double_buffer)
         connection.update(double_buffer_node.connectNode(input_node))
         node_dict[double_buffer_node.name] = double_buffer_node
         output_list = [OutputNode(out_instance_name[0], out_instance_name[1]) for i, out_instance_name in enumerate(output_list)]

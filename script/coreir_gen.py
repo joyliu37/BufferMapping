@@ -19,7 +19,7 @@ def preprocessCoreIR(hand_craft):
     core = hand_craft["namespaces"]["global"]["modules"]["DesignTop"]
     instance = core["instances"]
     connection = core["connections"]
-    valid_list = []
+    rewrite_dict = {}
      #remove reg and general buffer
     for key, value in list(instance.items()):
         if value.get("genref"):
@@ -49,11 +49,21 @@ def preprocessCoreIR(hand_craft):
                     output_list.extend(findConnection("dataout"))
                     input_port.extend(findConnection("datain"))
                     inen_port.extend(findConnection("wen"))
+                #create a dictr for all the rewrite information
+                buf_data = {}
+                buf_data["valid_list"] = valid_list
+                buf_data["output_list"] = output_list
+                buf_data["input_port"] = input_port[0]
+                buf_data["inen_port"] = inen_port[0]
+                buf_data["config"] = buffer_config
+                buf_data["v_config"] = v_buf_config
+                #write into the dict
+                rewrite_dict[key] = buf_data
 
                 core["connections"] = new_connection
                 del instance[key]
     connection = core["connections"]
-    return buffer_config, v_buf_config, instance, connection , valid_list, output_list, input_port[0], inen_port[0]
+    return instance, connection , rewrite_dict
 
 
 
@@ -72,46 +82,49 @@ def test_buffer_mapping():
         data = json.dumps(input_coreir, indent=4)
         json_out_file.write(data)
     print("Json File dump to " + dir_path +"/output")
-    IR_setup, v_setup, instance, connection, valid_list, output_list, input_port, inen_port = preprocessCoreIR(input_coreir)
+    #IR_setup, v_setup, instance, connection, valid_list, output_list, input_port, inen_port = preprocessCoreIR(input_coreir)
+    instance, connection, rewrite_dict = preprocessCoreIR(input_coreir)
 
-    print (output_list, input_port)
+    print (rewrite_dict.keys())
 
     #define what underline hw like
-    #TODO: make this inside a rewrite pass
-    valid_node_list = [OutputValidNode(valid_instance_name[0], valid_instance_name[1]) for valid_instance_name in valid_list]
+    for key, data_dict in rewrite_dict.items():
+        #TODO: make this inside a rewrite pass
+        valid_node_list = [OutputValidNode(valid_instance_name[0], valid_instance_name[1]) for valid_instance_name in data_dict["valid_list"]]
 
-    node_dict, connection_dict = initializeGraph(v_setup, mem_config, IR_setup, output_list, valid_list, input_port, inen_port)
+        node_dict, connection_dict = initializeGraph(data_dict["v_config"], mem_config, data_dict["config"], data_dict["output_list"], data_dict["valid_list"], data_dict["input_port"], data_dict["inen_port"], key)
 
-    #set of compiler pass optimize the graph
-    capacity_per_dim = IR_setup.config_dict["logical_size"][1]['capacity']
-    node_dict, connection_dict = banking(node_dict, connection_dict, mem_config, IR_setup.acc_capacity, capacity_per_dim)
-    node_dict, connection_dict = flattenValidBuffer(node_dict, connection_dict)
-    node_dict, connection_dict = regOptmization(node_dict, connection_dict)
-    node_dict, connection_dict = connectValidSignal(node_dict, connection_dict, valid_node_list)
-    node_dict, connection_dict = addFlush(node_dict, connection_dict)
+        #set of compiler pass optimize the graph
+        capacity_per_dim = data_dict["config"].config_dict["logical_size"][1]['capacity']
+        node_dict, connection_dict = banking(node_dict, connection_dict, mem_config, data_dict["config"].acc_capacity, capacity_per_dim)
+        node_dict, connection_dict = flattenValidBuffer(node_dict, connection_dict)
+        node_dict, connection_dict = regOptmization(node_dict, connection_dict)
+        node_dict, connection_dict = connectValidSignal(node_dict, connection_dict, valid_node_list)
+        node_dict, connection_dict = addFlush(node_dict, connection_dict)
 
-    connection_list = [[key[0], key[1]] for key, _ in connection_dict.items()]
 
-    node_list_dict = {}
-    for key, node in node_dict.items():
-        if node.contain_node:
-            bank_selector, internal_connection = node.dump_json()
-            print (bank_selector)
-            instance.update(bank_selector)
-            connection_list.extend(internal_connection)
-        else:
-            instance.update({node.name: node.dump_json()})
-        element = {}
+        connection_list = [[key[0], key[1]] for key, _ in connection_dict.items()]
 
-        if type(node) == HardwareNode:
-            if node.pred:
-                element["pred"] = node.pred.name
-            element["succ"] = [succ.name for succ in node.succ]
-        node_list_dict.update({key: element})
-    #print (node_list_dict)
-    #print (connection_list)
-    #print (instance)
-    connection.extend(connection_list)
+        node_list_dict = {}
+        for key, node in node_dict.items():
+            if node.contain_node:
+                bank_selector, internal_connection = node.dump_json()
+                print (bank_selector)
+                instance.update(bank_selector)
+                connection_list.extend(internal_connection)
+            else:
+                instance.update({node.name: node.dump_json()})
+            element = {}
+
+            if type(node) == HardwareNode:
+                if node.pred:
+                    element["pred"] = node.pred.name
+                element["succ"] = [succ.name for succ in node.succ]
+            node_list_dict.update({key: element})
+        #print (node_list_dict)
+        #print (connection_list)
+        #print (instance)
+        connection.extend(connection_list)
     '''
     dump the generated coreIR file
     '''
