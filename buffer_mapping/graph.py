@@ -12,8 +12,8 @@ def initializeGraph(v_setup, mem_config, IR_setup,
                                 v_setup._range,
                                 v_setup._stride,
                                 v_setup._start)
+    print ("stride in dim", IR_setup.stride_in_dim)
 
-    print (IR_setup.stride_in_dim)
     linebuffer = VirtualLineBuffer(v_buf, mem_config._input_port, mem_config._output_port, IR_setup.config_dict["logical_size"][1]['capacity'], IR_setup.stride_in_dim)
 
     input_node = InputNode("self", input_port[0]+"."+input_port[1], inen_port[0]+"."+inen_port[1])

@@ -3,7 +3,7 @@ import os
 sys.path.insert(0,'..')
 import json
 
-from buffer_mapping.flatten import IR2Interface
+from buffer_mapping.config import IR2Interface
 from buffer_mapping.virtualbuffer import VirtualBuffer
 from buffer_mapping.linebuffer import VirtualLineBuffer
 

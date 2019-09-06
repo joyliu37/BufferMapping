@@ -4,7 +4,7 @@ from functools import reduce
 import json
 import pdb
 
-from buffer_mapping.flatten import IR2Interface
+from buffer_mapping.config import IR2Interface
 
 def test_flatten():
     dir_path = '/users/joeyliu/Documents/work/mapper/DBmapping/'

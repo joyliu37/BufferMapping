@@ -2480,6 +2480,83 @@
                                 ]
                             }
                         },
+                        "ub_padded16_stencil_update_streamlinebuffer_base": {
+                            "genref": "commonlib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    3844
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            3844
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    2
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    3600
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    60
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    62
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    60
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    3844
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            0
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
                         "ub_padded16_stencil_update_streamlinebuffer_bank_0_0": {
                             "genref": "commonlib.unified_buffer",
                             "genargs": {
@@ -2489,13 +2566,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    2
+                                    60
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            2
+                                            60
                                         ]
                                     }
                                 ],
@@ -2509,11 +2586,11 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    2
+                                    60
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    2
+                                    0
                                 ],
                                 "stride_0": [
                                     "Int",
@@ -2521,7 +2598,7 @@
                                 ],
                                 "range_0": [
                                     "Int",
-                                    2
+                                    60
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -2529,7 +2606,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    2
+                                    60
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -2550,6 +2627,28 @@
                             }
                         },
                         "ub_padded16_stencil_update_streamlinebuffer_bank_0_0_0": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_padded16_stencil_update_streamlinebuffer_bank_0_0_1": {
                             "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
@@ -2593,7 +2692,7 @@
                                 ]
                             }
                         },
-                        "ub_padded16_stencil_update_streamlinebuffer_bank_-1_0": {
+                        "ub_padded16_stencil_update_streamlinebuffer_bank_0_1_1": {
                             "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
@@ -2615,29 +2714,7 @@
                                 ]
                             }
                         },
-                        "ub_padded16_stencil_update_streamlinebuffer_bank_-62_0": {
-                            "genref": "coreir.reg",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ]
-                            },
-                            "modargs": {
-                                "clk_posedge": [
-                                    "Bool",
-                                    true
-                                ],
-                                "init": [
-                                    [
-                                        "BitVector",
-                                        16
-                                    ],
-                                    "16'hxxxx"
-                                ]
-                            }
-                        },
-                        "ub_padded16_stencil_update_streamlinebuffer_base_bank_0": {
+                        "ub_padded16_stencil_update_streamlinebuffer_bank_0_1": {
                             "genref": "commonlib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -2646,63 +2723,39 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    3844
+                                    60
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            3844
+                                            60
                                         ]
                                     }
                                 ],
                                 "rate_matched": [
                                     "Bool",
-                                    false
+                                    true
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    4
+                                    1
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    13456
+                                    60
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    0
+                                    3
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "range_0": [
                                     "Int",
-                                    2
-                                ],
-                                "stride_1": [
-                                    "Int",
-                                    124
-                                ],
-                                "range_1": [
-                                    "Int",
-                                    2
-                                ],
-                                "stride_2": [
-                                    "Int",
-                                    2
-                                ],
-                                "range_2": [
-                                    "Int",
-                                    58
-                                ],
-                                "stride_3": [
-                                    "Int",
-                                    124
-                                ],
-                                "range_3": [
-                                    "Int",
-                                    58
+                                    60
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -2710,7 +2763,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    3844
+                                    60
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -2730,282 +2783,56 @@
                                 ]
                             }
                         },
-                        "ub_padded16_stencil_update_streamlinebuffer_base_bank_1": {
-                            "genref": "commonlib.unified_buffer",
+                        "ub_padded16_stencil_update_streamlinebuffer_bank_0_2_0": {
+                            "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
                                     "Int",
                                     16
-                                ],
-                                "depth": [
-                                    "Int",
-                                    3844
-                                ],
-                                "logical_size": [
-                                    "Json",
-                                    {
-                                        "capacity": [
-                                            3844
-                                        ]
-                                    }
-                                ],
-                                "rate_matched": [
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
                                     "Bool",
-                                    false
+                                    true
                                 ],
-                                "dimensionality": [
-                                    "Int",
-                                    4
-                                ],
-                                "iter_cnt": [
-                                    "Int",
-                                    13456
-                                ],
-                                "stencil_width": [
-                                    "Int",
-                                    0
-                                ],
-                                "stride_0": [
-                                    "Int",
-                                    2
-                                ],
-                                "range_0": [
-                                    "Int",
-                                    2
-                                ],
-                                "stride_1": [
-                                    "Int",
-                                    124
-                                ],
-                                "range_1": [
-                                    "Int",
-                                    2
-                                ],
-                                "stride_2": [
-                                    "Int",
-                                    2
-                                ],
-                                "range_2": [
-                                    "Int",
-                                    58
-                                ],
-                                "stride_3": [
-                                    "Int",
-                                    124
-                                ],
-                                "range_3": [
-                                    "Int",
-                                    58
-                                ],
-                                "input_stride_0": [
-                                    "Int",
-                                    1
-                                ],
-                                "input_range_0": [
-                                    "Int",
-                                    3844
-                                ],
-                                "chain_en": [
-                                    "Bool",
-                                    false
-                                ],
-                                "chain_idx": [
-                                    "Int",
-                                    0
-                                ],
-                                "output_starting_addrs": [
-                                    "Json",
-                                    {
-                                        "output_start": [
-                                            -1
-                                        ]
-                                    }
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
                                 ]
                             }
                         },
-                        "ub_padded16_stencil_update_streamlinebuffer_base_bank_2": {
-                            "genref": "commonlib.unified_buffer",
+                        "ub_padded16_stencil_update_streamlinebuffer_bank_0_2_1": {
+                            "genref": "coreir.reg",
                             "genargs": {
                                 "width": [
                                     "Int",
                                     16
-                                ],
-                                "depth": [
-                                    "Int",
-                                    3844
-                                ],
-                                "logical_size": [
-                                    "Json",
-                                    {
-                                        "capacity": [
-                                            3844
-                                        ]
-                                    }
-                                ],
-                                "rate_matched": [
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
                                     "Bool",
-                                    false
+                                    true
                                 ],
-                                "dimensionality": [
-                                    "Int",
-                                    4
-                                ],
-                                "iter_cnt": [
-                                    "Int",
-                                    13456
-                                ],
-                                "stencil_width": [
-                                    "Int",
-                                    0
-                                ],
-                                "stride_0": [
-                                    "Int",
-                                    2
-                                ],
-                                "range_0": [
-                                    "Int",
-                                    2
-                                ],
-                                "stride_1": [
-                                    "Int",
-                                    124
-                                ],
-                                "range_1": [
-                                    "Int",
-                                    2
-                                ],
-                                "stride_2": [
-                                    "Int",
-                                    2
-                                ],
-                                "range_2": [
-                                    "Int",
-                                    58
-                                ],
-                                "stride_3": [
-                                    "Int",
-                                    124
-                                ],
-                                "range_3": [
-                                    "Int",
-                                    58
-                                ],
-                                "input_stride_0": [
-                                    "Int",
-                                    1
-                                ],
-                                "input_range_0": [
-                                    "Int",
-                                    3844
-                                ],
-                                "chain_en": [
-                                    "Bool",
-                                    false
-                                ],
-                                "chain_idx": [
-                                    "Int",
-                                    0
-                                ],
-                                "output_starting_addrs": [
-                                    "Json",
-                                    {
-                                        "output_start": [
-                                            -62
-                                        ]
-                                    }
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
                                 ]
                             }
                         },
-                        "ub_padded16_stencil_update_streamlinebuffer_base_bank_3": {
-                            "genref": "commonlib.unified_buffer",
-                            "genargs": {
-                                "width": [
-                                    "Int",
-                                    16
-                                ],
-                                "depth": [
-                                    "Int",
-                                    3844
-                                ],
-                                "logical_size": [
-                                    "Json",
-                                    {
-                                        "capacity": [
-                                            3844
-                                        ]
-                                    }
-                                ],
-                                "rate_matched": [
+                        "ub_padded16_stencil_update_streamlinebuffer_base_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
                                     "Bool",
                                     false
-                                ],
-                                "dimensionality": [
-                                    "Int",
-                                    4
-                                ],
-                                "iter_cnt": [
-                                    "Int",
-                                    13456
-                                ],
-                                "stencil_width": [
-                                    "Int",
-                                    0
-                                ],
-                                "stride_0": [
-                                    "Int",
-                                    2
-                                ],
-                                "range_0": [
-                                    "Int",
-                                    2
-                                ],
-                                "stride_1": [
-                                    "Int",
-                                    124
-                                ],
-                                "range_1": [
-                                    "Int",
-                                    2
-                                ],
-                                "stride_2": [
-                                    "Int",
-                                    2
-                                ],
-                                "range_2": [
-                                    "Int",
-                                    58
-                                ],
-                                "stride_3": [
-                                    "Int",
-                                    124
-                                ],
-                                "range_3": [
-                                    "Int",
-                                    58
-                                ],
-                                "input_stride_0": [
-                                    "Int",
-                                    1
-                                ],
-                                "input_range_0": [
-                                    "Int",
-                                    3844
-                                ],
-                                "chain_en": [
-                                    "Bool",
-                                    false
-                                ],
-                                "chain_idx": [
-                                    "Int",
-                                    0
-                                ],
-                                "output_starting_addrs": [
-                                    "Json",
-                                    {
-                                        "output_start": [
-                                            -63
-                                        ]
-                                    }
                                 ]
                             }
                         },
@@ -3018,34 +2845,7 @@
                                 ]
                             }
                         },
-                        "ub_padded16_stencil_update_streamlinebuffer_base_bank_0_flush": {
-                            "modref": "corebit.const",
-                            "modargs": {
-                                "value": [
-                                    "Bool",
-                                    false
-                                ]
-                            }
-                        },
-                        "ub_padded16_stencil_update_streamlinebuffer_base_bank_1_flush": {
-                            "modref": "corebit.const",
-                            "modargs": {
-                                "value": [
-                                    "Bool",
-                                    false
-                                ]
-                            }
-                        },
-                        "ub_padded16_stencil_update_streamlinebuffer_base_bank_2_flush": {
-                            "modref": "corebit.const",
-                            "modargs": {
-                                "value": [
-                                    "Bool",
-                                    false
-                                ]
-                            }
-                        },
-                        "ub_padded16_stencil_update_streamlinebuffer_base_bank_3_flush": {
+                        "ub_padded16_stencil_update_streamlinebuffer_bank_0_1_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -4053,156 +3853,124 @@
                             "ub_lyy_stencil_update_streamlinebuffer_bank_0_1.flush"
                         ],
                         [
+                            "ub_padded16_stencil_update_streamlinebuffer_base.wen",
+                            "self.in_en"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_streamlinebuffer_base.ren",
+                            "self.in_en"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_streamlinebuffer_base.datain0",
+                            "ub_padded16_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_padded16_stencil_update_streamlinebuffer_base.reset"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_stream_out_reshape.in.8",
+                            "ub_padded16_stencil_update_streamlinebuffer_base.dataout0"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.wen",
+                            "ub_padded16_stencil_update_streamlinebuffer_base.valid"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.ren",
+                            "ub_padded16_stencil_update_streamlinebuffer_base.valid"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.datain0",
+                            "ub_padded16_stencil_update_streamlinebuffer_base.dataout0"
+                        ],
+                        [
                             "self.reset",
                             "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.reset"
                         ],
                         [
-                            "ub_padded16_stencil_update_stream_out_reshape.in.2",
+                            "ub_padded16_stencil_update_stream_out_reshape.in.5",
                             "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.dataout0"
                         ],
                         [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.wen",
-                            "self.in_en"
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.wen",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.valid"
                         ],
                         [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.ren",
-                            "self.in_en"
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.ren",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.valid"
                         ],
                         [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.datain0",
-                            "ub_padded16_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.reset"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_stream_out_reshape.in.8",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.dataout0"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.wen",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.valid"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.ren",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.valid"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.datain0",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.dataout0"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_1.wen",
-                            "self.in_en"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_1.ren",
-                            "self.in_en"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_1.datain0",
-                            "ub_padded16_stencil_update_stream_in_reshape.out.0"
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.datain0",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.dataout0"
                         ],
                         [
                             "self.reset",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_1.reset"
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.reset"
                         ],
                         [
-                            "ub_padded16_stencil_update_stream_out_reshape.in.7",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_1.dataout0"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_2.wen",
-                            "self.in_en"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_2.ren",
-                            "self.in_en"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_2.datain0",
-                            "ub_padded16_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_2.reset"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_stream_out_reshape.in.5",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_2.dataout0"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_3.wen",
-                            "self.in_en"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_3.ren",
-                            "self.in_en"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_3.datain0",
-                            "ub_padded16_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_3.reset"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_stream_out_reshape.in.4",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_3.dataout0"
+                            "ub_padded16_stencil_update_stream_out_reshape.in.2",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.dataout0"
                         ],
                         [
                             "ub_padded16_stencil_update_streamlinebuffer_bank_0_0_0.in",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.dataout0"
+                            "ub_padded16_stencil_update_streamlinebuffer_base.dataout0"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_stream_out_reshape.in.7",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0_0.out"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0_1.in",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0_0.out"
                         ],
                         [
                             "ub_padded16_stencil_update_stream_out_reshape.in.6",
-                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0_0.out"
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_0_1.out"
                         ],
                         [
                             "ub_padded16_stencil_update_streamlinebuffer_bank_0_1_0.in",
                             "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.dataout0"
                         ],
                         [
-                            "ub_padded16_stencil_update_stream_out_reshape.in.0",
+                            "ub_padded16_stencil_update_stream_out_reshape.in.4",
                             "ub_padded16_stencil_update_streamlinebuffer_bank_0_1_0.out"
                         ],
                         [
-                            "ub_padded16_stencil_update_streamlinebuffer_bank_-1_0.in",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_1.dataout0"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_stream_out_reshape.in.1",
-                            "ub_padded16_stencil_update_streamlinebuffer_bank_-1_0.out"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_bank_-62_0.in",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_2.dataout0"
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1_1.in",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1_0.out"
                         ],
                         [
                             "ub_padded16_stencil_update_stream_out_reshape.in.3",
-                            "ub_padded16_stencil_update_streamlinebuffer_bank_-62_0.out"
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1_1.out"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_2_0.in",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.dataout0"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_stream_out_reshape.in.1",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_2_0.out"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_2_1.in",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_2_0.out"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_stream_out_reshape.in.0",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_2_1.out"
+                        ],
+                        [
+                            "ub_padded16_stencil_update_streamlinebuffer_base_flush.out",
+                            "ub_padded16_stencil_update_streamlinebuffer_base.flush"
                         ],
                         [
                             "ub_padded16_stencil_update_streamlinebuffer_bank_0_0_flush.out",
                             "ub_padded16_stencil_update_streamlinebuffer_bank_0_0.flush"
                         ],
                         [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0_flush.out",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_0.flush"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_1_flush.out",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_1.flush"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_2_flush.out",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_2.flush"
-                        ],
-                        [
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_3_flush.out",
-                            "ub_padded16_stencil_update_streamlinebuffer_base_bank_3.flush"
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1_flush.out",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.flush"
                         ]
                     ]
                 }

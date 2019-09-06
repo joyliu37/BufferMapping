@@ -5,7 +5,7 @@ from functools import reduce
 import json
 import pdb
 
-from buffer_mapping.flatten import IR2Interface
+from buffer_mapping.config import IR2Interface
 from buffer_mapping.virtualbuffer import VirtualDoubleBuffer
 
 def test_doublebuffer():

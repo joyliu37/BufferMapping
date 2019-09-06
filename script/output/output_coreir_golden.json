@@ -434,16 +434,16 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        2,
+                                        1,
                                         [
                                             "Array",
-                                            2,
+                                            1,
                                             [
                                                 "Array",
-                                                2,
+                                                1,
                                                 [
                                                     "Array",
-                                                    2,
+                                                    1,
                                                     "Bit"
                                                 ]
                                             ]
@@ -1739,6 +1739,14 @@
                                     "Json",
                                     null
                                 ],
+                                "input_chunk": [
+                                    "Json",
+                                    {
+                                        "input_chunk": [
+                                            1
+                                        ]
+                                    }
+                                ],
                                 "input_range_0": [
                                     "Int",
                                     1
@@ -1820,6 +1828,10 @@
                                     "Int",
                                     1
                                 ],
+                                "num_stencil_acc_dim": [
+                                    "Int",
+                                    0
+                                ],
                                 "output_starting_addrs": [
                                     "Json",
                                     {
@@ -1835,6 +1847,10 @@
                                             122
                                         ]
                                     }
+                                ],
+                                "output_stencil": [
+                                    "Json",
+                                    null
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1987,6 +2003,14 @@
                                     "Json",
                                     null
                                 ],
+                                "input_chunk": [
+                                    "Json",
+                                    {
+                                        "input_chunk": [
+                                            1
+                                        ]
+                                    }
+                                ],
                                 "input_range_0": [
                                     "Int",
                                     1
@@ -2068,6 +2092,10 @@
                                     "Int",
                                     1
                                 ],
+                                "num_stencil_acc_dim": [
+                                    "Int",
+                                    0
+                                ],
                                 "output_starting_addrs": [
                                     "Json",
                                     {
@@ -2083,6 +2111,10 @@
                                             122
                                         ]
                                     }
+                                ],
+                                "output_stencil": [
+                                    "Json",
+                                    null
                                 ],
                                 "range_0": [
                                     "Int",
@@ -2235,6 +2267,14 @@
                                     "Json",
                                     null
                                 ],
+                                "input_chunk": [
+                                    "Json",
+                                    {
+                                        "input_chunk": [
+                                            1
+                                        ]
+                                    }
+                                ],
                                 "input_range_0": [
                                     "Int",
                                     1
@@ -2316,6 +2356,10 @@
                                     "Int",
                                     1
                                 ],
+                                "num_stencil_acc_dim": [
+                                    "Int",
+                                    0
+                                ],
                                 "output_starting_addrs": [
                                     "Json",
                                     {
@@ -2331,6 +2375,10 @@
                                             122
                                         ]
                                     }
+                                ],
+                                "output_stencil": [
+                                    "Json",
+                                    null
                                 ],
                                 "range_0": [
                                     "Int",
@@ -2483,6 +2531,14 @@
                                     "Json",
                                     null
                                 ],
+                                "input_chunk": [
+                                    "Json",
+                                    {
+                                        "input_chunk": [
+                                            1
+                                        ]
+                                    }
+                                ],
                                 "input_range_0": [
                                     "Int",
                                     1
@@ -2564,6 +2620,10 @@
                                     "Int",
                                     1
                                 ],
+                                "num_stencil_acc_dim": [
+                                    "Int",
+                                    0
+                                ],
                                 "output_starting_addrs": [
                                     "Json",
                                     {
@@ -2579,6 +2639,10 @@
                                             126
                                         ]
                                     }
+                                ],
+                                "output_stencil": [
+                                    "Json",
+                                    null
                                 ],
                                 "range_0": [
                                     "Int",
@@ -2614,19 +2678,19 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    124
+                                    62
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    2
+                                    1
                                 ],
                                 "stride_3": [
                                     "Int",
-                                    124
+                                    62
                                 ],
                                 "stride_4": [
                                     "Int",

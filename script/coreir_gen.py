@@ -4,7 +4,6 @@ sys.path.insert(0,'..')
 import json
 import argparse
 
-from buffer_mapping.flatten import IR2Interface
 from buffer_mapping.virtualbuffer import VirtualBuffer
 from buffer_mapping.linebuffer import VirtualLineBuffer
 from buffer_mapping.hardware import InputNode, OutputNode, OutputValidNode, SelectorNode, HardwareNode
