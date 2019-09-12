@@ -3581,14 +3581,6 @@
                             "ub_lxx_stencil_update_stream_in_reshape.out.0"
                         ],
                         [
-                            "ub_lxx_stencil_update_streamlinebuffer_bank_0_0.wen",
-                            "ub_padded16_stencil_update_stream.valid"
-                        ],
-                        [
-                            "ub_lxx_stencil_update_streamlinebuffer_bank_0_0.ren",
-                            "ub_padded16_stencil_update_stream.valid"
-                        ],
-                        [
                             "ub_lxx_stencil_update_streamlinebuffer_bank_0_0.datain0",
                             "ub_lxx_stencil_update_stream_in_reshape.out.0"
                         ],
@@ -3685,14 +3677,6 @@
                             "ub_lxy_stencil_update_stream_in_reshape.out.0"
                         ],
                         [
-                            "ub_lxy_stencil_update_streamlinebuffer_bank_0_0.wen",
-                            "ub_padded16_stencil_update_stream.valid"
-                        ],
-                        [
-                            "ub_lxy_stencil_update_streamlinebuffer_bank_0_0.ren",
-                            "ub_padded16_stencil_update_stream.valid"
-                        ],
-                        [
                             "ub_lxy_stencil_update_streamlinebuffer_bank_0_0.datain0",
                             "ub_lxy_stencil_update_stream_in_reshape.out.0"
                         ],
@@ -3783,14 +3767,6 @@
                         [
                             "ub_lyy_stencil_update_stream_out_reshape.in.8",
                             "ub_lyy_stencil_update_stream_in_reshape.out.0"
-                        ],
-                        [
-                            "ub_lyy_stencil_update_streamlinebuffer_bank_0_0.wen",
-                            "ub_padded16_stencil_update_stream.valid"
-                        ],
-                        [
-                            "ub_lyy_stencil_update_streamlinebuffer_bank_0_0.ren",
-                            "ub_padded16_stencil_update_stream.valid"
                         ],
                         [
                             "ub_lyy_stencil_update_streamlinebuffer_bank_0_0.datain0",
@@ -3959,6 +3935,30 @@
                         [
                             "ub_padded16_stencil_update_stream_out_reshape.in.0",
                             "ub_padded16_stencil_update_streamlinebuffer_bank_0_2_1.out"
+                        ],
+                        [
+                            "ub_lxx_stencil_update_streamlinebuffer_bank_0_0.wen",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_lxx_stencil_update_streamlinebuffer_bank_0_0.ren",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_lxy_stencil_update_streamlinebuffer_bank_0_0.wen",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_lxy_stencil_update_streamlinebuffer_bank_0_0.ren",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_lyy_stencil_update_streamlinebuffer_bank_0_0.wen",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_lyy_stencil_update_streamlinebuffer_bank_0_0.ren",
+                            "ub_padded16_stencil_update_streamlinebuffer_bank_0_1.valid"
                         ],
                         [
                             "ub_padded16_stencil_update_streamlinebuffer_base_flush.out",
