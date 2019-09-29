@@ -419,12 +419,12 @@ class RegNode(HardwareNode):
         connection_dict.pop((substitue_node.input_port["datain0"].key, predecesor.key))
 
         #delete the control path connection
-        predecesor = substitue_node.input_port["ren"].pred
+        predecesor = substitue_node.input_port["wen"].pred
         #chances are predecesor has already been removed
         if predecesor:
-            predecesor.removeSucc(substitue_node.input_port["ren"])
+            #predecesor.removeSucc(substitue_node.input_port["ren"])
             predecesor.removeSucc(substitue_node.input_port["wen"])
-            connection_dict.pop((substitue_node.input_port["ren"].key, predecesor.key))
+            #connection_dict.pop((substitue_node.input_port["ren"].key, predecesor.key))
             connection_dict.pop((substitue_node.input_port["wen"].key, predecesor.key))
 
         #update the out data path connection
@@ -449,7 +449,7 @@ class BufferNode(HardwareNode):
         output_list = []
         input_list.append(HardwarePort(name+".datain0", [0]*virtualbuffer._input_port))
         input_list.append(HardwarePort(name+".wen", False))
-        input_list.append(HardwarePort(name+".ren", False))
+        #input_list.append(HardwarePort(name+".ren", False))
         output_list.append(HardwarePort(name+".dataout0", [0]*virtualbuffer._output_port))
         output_list.append(HardwarePort(name+".valid", False))
         output_list.append(HardwarePort(name+".stencil_valid", False))
@@ -590,13 +590,13 @@ class BufferNode(HardwareNode):
         connection_dict = {}
         if data_only == False:
             self.input_port["wen"].makePred(valid)
-            self.input_port["ren"].makePred(valid)
+            #self.input_port["ren"].makePred(valid)
             valid.addSucc(self.input_port["wen"])
-            valid.addSucc(self.input_port["ren"])
+            #valid.addSucc(self.input_port["ren"])
             connection_dict[(self.input_port["wen"].key, valid_key)] = \
                 HardwareWire(self.input_port["wen"], valid)
-            connection_dict[(self.input_port["ren"].key, valid_key)] = \
-                HardwareWire(self.input_port["ren"], valid)
+            #connection_dict[(self.input_port["ren"].key, valid_key)] = \
+            #    HardwareWire(self.input_port["ren"], valid)
         self.input_port["datain0"].makePred(data_in)
         data_in.addSucc(self.input_port["datain0"])
         connection_dict[(self.input_port["datain0"].key, data_key)] = \
@@ -611,15 +611,15 @@ class BufferNode(HardwareNode):
         if type(node) == BufferNode:
             connection_dict = {}
             self.input_port["wen"].makePred(node.output_port["valid"])
-            self.input_port["ren"].makePred(node.output_port["valid"])
+            #self.input_port["ren"].makePred(node.output_port["valid"])
             self.input_port["datain0"].makePred(node.output_port["dataout0"])
             node.output_port["valid"].addSucc(self.input_port["wen"])
-            node.output_port["valid"].addSucc(self.input_port["ren"])
+            #node.output_port["valid"].addSucc(self.input_port["ren"])
             node.output_port["dataout0"].addSucc(self.input_port["datain0"])
             connection_dict[(self.input_port["wen"].key, node.output_port["valid"].key)] = \
                 HardwareWire(self.input_port["wen"], node.output_port["valid"])
-            connection_dict[(self.input_port["ren"].key, node.output_port["valid"].key)] = \
-                HardwareWire(self.input_port["ren"], node.output_port["valid"])
+            #connection_dict[(self.input_port["ren"].key, node.output_port["valid"].key)] = \
+            #    HardwareWire(self.input_port["ren"], node.output_port["valid"])
             connection_dict[(self.input_port["datain0"].key, node.output_port["dataout0"].key)] = \
                 HardwareWire(self.input_port["datain0"], node.output_port["dataout0"])
 
