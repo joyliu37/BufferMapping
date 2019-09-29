@@ -40,6 +40,10 @@ def preprocessCoreIR(hand_craft, hw_setup):
                 output_list = []
                 input_port = []
                 inen_port = []
+
+                #add ren port for cases that wiring ren
+                ren_port = []
+
                 for wire in core["connections"]:
                     def findConnection(name):
                         target_list = []
@@ -52,19 +56,24 @@ def preprocessCoreIR(hand_craft, hw_setup):
                     output_list.extend(findConnection("dataout"))
                     input_port.extend(findConnection("datain"))
                     inen_port.extend(findConnection("wen"))
+                    ren_port.extend(findConnection("ren"))
                 #create a dictr for all the rewrite information
                 buf_data = {}
                 buf_data["valid_list"] = valid_list
                 buf_data["output_list"] = output_list
                 buf_data["input_port"] = input_port[0]
                 buf_data["inen_port"] = inen_port[0]
+                if len(ren_port) == 1:
+                    buf_data["ren_port"] = ren_port[0]
+                else:
+                    buf_data["ren_port"] = buf_data["inen_port"]
                 buf_data["config"] = buffer_config
                 buf_data["v_config"] = v_buf_config
 
                 def rewritePass(key, data_dict):
                     valid_node_list = [OutputValidNode(valid_instance_name[0], valid_instance_name[1]) for valid_instance_name in data_dict["valid_list"]]
 
-                    node_dict, connection_dict = initializeGraph(data_dict["v_config"], mem_config, data_dict["config"], data_dict["output_list"], data_dict["valid_list"], data_dict["input_port"], data_dict["inen_port"], key)
+                    node_dict, connection_dict = initializeGraph(data_dict["v_config"], mem_config, data_dict["config"], data_dict["output_list"], data_dict["valid_list"], data_dict["input_port"], data_dict["inen_port"], data_dict["ren_port"], key)
 
                     #set of compiler pass optimize the graph
                     capacity_per_dim = data_dict["config"].config_dict["logical_size"][1]['capacity']
