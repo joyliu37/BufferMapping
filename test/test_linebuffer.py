@@ -41,6 +41,8 @@ def test_linebuffer():
                     ", \nLine buffer read data ="+ str(data_out) + "\n, virtual buffer read data = " + str(data_out_ref)
                     #print (data_out_ref)
             #print("Finish read all data from line buffer, move to the next tile.")
+            #TODO: a temporary solution for functional simulation
+            linebuffer.reset()
         print("Finish test for", key)
 
 if __name__ == '__main__':

@@ -180,7 +180,10 @@ class VirtualValidBuffer(VirtualBuffer):
             out_data = self.getReadBank()[start_addr: end_addr]
         else:
             for addr_in_word in self.read_iterator._addr:
-                if self._data_valid[(addr_in_word - offset) % self._capacity]:
+                if addr_in_word < 0:
+                    valid.append(False)
+                    out_data.append(65536)
+                elif self._data_valid[(addr_in_word - offset) % self._capacity]:
                     valid.append(True)
                     out_data.append(self.getReadBank()[(addr_in_word - offset) % self._capacity])
                 else:
@@ -289,6 +292,13 @@ class VirtualRowBuffer(VirtualBuffer):
             self.stencil_valid_counter.restart()
             self.read_iterator.restart()
             self.write_iterator.restart()
+
+    def reset(self):
+        self.delay_counter = 0
+        self.stencil_valid_counter.restart()
+        self.read_iterator.restart()
+        self.write_iterator.restart()
+
 
     def dump_json(self, last_in_chain:bool):
         mem_tile = {}

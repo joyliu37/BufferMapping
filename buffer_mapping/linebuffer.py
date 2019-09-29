@@ -27,7 +27,7 @@ class LineBufferNode:
         self.child_fifo = buf_list
         if self.child_fifo:
             read_delay = buf_list[0]._fifo_depth * buf_list[0]._fifo_size
-        print ("read_delay",read_delay)
+        #print ("read_delay",read_delay)
 
         #a list of VirtualRowBuffer that save data
         self.row_buffer_chain = [ VirtualRowBuffer(input_port,
@@ -98,6 +98,12 @@ class LineBufferNode:
         '''
 
         return node_dict, connection_dict
+
+    def reset(self):
+        for row_buffer in self.row_buffer_chain:
+            row_buffer.reset()
+        for child_node in self.child_fifo:
+            child_node.reset()
 
 
     def dump_json(self, name, data_in, valid, out_id, port_list):
@@ -264,24 +270,22 @@ class VirtualLineBuffer:
 
         #A dictionary to track the range for each input port
         #and a dictionary to track the corresponding port number
-        self.port_access_iter = {start_port: deepcopy(self.base_buf.read_iterator)
-                                 for start_port in self.base_buf.read_iterator._start}
+        #self.port_access_iter = {start_port: deepcopy(self.base_buf.read_iterator)
+        #                         for start_port in self.base_buf.read_iterator._start}
+        #Only use one base_access_iter
+        self.base_access_iter = deepcopy(self.base_buf.read_iterator)
 
         #get the incremental dimension for this high dimensional buffer
         self._capacity_dim = [reduce((lambda x, y: x*y), capacity_dim[:dim+1]) for dim in range(len(capacity_dim))]
         self._stride_in_dim = [reduce((lambda x, y: x*y), stride_in_dim[:dim + 1]) for dim in range(len(stride_in_dim))]
 
-        #FIXME: not thoroughly test for this condition
-        old_start_size = len(self.base_buf.read_iterator._start)
-
         self.fifo_optimize(hw_input_port, hw_output_port)
         print (self.meta_fifo_dict)
-        print (self.base_buf)
-
-        new_start_size = len(self.base_buf.read_iterator._start)
 
         #shift the starting port in the situation that optimized port number is not divisible by original port size
         #TODO: make this in a method
+        '''
+
         if old_start_size % new_start_size:
             #FIXME:should we use the single dimension size?
             self.base_buf.shiftTopLeft(old_start_size % new_start_size, capacity_dim)
@@ -301,6 +305,7 @@ class VirtualLineBuffer:
                 self.base_buf.read_iterator._start[idx_port] = shift_start
 
         self.base_buf.read_iterator.restart()
+        '''
 
     def dump_json(self, name, data_in, valid, port_list):
         instance = {}
@@ -348,7 +353,6 @@ class VirtualLineBuffer:
         for stride_dim, stride in enumerate(self.base_buf.read_iterator._st):
             if stride == 0:
                 continue
-            print (stride_dim, stride, self._stride_in_dim)
             #dictionary from original port to the connected fifo start addr
             root = {addr: addr for addr in self.base_buf.read_iterator._start}
             next_start = self.base_buf.read_iterator._start.copy()
@@ -368,16 +372,20 @@ class VirtualLineBuffer:
             for key, root_port in root.items():
                 root_dict[root_port].append(key)
 
+            #use to save the non_merge_port_list
+            non_merge_port_list = []
             longest_merge_port_list_size = 0
 
             # mutate the buffer tree
-            for new_start_port, merge_port_list in root_dict.items():
+            for new_start_port_idx, (new_start_port, merge_port_list) in enumerate(root_dict.items()):
+
                 #update the longest fifo length for range update
                 if len(merge_port_list) > longest_merge_port_list_size:
                     longest_merge_port_list_size = len(merge_port_list)
 
-                #nothing to merge just single port
+                #nothing to merge just a single port, put into a shift list
                 if len(merge_port_list) == 1:
+                    non_merge_port_list.append(new_start_port)
                     continue
 
                 child_buf_list = [self.meta_fifo_dict.pop(port) for port in merge_port_list if port in self.meta_fifo_dict]
@@ -391,31 +399,28 @@ class VirtualLineBuffer:
                 for child_buf in child_buf_list:
                     child_buf.recursive_update_read_iterator(stride_dim, len(merge_port_list) - 1)
 
-                #merge the port iterator and update the range
-                for merge_port in merge_port_list:
-                    #pop all old merge_port
-                    if merge_port != new_start_port:
-                        self.port_access_iter.pop(merge_port)
-                    #update the new start port
-                    else:
-                        self.port_access_iter[merge_port]._rng[stride_dim] += len(merge_port_list) - 1
+                #update the range
+                #FIXME possible bug: currently just consider all the merge points have the same overlap
+                if new_start_port_idx == 0:
+                    self.base_access_iter._rng[stride_dim] += len(merge_port_list) - 1
+                    '''
+                    for merge_port in merge_port_list:
+                        #pop all old merge_port
+                        if merge_port != new_start_port:
+                            self.port_access_iter.pop(merge_port)
+                        #update the new start port
+                        else:
+                            self.port_access_iter[merge_port]._rng[stride_dim] += len(merge_port_list) - 1
+                    '''
 
-                #create the row buffer stride, range, and size
-                '''
-                row_buf_stride = [st_origin // st_in_dim for st_origin, st_in_dim in
-                                  zip(self.port_access_iter[new_start_port]._st.copy(), self._stride_in_dim)]
-                row_buf_stride = [1 if st_dim == 0
-                                  else reduce((lambda x,y : x*y),
-                                              self.port_access_iter[new_start_port]._rng[:st_dim])
-                                  for st_dim in len(self.port_access_iter._rng)]
-                '''
                 # use a virtual stride here
                 row_buf_stride = []
-                row_buf_range = self.port_access_iter[new_start_port]._rng.copy()
+                #row_buf_range = self.port_access_iter[new_start_port]._rng.copy()
+                row_buf_range = self.base_access_iter._rng.copy()
 
                 #size for nd line buffer component, could be reg row or plane
                 row_buf_size = 1 if stride_dim == 0 \
-                else reduce((lambda x,y : x*y), self.port_access_iter[new_start_port]._rng[:stride_dim])
+                else reduce((lambda x,y : x*y), self.base_access_iter._rng[:stride_dim])
 
                 self.meta_fifo_dict.update(
                     {
@@ -430,6 +435,13 @@ class VirtualLineBuffer:
                                        #stride // (self._stride_in_dim[stride_dim] ** (stride_dim + 1)))
                     }
                 )
+            #update the non merge port id in root_dict and port_map
+            for update_id in non_merge_port_list:
+                root_dict[update_id - stride] = root_dict.pop(update_id)
+                self.port_map[update_id - stride] = self.port_map.pop(update_id)
+                if update_id in self.meta_fifo_dict.keys():
+                    self.meta_fifo_dict[update_id - stride] = self.meta_fifo_dict.pop(update_id)
+
             #update the meta_fifo_dict and start address
             #self.meta_fifo_dict = new_meta_fifo_dict
             self.base_buf.read_iterator._start = list(root_dict.keys())
@@ -454,6 +466,7 @@ class VirtualLineBuffer:
         '''
         self.base_buf.write(data_in)
         valid_from_base, data_from_base = self.base_buf.read()
+        #print (valid_from_base, data_from_base)
 
         valid = True
         data = []
@@ -470,7 +483,7 @@ class VirtualLineBuffer:
                     for idx, port in enumerate(self.port_map[start_addr_after_opt]):
                         data_dict[port] = [data_from_port[idx]]
                     #data.extend(data_from_port)
-                    #print("port ", idx, data_from_port)
+                    #print("port ", idx, data_from_port, valid_from_port)
                 else:
                     #there is no fifo, add the data from base buffer directly to output
                     #change the to the port map version
@@ -482,4 +495,9 @@ class VirtualLineBuffer:
             if port in data_dict:
                 data.extend(data_dict[port])
         return valid, data
+
+    #TODO: double check if we are going to reset the buffer once we finish a tile of mem
+    def reset(self):
+        for _, fifo_entry in self.meta_fifo_dict.items():
+            fifo_entry.reset()
 
