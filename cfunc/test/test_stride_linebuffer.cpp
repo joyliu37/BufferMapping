@@ -82,19 +82,19 @@ void ReadWriteBlockCheck(const vector<int> & data,
         buffer->write(in_data);
         //std::cout << "Write data in location " << i << std::endl;
 
-        if (output_cnt < 31*31){
-            //extra check for strided conv
-            auto out_data_pack = buffer->read();
-            auto out_data = out_data_pack.data;
-            bool out_valid = out_data_pack.valid;
-            //std::cout << "Read data in location " << i <<", valid = " << out_valid << std::endl;
-            if (out_valid){
-                for (int port = 0; port < buffer->getOutPort(); port ++){
-                    assert(out_data[port] == data[read_stream[output_cnt][port]] && "read data does not match");
-                }
-            output_cnt ++;
-
+        //if (output_cnt < 31*31){
+        //extra check for strided conv
+        auto out_data_pack = buffer->read();
+        auto out_data = out_data_pack.data;
+        bool out_valid = out_data_pack.valid;
+        //std::cout << "Read data in location " << i <<", valid = " << out_valid << std::endl;
+        if (out_valid){
+            for (int port = 0; port < buffer->getOutPort(); port ++){
+                assert(out_data[port] == data[read_stream[output_cnt][port]] && "read data does not match");
             }
+        output_cnt ++;
+
         }
+
     }
 }

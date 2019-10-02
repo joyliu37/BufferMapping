@@ -61,9 +61,11 @@ bool VirtualBuffer<Dtype>::getStencilValid() {
 
 template<typename Dtype>
 RetDataWithVal<Dtype> VirtualBuffer<Dtype>::read() {
-    assert((!read_iterator.getDone()) && "No more read allowed.\n");
+
+    //assert((!read_iterator.getDone()) && "No more read allowed.\n");
+    //if reach the end you could read but never get valid
     vector<Dtype> out_data;
-    bool valid = true;
+    bool valid = !read_iterator.getDone();
 
     for(auto read_addr : read_iterator.getAddr()) {
         out_data.push_back(data[select][read_addr]);
