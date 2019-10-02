@@ -69,6 +69,10 @@ RetDataWithVal<Dtype> VirtualBuffer<Dtype>::read() {
         out_data.push_back(data[select][read_addr]);
         valid = valid && valid_domain[read_addr];
     }
+
+    //check if we could do read, chances are that we finish read in stencil, but still has block to write
+    valid &= !stencil_read_done.reachBound();
+
     if (valid){
         stencil_read_done.update();
         read_iterator.update();
