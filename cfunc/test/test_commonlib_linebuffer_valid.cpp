@@ -1,4 +1,5 @@
 #include "coreir.h"
+#include "lakelib.h"
 #include "coreir/libs/commonlib.h"
 
 using namespace std;
@@ -6,15 +7,16 @@ using namespace CoreIR;
 
 
 int main() {
-  
+
   // New context
   Context* c = newContext();
-  
-  //Find linebuffer in the commonlib namespace
-  Namespace* commonlib = CoreIRLoadLibrary_commonlib(c);
-  Generator* linebuffer = commonlib->getGenerator("linebuffer");
 
-  // input stream and output stencil for arr(x)->arr(y)->arr(z) 
+  //Find linebuffer in the commonlib namespace
+  CoreIRLoadLibrary_commonlib(c);
+  Namespace* lakelib = CoreIRLoadLibrary_lakelib(c);
+  Generator* linebuffer = lakelib->getGenerator("linebuffer");
+
+  // input stream and output stencil for arr(x)->arr(y)->arr(z)
   //                             have size x horiz, y vert, z depth
   //  Type* in_type = c->BitIn()->Arr(16)->Arr(2)->Arr(2)->Arr(1);
   //  Type* out_type = c->Bit()->Arr(16)->Arr(6)->Arr(6)->Arr(2);
@@ -42,7 +44,7 @@ int main() {
 
   Module* lb32 = c->getGlobal()->newModuleDecl("lb32", lb32Type);
   ModuleDef* def = lb32->newModuleDef();
-  def->addInstance("lb32_inst", linebuffer, {{"input_type",Const::make(c,in_type)}, 
+  def->addInstance("lb32_inst", linebuffer, {{"input_type",Const::make(c,in_type)},
       {"output_type",Const::make(c,out_type)}, {"image_type",Const::make(c,img_type)}, {"has_valid",Const::make(c,true)}});
   def->connect("self", "lb32_inst");
   lb32->setDef(def);
@@ -52,7 +54,7 @@ int main() {
   //lb32->print();
 
   c->runPasses({"rungenerators", "flatten","verifyconnectivity --onlyinputs --noclkrst"});
-  c->runPasses({"verifyconnectivity --onlyinputs --noclkrst"},{"global","commonlib","memory","mantle"});
+  c->runPasses({"verifyconnectivity --onlyinputs --noclkrst"},{"global","lakelib","memory","mantle"});
   //lb32->print();
   lb32->getDef()->validate();
 
@@ -69,7 +71,7 @@ int main() {
     cout << "Could not save to dot!!" << endl;
     c->die();
   }
-  
+
   CoreIR::Module* m = nullptr;
   if (!loadFromFile(c, "_linebufferv.json", &m)) {
     cout << "Could not load from json!!" << endl;
@@ -104,7 +106,7 @@ int main() {
     cout << "Could not save to json!!" << endl;
     c->die();
     }
-  
+
     CoreIR::Module* m2 = nullptr;
     if (!loadFromFile(c, "_lb32_special.json", &m2)) {
     cout << "Could not load from json!!" << endl;

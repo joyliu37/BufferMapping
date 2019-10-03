@@ -4,9 +4,10 @@
 #include "coreir.h"
 #include "coreir/passes/transform/rungenerators.h"
 #include "coreir/simulator/interpreter.h"
-#include "coreir/libs/commonlib.h"
+//#include "coreir/libs/commonlib.h"
 #include "coreir/libs/float.h"
 #include "ubuf_coreirsim.h"
+#include "lakelib.h"
 
 #include <iostream>
 #include <numeric>
@@ -240,6 +241,7 @@ namespace CoreIR {
     Context* c = newContext();
     Namespace* g = c->newNamespace("bufferLib");
     CoreIRLoadLibrary_commonlib(c);
+    CoreIRLoadLibrary_lakelib(c);
 
     // Define unified buffer generator
     /*
@@ -299,7 +301,7 @@ namespace CoreIR {
     out_stencil["output_stencil"][0] = 1;
     //using default input/output start
     def->addInstance("buf0",
-                       "commonlib.unified_buffer",
+                       "lakelib.unified_buffer",
                        {{"width",       Const::make(c, width)},
                         {"stencil_width", Const::make(c, 0)},
                         {"depth", Const::make(c, 16)},
@@ -337,7 +339,7 @@ namespace CoreIR {
       return simModel;
     };
 
-    map<std::string, SimModelBuilder> qualifiedNamesToSimPlugins{{string("commonlib.unified_buffer"), modBuilder}};
+    map<std::string, SimModelBuilder> qualifiedNamesToSimPlugins{{string("lakelib.unified_buffer"), modBuilder}};
 
     SimulatorState state(wrapperMod, qualifiedNamesToSimPlugins);
 
@@ -392,6 +394,7 @@ namespace CoreIR {
     Context* c = newContext();
     Namespace* g = c->newNamespace("bufferLib");
     CoreIRLoadLibrary_commonlib(c);
+    CoreIRLoadLibrary_lakelib(c);
 
 
     // Build container module
@@ -441,7 +444,7 @@ namespace CoreIR {
     }
     //using default input/output start
     def->addInstance("buf0",
-                       "commonlib.unified_buffer",
+                       "lakelib.unified_buffer",
                        {{"width", Const::make(c, width)},
                        {"num_input_ports", Const::make(c, num_input_port)},
                        {"num_output_ports", Const::make(c, num_output_port)},
@@ -494,7 +497,7 @@ namespace CoreIR {
       return simModel;
     };
 
-    map<std::string, SimModelBuilder> qualifiedNamesToSimPlugins{{string("commonlib.unified_buffer"), modBuilder}};
+    map<std::string, SimModelBuilder> qualifiedNamesToSimPlugins{{string("lakelib.unified_buffer"), modBuilder}};
 
     SimulatorState state(wrapperMod, qualifiedNamesToSimPlugins);
 
@@ -549,6 +552,7 @@ namespace CoreIR {
     Context* c = newContext();
     Namespace* g = c->newNamespace("bufferLib");
     CoreIRLoadLibrary_commonlib(c);
+    CoreIRLoadLibrary_lakelib(c);
 
 
     // Build container module
@@ -601,7 +605,7 @@ namespace CoreIR {
     }
     //using default input/output start
     def->addInstance("buf0",
-                       "commonlib.unified_buffer",
+                       "lakelib.unified_buffer",
                        {{"width", Const::make(c, width)},
                        {"num_input_ports", Const::make(c, num_input_port)},
                        {"num_output_ports", Const::make(c, num_output_port)},
@@ -659,7 +663,7 @@ namespace CoreIR {
       return simModel;
     };
 
-    map<std::string, SimModelBuilder> qualifiedNamesToSimPlugins{{string("commonlib.unified_buffer"), modBuilder}};
+    map<std::string, SimModelBuilder> qualifiedNamesToSimPlugins{{string("lakelib.unified_buffer"), modBuilder}};
 
     SimulatorState state(wrapperMod, qualifiedNamesToSimPlugins);
 
