@@ -426,10 +426,12 @@ class RegNode(HardwareNode):
         predecesor = substitue_node.input_port["wen"].pred
         #chances are predecesor has already been removed
         if predecesor:
-            predecesor.removeSucc(substitue_node.input_port["ren"])
             predecesor.removeSucc(substitue_node.input_port["wen"])
-            connection_dict.pop((substitue_node.input_port["ren"].key, predecesor.key))
             connection_dict.pop((substitue_node.input_port["wen"].key, predecesor.key))
+        predecesor = substitue_node.input_port["ren"].pred
+        if predecesor:
+            predecesor.removeSucc(substitue_node.input_port["ren"])
+            connection_dict.pop((substitue_node.input_port["ren"].key, predecesor.key))
 
         #update the out data path connection
         for succ in substitue_node.output_port["dataout0"].succ:
@@ -443,12 +445,16 @@ class RegNode(HardwareNode):
             connection_dict.pop((succ.key, substitue_node.output_port["valid"].key))
 
 class BufferNode(HardwareNode):
-    def __init__(self, name, virtualbuffer: VirtualBuffer, num_bank = 1, bank_id = 0):
+    def __init__(self, name, virtualbuffer: VirtualBuffer, child_read_delay=0, num_bank = 1, bank_id = 0):
         #self.input_bank_select = [False, num_bank, bank_id]
         #self.output_bank_select = [False, num_bank, bank_id]
         #if num_bank > 1:
         #    virtualbuffer = self.initBanking(name, virtualbuffer, num_bank)
         self.last_in_chain = False
+
+        #a temporary solution for different memory tile definition
+        self.child_read_delay = child_read_delay
+
         input_list = []
         output_list = []
         input_list.append(HardwarePort(name+".datain0", [0]*virtualbuffer._input_port))
@@ -563,7 +569,7 @@ class BufferNode(HardwareNode):
         if self.last_in_chain == False or type(self.kernel) != VirtualRowBuffer:
             args["stencil_width"] = ["Int", 0]
         else:
-            args["stencil_width"] = ["Int", self.kernel._read_delay+1]
+            args["stencil_width"] = ["Int", self.child_read_delay+1]
 
         for idx in range(len(self.kernel.read_iterator._st)):
             args["stride_" + str(idx)] = ["Int", self.kernel.read_iterator._st[idx]]

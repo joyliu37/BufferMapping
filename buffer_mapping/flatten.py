@@ -1,5 +1,18 @@
 from copy import deepcopy
 
+def EliminateRedundancyForAccessPattern(acc_range, acc_stride):
+    eliminate_list = []
+    for dim, acc_range_per_dim in enumerate(acc_range):
+        if acc_range_per_dim == 1:
+            eliminate_list.append(dim)
+
+    for eliminate_id in reversed(eliminate_list):
+        del acc_range[eliminate_id]
+        del acc_stride[eliminate_id]
+
+    return acc_range, acc_stride
+
+
 def FlattenAccessPattern(acc_range, acc_stride):
     #range in 1D for each iterator
     abs_range = [stride * _range for stride, _range in zip(acc_stride, acc_range)]

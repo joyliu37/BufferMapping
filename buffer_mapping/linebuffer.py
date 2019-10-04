@@ -26,8 +26,12 @@ class LineBufferNode:
         read_delay = 0
         self.child_fifo = buf_list
         if self.child_fifo:
-            read_delay = buf_list[0]._fifo_depth * buf_list[0]._fifo_size
-        #print ("read_delay",read_delay)
+            self.child_read_delay = buf_list[0]._fifo_depth * buf_list[0]._fifo_size
+        else:
+            self.child_read_delay = 0
+        read_delay = fifo_depth * fifo_size
+
+        print ("read_delay",read_delay)
 
         #a list of VirtualRowBuffer that save data
         self.row_buffer_chain = [ VirtualRowBuffer(input_port,
@@ -38,7 +42,7 @@ class LineBufferNode:
                                                    read_iterator_stride.copy(),
                                                    [0] * output_port,
                                                    read_delay * (idx == (self._fifo_depth - 1)),
-                                                   fifo_size)
+                                                   self._counter_bound)
                                  for idx in range(self._fifo_depth)]
         '''
         move the update iterator to out side
@@ -54,9 +58,9 @@ class LineBufferNode:
         prev_buffer = None
         for idx, row_buffer in enumerate(self.row_buffer_chain):
             node_name = name+"_"+str(idx)
-            node_dict[node_name] = BufferNode(node_name, row_buffer)
+            node_dict[node_name] = BufferNode(node_name, row_buffer, self.child_read_delay)
 
-            #FIXME: need a beatiful data embeded schema for stencil valid signal
+            #FIXME: need a beautiful data embedded schema for stencil valid signal
             node_dict[node_name].setStencilConfig(self._counter_bound, self._fifo_depth)
 
             if idx == len(self.row_buffer_chain) - 1:
@@ -385,6 +389,7 @@ class VirtualLineBuffer:
 
                 #nothing to merge just a single port, put into a shift list
                 if len(merge_port_list) == 1:
+                    print ("new start port: ", new_start_port)
                     non_merge_port_list.append(new_start_port)
                     continue
 
@@ -436,11 +441,12 @@ class VirtualLineBuffer:
                     }
                 )
             #update the non merge port id in root_dict and port_map
-            for update_id in non_merge_port_list:
-                root_dict[update_id - stride] = root_dict.pop(update_id)
-                self.port_map[update_id - stride] = self.port_map.pop(update_id)
-                if update_id in self.meta_fifo_dict.keys():
-                    self.meta_fifo_dict[update_id - stride] = self.meta_fifo_dict.pop(update_id)
+            if longest_merge_port_list_size > 1:
+                for update_id in non_merge_port_list:
+                    root_dict[update_id - stride] = root_dict.pop(update_id)
+                    self.port_map[update_id - stride] = self.port_map.pop(update_id)
+                    if update_id in self.meta_fifo_dict.keys():
+                        self.meta_fifo_dict[update_id - stride] = self.meta_fifo_dict.pop(update_id)
 
             #update the meta_fifo_dict and start address
             #self.meta_fifo_dict = new_meta_fifo_dict
@@ -449,6 +455,8 @@ class VirtualLineBuffer:
             # update the iterator range for the base buffer, it will keep the largest range
             # Further in the final it will be the reference to shift the start
             self.base_buf.read_iterator._rng[stride_dim] += longest_merge_port_list_size - 1
+
+        print ("base_buffer read range",self.base_buf.read_iterator._rng)
 
         #update the write iterator because of the delay
         for _, root in self.meta_fifo_dict.items():

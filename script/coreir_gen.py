@@ -14,7 +14,7 @@ from buffer_mapping.mapping import CreateHWConfig
 from buffer_mapping.config import CoreIRUnifiedBufferConfig
 
 
-def preprocessCoreIR(hand_craft, hw_setup):
+def processCoreIR(hand_craft, hw_setup):
     #get memory configuration
     mem_config = CreateHWConfig(hw_setup["hw config"])
 
@@ -133,7 +133,7 @@ def test_buffer_mapping():
         json_out_file.write(data)
     print("Json File dump to " + dir_path +"/output")
     #IR_setup, v_setup, instance, connection, valid_list, output_list, input_port, inen_port = preprocessCoreIR(input_coreir)
-    instance, connection = preprocessCoreIR(input_coreir, setup)
+    instance, connection = processCoreIR(input_coreir, setup)
 
     #define what underline hw like
     '''

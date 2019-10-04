@@ -1,5 +1,5 @@
 from functools import reduce
-from buffer_mapping.flatten import FlattenAccessPattern
+from buffer_mapping.flatten import EliminateRedundancyForAccessPattern, FlattenAccessPattern
 
 class VirtualBufferConfig:
     def __init__(self, input_port, output_port, capacity, _range, stride, start=[0], manual_switch=0, arbitrary_addr=0):
@@ -58,7 +58,8 @@ class CoreIRUnifiedBufferConfig:
         for i in range(dimension):
             stride.append(self.config_dict["stride_"+str(i)][1])
             rng.append(self.config_dict["range_"+str(i)][1])
-        rng, stride = FlattenAccessPattern(rng, stride)
+        rng, stride = EliminateRedundancyForAccessPattern(rng, stride)
+        print (rng, stride)
         self.stride_in_dim = [st // acc_cap for st, acc_cap in zip(stride, self.acc_capacity)]
 
 

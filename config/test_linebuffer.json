@@ -55,6 +55,21 @@
     }
 },
 
+"1D line buffer 1x2":
+{
+    "input_port": [1, 1],
+    "output_port": [2, 1],
+    "capacity": [64, 64],
+    "manual_switch": 0,
+    "arbitrary_addr": 0,
+    "access_pattern":
+    {
+        "range": [63, 64],
+        "ref_dim": [0, 1],
+        "stride_in_dim": [1, 1]
+    }
+},
+
 "simple line buffer":
 {
     "input_port": [1, 1],
