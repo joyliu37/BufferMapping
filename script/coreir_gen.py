@@ -73,7 +73,9 @@ def processCoreIR(hand_craft, hw_setup):
                 def rewritePass(key, data_dict):
                     valid_node_list = [OutputValidNode(valid_instance_name[0], valid_instance_name[1]) for valid_instance_name in data_dict["valid_list"]]
 
-                    node_dict, connection_dict = initializeGraph(data_dict["v_config"], mem_config, data_dict["config"], data_dict["output_list"], data_dict["valid_list"], data_dict["input_port"], data_dict["inen_port"], data_dict["ren_port"], key)
+                    enable_port_opt = True
+
+                    node_dict, connection_dict = initializeGraph(data_dict["v_config"], mem_config, data_dict["config"], data_dict["output_list"], data_dict["valid_list"], data_dict["input_port"], data_dict["inen_port"], data_dict["ren_port"], key, enable_port_opt)
 
                     #set of compiler pass optimize the graph
                     capacity_per_dim = data_dict["config"].config_dict["logical_size"][1]['capacity']

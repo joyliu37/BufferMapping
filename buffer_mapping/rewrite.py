@@ -207,7 +207,7 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
             banked_buffer_node_list[min_id].assertLastOfChain()
 
             #connect the banked buffer node with input and output
-            print (node.succ)
+            #print ("output node list:", node.succ)
             for buffer_node, (port_id, output_node_list) in zip(banked_buffer_node_list, node.succ.items()):
                 new_connection_dict.update(buffer_node.connectNode(node.pred))
 
@@ -217,10 +217,14 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
                         if type(output_node) == BufferNode:
                             output_node.last_in_chain = False
                 else:
+                    #FIXME Possible bug in wiring of valid signal
+                    exist_pred_buffer = False
                     for output_node in output_node_list:
                         if type(output_node) == BufferNode:
                             output_node.last_in_chain = True
-                    buffer_node.last_in_chain = False
+                            exist_pred_buffer = True
+                    if exist_pred_buffer:
+                        buffer_node.last_in_chain = False
                 #connecting all the wire
                 for output_node in output_node_list:
                     print ("succ node:[", output_node.name,"], connected bank name:[", buffer_node.name,"]")

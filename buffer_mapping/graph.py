@@ -3,7 +3,7 @@ from buffer_mapping.hardware import InputNode, OutputNode, OutputValidNode, Buff
 from buffer_mapping.virtualbuffer import VirtualBuffer, VirtualDoubleBuffer
 
 def initializeGraph(v_setup, mem_config, IR_setup,
-                    output_list, valid_list, input_port, inen_port, ren_port, origin_key):
+                    output_list, valid_list, input_port, inen_port, ren_port, origin_key, enable_port_opt = True):
     node_dict = {}
     connection_dict = {}
     v_buf = v_buf = VirtualBuffer(v_setup._input_port,
@@ -21,7 +21,8 @@ def initializeGraph(v_setup, mem_config, IR_setup,
                            inen_port[0]+"."+inen_port[1],
                            ren_port[0]+"."+ren_port[1])
 
-    if linebuffer.meta_fifo_dict:
+    if linebuffer.meta_fifo_dict and enable_port_opt:
+    #if False:
         #has the port optimization and create a line buffer
         output_dict = {}
         print (linebuffer.port_map)
@@ -40,6 +41,7 @@ def initializeGraph(v_setup, mem_config, IR_setup,
         node_dict = {}
         double_buffer = VirtualDoubleBuffer(v_setup)
         double_buffer_node = BufferNode(origin_key+"double_buffer", double_buffer)
+        double_buffer_node.assertLastOfChain()
         connection.update(double_buffer_node.connectNode(input_node))
         node_dict[double_buffer_node.name] = double_buffer_node
         output_list = [OutputNode(out_instance_name[0], out_instance_name[1]) for i, out_instance_name in enumerate(output_list)]
