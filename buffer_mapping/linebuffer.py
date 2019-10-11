@@ -65,6 +65,7 @@ class LineBufferNode:
 
             if idx == len(self.row_buffer_chain) - 1:
                 node_dict[node_name].assertLastOfChain()
+                print ("Assert the last of chain of node: ", node_name )
             if idx == 0:
                 if len(self.child_fifo):
                     node, connection = self.child_fifo[0].GenGraph(node_name, input_node, output_node_list, outside_bank_id)

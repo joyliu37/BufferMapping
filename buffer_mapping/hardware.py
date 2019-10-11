@@ -191,11 +191,15 @@ class ValidGenNode(HardwareNode):
         pass
 
     def connectNode(self, node_pred):
-        if type(node_pred) != BufferNode:
-            assert True, "can only connect to buffernode"
         connection_dict = {}
-        connection_dict[self.input_port["en"].key, node_pred.output_port["valid"].key] = \
-            HardwareWire(self.input_port["en"].key, node_pred.output_port["valid"])
+        if type(node_pred) == BufferNode:
+            connection_dict[self.input_port["en"].key, node_pred.output_port["valid"].key] = \
+                HardwareWire(self.input_port["en"].key, node_pred.output_port["valid"])
+        elif type(node_pred) == InputNode:
+            connection_dict[self.input_port["en"].key, node_pred.output_port["in_en"].key] = \
+                HardwareWire(self.input_port["en"].key, node_pred.output_port["in_en"])
+        else:
+            assert False, "can only connect to buffernode"
         return connection_dict
 
     def dump_json(self):
