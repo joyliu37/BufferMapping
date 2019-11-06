@@ -122,7 +122,7 @@ void VirtualBuffer<Dtype>::switch_check() {
     if (write_iterator.getDone() && read_iterator.getDone()) {
         read_iterator.restart();
         write_iterator.restart();
-        for (auto&& valid : valid_domain) {
+        for (auto& valid : valid_domain) {
             valid = false;
         }
     }
