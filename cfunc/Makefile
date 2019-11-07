@@ -1,4 +1,5 @@
-CC := $(if $(CCX),$(CCX),g++)
+
+CC := $(if $(CXX),$(CXX), g++)
 
 INCLUDE_DIR = include
 BUILD_DIR = bin
@@ -26,6 +27,7 @@ TARGET = $(BUILD_DIR)/libfuncubuf.so
 all:$(TEST_BINS)
 
 $(TEST_BINS): $(BUILD_DIR)/% : %.cpp $(OBJS)
+	@echo $(CXX)
 	@mkdir -p $(BUILD_DIR)/test
 	$(CC) $^ $(CFLAGS) $(FLAGS) $(COREIR_LD_FLAGS) -o $@ 
 
