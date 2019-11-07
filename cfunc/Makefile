@@ -1,4 +1,4 @@
-CC = g++
+CC := $(if $(CCX),$(CCX),g++)
 
 INCLUDE_DIR = include
 BUILD_DIR = bin
