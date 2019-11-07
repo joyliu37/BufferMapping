@@ -2,7 +2,9 @@ CC = g++
 
 INCLUDE_DIR = include
 BUILD_DIR = bin
-COREIR_DIR = /nobackup/joeyliu/aha/coreir
+COREIR_DIR := $(if $(COREIR_DIR),$(COREIR_DIR),/nobackup/joeyliu/aha/coreir)
+
+#COREIR_DIR = /nobackup/joeyliu/aha/coreir
 INCLUDE_DIR += $(COREIR_DIR)/include
 COREIR_LD_FLAGS = -L$(COREIR_DIR)/lib -Wl,-rpath,$(COREIR_DIR)/lib -lcoreir-commonlib -lcoreir -lcoreirsim -lcoreir-float
 
