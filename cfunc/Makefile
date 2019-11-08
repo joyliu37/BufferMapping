@@ -1,8 +1,12 @@
-CC = g++
+
+CC := $(if $(CXX),$(CXX), g++)
 
 INCLUDE_DIR = include
 BUILD_DIR = bin
-COREIR_DIR = /nobackup/joeyliu/aha/coreir
+#COREIR_DIR := $(if $(COREIR_DIR),$(COREIR_DIR),/nobackup/joeyliu/aha/coreir)
+COREIR_DIR ?= /nobackup/joeyliu/aha/coreir
+
+#COREIR_DIR = /nobackup/joeyliu/aha/coreir
 INCLUDE_DIR += $(COREIR_DIR)/include
 COREIR_LD_FLAGS = -L$(COREIR_DIR)/lib -Wl,-rpath,$(COREIR_DIR)/lib -lcoreir-commonlib -lcoreir -lcoreirsim -lcoreir-float
 
@@ -24,6 +28,7 @@ TARGET = $(BUILD_DIR)/libfuncubuf.so
 all:$(TEST_BINS)
 
 $(TEST_BINS): $(BUILD_DIR)/% : %.cpp $(OBJS)
+	@echo $(CXX)
 	@mkdir -p $(BUILD_DIR)/test
 	$(CC) $^ $(CFLAGS) $(FLAGS) $(COREIR_LD_FLAGS) -o $@ 
 

@@ -111,8 +111,9 @@ void VirtualBuffer<Dtype>::copy2writebank() {
             data[select][addr] = data[1 - select][addr];
         }
     }
-    for (auto addr: copy_addr)
+    for (auto addr: copy_addr) {
         valid_domain[addr] = true;
+    }
     copy_addr.clear();
 }
 
@@ -122,9 +123,12 @@ void VirtualBuffer<Dtype>::switch_check() {
     if (write_iterator.getDone() && read_iterator.getDone()) {
         read_iterator.restart();
         write_iterator.restart();
-        for (auto&& valid : valid_domain) {
-            valid = false;
+        for (size_t i = 0; i < valid_domain.size(); i++) {
+          valid_domain[i] = false;
         }
+        //for (auto& valid : valid_domain) {
+            //valid = false;
+        //}
     }
     // Condition to copy data, either both input chunk stencil finished or stencil is not valid when we are feeding data
     if (preload_done.reachBound() && (stencil_read_done.reachBound() || !getStencilValid()) ) {
