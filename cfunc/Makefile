@@ -3,7 +3,8 @@ CC := $(if $(CXX),$(CXX), g++)
 
 INCLUDE_DIR = include
 BUILD_DIR = bin
-COREIR_DIR := $(if $(COREIR_DIR),$(COREIR_DIR),/nobackup/joeyliu/aha/coreir)
+#COREIR_DIR := $(if $(COREIR_DIR),$(COREIR_DIR),/nobackup/joeyliu/aha/coreir)
+COREIR_DIR ?= /nobackup/joeyliu/aha/coreir
 
 #COREIR_DIR = /nobackup/joeyliu/aha/coreir
 INCLUDE_DIR += $(COREIR_DIR)/include
