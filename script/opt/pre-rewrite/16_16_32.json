@@ -127,6 +127,9 @@
           "ub_hw_input_stencil_update_stream_ren":{
             "modref":"corebit.const",
             "modargs":{"value":["Bool",true]}
+          },
+          "bitand_input_kernel":{
+            "modref":"corebit.and"
           }
         },
         "connections":[
@@ -170,7 +173,6 @@
           ["ub_kernel_stream_in_reshape.in","self.in.arg_0.1.0.0"],
           ["ub_kernel_stream.wen","self.in_en.arg_1.0.0.0"],
           ["ub_kernel_stream.reset","self.reset"],
-          ["ub_kernel_stream.valid","self.valid"],
           ["ub_kernel_stream_in_reshape.out.0","ub_kernel_stream.datain0"],
           ["ub_kernel_stream_out_reshape.in.0","ub_kernel_stream.dataout0"],
           ["ub_kernel_stream_out_reshape.in.1","ub_kernel_stream.dataout1"],
@@ -186,7 +188,9 @@
           ["ub_hw_input_stencil_update_stream_in_reshape.in","self.in.arg_0.0.0.0"],
           ["ub_hw_input_stencil_update_stream.wen","self.in_en.arg_0.0.0.0"],
           ["ub_hw_input_stencil_update_stream.reset","self.reset"],
-          ["ub_hw_input_stencil_update_stream.valid","self.valid"],
+          ["ub_hw_input_stencil_update_stream.valid","bitand_input_kernel.in1"],
+          ["ub_kernel_stream.valid","bitand_input_kernel.in0"],
+          ["bitand_input_kernel.out","self.valid"],
           ["ub_hw_input_stencil_update_stream_in_reshape.out.0","ub_hw_input_stencil_update_stream.datain0"],
           ["ub_hw_input_stencil_update_stream_out_reshape.in.0","ub_hw_input_stencil_update_stream.dataout0"],
           ["ub_hw_input_stencil_update_stream_out_reshape.in.1","ub_hw_input_stencil_update_stream.dataout1"],
