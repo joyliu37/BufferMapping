@@ -557,7 +557,7 @@ class BufferNode(HardwareNode):
         create the json file instance dictionary for CoreIR and return
         '''
         mem_tile = {}
-        mem_tile["genref"] = "commonlib.unified_buffer"
+        mem_tile["genref"] = "lakelib.unified_buffer"
         args = {}
         args["width"] = ["Int", 16]
         args["depth"] = ["Int", self.kernel._capacity]

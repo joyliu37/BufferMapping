@@ -116,7 +116,7 @@
                                 ]
                             }
                         },
-                        "const1_1$1": {
+                        "const3_3": {
                             "genref": "coreir.const",
                             "genargs": {
                                 "width": [
@@ -130,7 +130,7 @@
                                         "BitVector",
                                         16
                                     ],
-                                    "16'h0001"
+                                    "16'h0003"
                                 ]
                             }
                         },
@@ -143,7 +143,7 @@
                                 ],
                                 "max": [
                                     "Int",
-                                    63
+                                    62
                                 ],
                                 "min": [
                                     "Int",
@@ -173,7 +173,7 @@
                                 ],
                                 "max": [
                                     "Int",
-                                    62
+                                    63
                                 ],
                                 "min": [
                                     "Int",
@@ -264,10 +264,10 @@
                                     "CoreIRType",
                                     [
                                         "Array",
-                                        2,
+                                        1,
                                         [
                                             "Array",
-                                            1,
+                                            2,
                                             [
                                                 "Array",
                                                 16,
@@ -288,80 +288,72 @@
                             }
                         },
                         "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0": {
-                            "genref": "commonlib.unified_buffer",
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_counter": {
+                            "genref": "commonlib.counter",
                             "genargs": {
                                 "width": [
                                     "Int",
                                     16
                                 ],
-                                "depth": [
-                                    "Int",
-                                    64
-                                ],
-                                "logical_size": [
-                                    "Json",
-                                    {
-                                        "capacity": [
-                                            64
-                                        ]
-                                    }
-                                ],
-                                "rate_matched": [
-                                    "Bool",
-                                    true
-                                ],
-                                "dimensionality": [
-                                    "Int",
-                                    1
-                                ],
-                                "iter_cnt": [
-                                    "Int",
-                                    64
-                                ],
-                                "stencil_width": [
-                                    "Int",
-                                    1
-                                ],
-                                "stride_0": [
-                                    "Int",
-                                    1
-                                ],
-                                "range_0": [
-                                    "Int",
-                                    64
-                                ],
-                                "input_stride_0": [
-                                    "Int",
-                                    1
-                                ],
-                                "input_range_0": [
-                                    "Int",
-                                    64
-                                ],
-                                "chain_en": [
-                                    "Bool",
-                                    false
-                                ],
-                                "chain_idx": [
+                                "min": [
                                     "Int",
                                     0
                                 ],
-                                "output_starting_addrs": [
-                                    "Json",
-                                    {
-                                        "output_start": [
-                                            0
-                                        ]
-                                    }
+                                "max": [
+                                    "Int",
+                                    64
+                                ],
+                                "inc": [
+                                    "Int",
+                                    1
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_flush": {
-                            "modref": "corebit.const",
+                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_ult": {
+                            "genref": "coreir.ult",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_value_0": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
                             "modargs": {
                                 "value": [
-                                    "Bool",
-                                    false
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0000"
                                 ]
                             }
                         }
@@ -388,12 +380,12 @@
                             "add_246_250_251.out"
                         ],
                         [
-                            "mul_247_249_250.in0",
-                            "const1_1$1.out"
-                        ],
-                        [
                             "mul_241_243_244.in0",
                             "const1_1.out"
+                        ],
+                        [
+                            "mul_247_249_250.in0",
+                            "const3_3.out"
                         ],
                         [
                             "count__hw_output_x___scan_dim_0_wen.out",
@@ -416,7 +408,7 @@
                             "mul_241_243_244.in1"
                         ],
                         [
-                            "ub_hw_input_stencil_update_stream_out_reshape.out.1.0",
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1",
                             "mul_247_249_250.in1"
                         ],
                         [
@@ -424,36 +416,36 @@
                             "self.in.arg_0"
                         ],
                         [
-                            "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.reset"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.dataout0"
-                        ],
-                        [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.1",
                             "ub_hw_input_stencil_update_stream_in_reshape.out.0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.wen",
-                            "self.in_en"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.datain0",
+                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.in",
                             "ub_hw_input_stencil_update_stream_in_reshape.out.0"
                         ],
                         [
-                            "self.valid",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.valid"
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
+                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.out"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.flush"
+                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_counter.en",
+                            "self.in_en"
+                        ],
+                        [
+                            "self.valid",
+                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_ult.out"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_value_0.out",
+                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_ult.in1"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_counter.out",
+                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_ult.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_val_gen_counter.reset",
+                            "self.reset"
                         ]
                     ]
                 }
