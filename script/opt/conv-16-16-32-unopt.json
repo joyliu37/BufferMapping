@@ -1309,13 +1309,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -1337,7 +1337,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1345,7 +1345,7 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
@@ -1353,7 +1353,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1365,7 +1365,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1394,13 +1394,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -1422,7 +1422,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1430,7 +1430,7 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
@@ -1438,7 +1438,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1450,7 +1450,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1479,13 +1479,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -1507,7 +1507,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1515,7 +1515,7 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
@@ -1523,7 +1523,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1535,7 +1535,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1564,13 +1564,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -1592,7 +1592,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1600,7 +1600,7 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
@@ -1608,7 +1608,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1620,7 +1620,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1634,7 +1634,7 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            16
+                                            3
                                         ]
                                     }
                                 ]
@@ -1649,13 +1649,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -1677,7 +1677,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1685,7 +1685,7 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
@@ -1693,7 +1693,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1705,7 +1705,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1719,7 +1719,7 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            17
+                                            4
                                         ]
                                     }
                                 ]
@@ -1734,13 +1734,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -1762,7 +1762,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1770,7 +1770,7 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
@@ -1778,7 +1778,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1790,7 +1790,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1804,7 +1804,7 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            18
+                                            5
                                         ]
                                     }
                                 ]
@@ -1819,13 +1819,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -1847,7 +1847,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1855,7 +1855,7 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
@@ -1863,7 +1863,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1875,7 +1875,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1889,7 +1889,7 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            32
+                                            6
                                         ]
                                     }
                                 ]
@@ -1904,13 +1904,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -1932,7 +1932,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1940,7 +1940,7 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
@@ -1948,7 +1948,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
@@ -1960,7 +1960,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1974,7 +1974,7 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            33
+                                            7
                                         ]
                                     }
                                 ]
@@ -1989,13 +1989,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -2017,7 +2017,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -2025,7 +2025,7 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
@@ -2033,7 +2033,7 @@
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
@@ -2045,7 +2045,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -2059,7 +2059,7 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            34
+                                            8
                                         ]
                                     }
                                 ]
@@ -2485,10 +2485,6 @@
                             "ub_kernel_streamdouble_buffer_bank_8.dataout0"
                         ],
                         [
-                            "self.valid",
-                            "ub_kernel_streamdouble_buffer_bank_0.valid"
-                        ],
-                        [
                             "ub_kernel_streamdouble_buffer_bank_0_flush.out",
                             "ub_kernel_streamdouble_buffer_bank_0.flush"
                         ],
@@ -2530,7 +2526,7 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.datain0",
@@ -2550,7 +2546,7 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.datain0",
@@ -2570,7 +2566,7 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.datain0",
@@ -2590,7 +2586,7 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.datain0",
@@ -2610,7 +2606,7 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.datain0",
@@ -2630,7 +2626,7 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.datain0",
@@ -2650,7 +2646,7 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.datain0",
@@ -2670,7 +2666,7 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.datain0",
@@ -2690,7 +2686,7 @@
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
                         ],
                         [
                             "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.datain0",

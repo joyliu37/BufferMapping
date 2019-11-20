@@ -145,7 +145,7 @@ def banking(node_dict, connection_dict, mem_config, acc_capacity, capacity_per_d
                 print (acc_capacity)
                 read_bank_per_dim = [check_bank_for_dim(vbuffer_.read_iterator, acc_capacity[i], acc_capacity[i+1]) for i in range(len(capacity_per_dim))]
                 write_bank_per_dim = [check_bank_for_dim(vbuffer_.write_iterator, acc_capacity[i], acc_capacity[i+1]) for i in range(len(capacity_per_dim))]
-                print (read_bank_per_dim, write_bank_per_dim)
+                print ("read_bank:", read_bank_per_dim, "write_bank: " ,write_bank_per_dim)
 
                 bank_per_dim = [max(max(read_bank, write_bank), 1) for read_bank, write_bank in zip(read_bank_per_dim, write_bank_per_dim)]
 

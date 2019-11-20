@@ -710,7 +710,7 @@
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "stride_0": [
                                     "Int",
@@ -848,7 +848,7 @@
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "stride_0": [
                                     "Int",
@@ -1055,7 +1055,7 @@
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "stride_0": [
                                     "Int",
@@ -1172,7 +1172,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_base": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_0": {
                             "genref": "lakelib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -1181,13 +1181,13 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            8192
+                                            288
                                         ]
                                     }
                                 ],
@@ -1201,7 +1201,7 @@
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    8192
+                                    6272
                                 ],
                                 "stencil_width": [
                                     "Int",
@@ -1209,7 +1209,7 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    256
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
@@ -1217,19 +1217,19 @@
                                 ],
                                 "stride_1": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "range_1": [
                                     "Int",
-                                    16
+                                    14
                                 ],
                                 "stride_2": [
                                     "Int",
-                                    16
+                                    0
                                 ],
                                 "range_2": [
                                     "Int",
-                                    16
+                                    14
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -1237,7 +1237,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    8192
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1257,7 +1257,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_1": {
                             "genref": "lakelib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -1266,27 +1266,27 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    512
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            512
+                                            288
                                         ]
                                     }
                                 ],
                                 "rate_matched": [
                                     "Bool",
-                                    true
+                                    false
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    1
+                                    3
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    512
+                                    6272
                                 ],
                                 "stencil_width": [
                                     "Int",
@@ -1294,11 +1294,27 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    1
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
-                                    512
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -1306,7 +1322,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    512
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1320,13 +1336,13 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            0
+                                            1
                                         ]
                                     }
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_2": {
                             "genref": "lakelib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -1335,27 +1351,27 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            32
+                                            288
                                         ]
                                     }
                                 ],
                                 "rate_matched": [
                                     "Bool",
-                                    true
+                                    false
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    1
+                                    3
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    32
+                                    6272
                                 ],
                                 "stencil_width": [
                                     "Int",
@@ -1363,11 +1379,27 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    1
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
                                     32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -1375,7 +1407,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1389,13 +1421,13 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            0
+                                            2
                                         ]
                                     }
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_3": {
                             "genref": "lakelib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -1404,39 +1436,55 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            32
+                                            288
                                         ]
                                     }
                                 ],
                                 "rate_matched": [
                                     "Bool",
-                                    true
+                                    false
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    1
+                                    3
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    32
+                                    6272
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    1
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
                                     32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -1444,7 +1492,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1458,13 +1506,13 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            0
+                                            3
                                         ]
                                     }
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_4": {
                             "genref": "lakelib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -1473,27 +1521,27 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            32
+                                            288
                                         ]
                                     }
                                 ],
                                 "rate_matched": [
                                     "Bool",
-                                    true
+                                    false
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    1
+                                    3
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    32
+                                    6272
                                 ],
                                 "stencil_width": [
                                     "Int",
@@ -1501,11 +1549,27 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    1
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
                                     32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -1513,7 +1577,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1527,13 +1591,13 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            0
+                                            4
                                         ]
                                     }
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_5": {
                             "genref": "lakelib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -1542,39 +1606,55 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            32
+                                            288
                                         ]
                                     }
                                 ],
                                 "rate_matched": [
                                     "Bool",
-                                    true
+                                    false
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    1
+                                    3
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    32
+                                    6272
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    1
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
                                     32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -1582,7 +1662,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1596,13 +1676,13 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            0
+                                            5
                                         ]
                                     }
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_6": {
                             "genref": "lakelib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -1611,39 +1691,55 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    512
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            512
+                                            288
                                         ]
                                     }
                                 ],
                                 "rate_matched": [
                                     "Bool",
-                                    true
+                                    false
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    1
+                                    3
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    512
+                                    6272
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    65
+                                    0
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    1
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
-                                    512
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -1651,7 +1747,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    512
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1665,13 +1761,13 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            0
+                                            6
                                         ]
                                     }
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_7": {
                             "genref": "lakelib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -1680,27 +1776,27 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            32
+                                            288
                                         ]
                                     }
                                 ],
                                 "rate_matched": [
                                     "Bool",
-                                    true
+                                    false
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    1
+                                    3
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    32
+                                    6272
                                 ],
                                 "stencil_width": [
                                     "Int",
@@ -1708,11 +1804,27 @@
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    1
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
                                     32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -1720,7 +1832,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1734,13 +1846,13 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            0
+                                            7
                                         ]
                                     }
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_8": {
                             "genref": "lakelib.unified_buffer",
                             "genargs": {
                                 "width": [
@@ -1749,39 +1861,55 @@
                                 ],
                                 "depth": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "logical_size": [
                                     "Json",
                                     {
                                         "capacity": [
-                                            32
+                                            288
                                         ]
                                     }
                                 ],
                                 "rate_matched": [
                                     "Bool",
-                                    true
+                                    false
                                 ],
                                 "dimensionality": [
                                     "Int",
-                                    1
+                                    3
                                 ],
                                 "iter_cnt": [
                                     "Int",
-                                    32
+                                    6272
                                 ],
                                 "stencil_width": [
                                     "Int",
-                                    1
+                                    0
                                 ],
                                 "stride_0": [
                                     "Int",
-                                    1
+                                    9
                                 ],
                                 "range_0": [
                                     "Int",
                                     32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
                                 ],
                                 "input_stride_0": [
                                     "Int",
@@ -1789,7 +1917,7 @@
                                 ],
                                 "input_range_0": [
                                     "Int",
-                                    32
+                                    288
                                 ],
                                 "chain_en": [
                                     "Bool",
@@ -1803,13 +1931,13 @@
                                     "Json",
                                     {
                                         "output_start": [
-                                            0
+                                            8
                                         ]
                                     }
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_base_flush": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_0_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -1818,7 +1946,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_flush": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_1_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -1827,7 +1955,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0_flush": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_2_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -1836,7 +1964,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1_flush": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_3_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -1845,7 +1973,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0_flush": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_4_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -1854,7 +1982,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1_flush": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_5_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -1863,7 +1991,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_flush": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_6_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -1872,7 +2000,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0_flush": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_7_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -1881,7 +2009,7 @@
                                 ]
                             }
                         },
-                        "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1_flush": {
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_8_flush": {
                             "modref": "corebit.const",
                             "modargs": {
                                 "value": [
@@ -2229,22 +2357,6 @@
                             "ub_kernel_streamlinebuffer_bank_0_2_1.dataout0"
                         ],
                         [
-                            "self.valid",
-                            "ub_kernel_streamlinebuffer_bank_0_0_1.valid"
-                        ],
-                        [
-                            "self.valid",
-                            "ub_kernel_streamlinebuffer_bank_0_1_1.valid"
-                        ],
-                        [
-                            "self.valid",
-                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
-                        ],
-                        [
-                            "self.valid",
-                            "ub_kernel_streamlinebuffer_bank_0_2_1.valid"
-                        ],
-                        [
                             "ub_kernel_streamlinebuffer_base_flush.out",
                             "ub_kernel_streamlinebuffer_base.flush"
                         ],
@@ -2281,236 +2393,224 @@
                             "ub_kernel_streamlinebuffer_bank_0_2_1.flush"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.wen",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.wen",
                             "self.in_en.arg_0.0.0.0"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.ren",
-                            "ub_hw_input_stencil_update_stream_ren.out"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.ren",
+                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.datain0",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.datain0",
                             "ub_hw_input_stencil_update_stream_in_reshape.out.0"
                         ],
                         [
                             "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.reset"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.dataout0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0.wen",
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0.ren",
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0.datain0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.dataout0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0.reset"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0.dataout0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1.wen",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1.ren",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1.datain0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0.dataout0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1.reset"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1.dataout0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.wen",
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.ren",
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.datain0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.dataout0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.reset"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.dataout0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0.wen",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0.ren",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0.datain0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.dataout0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0.reset"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0.dataout0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1.wen",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1.ren",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1.datain0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0.dataout0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1.reset"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1.dataout0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.wen",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.ren",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.datain0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.dataout0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.reset"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.dataout0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0.wen",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0.ren",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0.datain0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.dataout0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0.reset"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0.dataout0"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1.wen",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1.ren",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0.valid"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1.datain0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0.dataout0"
-                        ],
-                        [
-                            "self.reset",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1.reset"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.reset"
                         ],
                         [
                             "ub_hw_input_stencil_update_stream_out_reshape.in.0",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1.dataout0"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.ren",
+                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.ren",
+                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.ren",
+                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.ren",
+                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.ren",
+                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.ren",
+                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.ren",
+                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.ren",
+                            "ub_kernel_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.dataout0"
                         ],
                         [
                             "self.valid",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1.valid"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.valid"
                         ],
                         [
-                            "self.valid",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1.valid"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.flush"
                         ],
                         [
-                            "self.valid",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.valid"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.flush"
                         ],
                         [
-                            "self.valid",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1.valid"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.flush"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_base_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_base.flush"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.flush"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0.flush"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.flush"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_0.flush"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.flush"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_0_1.flush"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.flush"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_0.flush"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.flush"
                         ],
                         [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_1.flush"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_1.flush"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_0.flush"
-                        ],
-                        [
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1_flush.out",
-                            "ub_hw_input_stencil_update_streamlinebuffer_bank_0_2_1.flush"
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.flush"
                         ]
                     ]
                 }
