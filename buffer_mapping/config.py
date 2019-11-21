@@ -45,12 +45,16 @@ class CoreIRUnifiedBufferConfig:
 
     def getVirtualBufferConfig(self):
         dimension = self.config_dict["dimensionality"][1]
+
+        #dimensionality is the number of loop iterator instead of dimension of the buffer
+
         stride = []
         rng = []
         input_port = self.config_dict["num_input_ports"][1]
         output_port = self.config_dict["num_output_ports"][1]
         capacity_list = self.config_dict["logical_size"][1]["capacity"]
-        acc_capacity = [ reduce(lambda x, y : x*y, capacity_list[0:i+1]) for i in range(dimension) ]
+        capacity_dimension = len(capacity_list)
+        acc_capacity = [ reduce(lambda x, y : x*y, capacity_list[0:i+1]) for i in range(capacity_dimension) ]
         self.acc_capacity = [1] + acc_capacity
         #capacity = reduce(lambda x, y: x*y, capacity_list)
         capacity = self.acc_capacity[-1]
