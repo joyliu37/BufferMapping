@@ -60,7 +60,11 @@ def processCoreIR(hand_craft, hw_setup):
                 #create a dictr for all the rewrite information
                 buf_data = {}
                 buf_data["valid_list"] = valid_list
+
+                #parse trick to sort the output port
+                output_list.sort(key = lambda name: int(name[1].split(".")[-1]))
                 buf_data["output_list"] = output_list
+
                 buf_data["input_port"] = input_port[0]
                 buf_data["inen_port"] = inen_port[0]
                 if len(ren_port) == 1:
