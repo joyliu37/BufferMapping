@@ -510,10 +510,11 @@ class VirtualBuffer {
 
       if (renVal == BitVector(1, 1)){
         auto dataout_pack = func_kernel->read();
-        valid_wire = dataout_pack.valid;
+        valid_wire = std::get<1>(dataout_pack);
+        auto read_data= std::get<0>(dataout_pack);
         std::cout << "valid signal = " << valid_wire << std::endl;
         for (size_t i = 0; i < out_data_wire.size(); i++ ) {
-          out_data_wire[i] = dataout_pack.data[i];
+          out_data_wire[i] = read_data[i];
           std::cout << "Read data[" << i << "] = " << out_data_wire[i] << std::endl;
         }
       }

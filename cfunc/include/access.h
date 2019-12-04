@@ -27,11 +27,13 @@ class AccessIter {
         int getTotalIteration() {return acc_pattern.total_iter;}
         void forceDone() {done = true;}
         vector<int> getAddr() {return addr;}
+        AccessPattern acc_pattern;
 
     private:
-        AccessPattern acc_pattern;
         vector<int> iter_list;
         vector<int> addr;
         bool done;
 };
+
+
 #endif

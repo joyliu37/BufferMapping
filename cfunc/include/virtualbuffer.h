@@ -2,6 +2,7 @@
 #define VIRTUALBUFFER_H_
 
 #include <vector>
+#include <tuple>
 #include "access.h"
 #include "util.h"
 
@@ -14,7 +15,7 @@ class VirtualBuffer {
                 std::vector<int> out_range, std::vector<int> out_stride, std::vector<int> out_start,
                 std::vector<int> in_chunk, std::vector<int> out_stencil, std::vector<int> dimension,
                 int stencil_acc_dim);
-        RetDataWithVal<Dtype> read();
+        std::tuple<vector<Dtype>, bool> read();
         void write(const std::vector<Dtype>& write_data);
         void switch_check();
         void copy2writebank();

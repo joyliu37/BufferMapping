@@ -24,7 +24,7 @@ class Counter {
         int bound;
         int cnt;
 };
-
+/*
 template<typename Dtype>
 struct RetDataWithVal {
     RetDataWithVal(vector<Dtype> _data, bool _valid):
@@ -34,6 +34,9 @@ struct RetDataWithVal {
     bool valid;
 };
 
+template<typename Dtype>
+void init_RetDataWithVal<Dtype>(py::module &m);
+*/
 template<typename T>
 bool isEqual(std::vector<T> const &v1, std::vector<T> const &v2)
 {

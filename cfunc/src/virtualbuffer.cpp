@@ -60,7 +60,7 @@ bool VirtualBuffer<Dtype>::getStencilValid() {
 }
 
 template<typename Dtype>
-RetDataWithVal<Dtype> VirtualBuffer<Dtype>::read() {
+std::tuple<vector<Dtype>, bool> VirtualBuffer<Dtype>::read() {
 
     //assert((!read_iterator.getDone()) && "No more read allowed.\n");
     //if reach the end you could read but never get valid
@@ -80,7 +80,7 @@ RetDataWithVal<Dtype> VirtualBuffer<Dtype>::read() {
         read_iterator.update();
         switch_check();
     }
-    return RetDataWithVal<Dtype>(out_data, valid);
+    return std::make_tuple(out_data, valid);
 }
 
 template<typename Dtype>
