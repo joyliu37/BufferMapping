@@ -54,7 +54,8 @@ template<typename Dtype>
 bool VirtualBuffer<Dtype>::getStencilValid() {
     bool valid = true;
     for (auto read_addr : stencil_iterator.getAddr()) {
-        valid = valid && valid_domain[read_addr];
+        valid = valid && valid_domain[read_addr%capacity];
+        //std::cout << "valid_domain: " << read_addr << ", " << valid_domain[read_addr] << endl;
     }
     return valid;
 }
@@ -68,12 +69,16 @@ std::tuple<vector<Dtype>, bool> VirtualBuffer<Dtype>::read() {
     bool valid = !read_iterator.getDone();
 
     for(auto read_addr : read_iterator.getAddr()) {
+        read_addr %= capacity;
         out_data.push_back(data[select][read_addr]);
         valid = valid && valid_domain[read_addr];
     }
 
     //check if we could do read, chances are that we finish read in stencil, but still has block to write
     valid &= !stencil_read_done.reachBound();
+
+    // check if we could do read, chances are that we has the block ready but not the whole stencil
+    valid &= getStencilValid();
 
     if (valid){
         stencil_read_done.update();
@@ -90,7 +95,7 @@ void VirtualBuffer<Dtype>::write(const vector<Dtype>& in_data) {
     auto write_addr_array = write_iterator.getAddr();
     assert((write_addr_array.size() == in_data.size()) && "Input data width not equals to port width.\n");
     for (size_t i = 0; i < in_data.size(); i ++) {
-        int write_addr = write_addr_array[i];
+        int write_addr = write_addr_array[i] % capacity;
         copy_addr.push_back(write_addr);
         data[1 - select][write_addr] = in_data[i];
     }

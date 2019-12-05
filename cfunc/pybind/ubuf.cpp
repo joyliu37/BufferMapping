@@ -27,5 +27,6 @@ PYBIND11_MODULE(ubuf, m) {
             std::vector<int>, std::vector<int>, std::vector<int>,
             std::vector<int>, std::vector<int>, std::vector<int>, int>())
         .def("read", &VirtualBuffer<int>::read);
+        .def("write", &VirtualBuffer<int>::write);
 }
 
