@@ -71,18 +71,18 @@ void ReadWriteBlockCheck(const vector<int> & data,
         for (int port = 0; port < buffer->getInPort(); port ++){
             in_data[port] = data[write_stream[i][port]];
         }
-        buffer->write(in_data);
-        //std::cout << "No. " << i << " write data: " << in_data[0] << std::endl;
 
         auto out_data_pack = buffer->read();
         auto out_data = std::get<0>(out_data_pack);
         bool out_valid = std::get<1>(out_data_pack);
-        //std::cout << "valid: " << out_valid << " read data: " << out_data[0] <<std::endl;
         if (out_valid){
             for (int port = 0; port < buffer->getOutPort(); port ++){
                 assert(out_data[port] == data[read_stream[output_cnt][port]] && "read data does not match");
             }
             output_cnt ++;
         }
+
+        buffer->write(in_data);
+        //std::cout << "No. " << i << " write data: " << in_data[0] << std::endl;
     }
 }

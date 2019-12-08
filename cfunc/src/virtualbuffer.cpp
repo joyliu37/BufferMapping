@@ -13,6 +13,7 @@ VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride,
     stencil_acc_dim(stencil_acc_dim),
     select(false),
     is_db(isEqual(in_chunk, dimension)),
+    stencil_valid_to_be_read(false),
     write_iterator(in_range, in_stride, in_start),
     read_iterator(out_range, out_stride, out_start)
 {
@@ -55,7 +56,7 @@ bool VirtualBuffer<Dtype>::getStencilValid() {
     bool valid = true;
     for (auto read_addr : stencil_iterator.getAddr()) {
         valid = valid && valid_domain[read_addr%capacity];
-        //std::cout << "valid_domain: " << read_addr << ", " << valid_domain[read_addr] << endl;
+        //std::cout << "valid_domain: " << read_addr << ", " << valid_domain[read_addr%capacity] << endl;
     }
     return valid;
 }
@@ -67,18 +68,18 @@ std::tuple<vector<Dtype>, bool> VirtualBuffer<Dtype>::read() {
     //if reach the end you could read but never get valid
     vector<Dtype> out_data;
     bool valid = !read_iterator.getDone();
+    if( stencil_valid_to_be_read == false) {
+        stencil_valid_to_be_read = getStencilValid();
+    }
+    valid = stencil_valid_to_be_read;
+    valid &= !stencil_read_done.reachBound();
 
     for(auto read_addr : read_iterator.getAddr()) {
         read_addr %= capacity;
         out_data.push_back(data[select][read_addr]);
-        valid = valid && valid_domain[read_addr];
+        //valid = valid && valid_domain[read_addr];
     }
 
-    //check if we could do read, chances are that we finish read in stencil, but still has block to write
-    valid &= !stencil_read_done.reachBound();
-
-    // check if we could do read, chances are that we has the block ready but not the whole stencil
-    valid &= getStencilValid();
 
     if (valid){
         stencil_read_done.update();
@@ -96,6 +97,7 @@ void VirtualBuffer<Dtype>::write(const vector<Dtype>& in_data) {
     assert((write_addr_array.size() == in_data.size()) && "Input data width not equals to port width.\n");
     for (size_t i = 0; i < in_data.size(); i ++) {
         int write_addr = write_addr_array[i] % capacity;
+        //std::cout << "write_addr = " << write_addr << std::endl;
         copy_addr.push_back(write_addr);
         data[1 - select][write_addr] = in_data[i];
     }
@@ -124,6 +126,30 @@ void VirtualBuffer<Dtype>::copy2writebank() {
 
 template<typename Dtype>
 void VirtualBuffer<Dtype>::switch_check() {
+    // Condition to copy data, either both input chunk stencil finished or stencil is not valid when we are feeding data
+    if (stencil_valid_to_be_read == false) {
+        if (preload_done.reachBound()){
+            copy2writebank();
+            preload_done.restart();
+        }
+    }
+    //copy the data in steady state
+    else if (preload_done.reachBound() && (stencil_read_done.reachBound()  )) {
+        //update the stencil iterator if we finish read all the data from output stencil
+
+        stencil_iterator.update();
+        stencil_valid_to_be_read = false;
+        //TODO: double check this part may be improved
+        if (stencil_iterator.getDone()){
+            stencil_iterator.restart();
+        }
+
+        copy2writebank();
+        preload_done.restart();
+        stencil_read_done.restart();
+    }
+
+
     //switch between data tile, invalid data valid domain
     if (write_iterator.getDone() && read_iterator.getDone()) {
         read_iterator.restart();
@@ -134,19 +160,6 @@ void VirtualBuffer<Dtype>::switch_check() {
         //for (auto& valid : valid_domain) {
             //valid = false;
         //}
-    }
-    // Condition to copy data, either both input chunk stencil finished or stencil is not valid when we are feeding data
-    if (preload_done.reachBound() && (stencil_read_done.reachBound() || !getStencilValid()) ) {
-        if (stencil_read_done.reachBound() ) {
-            //update the stencil iterator if we finish read all the data from output stencil
-            stencil_iterator.update();
-            if (stencil_iterator.getDone())
-                stencil_iterator.restart();
-        }
-
-        copy2writebank();
-        preload_done.restart();
-        stencil_read_done.restart();
     }
 }
 
