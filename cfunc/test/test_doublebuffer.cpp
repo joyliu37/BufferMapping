@@ -87,6 +87,7 @@ void ReadBlockCheck(const vector<int> & data, const vector<vector<int> > & read_
         auto out_data_pack = buffer->read();
         auto out_data = std::get<0>(out_data_pack);
         bool out_valid = std::get<1>(out_data_pack);
+        //std::cout << "no. " << i << ", valid = " << out_valid << std::endl;
         if (out_valid){
             for (int port = 0; port < buffer->getOutPort(); port ++){
                 assert(out_data[port] == data[read_stream[i][port]] && "read data does not match");

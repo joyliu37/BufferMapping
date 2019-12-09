@@ -15,11 +15,15 @@ class VirtualBuffer {
                 std::vector<int> out_range, std::vector<int> out_stride, std::vector<int> out_start,
                 std::vector<int> in_chunk, std::vector<int> out_stencil, std::vector<int> dimension,
                 int stencil_acc_dim);
+        VirtualBuffer(std::vector<int> in_range, std::vector<int> in_stride, std::vector<int> in_start,
+                std::vector<int> out_range, std::vector<int> out_stride, std::vector<int> out_start,
+                std::vector<int> in_chunk, std::vector<int> out_stencil, std::vector<int> dimension,
+                std::vector<int> out_stencil_width, int stencil_acc_dim);
         std::tuple<vector<Dtype>, bool> read();
         void write(const std::vector<Dtype>& write_data);
         void switch_check();
         void copy2writebank();
-        bool getStencilValid();
+        bool getNextStencilValid();
         int getReadIteration() {return read_iterator.getTotalIteration();}
         int getWriteIteration() {return write_iterator.getTotalIteration();}
         int getInPort() {return input_port;}

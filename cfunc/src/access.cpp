@@ -23,8 +23,38 @@ AccessPattern::AccessPattern(vector<int> _range, vector<int> _stride, vector<int
     }
 }
 
+AccessIter::AccessIter(vector<int> _range, vector<int> _stride, vector<int> _start, vector<int> _stencil_width) :
+    done(false), use_stencil_width(true){
+    acc_pattern = AccessPattern(_range, _stride, _start);
+
+    for (int stencil_width_dim : _stencil_width) {
+        stencil_width.push_back(stencil_width_dim);
+    }
+
+    for (int i = 0; i < acc_pattern.dimension; i ++) {
+        iter_list.push_back(0);
+    }
+
+    for (int start_pos: acc_pattern.start) {
+        addr.push_back(start_pos);
+    }
+}
+
+bool AccessIter::getStencilValid() {
+    if (use_stencil_width){
+        bool valid = true;
+        for (auto itr = 0; itr < iter_list.size(); itr ++) {
+            valid &= iter_list[itr] >= stencil_width[itr];
+        }
+        return valid;
+    }
+    else {
+        return true;
+    }
+}
+
 AccessIter::AccessIter(vector<int> _range, vector<int> _stride, vector<int> _start) :
-    done(false){
+    done(false), use_stencil_width(false){
     acc_pattern = AccessPattern(_range, _stride, _start);
 
     for (int i = 0; i < acc_pattern.dimension; i ++) {

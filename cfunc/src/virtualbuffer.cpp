@@ -40,10 +40,6 @@ VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride,
     read_in_stencil_bound = accumulate(out_range.begin(), out_range.begin()+stencil_acc_dim, 1, mul);
     stencil_read_done = Counter(read_in_stencil_bound);
 
-    //for double buffer initialization
-    if (is_db)
-        read_iterator.forceDone();
-
     // The data bank you have, 0 is for active working set, 1 for preload data
     // here we have an optimization for double buffer, do not move around, just change the pointer
     data = vector<vector<Dtype> >(2, vector<Dtype>(capacity, (Dtype)0));
@@ -52,7 +48,21 @@ VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride,
 }
 
 template<typename Dtype>
-bool VirtualBuffer<Dtype>::getStencilValid() {
+VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride, vector<int> in_start,
+        vector<int> out_range, vector<int> out_stride, vector<int> out_start,
+        vector<int> in_chunk, vector<int>out_stencil, vector<int> dimension,
+        vector<int> stencil_width,
+        int stencil_acc_dim):
+    VirtualBuffer(in_range, in_stride, in_start,
+            out_range, out_stride, out_start,
+            in_chunk, out_stencil, dimension,
+            stencil_acc_dim)
+{
+    read_iterator = AccessIter(out_range, out_stride, out_start, stencil_width);
+}
+
+template<typename Dtype>
+bool VirtualBuffer<Dtype>::getNextStencilValid() {
     bool valid = true;
     for (auto read_addr : stencil_iterator.getAddr()) {
         valid = valid && valid_domain[read_addr%capacity];
@@ -69,9 +79,9 @@ std::tuple<vector<Dtype>, bool> VirtualBuffer<Dtype>::read() {
     vector<Dtype> out_data;
     bool valid = !read_iterator.getDone();
     if( stencil_valid_to_be_read == false) {
-        stencil_valid_to_be_read = getStencilValid();
+        stencil_valid_to_be_read = getNextStencilValid();
     }
-    valid = stencil_valid_to_be_read;
+    valid &= stencil_valid_to_be_read;
     valid &= !stencil_read_done.reachBound();
 
     for(auto read_addr : read_iterator.getAddr()) {
@@ -126,20 +136,24 @@ void VirtualBuffer<Dtype>::copy2writebank() {
 
 template<typename Dtype>
 void VirtualBuffer<Dtype>::switch_check() {
-    // Condition to copy data, either both input chunk stencil finished or stencil is not valid when we are feeding data
+    // Condition to copy data, either both input chunk stencil finished
+    // or stencil is not valid when we are feeding data in the initialization
     if (stencil_valid_to_be_read == false) {
+        //initialization
         if (preload_done.reachBound()){
             copy2writebank();
             preload_done.restart();
         }
+        if (write_iterator.getDone())
+            write_iterator.restart();
     }
+
     //copy the data in steady state
     else if (preload_done.reachBound() && (stencil_read_done.reachBound()  )) {
         //update the stencil iterator if we finish read all the data from output stencil
 
         stencil_iterator.update();
         stencil_valid_to_be_read = false;
-        //TODO: double check this part may be improved
         if (stencil_iterator.getDone()){
             stencil_iterator.restart();
         }
@@ -149,14 +163,16 @@ void VirtualBuffer<Dtype>::switch_check() {
         stencil_read_done.restart();
     }
 
-
     //switch between data tile, invalid data valid domain
     if (write_iterator.getDone() && read_iterator.getDone()) {
+        //cout << "------switch tile------" << std::endl;
         read_iterator.restart();
         write_iterator.restart();
-        for (size_t i = 0; i < valid_domain.size(); i++) {
-          valid_domain[i] = false;
-        }
+        //TODO: fix this hack for double buffer, related to Chris's question
+        if (!is_db)
+            for (size_t i = 0; i < valid_domain.size(); i++) {
+              valid_domain[i] = false;
+            }
         //for (auto& valid : valid_domain) {
             //valid = false;
         //}

@@ -20,6 +20,7 @@ class AccessIter {
     public:
         AccessIter() {};
         AccessIter(vector<int> _range, vector<int> _stride, vector<int> _start);
+        AccessIter(vector<int> _range, vector<int> _stride, vector<int> _start, vector<int> _stencil_width);
         void restart();
         void update();
         bool getDone() {return done;}
@@ -28,6 +29,12 @@ class AccessIter {
         void forceDone() {done = true;}
         vector<int> getAddr() {return addr;}
         AccessPattern acc_pattern;
+
+        //stencil width is an optional parameter, it has the same dimensionality as the loop iterator and
+        //will give create a stencil valid signal while iterator is large than stencil width at that dimension
+        bool use_stencil_width;
+        vector<int> stencil_width;
+        bool getStencilValid();
 
     private:
         vector<int> iter_list;
