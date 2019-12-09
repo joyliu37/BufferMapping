@@ -10,7 +10,8 @@ COREIR_DIR ?= ../../coreir
 INCLUDE_DIR += $(COREIR_DIR)/include
 COREIR_LD_FLAGS = -L$(COREIR_DIR)/lib -Wl,-rpath,$(COREIR_DIR)/lib -lcoreir-commonlib -lcoreir -lcoreirsim -lcoreir-float
 
-CFLAGS = -Wall -std=c++11 -fpic -undefined dynamic_lookup
+CFLAGS = -Wall -std=c++11 -fpic 
+PYCFLAGS = -undefined dynamic_lookup
 LDFLGAS = -shared
 LDFLGAS += $(COREIR_LD_FLAGS)
 FLAGS = $(foreach includedir,$(INCLUDE_DIR),-I$(includedir))
@@ -50,7 +51,7 @@ $(TARGET): $(OBJS)
 pybind: $(PY_MODULE)
 
 $(PY_MODULE): $(PY_SRCS) $(TARGET)
-	$(CC) -shared $^ $(CFLAGS) $(FLAGS) $(PYFLAGS) $(PY_LDFLAGS) -o $@
+	$(CC) -shared $^ $(PYCFLAGS) $(CFLAGS) $(FLAGS) $(PYFLAGS) $(PY_LDFLAGS) -o $@
 
 .PHONY: clean
 
