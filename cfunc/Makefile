@@ -10,7 +10,7 @@ COREIR_DIR ?= ../../coreir
 INCLUDE_DIR += $(COREIR_DIR)/include
 COREIR_LD_FLAGS = -L$(COREIR_DIR)/lib -Wl,-rpath,$(COREIR_DIR)/lib -lcoreir
 
-CFLAGS = -Wall -std=c++11 -fpic 
+CFLAGS = -Wall -std=c++17 -fpic 
 PYCFLAGS = -undefined dynamic_lookup
 LDFLGAS = -shared
 LDFLGAS += $(COREIR_LD_FLAGS)
