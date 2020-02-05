@@ -8,13 +8,13 @@ COREIR_DIR ?= ../../coreir
 
 #COREIR_DIR = /nobackup/joeyliu/aha/coreir
 INCLUDE_DIR += $(COREIR_DIR)/include
-COREIR_LD_FLAGS = -L$(COREIR_DIR)/lib -Wl,-rpath,$(COREIR_DIR)/lib -lcoreir
+COREIR_LD_FLAGS = -L$(COREIR_DIR)/lib -Wl,-rpath,$(COREIR_DIR)/lib -lcoreir-commonlib -lcoreir -lcoreirsim -lcoreir-float
 
-CFLAGS = -Wall -std=c++17 -fpic 
+CFLAGS = -Wall -std=c++11 -fpic 
 PYCFLAGS = -undefined dynamic_lookup
 LDFLGAS = -shared
 LDFLGAS += $(COREIR_LD_FLAGS)
-FLAGS = $(foreach includedir,$(INCLUDE_DIR),-I$(includedir)) -static-libgcc -static-libstdc++
+FLAGS = $(foreach includedir,$(INCLUDE_DIR),-I$(includedir))
 
 #pybind flags
 PYFLAGS = `python3 -m pybind11 --includes`
@@ -29,7 +29,7 @@ TEST_BINS = $(patsubst test/%.cpp, $(BUILD_DIR)/test/%, $(TEST_SRCS))
 #OBJS = $(addprefix $(BUILD_DIR)/,${SRCS:.cpp=.o})
 OBJS = $(patsubst src/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
-TARGET = $(BUILD_DIR)/libcoreir-lakelib.so
+TARGET = $(BUILD_DIR)/libfuncubuf.so
 PY_MODULE = $(BUILD_DIR)/ubuf`python3-config\ --extension-suffix`
 
 all:$(TEST_BINS)
