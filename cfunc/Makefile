@@ -8,7 +8,7 @@ COREIR_DIR ?= ../../coreir
 
 #COREIR_DIR = /nobackup/joeyliu/aha/coreir
 INCLUDE_DIR += $(COREIR_DIR)/include
-COREIR_LD_FLAGS = -L$(COREIR_DIR)/lib -Wl,-rpath,$(COREIR_DIR)/lib -lcoreir
+COREIR_LD_FLAGS = -L$(COREIR_DIR)/lib -Wl,-rpath,$(COREIR_DIR)/lib -lcoreir -lcoreirsim -lcoreir-commonlib
 
 CFLAGS = -Wall -std=c++17 -fpic 
 PYCFLAGS = -undefined dynamic_lookup

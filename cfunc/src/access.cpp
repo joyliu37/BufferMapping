@@ -24,7 +24,7 @@ AccessPattern::AccessPattern(vector<int> _range, vector<int> _stride, vector<int
 }
 
 AccessIter::AccessIter(vector<int> _range, vector<int> _stride, vector<int> _start, vector<int> _stencil_width) :
-    done(false), use_stencil_width(true){
+    use_stencil_width(true),done(false){
     acc_pattern = AccessPattern(_range, _stride, _start);
 
     for (int stencil_width_dim : _stencil_width) {
@@ -43,7 +43,7 @@ AccessIter::AccessIter(vector<int> _range, vector<int> _stride, vector<int> _sta
 bool AccessIter::getStencilValid() {
     if (use_stencil_width){
         bool valid = true;
-        for (auto itr = 0; itr < iter_list.size(); itr ++) {
+        for (size_t itr = 0; itr < iter_list.size(); itr ++) {
             valid &= iter_list[itr] >= stencil_width[itr];
         }
         return valid;

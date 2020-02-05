@@ -1,5 +1,5 @@
-TEST_FILE=./bin/test/test_*
-for file in $TEST_FILE ;do
+#!/bin/sh
+for file in bin/test/test_*; do
     echo "Run test $file ..."
     ./$file
 done

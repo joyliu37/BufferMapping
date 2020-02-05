@@ -597,7 +597,7 @@
           ["ub_hw_kernel_stencil_update_stream_out_reshape.in.8","ub_hw_kernel_stencil_update_stream.dataout8"],
           ["ub_hw_kernel_stencil_update_stream_out_reshape.in.9","ub_hw_kernel_stencil_update_stream.dataout9"],
           ["ub_hw_kernel_stencil_update_stream_flush.out","ub_hw_kernel_stencil_update_stream.flush"],
-          ["ub_hw_kernel_stencil_update_stream_ren.out","ub_hw_kernel_stencil_update_stream.ren"]
+          ["ub_hw_input_stencil_update_stream.valid","ub_hw_kernel_stencil_update_stream.ren"]
         ]
       }
     }
