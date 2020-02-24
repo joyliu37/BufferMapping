@@ -54,7 +54,7 @@ bool AccessIter::getStencilValid() {
 }
 
 AccessIter::AccessIter(vector<int> _range, vector<int> _stride, vector<int> _start) :
-    done(false), use_stencil_width(false){
+    use_stencil_width(false), done(false) {
     acc_pattern = AccessPattern(_range, _stride, _start);
 
     for (int i = 0; i < acc_pattern.dimension; i ++) {

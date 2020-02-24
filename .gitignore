@@ -4,6 +4,7 @@ cfunc/bin
 
 #coreIR output
 _linebuffer*
+.nfs*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
