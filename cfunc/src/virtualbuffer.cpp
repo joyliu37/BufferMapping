@@ -90,13 +90,15 @@ std::tuple<vector<Dtype>, bool> VirtualBuffer<Dtype>::read() {
         //valid = valid && valid_domain[read_addr];
     }
 
+    //add stencil valid signal
+    bool stencil_valid = read_iterator.getStencilValid();
 
     if (valid){
         stencil_read_done.update();
         read_iterator.update();
         switch_check();
     }
-    return std::make_tuple(out_data, valid);
+    return std::make_tuple(out_data, valid && stencil_valid);
 }
 
 template<typename Dtype>

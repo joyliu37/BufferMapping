@@ -366,6 +366,8 @@ class VirtualBuffer {
       Instance* inst = toInstance(w);
       width = inst->getModuleRef()->getGenArgs().at("width")->get<int>();
       dimensionality = inst->getModuleRef()->getGenArgs().at("dimensionality")->get<int>();
+      vector<int> stencil_width;
+      stencil_width.push_back( inst->getModuleRef()->getGenArgs().at("stencil_width")->get<int>());
       int stencil_acc_dim = inst->getModuleRef()->getGenArgs().at("num_stencil_acc_dim")->get<int>();
 
       //output range
@@ -420,6 +422,7 @@ class VirtualBuffer {
       for (auto const & dim_val: dimension_json["capacity"]) {
         dimension.push_back(dim_val);
       }
+
       //fill in the wire with 0 after definition
       std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
       std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
@@ -429,7 +432,7 @@ class VirtualBuffer {
       func_kernel = std::make_shared<VirtualBuffer<int> >(
       VirtualBuffer<int>(input_range, input_stride, input_start,
         output_range, output_stride, output_start,
-        input_chunk, output_stencil, dimension, stencil_acc_dim) );
+        input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
 
       //write_iterator = UnifiedBufferAddressGenerator(input_range, input_stride, input_start, width);
       //read_iterator = UnifiedBufferAddressGenerator(output_range, output_stride, output_start, width);
