@@ -3,6 +3,7 @@ CC := $(if $(CXX),$(CXX), g++)
 
 INCLUDE_DIR = include
 BUILD_DIR = bin
+DEBUG_SIM ?= 0
 #COREIR_DIR := $(if $(COREIR_DIR),$(COREIR_DIR),/nobackup/joeyliu/aha/coreir)
 COREIR_DIR ?= ../../coreir
 
@@ -14,7 +15,7 @@ CFLAGS = -Wall -std=c++17 -fpic
 PYCFLAGS = -undefined dynamic_lookup
 LDFLGAS = -shared
 LDFLGAS += $(COREIR_LD_FLAGS)
-FLAGS = $(foreach includedir,$(INCLUDE_DIR),-I$(includedir)) -static-libgcc -static-libstdc++
+FLAGS = $(foreach includedir,$(INCLUDE_DIR),-I$(includedir)) -static-libgcc -static-libstdc++ -DVERBOSE=$(DEBUG_SIM)
 
 #pybind flags
 PYFLAGS = `python3 -m pybind11 --includes`
