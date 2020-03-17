@@ -2,7 +2,7 @@ CC = g++
 
 INCLUDE_DIR = include
 BUILD_DIR = bin
-COREIR_DIR = /nobackup/joeyliu/aha/coreir
+COREIR_DIR = ../../coreir
 INCLUDE_DIR += $(COREIR_DIR)/include
 COREIR_LD_FLAGS = -L$(COREIR_DIR)/lib -Wl,-rpath,$(COREIR_DIR)/lib -lcoreir-commonlib -lcoreir -lcoreirsim -lcoreir-float
 
@@ -19,7 +19,8 @@ TEST_BINS = $(patsubst test/%.cpp, $(BUILD_DIR)/test/%, $(TEST_SRCS))
 #OBJS = $(addprefix $(BUILD_DIR)/,${SRCS:.cpp=.o})
 OBJS = $(patsubst src/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 
-TARGET = $(BUILD_DIR)/libfuncubuf.so
+#TARGET = $(BUILD_DIR)/libfuncubuf.so
+TARGET = $(BUILD_DIR)/libcoreir-lakelib.so
 
 all:$(TEST_BINS)
 
