@@ -24,7 +24,7 @@ class Counter {
         int bound;
         int cnt;
 };
-
+/*
 template<typename Dtype>
 struct RetDataWithVal {
     RetDataWithVal(vector<Dtype> _data, bool _valid):
@@ -34,6 +34,9 @@ struct RetDataWithVal {
     bool valid;
 };
 
+template<typename Dtype>
+void init_RetDataWithVal<Dtype>(py::module &m);
+*/
 template<typename T>
 bool isEqual(std::vector<T> const &v1, std::vector<T> const &v2)
 {
@@ -45,7 +48,7 @@ template<typename T>
 void assignValIfEmpty(std:: vector<T> & v1, std::vector<T> const &v_assign, int start_dim, T default_val) {
     //function to assign the vector element from start_dim to end,
     //if it's empty assign default_val
-    assert(start_dim <= (int)v_assign.size() &&
+    assert((size_t)start_dim <= v_assign.size() &&
             "assign dimension should not exceed the target vector dimension!\n");
     v1.assign(v_assign.begin()+start_dim, v_assign.end());
     if (v1.empty())

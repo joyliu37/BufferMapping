@@ -17,27 +17,24 @@ void ReadWriteBlockCheck(const vector<int> & data,
         shared_ptr<VirtualBuffer<int> > & buffer);
 
 int main(int argc, char* argv[]) {
-    //define a access iterator for double buffer with
-    //8 channels, 3x3 conv window , with 32x32 spatial dimension, 4 port at channel dimension
-    shared_ptr<VirtualBuffer<int> > db(new VirtualBuffer<int>({64, 64}, {1, 64}, {0},
-                {31, 31}, {2, 128}, {0, 1, 2, 64, 65, 66, 128, 129, 130},
-                {2, 2}, {3, 3}, {64, 64}, 0));
-    vector<int> random_data_cube(16384, 0);
+    //define a access iterator for row buffer with
+    //8x8 spatial dimension, 1 port and 8 cycle initial delay with capacity of 8
+    //this is the version that implemented storage folding
+    shared_ptr<VirtualBuffer<int> > db(new VirtualBuffer<int>({8}, {1}, {0},
+                {8}, {1}, {0},
+                {8}, {8}, {8}, {2}, 1));
+    vector<int> random_data_cube(256, 0);
     GenRandomBufferData(random_data_cube);
 
-    vector<vector<int> > read_stream(3844, vector<int>(9));
-    vector<vector<int> > write_stream(4096, vector<int>(1));
+    vector<vector<int> > read_stream(256, vector<int>(1));
+    vector<vector<int> > write_stream(256, vector<int>(1));
     GenAddrReadStream(read_stream);
     GenAddrWriteStream(write_stream);
 
-    int block_num = 4;
-    for (int data_block_cnt = 0; data_block_cnt < block_num; data_block_cnt ++) {
-        GenRandomBufferData(random_data_cube);
-        ReadWriteBlockCheck(random_data_cube, read_stream,write_stream, db);
-        cout << "Test data block No " << data_block_cnt <<endl;
-    }
+    GenRandomBufferData(random_data_cube);
+    ReadWriteBlockCheck(random_data_cube, read_stream,write_stream, db);
 
-    cout << "Test passed for Virtual Stride Line Buffer!\n";
+    cout << "Test passed for Virtual Row Buffer!\n";
 
 }
 
@@ -47,22 +44,13 @@ void GenRandomBufferData(vector<int> & random_data) {
 }
 
 void GenAddrReadStream(vector<vector<int> >& gold_stream) {
-    int cnt = 0;
-    for (int y = 0; y < 31; y ++) {
-        for (int x = 0; x < 31; x ++) {
-            for (int ky = 0; ky < 3; ky ++) {
-                for (int kx = 0; kx < 3; kx ++) {
-                    int addr = (2*y + ky)* 64 + 2*x + kx;
-                        gold_stream[cnt][kx + ky*3] = addr;
-                }
-            }
-            cnt ++;
-        }
+    for (int y = 0; y < 64; y ++) {
+        gold_stream[y][0] = y;
     }
 }
 
 void GenAddrWriteStream(vector<vector<int> > & gold_stream) {
-    for (int i = 0; i < 4096; i ++) {
+    for (int i = 0; i < 64; i ++) {
         for (int port = 0; port < 1; port ++) {
             gold_stream[i][port] = i;
         }
@@ -74,27 +62,36 @@ void ReadWriteBlockCheck(const vector<int> & data,
         const vector<vector<int> > & write_stream,
         shared_ptr<VirtualBuffer<int> > & buffer) {
     int output_cnt = 0;
+    for (int row = 0; row < 8; row ++) {
     for (int i = 0; i < buffer->getWriteIteration(); i ++) {
         vector<int> in_data(buffer->getInPort(), 0);
         for (int port = 0; port < buffer->getInPort(); port ++){
-            in_data[port] = data[write_stream[i][port]];
+            in_data[port] = data[write_stream[row*8 + i][port]];
         }
-        buffer->write(in_data);
-        //std::cout << "Write data in location " << i << std::endl;
 
-        //if (output_cnt < 31*31){
-        //extra check for strided conv
         auto out_data_pack = buffer->read();
         auto out_data = std::get<0>(out_data_pack);
         bool out_valid = std::get<1>(out_data_pack);
-        //std::cout << "Read data in location " << i <<", valid = " << out_valid << std::endl;
-        if (out_valid){
+        //cout << "no." << i << ", valid = " << out_valid << std::endl;
+        if (row > 0){
+            if (i > 1) {
+                assert(out_valid == true && "Valid signal not match for valid signal");
+            }
+            else {
+                assert(out_valid == false && "Valid signal not match for the initial halo");
+            }
             for (int port = 0; port < buffer->getOutPort(); port ++){
+                //cout << "read data: " << out_data[port] <<", expected data: " << data[read_stream[output_cnt][port]] <<" at location: " << read_stream[output_cnt][port] << endl;
                 assert(out_data[port] == data[read_stream[output_cnt][port]] && "read data does not match");
             }
-        output_cnt ++;
-
+            output_cnt ++;
+        }
+        else {
+            assert(out_valid == false && "Valid signal not match for the first delay row");
         }
 
+        buffer->write(in_data);
+        //std::cout << "No. " << i << " write data: " << in_data[0] << std::endl;
+    }
     }
 }

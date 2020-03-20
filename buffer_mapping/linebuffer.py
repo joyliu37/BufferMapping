@@ -52,7 +52,7 @@ class LineBufferNode:
 
         '''
 
-    def GenGraph(self, name, input_node, output_node_list, outside_bank_id = 0):
+    def GenGraph(self, name, input_node, output_node_list, outside_bank_id = 0, start_level = False):
         node_dict = {}
         connection_dict = {}
         prev_buffer = None
@@ -63,7 +63,13 @@ class LineBufferNode:
             #FIXME: need a beautiful data embedded schema for stencil valid signal
             node_dict[node_name].setStencilConfig(self._counter_bound, self._fifo_depth)
 
-            if idx == len(self.row_buffer_chain) - 1:
+            #FIXME:HACK use start_level, won't support if there is a base buffer with repeat access pattern
+            '''
+            Solution should be always wiring the valid signal from base buffer,
+            if the base buffer is flatten, we need to offload the valid signal
+            to the last line buffer in the next level of hierarchy
+            '''
+            if idx == len(self.row_buffer_chain) - 1 and start_level:
                 node_dict[node_name].assertLastOfChain()
                 print ("Assert the last of chain of node: ", node_name )
             if idx == 0:
@@ -347,7 +353,7 @@ class VirtualLineBuffer:
             output_node_list.pop()
             if bank_idx in self.meta_fifo_dict.keys():
                 buffer_node = self.meta_fifo_dict[bank_idx]
-                entry_node, entry_connection = buffer_node.GenGraph(name+"_bank_"+str(bank_idx), base_buf_node, output_node_list, idx)
+                entry_node, entry_connection = buffer_node.GenGraph(name+"_bank_"+str(bank_idx), base_buf_node, output_node_list, idx, True)
                 node_dict.update(entry_node)
                 connection.update(entry_connection)
         return node_dict, connection

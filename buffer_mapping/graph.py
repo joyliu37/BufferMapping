@@ -27,7 +27,9 @@ def initializeGraph(v_setup, mem_config, IR_setup,
         output_dict = {}
         print (linebuffer.port_map)
         output_dict_tmp = {start_addr: [OutputNode(out_instance_name[0],out_instance_name[1])] for out_instance_name, start_addr in zip(output_list, v_setup._start)}
+        print ("output_dict_tmp:",output_dict_tmp)
         for start_addr, port_list in linebuffer.port_map.items():
+            print ("start_addr:",  start_addr, "port_list:", port_list)
             output_dict[start_addr] = []
             for port in port_list:
                 output_dict[start_addr].append(output_dict_tmp[port])

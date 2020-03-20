@@ -311,7 +311,7 @@ class VirtualRowBuffer(VirtualBuffer):
             #in_port.extend(["in", "clk"])
             #out_port.extend(["out"])
         else:
-            mem_tile["genref"] = "commonlib.unified_buffer"
+            mem_tile["genref"] = "lakelib.unified_buffer"
             args = {}
             args["width"] = ["Int", 16]
             args["depth"] = ["Int", self._capacity]

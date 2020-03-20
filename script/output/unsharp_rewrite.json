@@ -1,0 +1,2887 @@
+{
+    "top": "global.DesignTop",
+    "namespaces": {
+        "global": {
+            "modules": {
+                "DesignTop": {
+                    "type": [
+                        "Record",
+                        [
+                            [
+                                "in",
+                                [
+                                    "Record",
+                                    [
+                                        [
+                                            "arg_0",
+                                            [
+                                                "Array",
+                                                1,
+                                                [
+                                                    "Array",
+                                                    1,
+                                                    [
+                                                        "Array",
+                                                        16,
+                                                        "BitIn"
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            [
+                                "reset",
+                                "BitIn"
+                            ],
+                            [
+                                "in_en",
+                                "BitIn"
+                            ],
+                            [
+                                "out",
+                                [
+                                    "Array",
+                                    1,
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            16,
+                                            "Bit"
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            [
+                                "valid",
+                                "Bit"
+                            ]
+                        ]
+                    ],
+                    "instances": {
+                        "add_357_361_362": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_363_367_368": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_369_373_374": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_375_379_380": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_381_385_386": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_387_391_392": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_393_397_398": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_399_403_404": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_405_409_410": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_411_415_416": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_417_421_422": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_423_427_428": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_429_433_434": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_435_439_440": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_441_445_446": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_447_451_452": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_453_457_458": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_459_463_464": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_465_469_470": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_471_475_476": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_477_481_482": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_483_487_488": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_489_493_494": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_495_499_500": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_501_505_506": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "const0__356": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0000"
+                                ]
+                            }
+                        },
+                        "const10__354": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h000a"
+                                ]
+                            }
+                        },
+                        "const10__354$1": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h000a"
+                                ]
+                            }
+                        },
+                        "const10__354$2": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h000a"
+                                ]
+                            }
+                        },
+                        "const10__354$3": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h000a"
+                                ]
+                            }
+                        },
+                        "const10__354$4": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h000a"
+                                ]
+                            }
+                        },
+                        "const1__521": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0001"
+                                ]
+                            }
+                        },
+                        "const255__515": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h00ff"
+                                ]
+                            }
+                        },
+                        "const255__515$1": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h00ff"
+                                ]
+                            }
+                        },
+                        "const255__534": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h00ff"
+                                ]
+                            }
+                        },
+                        "const2__355": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0002"
+                                ]
+                            }
+                        },
+                        "const2__355$1": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0002"
+                                ]
+                            }
+                        },
+                        "const2__355$2": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0002"
+                                ]
+                            }
+                        },
+                        "const2__355$3": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0002"
+                                ]
+                            }
+                        },
+                        "const2__355$4": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0002"
+                                ]
+                            }
+                        },
+                        "const2__509": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0002"
+                                ]
+                            }
+                        },
+                        "const30__353": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h001e"
+                                ]
+                            }
+                        },
+                        "const30__353$1": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h001e"
+                                ]
+                            }
+                        },
+                        "const30__353$2": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h001e"
+                                ]
+                            }
+                        },
+                        "const30__353$3": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h001e"
+                                ]
+                            }
+                        },
+                        "const30__353$4": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h001e"
+                                ]
+                            }
+                        },
+                        "const32__519": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0020"
+                                ]
+                            }
+                        },
+                        "const59__352": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h003b"
+                                ]
+                            }
+                        },
+                        "const59__352$1": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h003b"
+                                ]
+                            }
+                        },
+                        "const59__352$2": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h003b"
+                                ]
+                            }
+                        },
+                        "const59__352$3": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h003b"
+                                ]
+                            }
+                        },
+                        "const59__352$4": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h003b"
+                                ]
+                            }
+                        },
+                        "const5__532": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0005"
+                                ]
+                            }
+                        },
+                        "const74__351": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h004a"
+                                ]
+                            }
+                        },
+                        "const74__351$1": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h004a"
+                                ]
+                            }
+                        },
+                        "const74__351$2": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h004a"
+                                ]
+                            }
+                        },
+                        "const74__351$3": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h004a"
+                                ]
+                            }
+                        },
+                        "const74__351$4": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h004a"
+                                ]
+                            }
+                        },
+                        "const8__512": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0008"
+                                ]
+                            }
+                        },
+                        "count__hw_output_x___scan_dim_0": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    63
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "count__hw_output_y___scan_dim_1": {
+                            "genref": "commonlib.counter",
+                            "genargs": {
+                                "inc": [
+                                    "Int",
+                                    1
+                                ],
+                                "max": [
+                                    "Int",
+                                    63
+                                ],
+                                "min": [
+                                    "Int",
+                                    0
+                                ],
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "div_520_523_524": {
+                            "genref": "commonlib.div",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "lshr_511_512_513": {
+                            "genref": "coreir.lshr",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "lshr_531_532_533": {
+                            "genref": "coreir.lshr",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_358_360_361": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_364_366_367": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_370_372_373": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_376_378_379": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_382_384_385": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_388_390_391": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_394_396_397": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_400_402_403": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_406_408_409": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_412_414_415": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_418_420_421": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_424_426_427": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_430_432_433": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_436_438_439": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_442_444_445": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_448_450_451": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_454_456_457": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_460_462_463": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_466_468_469": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_472_474_475": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_478_480_481": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_484_486_487": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_490_492_493": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_496_498_499": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_502_504_505": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_508_509_510": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_518_519_520": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_528_530_531": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "sub_510_513_514": {
+                            "genref": "coreir.sub",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_stream_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_stream_in_reshape": {
+                            "genref": "commonlib.reshape",
+                            "genargs": {
+                                "input_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            1,
+                                            [
+                                                "Array",
+                                                16,
+                                                "BitIn"
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                "output_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            16,
+                                            "Bit"
+                                        ]
+                                    ]
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_stream_out_reshape": {
+                            "genref": "commonlib.reshape",
+                            "genargs": {
+                                "input_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        25,
+                                        [
+                                            "Array",
+                                            16,
+                                            "BitIn"
+                                        ]
+                                    ]
+                                ],
+                                "output_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        5,
+                                        [
+                                            "Array",
+                                            5,
+                                            [
+                                                "Array",
+                                                16,
+                                                "Bit"
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_stream_ren": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    true
+                                ]
+                            }
+                        },
+                        "umax_507_521_522": {
+                            "genref": "commonlib.umax",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "umin_514_515_516": {
+                            "genref": "commonlib.umin",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "umin_524_515_525": {
+                            "genref": "commonlib.umin",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "umin_533_534_535": {
+                            "genref": "commonlib.umin",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_0": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    68
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            68
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    true
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    1
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    68
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    68
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    68
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            0
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_0_0": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_0_1": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_0_2": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_0_3": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_1_0": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_1_1": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_1_2": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_1_3": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_1": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    68
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            68
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    true
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    1
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    68
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    68
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    68
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            0
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_2_0": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_2_1": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_2_2": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_2_3": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_2": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    68
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            68
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    true
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    1
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    68
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    68
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    68
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            0
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_3_0": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_3_1": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_3_2": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_3_3": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_3": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    68
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            68
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    true
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    1
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    68
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    5
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    68
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    68
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            0
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_4_0": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_4_1": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_4_2": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_4_3": {
+                            "genref": "coreir.reg",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "clk_posedge": [
+                                    "Bool",
+                                    true
+                                ],
+                                "init": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'hxxxx"
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_0_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_1_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_2_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_gray_stencil_update_streamlinebuffer_bank_0_3_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        }
+                    },
+                    "connections": [
+                        [
+                            "const0__356.out",
+                            "add_357_361_362.in0"
+                        ],
+                        [
+                            "mul_358_360_361.out",
+                            "add_357_361_362.in1"
+                        ],
+                        [
+                            "add_363_367_368.in0",
+                            "add_357_361_362.out"
+                        ],
+                        [
+                            "mul_364_366_367.out",
+                            "add_363_367_368.in1"
+                        ],
+                        [
+                            "add_369_373_374.in0",
+                            "add_363_367_368.out"
+                        ],
+                        [
+                            "mul_370_372_373.out",
+                            "add_369_373_374.in1"
+                        ],
+                        [
+                            "add_375_379_380.in0",
+                            "add_369_373_374.out"
+                        ],
+                        [
+                            "mul_376_378_379.out",
+                            "add_375_379_380.in1"
+                        ],
+                        [
+                            "add_381_385_386.in0",
+                            "add_375_379_380.out"
+                        ],
+                        [
+                            "mul_382_384_385.out",
+                            "add_381_385_386.in1"
+                        ],
+                        [
+                            "add_387_391_392.in0",
+                            "add_381_385_386.out"
+                        ],
+                        [
+                            "mul_388_390_391.out",
+                            "add_387_391_392.in1"
+                        ],
+                        [
+                            "add_393_397_398.in0",
+                            "add_387_391_392.out"
+                        ],
+                        [
+                            "mul_394_396_397.out",
+                            "add_393_397_398.in1"
+                        ],
+                        [
+                            "add_399_403_404.in0",
+                            "add_393_397_398.out"
+                        ],
+                        [
+                            "mul_400_402_403.out",
+                            "add_399_403_404.in1"
+                        ],
+                        [
+                            "add_405_409_410.in0",
+                            "add_399_403_404.out"
+                        ],
+                        [
+                            "mul_406_408_409.out",
+                            "add_405_409_410.in1"
+                        ],
+                        [
+                            "add_411_415_416.in0",
+                            "add_405_409_410.out"
+                        ],
+                        [
+                            "mul_412_414_415.out",
+                            "add_411_415_416.in1"
+                        ],
+                        [
+                            "add_417_421_422.in0",
+                            "add_411_415_416.out"
+                        ],
+                        [
+                            "mul_418_420_421.out",
+                            "add_417_421_422.in1"
+                        ],
+                        [
+                            "add_423_427_428.in0",
+                            "add_417_421_422.out"
+                        ],
+                        [
+                            "mul_424_426_427.out",
+                            "add_423_427_428.in1"
+                        ],
+                        [
+                            "add_429_433_434.in0",
+                            "add_423_427_428.out"
+                        ],
+                        [
+                            "mul_430_432_433.out",
+                            "add_429_433_434.in1"
+                        ],
+                        [
+                            "add_435_439_440.in0",
+                            "add_429_433_434.out"
+                        ],
+                        [
+                            "mul_436_438_439.out",
+                            "add_435_439_440.in1"
+                        ],
+                        [
+                            "add_441_445_446.in0",
+                            "add_435_439_440.out"
+                        ],
+                        [
+                            "mul_442_444_445.out",
+                            "add_441_445_446.in1"
+                        ],
+                        [
+                            "add_447_451_452.in0",
+                            "add_441_445_446.out"
+                        ],
+                        [
+                            "mul_448_450_451.out",
+                            "add_447_451_452.in1"
+                        ],
+                        [
+                            "add_453_457_458.in0",
+                            "add_447_451_452.out"
+                        ],
+                        [
+                            "mul_454_456_457.out",
+                            "add_453_457_458.in1"
+                        ],
+                        [
+                            "add_459_463_464.in0",
+                            "add_453_457_458.out"
+                        ],
+                        [
+                            "mul_460_462_463.out",
+                            "add_459_463_464.in1"
+                        ],
+                        [
+                            "add_465_469_470.in0",
+                            "add_459_463_464.out"
+                        ],
+                        [
+                            "mul_466_468_469.out",
+                            "add_465_469_470.in1"
+                        ],
+                        [
+                            "add_471_475_476.in0",
+                            "add_465_469_470.out"
+                        ],
+                        [
+                            "mul_472_474_475.out",
+                            "add_471_475_476.in1"
+                        ],
+                        [
+                            "add_477_481_482.in0",
+                            "add_471_475_476.out"
+                        ],
+                        [
+                            "mul_478_480_481.out",
+                            "add_477_481_482.in1"
+                        ],
+                        [
+                            "add_483_487_488.in0",
+                            "add_477_481_482.out"
+                        ],
+                        [
+                            "mul_484_486_487.out",
+                            "add_483_487_488.in1"
+                        ],
+                        [
+                            "add_489_493_494.in0",
+                            "add_483_487_488.out"
+                        ],
+                        [
+                            "mul_490_492_493.out",
+                            "add_489_493_494.in1"
+                        ],
+                        [
+                            "add_495_499_500.in0",
+                            "add_489_493_494.out"
+                        ],
+                        [
+                            "mul_496_498_499.out",
+                            "add_495_499_500.in1"
+                        ],
+                        [
+                            "add_501_505_506.in0",
+                            "add_495_499_500.out"
+                        ],
+                        [
+                            "mul_502_504_505.out",
+                            "add_501_505_506.in1"
+                        ],
+                        [
+                            "lshr_511_512_513.in0",
+                            "add_501_505_506.out"
+                        ],
+                        [
+                            "mul_406_408_409.in0",
+                            "const10__354$1.out"
+                        ],
+                        [
+                            "mul_436_438_439.in0",
+                            "const10__354$2.out"
+                        ],
+                        [
+                            "mul_466_468_469.in0",
+                            "const10__354$3.out"
+                        ],
+                        [
+                            "mul_496_498_499.in0",
+                            "const10__354$4.out"
+                        ],
+                        [
+                            "mul_376_378_379.in0",
+                            "const10__354.out"
+                        ],
+                        [
+                            "umax_507_521_522.in1",
+                            "const1__521.out"
+                        ],
+                        [
+                            "umin_524_515_525.in1",
+                            "const255__515$1.out"
+                        ],
+                        [
+                            "umin_514_515_516.in1",
+                            "const255__515.out"
+                        ],
+                        [
+                            "umin_533_534_535.in1",
+                            "const255__534.out"
+                        ],
+                        [
+                            "mul_412_414_415.in0",
+                            "const2__355$1.out"
+                        ],
+                        [
+                            "mul_442_444_445.in0",
+                            "const2__355$2.out"
+                        ],
+                        [
+                            "mul_472_474_475.in0",
+                            "const2__355$3.out"
+                        ],
+                        [
+                            "mul_502_504_505.in0",
+                            "const2__355$4.out"
+                        ],
+                        [
+                            "mul_382_384_385.in0",
+                            "const2__355.out"
+                        ],
+                        [
+                            "mul_508_509_510.in1",
+                            "const2__509.out"
+                        ],
+                        [
+                            "mul_400_402_403.in0",
+                            "const30__353$1.out"
+                        ],
+                        [
+                            "mul_430_432_433.in0",
+                            "const30__353$2.out"
+                        ],
+                        [
+                            "mul_460_462_463.in0",
+                            "const30__353$3.out"
+                        ],
+                        [
+                            "mul_490_492_493.in0",
+                            "const30__353$4.out"
+                        ],
+                        [
+                            "mul_370_372_373.in0",
+                            "const30__353.out"
+                        ],
+                        [
+                            "mul_518_519_520.in1",
+                            "const32__519.out"
+                        ],
+                        [
+                            "mul_394_396_397.in0",
+                            "const59__352$1.out"
+                        ],
+                        [
+                            "mul_424_426_427.in0",
+                            "const59__352$2.out"
+                        ],
+                        [
+                            "mul_454_456_457.in0",
+                            "const59__352$3.out"
+                        ],
+                        [
+                            "mul_484_486_487.in0",
+                            "const59__352$4.out"
+                        ],
+                        [
+                            "mul_364_366_367.in0",
+                            "const59__352.out"
+                        ],
+                        [
+                            "lshr_531_532_533.in1",
+                            "const5__532.out"
+                        ],
+                        [
+                            "mul_388_390_391.in0",
+                            "const74__351$1.out"
+                        ],
+                        [
+                            "mul_418_420_421.in0",
+                            "const74__351$2.out"
+                        ],
+                        [
+                            "mul_448_450_451.in0",
+                            "const74__351$3.out"
+                        ],
+                        [
+                            "mul_478_480_481.in0",
+                            "const74__351$4.out"
+                        ],
+                        [
+                            "mul_358_360_361.in0",
+                            "const74__351.out"
+                        ],
+                        [
+                            "lshr_511_512_513.in1",
+                            "const8__512.out"
+                        ],
+                        [
+                            "count__hw_output_y___scan_dim_1.en",
+                            "count__hw_output_x___scan_dim_0.overflow"
+                        ],
+                        [
+                            "self.reset",
+                            "count__hw_output_x___scan_dim_0.reset"
+                        ],
+                        [
+                            "self.reset",
+                            "count__hw_output_y___scan_dim_1.reset"
+                        ],
+                        [
+                            "mul_518_519_520.out",
+                            "div_520_523_524.in0"
+                        ],
+                        [
+                            "umax_507_521_522.out",
+                            "div_520_523_524.in1"
+                        ],
+                        [
+                            "umin_524_515_525.in0",
+                            "div_520_523_524.out"
+                        ],
+                        [
+                            "sub_510_513_514.in1",
+                            "lshr_511_512_513.out"
+                        ],
+                        [
+                            "mul_528_530_531.out",
+                            "lshr_531_532_533.in0"
+                        ],
+                        [
+                            "umin_533_534_535.in0",
+                            "lshr_531_532_533.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.0.0",
+                            "mul_358_360_361.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.0.1",
+                            "mul_364_366_367.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.0.2",
+                            "mul_370_372_373.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.0.3",
+                            "mul_376_378_379.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.0.4",
+                            "mul_382_384_385.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.1.0",
+                            "mul_388_390_391.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.1.1",
+                            "mul_394_396_397.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.1.2",
+                            "mul_400_402_403.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.1.3",
+                            "mul_406_408_409.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.1.4",
+                            "mul_412_414_415.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.2.0",
+                            "mul_418_420_421.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.2.1",
+                            "mul_424_426_427.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.2.2",
+                            "mul_430_432_433.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.2.3",
+                            "mul_436_438_439.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.2.4",
+                            "mul_442_444_445.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.3.0",
+                            "mul_448_450_451.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.3.1",
+                            "mul_454_456_457.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.3.2",
+                            "mul_460_462_463.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.3.3",
+                            "mul_466_468_469.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.3.4",
+                            "mul_472_474_475.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.4.0",
+                            "mul_478_480_481.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.4.1",
+                            "mul_484_486_487.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.4.2",
+                            "mul_490_492_493.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.4.3",
+                            "mul_496_498_499.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.4.4",
+                            "mul_502_504_505.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.0.0",
+                            "mul_508_509_510.in0"
+                        ],
+                        [
+                            "sub_510_513_514.in0",
+                            "mul_508_509_510.out"
+                        ],
+                        [
+                            "umin_514_515_516.out",
+                            "mul_518_519_520.in0"
+                        ],
+                        [
+                            "umin_524_515_525.out",
+                            "mul_528_530_531.in0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.out.0.0",
+                            "mul_528_530_531.in1"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_in_reshape.in",
+                            "self.in.arg_0"
+                        ],
+                        [
+                            "umin_533_534_535.out",
+                            "self.out.0.0"
+                        ],
+                        [
+                            "umin_514_515_516.in0",
+                            "sub_510_513_514.out"
+                        ],
+                        [
+                            "umax_507_521_522.in0",
+                            "ub_gray_stencil_update_stream_out_reshape.out.0.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.reset"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.4",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.dataout0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.wen",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.valid"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.ren",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.valid"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.datain0",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.dataout0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.reset"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.21",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.dataout0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.wen",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.ren",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.valid"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.datain0",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.dataout0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.reset"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.17",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.dataout0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3.wen",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.valid"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3.ren",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.valid"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3.datain0",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.dataout0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3.reset"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.12",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3.dataout0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.9",
+                            "ub_gray_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.wen",
+                            "self.in_en"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.ren",
+                            "ub_gray_stencil_update_stream_ren.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.datain0",
+                            "ub_gray_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_0.in",
+                            "ub_gray_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.8",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_1.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.7",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_2.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.6",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_3.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.5",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_3.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_0.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.dataout0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.3",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_1.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.24",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_2.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.23",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_3.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.22",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_3.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_0.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.dataout0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.20",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_1.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.2",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_2.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.19",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_3.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.18",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_3.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_0.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.dataout0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.16",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_1.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.15",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_2.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.14",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_3.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.13",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_3.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_0.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3.dataout0"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.11",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_1.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_0.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.10",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_2.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_1.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.1",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_3.in",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_2.out"
+                        ],
+                        [
+                            "ub_gray_stencil_update_stream_out_reshape.in.0",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_4_3.out"
+                        ],
+                        [
+                            "count__hw_output_x___scan_dim_0.en",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3.valid"
+                        ],
+                        [
+                            "self.valid",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3.valid"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0_flush.out",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_0.flush"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1_flush.out",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_1.flush"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2_flush.out",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_2.flush"
+                        ],
+                        [
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3_flush.out",
+                            "ub_gray_stencil_update_streamlinebuffer_bank_0_3.flush"
+                        ]
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -2,6 +2,10 @@
 cfunc/bin
 *.o
 
+#coreIR output
+_linebuffer*
+.nfs*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

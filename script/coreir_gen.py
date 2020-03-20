@@ -29,7 +29,7 @@ def processCoreIR(hand_craft, hw_setup):
             if value["genref"] == "commonlib.abstract_unified_buffer":
                 del instance[key]
 
-            elif value["genref"] == "commonlib.unified_buffer":
+            elif "unified_buffer" in value["genref"]:
                 #get the unified_buffer node
                 buffer_config = CoreIRUnifiedBufferConfig(value["genargs"])
                 v_buf_config = buffer_config.getVirtualBufferConfig()
@@ -60,7 +60,11 @@ def processCoreIR(hand_craft, hw_setup):
                 #create a dictr for all the rewrite information
                 buf_data = {}
                 buf_data["valid_list"] = valid_list
+
+                #parse trick to sort the output port
+                output_list.sort(key = lambda name: int(name[1].split(".")[-1]))
                 buf_data["output_list"] = output_list
+
                 buf_data["input_port"] = input_port[0]
                 buf_data["inen_port"] = inen_port[0]
                 if len(ren_port) == 1:
@@ -127,12 +131,12 @@ def test_buffer_mapping():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     with open(dir_path+'/HWConfig.json') as setup_file:
         setup = json.load(setup_file)
+
+    filename = args.file_dir.split("/")[-1].split(".")[0]
+    print ("Starting rewrite for coreIR design: ", filename)
     with open(args.file_dir) as coreir_file:
         input_coreir = json.load(coreir_file)
 
-    with open(dir_path + '/output/output_coreir_golden.json' , 'w') as json_out_file:
-        data = json.dumps(input_coreir, indent=4)
-        json_out_file.write(data)
     print("Json File dump to " + dir_path +"/output")
     #IR_setup, v_setup, instance, connection, valid_list, output_list, input_port, inen_port = preprocessCoreIR(input_coreir)
     instance, connection = processCoreIR(input_coreir, setup)
@@ -141,7 +145,7 @@ def test_buffer_mapping():
     '''
     dump the generated coreIR file
     '''
-    with open(dir_path + '/output/output_coreir.json' , 'w') as json_out_file:
+    with open(dir_path + '/output/' + filename + '_rewrite.json' , 'w') as json_out_file:
         data = json.dumps(input_coreir, indent=4)
         json_out_file.write(data)
     print("Json File dump to " + dir_path +"/output")

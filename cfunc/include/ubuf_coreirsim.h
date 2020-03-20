@@ -108,7 +108,9 @@ namespace CoreIR {
     }
 
     int calcBaseAddress() {
+#if VERBOSE==1
       std::cout << "dims=" << dimension << std::endl;
+#endif
       int addr_offset = 0;
       assert(iter_list.size() <= dimension);
       assert(output_stride.size() <= dimension);
@@ -194,7 +196,9 @@ namespace CoreIR {
     }
 
     void exeCombinational(vdisc vd, SimulatorState& simState) {
+#if VERBOSE==1
       std::cout << "execomb..\n";
+#endif
       auto wd = simState.getCircuitGraph().getNode(vd);
 
       Instance* inst = toInstance(wd.getWire());
@@ -366,6 +370,8 @@ class VirtualBuffer {
       Instance* inst = toInstance(w);
       width = inst->getModuleRef()->getGenArgs().at("width")->get<int>();
       dimensionality = inst->getModuleRef()->getGenArgs().at("dimensionality")->get<int>();
+      vector<int> stencil_width;
+      stencil_width.push_back( inst->getModuleRef()->getGenArgs().at("stencil_width")->get<int>());
       int stencil_acc_dim = inst->getModuleRef()->getGenArgs().at("num_stencil_acc_dim")->get<int>();
 
       //output range
@@ -395,7 +401,6 @@ class VirtualBuffer {
       auto output_start = get_dims(outputStartType);
 */
       auto output_start_json = inst->getModuleRef()->getGenArgs().at("output_starting_addrs")->get<json>();
-      std::cout << output_start_json["output_start"].size() <<std::endl;
       for (auto const & start_val: output_start_json["output_start"]) {
         output_start.push_back(start_val);
       }
@@ -403,7 +408,6 @@ class VirtualBuffer {
       auto input_start_json = inst->getModuleRef()->getGenArgs().at("input_starting_addrs")->get<json>();
       for (auto const & start_val: input_start_json["input_start"]) {
         input_start.push_back(start_val);
-        std::cout << start_val << std::endl;
       }
 
       auto in_chunk_json = inst->getModuleRef()->getGenArgs().at("input_chunk")->get<json>();
@@ -420,6 +424,7 @@ class VirtualBuffer {
       for (auto const & dim_val: dimension_json["capacity"]) {
         dimension.push_back(dim_val);
       }
+
       //fill in the wire with 0 after definition
       std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
       std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
@@ -429,7 +434,7 @@ class VirtualBuffer {
       func_kernel = std::make_shared<VirtualBuffer<int> >(
       VirtualBuffer<int>(input_range, input_stride, input_start,
         output_range, output_stride, output_start,
-        input_chunk, output_stencil, dimension, stencil_acc_dim) );
+        input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
 
       //write_iterator = UnifiedBufferAddressGenerator(input_range, input_stride, input_start, width);
       //read_iterator = UnifiedBufferAddressGenerator(output_range, output_stride, output_start, width);
@@ -464,13 +469,15 @@ class VirtualBuffer {
     void exeSequential(vdisc vd, SimulatorState& simState) {
       auto wd = simState.getCircuitGraph().getNode(vd);
 
-      std::cout << "exeseq.." <<std::endl;
-
       simState.updateInputs(vd);
 
       assert(isInstance(wd.getWire()));
 
       Instance* inst = toInstance(wd.getWire());
+
+#if VERBOSE == 1
+      std::cout <<"Ubuf->{" << inst->getInstname() << "} exeseq.." <<std::endl;
+#endif
 
       auto inSels = getInputSelects(inst);
 
@@ -501,20 +508,35 @@ class VirtualBuffer {
             Select* arg_data = toSelect(CoreIR::findSelect("datain" + std::to_string(i), inSels));
             auto in_data = simState.getBitVec(arg_data);
             in_data_wire[i] = in_data.to_type<int>();
-            std::cout << "wrote data[" << i << "] = " << in_data.to_type<int>();
-
+#if VERBOSE==1
+            if (i == 0)
+                std::cout << "---------------write data---------------" << std::endl;
+            std::cout << "wrote data[" << i << "] = " << in_data.to_type<int>() << std::endl;
+            if (i == in_data_wire.size()-1)
+                std::cout << "---------------------------------------" << std::endl;
+#endif
         }
-        std::cout << "\n";
         func_kernel->write(in_data_wire);
       }
 
       if (renVal == BitVector(1, 1)){
         auto dataout_pack = func_kernel->read();
-        valid_wire = dataout_pack.valid;
+        valid_wire = std::get<1>(dataout_pack);
+        auto read_data= std::get<0>(dataout_pack);
+
+#if VERBOSE==1
         std::cout << "valid signal = " << valid_wire << std::endl;
+#endif
+
         for (size_t i = 0; i < out_data_wire.size(); i++ ) {
-          out_data_wire[i] = dataout_pack.data[i];
+          out_data_wire[i] = read_data[i];
+#if VERBOSE==1
+          if (i == 0)
+            std::cout << "---------------read data---------------" << std::endl;
           std::cout << "Read data[" << i << "] = " << out_data_wire[i] << std::endl;
+          if (i == in_data_wire.size()-1)
+              std::cout << "---------------------------------------" << std::endl;
+#endif
         }
       }
 
@@ -524,11 +546,12 @@ class VirtualBuffer {
     void exeCombinational(vdisc vd, SimulatorState& simState) {
       auto wd = simState.getCircuitGraph().getNode(vd);
 
-      std::cout << "execomb.." <<std::endl;
-
       Instance* inst = toInstance(wd.getWire());
       auto inSels = getInputSelects(inst);
 
+#if VERBOSE==1
+      std::cout << "Ubuf->{" << inst->getInstname() << "} execomb.." <<std::endl;
+#endif
 
       //assert((!read_iterator.isDone()) && "No more read allowed.\n");
 

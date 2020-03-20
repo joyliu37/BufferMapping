@@ -1,0 +1,2748 @@
+{
+    "top": "global.DesignTop",
+    "namespaces": {
+        "global": {
+            "modules": {
+                "DesignTop": {
+                    "type": [
+                        "Record",
+                        [
+                            [
+                                "in",
+                                [
+                                    "Record",
+                                    [
+                                        [
+                                            "arg_0",
+                                            [
+                                                "Array",
+                                                2,
+                                                [
+                                                    "Array",
+                                                    1,
+                                                    [
+                                                        "Array",
+                                                        1,
+                                                        [
+                                                            "Array",
+                                                            16,
+                                                            "BitIn"
+                                                        ]
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            [
+                                "reset",
+                                "BitIn"
+                            ],
+                            [
+                                "in_en",
+                                [
+                                    "Record",
+                                    [
+                                        [
+                                            "arg_0",
+                                            [
+                                                "Array",
+                                                2,
+                                                [
+                                                    "Array",
+                                                    1,
+                                                    [
+                                                        "Array",
+                                                        1,
+                                                        "BitIn"
+                                                    ]
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            [
+                                "out",
+                                [
+                                    "Array",
+                                    1,
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            1,
+                                            [
+                                                "Array",
+                                                16,
+                                                "Bit"
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            ],
+                            [
+                                "valid",
+                                "Bit"
+                            ]
+                        ]
+                    ],
+                    "instances": {
+                        "add_347_352_353": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_354_360_361": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_362_368_369": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_370_376_377": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_378_384_385": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_386_392_393": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_394_400_401": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_402_408_409": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "add_410_416_417": {
+                            "genref": "coreir.add",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "const0_0": {
+                            "genref": "coreir.const",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            },
+                            "modargs": {
+                                "value": [
+                                    [
+                                        "BitVector",
+                                        16
+                                    ],
+                                    "16'h0000"
+                                ]
+                            }
+                        },
+                        "mul_349_351_352": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_357_359_360": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_365_367_368": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_373_375_376": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_381_383_384": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_389_391_392": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_397_399_400": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_405_407_408": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "mul_413_415_416": {
+                            "genref": "coreir.mul",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ]
+                            }
+                        },
+                        "ub_kernel_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_kernel_stream_in_reshape": {
+                            "genref": "commonlib.reshape",
+                            "genargs": {
+                                "input_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            1,
+                                            [
+                                                "Array",
+                                                1,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "BitIn"
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                "output_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            16,
+                                            "Bit"
+                                        ]
+                                    ]
+                                ]
+                            }
+                        },
+                        "ub_kernel_stream_out_reshape": {
+                            "genref": "commonlib.reshape",
+                            "genargs": {
+                                "input_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        9,
+                                        [
+                                            "Array",
+                                            16,
+                                            "BitIn"
+                                        ]
+                                    ]
+                                ],
+                                "output_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            3,
+                                            [
+                                                "Array",
+                                                3,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "Bit"
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            }
+                        },
+                        "ub_kernel_stream_ren": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    true
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_stream_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_stream_in_reshape": {
+                            "genref": "commonlib.reshape",
+                            "genargs": {
+                                "input_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            1,
+                                            [
+                                                "Array",
+                                                1,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "BitIn"
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ],
+                                "output_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            16,
+                                            "Bit"
+                                        ]
+                                    ]
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_stream_out_reshape": {
+                            "genref": "commonlib.reshape",
+                            "genargs": {
+                                "input_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        9,
+                                        [
+                                            "Array",
+                                            16,
+                                            "BitIn"
+                                        ]
+                                    ]
+                                ],
+                                "output_type": [
+                                    "CoreIRType",
+                                    [
+                                        "Array",
+                                        1,
+                                        [
+                                            "Array",
+                                            3,
+                                            [
+                                                "Array",
+                                                3,
+                                                [
+                                                    "Array",
+                                                    16,
+                                                    "Bit"
+                                                ]
+                                            ]
+                                        ]
+                                    ]
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_stream_ren": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    true
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_0": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    8192
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            8192
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    256
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    16
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    8192
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            0
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_1": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    8192
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            8192
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    256
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    16
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    8192
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            1
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_2": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    8192
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            8192
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    256
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    16
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    8192
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            2
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_3": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    8192
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            8192
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    256
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    16
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    8192
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            16
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_4": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    8192
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            8192
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    256
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    16
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    8192
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            17
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_5": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    8192
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            8192
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    256
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    16
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    8192
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            18
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_6": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    8192
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            8192
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    256
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    16
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    8192
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            32
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_7": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    8192
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            8192
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    256
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    16
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    8192
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            33
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_8": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    8192
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            8192
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    256
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    1
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    16
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    8192
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            34
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_0_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_1_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_2_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_3_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_4_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_5_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_6_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_7_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_kernel_streamdouble_buffer_bank_8_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_0": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    288
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            288
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    9
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    288
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            0
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_1": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    288
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            288
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    9
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    288
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            1
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_2": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    288
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            288
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    9
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    288
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            2
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_3": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    288
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            288
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    9
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    288
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            3
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_4": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    288
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            288
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    9
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    288
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            4
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_5": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    288
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            288
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    9
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    288
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            5
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_6": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    288
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            288
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    9
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    288
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            6
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_7": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    288
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            288
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    9
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    288
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            7
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_8": {
+                            "genref": "lakelib.unified_buffer",
+                            "genargs": {
+                                "width": [
+                                    "Int",
+                                    16
+                                ],
+                                "depth": [
+                                    "Int",
+                                    288
+                                ],
+                                "logical_size": [
+                                    "Json",
+                                    {
+                                        "capacity": [
+                                            288
+                                        ]
+                                    }
+                                ],
+                                "rate_matched": [
+                                    "Bool",
+                                    false
+                                ],
+                                "dimensionality": [
+                                    "Int",
+                                    3
+                                ],
+                                "iter_cnt": [
+                                    "Int",
+                                    6272
+                                ],
+                                "stencil_width": [
+                                    "Int",
+                                    0
+                                ],
+                                "stride_0": [
+                                    "Int",
+                                    9
+                                ],
+                                "range_0": [
+                                    "Int",
+                                    32
+                                ],
+                                "stride_1": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_1": [
+                                    "Int",
+                                    14
+                                ],
+                                "stride_2": [
+                                    "Int",
+                                    0
+                                ],
+                                "range_2": [
+                                    "Int",
+                                    14
+                                ],
+                                "input_stride_0": [
+                                    "Int",
+                                    1
+                                ],
+                                "input_range_0": [
+                                    "Int",
+                                    288
+                                ],
+                                "chain_en": [
+                                    "Bool",
+                                    false
+                                ],
+                                "chain_idx": [
+                                    "Int",
+                                    0
+                                ],
+                                "output_starting_addrs": [
+                                    "Json",
+                                    {
+                                        "output_start": [
+                                            8
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_0_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_1_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_2_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_3_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_4_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_5_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_6_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_7_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        },
+                        "ub_hw_input_stencil_update_streamdouble_buffer_bank_8_flush": {
+                            "modref": "corebit.const",
+                            "modargs": {
+                                "value": [
+                                    "Bool",
+                                    false
+                                ]
+                            }
+                        }
+                    },
+                    "connections": [
+                        [
+                            "const0_0.out",
+                            "add_347_352_353.in0"
+                        ],
+                        [
+                            "mul_349_351_352.out",
+                            "add_347_352_353.in1"
+                        ],
+                        [
+                            "add_354_360_361.in0",
+                            "add_347_352_353.out"
+                        ],
+                        [
+                            "mul_357_359_360.out",
+                            "add_354_360_361.in1"
+                        ],
+                        [
+                            "add_362_368_369.in0",
+                            "add_354_360_361.out"
+                        ],
+                        [
+                            "mul_365_367_368.out",
+                            "add_362_368_369.in1"
+                        ],
+                        [
+                            "add_370_376_377.in0",
+                            "add_362_368_369.out"
+                        ],
+                        [
+                            "mul_373_375_376.out",
+                            "add_370_376_377.in1"
+                        ],
+                        [
+                            "add_378_384_385.in0",
+                            "add_370_376_377.out"
+                        ],
+                        [
+                            "mul_381_383_384.out",
+                            "add_378_384_385.in1"
+                        ],
+                        [
+                            "add_386_392_393.in0",
+                            "add_378_384_385.out"
+                        ],
+                        [
+                            "mul_389_391_392.out",
+                            "add_386_392_393.in1"
+                        ],
+                        [
+                            "add_394_400_401.in0",
+                            "add_386_392_393.out"
+                        ],
+                        [
+                            "mul_397_399_400.out",
+                            "add_394_400_401.in1"
+                        ],
+                        [
+                            "add_402_408_409.in0",
+                            "add_394_400_401.out"
+                        ],
+                        [
+                            "mul_405_407_408.out",
+                            "add_402_408_409.in1"
+                        ],
+                        [
+                            "add_410_416_417.in0",
+                            "add_402_408_409.out"
+                        ],
+                        [
+                            "mul_413_415_416.out",
+                            "add_410_416_417.in1"
+                        ],
+                        [
+                            "self.out.0.0.0",
+                            "add_410_416_417.out"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.out.0.0.0",
+                            "mul_349_351_352.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0.0",
+                            "mul_349_351_352.in1"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.out.0.0.1",
+                            "mul_357_359_360.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0.1",
+                            "mul_357_359_360.in1"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.out.0.0.2",
+                            "mul_365_367_368.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.0.2",
+                            "mul_365_367_368.in1"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.out.0.1.0",
+                            "mul_373_375_376.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1.0",
+                            "mul_373_375_376.in1"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.out.0.1.1",
+                            "mul_381_383_384.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1.1",
+                            "mul_381_383_384.in1"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.out.0.1.2",
+                            "mul_389_391_392.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.1.2",
+                            "mul_389_391_392.in1"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.out.0.2.0",
+                            "mul_397_399_400.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2.0",
+                            "mul_397_399_400.in1"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.out.0.2.1",
+                            "mul_405_407_408.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2.1",
+                            "mul_405_407_408.in1"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.out.0.2.2",
+                            "mul_413_415_416.in0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.out.0.2.2",
+                            "mul_413_415_416.in1"
+                        ],
+                        [
+                            "ub_kernel_stream_in_reshape.in",
+                            "self.in.arg_0.1.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_in_reshape.in",
+                            "self.in.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_0.wen",
+                            "self.in_en.arg_1.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_0.ren",
+                            "ub_kernel_stream_ren.out"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_0.datain0",
+                            "ub_kernel_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_kernel_streamdouble_buffer_bank_0.reset"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.in.0",
+                            "ub_kernel_streamdouble_buffer_bank_0.dataout0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_1.wen",
+                            "self.in_en.arg_1.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_1.ren",
+                            "ub_kernel_stream_ren.out"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_1.datain0",
+                            "ub_kernel_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_kernel_streamdouble_buffer_bank_1.reset"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.in.1",
+                            "ub_kernel_streamdouble_buffer_bank_1.dataout0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_2.wen",
+                            "self.in_en.arg_1.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_2.ren",
+                            "ub_kernel_stream_ren.out"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_2.datain0",
+                            "ub_kernel_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_kernel_streamdouble_buffer_bank_2.reset"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.in.2",
+                            "ub_kernel_streamdouble_buffer_bank_2.dataout0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_3.wen",
+                            "self.in_en.arg_1.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_3.ren",
+                            "ub_kernel_stream_ren.out"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_3.datain0",
+                            "ub_kernel_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_kernel_streamdouble_buffer_bank_3.reset"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.in.3",
+                            "ub_kernel_streamdouble_buffer_bank_3.dataout0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_4.wen",
+                            "self.in_en.arg_1.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_4.ren",
+                            "ub_kernel_stream_ren.out"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_4.datain0",
+                            "ub_kernel_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_kernel_streamdouble_buffer_bank_4.reset"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.in.4",
+                            "ub_kernel_streamdouble_buffer_bank_4.dataout0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_5.wen",
+                            "self.in_en.arg_1.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_5.ren",
+                            "ub_kernel_stream_ren.out"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_5.datain0",
+                            "ub_kernel_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_kernel_streamdouble_buffer_bank_5.reset"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.in.5",
+                            "ub_kernel_streamdouble_buffer_bank_5.dataout0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_6.wen",
+                            "self.in_en.arg_1.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_6.ren",
+                            "ub_kernel_stream_ren.out"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_6.datain0",
+                            "ub_kernel_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_kernel_streamdouble_buffer_bank_6.reset"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.in.6",
+                            "ub_kernel_streamdouble_buffer_bank_6.dataout0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_7.wen",
+                            "self.in_en.arg_1.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_7.ren",
+                            "ub_kernel_stream_ren.out"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_7.datain0",
+                            "ub_kernel_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_kernel_streamdouble_buffer_bank_7.reset"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.in.7",
+                            "ub_kernel_streamdouble_buffer_bank_7.dataout0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_8.wen",
+                            "self.in_en.arg_1.0.0.0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_8.ren",
+                            "ub_kernel_stream_ren.out"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_8.datain0",
+                            "ub_kernel_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_kernel_streamdouble_buffer_bank_8.reset"
+                        ],
+                        [
+                            "ub_kernel_stream_out_reshape.in.8",
+                            "ub_kernel_streamdouble_buffer_bank_8.dataout0"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_0_flush.out",
+                            "ub_kernel_streamdouble_buffer_bank_0.flush"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_1_flush.out",
+                            "ub_kernel_streamdouble_buffer_bank_1.flush"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_2_flush.out",
+                            "ub_kernel_streamdouble_buffer_bank_2.flush"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_3_flush.out",
+                            "ub_kernel_streamdouble_buffer_bank_3.flush"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_4_flush.out",
+                            "ub_kernel_streamdouble_buffer_bank_4.flush"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_5_flush.out",
+                            "ub_kernel_streamdouble_buffer_bank_5.flush"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_6_flush.out",
+                            "ub_kernel_streamdouble_buffer_bank_6.flush"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_7_flush.out",
+                            "ub_kernel_streamdouble_buffer_bank_7.flush"
+                        ],
+                        [
+                            "ub_kernel_streamdouble_buffer_bank_8_flush.out",
+                            "ub_kernel_streamdouble_buffer_bank_8.flush"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.ren",
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.0",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.ren",
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.1",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.ren",
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.2",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.ren",
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.3",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.ren",
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.4",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.ren",
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.5",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.ren",
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.6",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.ren",
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.7",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.dataout0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.wen",
+                            "self.in_en.arg_0.0.0.0"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.ren",
+                            "ub_kernel_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.datain0",
+                            "ub_hw_input_stencil_update_stream_in_reshape.out.0"
+                        ],
+                        [
+                            "self.reset",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.reset"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_stream_out_reshape.in.8",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.dataout0"
+                        ],
+                        [
+                            "self.valid",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.valid"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_0.flush"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_1.flush"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_2.flush"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_3.flush"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_4.flush"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_5.flush"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_6.flush"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_7.flush"
+                        ],
+                        [
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8_flush.out",
+                            "ub_hw_input_stencil_update_streamdouble_buffer_bank_8.flush"
+                        ]
+                    ]
+                }
+            }
+        }
+    }
+}

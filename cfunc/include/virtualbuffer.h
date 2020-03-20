@@ -2,6 +2,7 @@
 #define VIRTUALBUFFER_H_
 
 #include <vector>
+#include <tuple>
 #include "access.h"
 #include "util.h"
 
@@ -14,11 +15,15 @@ class VirtualBuffer {
                 std::vector<int> out_range, std::vector<int> out_stride, std::vector<int> out_start,
                 std::vector<int> in_chunk, std::vector<int> out_stencil, std::vector<int> dimension,
                 int stencil_acc_dim);
-        RetDataWithVal<Dtype> read();
+        VirtualBuffer(std::vector<int> in_range, std::vector<int> in_stride, std::vector<int> in_start,
+                std::vector<int> out_range, std::vector<int> out_stride, std::vector<int> out_start,
+                std::vector<int> in_chunk, std::vector<int> out_stencil, std::vector<int> dimension,
+                std::vector<int> out_stencil_width, int stencil_acc_dim);
+        std::tuple<vector<Dtype>, bool> read();
         void write(const std::vector<Dtype>& write_data);
         void switch_check();
         void copy2writebank();
-        bool getStencilValid();
+        bool getNextStencilValid();
         int getReadIteration() {return read_iterator.getTotalIteration();}
         int getWriteIteration() {return write_iterator.getTotalIteration();}
         int getInPort() {return input_port;}
@@ -28,7 +33,7 @@ class VirtualBuffer {
 
         int input_port, output_port, capacity, dimensionality, stencil_acc_dim;
         int preload_bound, read_in_stencil_bound;
-        bool select, is_db;
+        bool select, is_db, stencil_valid_to_be_read;
         AccessIter write_iterator, read_iterator, stencil_iterator;
         Counter preload_done, stencil_read_done;
         std::vector<vector<Dtype> > data;
