@@ -940,6 +940,110 @@ Namespace* CoreIRLoadLibrary_lakelib(Context* c) {
     });
 
 
+  /////////////////////////////////////////
+  //*** new unified buffer definition ***//
+  /////////////////////////////////////////
+  // istream= input_stride, input_range, input_starting_addrs, input_chunk, input_block
+  // ostream= output_stride, output_range, output_starting_addrs, output_stencil, output_block,
+  //          num_stencil_acc_dim, stencil_width, iter_cnt
+  Params new_ubparams = Params({
+      {"width",c->Int()},
+      {"logical_size",c->Json()},
+      {"ostreams",c->Json()},
+      {"istreams",c->Json()},
+        //{"depth", c->Int()},    // remove: this is the product of all logical dims
+      {"chain_en",c->Bool()}, // default: used only after hw mapping
+      {"chain_idx",c->Int()}, // default: used only after hw mapping
+      {"init",c->Json()}
+    });
+
+  // unified buffer type
+  lakelib->newTypeGen(
+    "new_unified_buffer_type", //name for the typegen
+    new_ubparams, //generator parameters
+    [](Context* c, Values genargs) { //Function to compute type
+      uint width = genargs.at("width")->get<int>();
+      Json istreams = genargs.at("istreams")->get<Json>();
+      Json ostreams = genargs.at("ostreams")->get<Json>();
+      uint num_inputs = 1;//genargs.at("num_input_ports")->get<int>();
+      uint num_outputs = 1;//genargs.at("num_output_ports")->get<int>();
+
+      RecordParams recordparams = {
+        {"wen",c->BitIn()},
+        {"ren",c->BitIn()},
+        {"flush", c->BitIn()},
+        {"reset", c->BitIn()},
+        {"valid",c->Bit()}
+      };
+
+      // Add the dataports. The simulator needs them to be flattened
+      bool simulation_compatible = true;
+      bool multiple_streams = true;
+
+      if (multiple_streams) {
+        // Insert input ports for each input stream
+        for (auto& stream : nlohmann::json::iterator_wrapper(istreams)) {
+          //std::cout << "input: " << stream.value() << std::endl;
+          for (size_t i=0; i < stream.value()["input_starting_addrs"].size(); ++i) {
+            string stream_name = stream.key();
+            recordparams.push_back({"datain_" + stream_name  + "_" + std::to_string(i),
+                  c->BitIn()->Arr(width)});
+          }
+        }
+        // Insert output ports for each output stream
+        for (auto stream : nlohmann::json::iterator_wrapper(ostreams)) {
+          //std::cout << "output: " << stream.value() << std::endl;
+          for (size_t i=0; i < stream.value()["output_starting_addrs"].size(); ++i) {
+            string stream_name = stream.key();
+            recordparams.push_back({"dataout_" + stream_name + "_" + std::to_string(i),
+                  c->Bit()->Arr(width)});
+          }
+        }
+      } else if (simulation_compatible) {
+        for (size_t i=0; i < num_inputs; ++i) {
+          recordparams.push_back({"datain"+std::to_string(i), c->BitIn()->Arr(width)});
+        }
+        for (size_t i=0; i < num_outputs; ++i) {
+          recordparams.push_back({"dataout"+std::to_string(i), c->Bit()->Arr(width)});
+        }
+      } else {
+        recordparams.push_back({"datain",c->BitIn()->Arr(width)->Arr(num_inputs)});
+        recordparams.push_back({"dataout",c->Bit()->Arr(width)->Arr(num_outputs)});
+      }
+
+      return c->Record(recordparams);
+    }
+  );
+
+  auto new_unified_buffer_gen = lakelib->newGeneratorDecl("new_unified_buffer",lakelib->getTypeGen("new_unified_buffer_type"),new_ubparams);
+  Json new_jdata;
+  new_jdata["init"][0] = 0; // set default init to "0"
+  new_unified_buffer_gen->addDefaultGenArgs({{"init",Const::make(c,new_jdata)}});
+
+  // set some default inputs and outputs
+  Json jistreams;
+  jistreams["input0"]["input_stride"] = {0};
+  jistreams["input0"]["input_range"] = {1};
+  jistreams["input0"]["input_starting_addrs"] = {0};
+  jistreams["input0"]["input_chunk"] = {1};
+  jistreams["input0"]["input_block"] = {1};
+  jistreams["input0"]["num_input_ports"] = {1};  // remove: this is the product of input block dims
+  new_unified_buffer_gen->addDefaultGenArgs({{"istreams",Const::make(c,jistreams)}});
+
+  Json jostreams;
+  jostreams["output0"]["output_stride"] = {1};
+  jostreams["output0"]["output_range"] = {1};
+  jostreams["output0"]["output_starting_addrs"] = {0};
+  jostreams["output0"]["output_stencil"] = {1};
+  jostreams["output0"]["output_block"] = {1};
+  // this parameter identifies how many dimensions of the access pattern range is inside the stencil
+  jostreams["output0"]["num_stencil_acc_dim"] = {0};
+  jostreams["output0"]["stencil_width"] = {1};    // default: used only after hw mapping
+  jostreams["output0"]["iter_cnt"] = 1;           // remove: this is the product of all ranges
+  jostreams["output0"]["num_loops"] = 1;          // remove: aka dimensionality, this can be inferred perhaps from the length of each ostream?
+  jostreams["output0"]["num_output_ports"] = 1;   // remove: this is the product of output block dims
+  new_unified_buffer_gen->addDefaultGenArgs({{"ostreams",Const::make(c,jostreams)}});
+
   /////////////////////////////////////
   //*** unified buffer definition ***//
   /////////////////////////////////////
@@ -1072,6 +1176,7 @@ Namespace* CoreIRLoadLibrary_lakelib(Context* c) {
   unified_buffer_gen->addDefaultGenArgs({{"num_output_ports",Const::make(c,1)}});
   unified_buffer_gen->addDefaultGenArgs({{"num_reduction_iter",Const::make(c,1)}});
   unified_buffer_gen->addDefaultGenArgs({{"num_stencil_acc_dim",Const::make(c,0)}});
+
 
   //////////////////////////////////////////////
   //*** abstract unified buffer definition ***//
