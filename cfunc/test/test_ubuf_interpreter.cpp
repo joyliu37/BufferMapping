@@ -326,7 +326,6 @@ namespace CoreIR {
     def->connect("buf0.wen", "self.wen");
     def->connect("buf0.valid", "self.valid");
     def->connect("buf0.reset", "self.reset");
-    //def->connect("buf0.clk", "self.clk");
 
     std::cout << "finish connect" << std::endl;
 
@@ -386,6 +385,124 @@ namespace CoreIR {
 
     deleteContext(c);
     std::cout << "PASSED: unified buffer basic simulation!\n";
+  }
+
+  TEST_CASE("New Unified buffer basic simulation") {
+    std::cout << "New unified buffer sim running...\n";
+    Context* c = newContext();
+    Namespace* g = c->newNamespace("bufferLib");
+    CoreIRLoadLibrary_commonlib(c);
+    CoreIRLoadLibrary_lakelib(c);
+
+    // Build container module
+    Namespace* global = c->getNamespace("global");
+    int width = 16;
+    Type* bufWrapperType =
+        c->Record({
+            {"clk",c->Named("coreir.clkIn")},
+            {"reset",c->BitIn()},
+            {"out",c->Bit()->Arr(width)},
+            {"valid",c->Bit()},
+            {"in",c->BitIn()->Arr(width)},
+            {"ren",c->BitIn()},
+            {"wen",c->BitIn()}
+          });
+
+    Module* wrapperMod =
+      c->getGlobal()->newModuleDecl("bufWrapper", bufWrapperType);
+    ModuleDef* def = wrapperMod->newModuleDef();
+
+    /*
+    Json jinputs;
+    Json joutputs;
+    jinputs["input_start"][0] = 0;
+    joutputs["output_start"][0] = 0;
+    */
+    Json logical_size;
+    logical_size["capacity"][0] = 16;
+    // set some default inputs and outputs
+    Json jistreams;
+    jistreams["input0"]["input_stride"] = {1};
+    jistreams["input0"]["input_range"] = {16};
+    jistreams["input0"]["input_starting_addrs"] = {0};
+    jistreams["input0"]["input_chunk"] = {1};
+    jistreams["input0"]["input_block"] = {1};
+    jistreams["input0"]["num_input_ports"] = 1;
+
+    Json jostreams;
+    jostreams["output0"]["output_stride"] = {1};
+    jostreams["output0"]["output_range"] = {16};
+    jostreams["output0"]["output_starting_addrs"] = {0};
+    jostreams["output0"]["output_stencil"] = {1};
+    jostreams["output0"]["output_block"] = {1};
+    jostreams["output0"]["num_output_ports"] = 1;
+    jostreams["output0"]["num_stencil_acc_dim"] = 0;
+    jostreams["output0"]["stencil_width"] = {0};
+    jostreams["output0"]["num_loops"] = 1;
+
+    //using default input/output start
+    def->addInstance("buf0",
+                       "lakelib.new_unified_buffer",
+                       {{"width",       Const::make(c, width)},
+                        {"chain_idx", Const::make(c, 0)},
+                        {"chain_en", Const::make(c, false)},
+                        {"logical_size", Const::make(c, logical_size)},
+                        {"istreams", Const::make(c, jistreams)},
+                        {"ostreams", Const::make(c, jostreams)}
+                     });
+
+    def->connect("buf0.datain_input0_0", "self.in");
+    def->connect("buf0.dataout_output0_0", "self.out");
+    def->connect("buf0.ren", "self.ren");
+    def->connect("buf0.wen", "self.wen");
+    def->connect("buf0.valid", "self.valid");
+    def->connect("buf0.reset", "self.reset");
+
+    std::cout << "finish connect" << std::endl;
+
+    wrapperMod->setDef(def);
+    c->runPasses({"rungenerators", "flatten", "flattentypes", "wireclocks-coreir"});
+
+    // Build the simulator with the new model
+    auto modBuilder = [](WireNode& wd) {
+      UnifiedBuffer_new* simModel = new UnifiedBuffer_new();
+      return simModel;
+    };
+
+    map<std::string, SimModelBuilder> qualifiedNamesToSimPlugins{{string("lakelib.new_unified_buffer"), modBuilder}};
+
+    SimulatorState state(wrapperMod, qualifiedNamesToSimPlugins);
+
+    std::cout << "finish create SimulatorState" << std::endl;
+    state.setValue("self.reset", BitVector(1, 1));
+    state.setValue("self.wen", BitVector(1, 0));
+    state.setValue("self.ren", BitVector(1, 1));
+    state.setValue("self.in", BitVector(width, 0));
+    state.setClock("self.clk", 0, 1);
+
+    std::cout << "finish set value" << std::endl;
+    state.resetCircuit();
+
+    //state.execute();
+
+    //REQUIRE(state.getBitVec("self.out") == BitVector(width, 0));
+
+    //cycle for initialize
+
+    std::cout << "start running" << std::endl;
+    for (int i = 0; i < 16; i ++) {
+        state.setValue("self.reset", BitVector(1, 0));
+        state.setValue("self.wen", BitVector(1, 1));
+        state.setValue("self.ren", BitVector(1, 1));
+        state.setValue("self.in", BitVector(width, i));
+
+        state.execute();
+
+        REQUIRE(state.getBitVec("self.out") == BitVector(width, i));
+    }
+
+    deleteContext(c);
+    std::cout << "PASSED: new unified buffer basic simulation!\n";
   }
 
 
