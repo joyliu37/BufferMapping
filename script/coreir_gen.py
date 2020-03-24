@@ -32,7 +32,12 @@ def processCoreIR(hand_craft, hw_setup):
             elif "unified_buffer" in value["genref"]:
                 #get the unified_buffer node
                 buffer_config = CoreIRUnifiedBufferConfig(value["genargs"])
-                v_buf_config = buffer_config.getVirtualBufferConfig()
+                #v_buf_config = buffer_config.getVirtualBufferConfig()
+
+                #FIXME: not support for multiple streams
+                v_buf_config_dict = buffer_config.getVirtualBufferConfigNew()
+                v_buf_config = list(v_buf_config_dict.values())[0]
+
                 v_buf_config.pretty_print()
 
                 new_connection = [wire for wire in core["connections"] if key != wire[0].split(".")[0] and key != wire[1].split(".")[0]]

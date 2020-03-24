@@ -69,6 +69,28 @@ class CoreIRUnifiedBufferConfig:
 
         return VirtualBufferConfig(input_port, output_port, capacity, rng, stride, start)
 
+    def getVirtualBufferConfigNew(self):
+        #input_port = self.config_dict["istream"][1]["input"]["num_input_ports"]
+        input_port = 1
+        capacity_list = self.config_dict["logical_size"][1]["capacity"]
+        capacity_dimension = len(capacity_list)
+        acc_capacity = [ reduce(lambda x, y : x*y, capacity_list[0:i+1]) for i in range(capacity_dimension) ]
+        self.acc_capacity = [1] + acc_capacity
+        capacity = self.acc_capacity[-1]
+        out_streams = self.config_dict["ostreams"][1]
+        out_access_pattern = {}
+        assert len(out_access_pattern.items()) <= 1, "Not Support more than one stream now"
+        for key, out_stream in out_streams.items():
+            start = out_stream["output_starting_addrs"]
+            output_port = out_stream["num_output_ports"]
+            stride = out_stream["output_stride"]
+            rng = out_stream["output_range"]
+            rng, stride = EliminateRedundancyForAccessPattern(rng, stride)
+            out_access_pattern[key] = {"start": start, "stride": stride, "range": rng, "port_width": output_port}
+            self.stride_in_dim = [st // acc_cap for st, acc_cap in zip(stride, self.acc_capacity)]
+
+        return {key: VirtualBufferConfig(input_port, dic["port_width"], capacity, dic["range"], dic["stride"], dic["start"]) \
+                for key, dic in out_access_pattern.items()}
 
 def IR2Interface(setup):
     '''
