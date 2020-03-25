@@ -438,7 +438,6 @@ namespace CoreIR {
     jostreams["output0"]["num_output_ports"] = 1;
     jostreams["output0"]["num_stencil_acc_dim"] = 0;
     jostreams["output0"]["stencil_width"] = {0};
-    jostreams["output0"]["num_loops"] = 1;
 
     //using default input/output start
     def->addInstance("buf0",
@@ -721,7 +720,6 @@ namespace CoreIR {
     jostreams["output0"]["num_output_ports"] = 9;
     jostreams["output0"]["num_stencil_acc_dim"] = 0;
     jostreams["output0"]["stencil_width"] = {0};
-    jostreams["output0"]["num_loops"] = 2;
     for (int x = 0 ; x < 3; x ++) {
       for (int y = 0 ; y < 3; y ++) {
         jostreams["output0"]["output_starting_addrs"][x+y*3] = x+y*16;

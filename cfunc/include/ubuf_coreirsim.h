@@ -380,7 +380,7 @@ class VirtualBuffer {
 
       // extract parameters
       Instance* inst = toInstance(w);
-      //std::cout << inst->getModuleRef()->getRefName() << std::endl;
+      std::cout << inst->getModuleRef()->getRefName() << std::endl;
       string module_name = inst->getModuleRef()->getRefName();
       if (module_name == "lakelib.unified_buffer") {
         width = inst->getModuleRef()->getGenArgs().at("width")->get<int>();
@@ -451,7 +451,7 @@ class VirtualBuffer {
             output_stencil = to_vec(stream.value()["output_stencil"]);
             stencil_width = to_vec(stream.value()["stencil_width"]);
             stencil_acc_dim = stream.value()["num_stencil_acc_dim"];
-            dimensionality = stream.value()["num_loops"];
+            dimensionality = output_range.size();
             //TODO: update the ubuffer functional model to support multistream, right now just support single stream
             break;
         }
