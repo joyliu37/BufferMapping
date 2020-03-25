@@ -353,13 +353,16 @@ class VirtualBuffer {
   class UnifiedBuffer_new : public SimulatorPlugin {
   private:
     std::shared_ptr<VirtualBuffer<int>> func_kernel;
-    bool valid_wire;//, wen_wire, ren_wire;
+    bool valid_wire, use_input_access_pattern;//, wen_wire, ren_wire;
     int width, dimensionality;
     std::vector<int> in_data_wire, out_data_wire;
     std::vector<string> istream_name;
     std::vector<string> ostream_name;
 
   public:
+    UnifiedBuffer_new (bool use = false) {
+        use_input_access_pattern = use;
+    }
     vector<int> to_vec(const Json data) {
         vector<int> tmp;
         for (auto const & item: data)
@@ -425,6 +428,19 @@ class VirtualBuffer {
         for (auto const & dim_val: dimension_json["capacity"]) {
           dimension.push_back(dim_val);
         }
+
+        //fill in the wire with 0 after definition
+        std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
+        std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
+
+        std::cout << "Start Initialize the Func Kernel" << std::endl;
+
+        func_kernel = std::make_shared<VirtualBuffer<int> >(
+        VirtualBuffer<int>(input_range, input_stride, input_start,
+          output_range, output_stride, output_start,
+          input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
+
+        std::cout << "Finish Initialize the Func Kernel" << std::endl;
       }
       else if (module_name == "lakelib.new_unified_buffer") {
           cout << "Parse Parameter for New Unified Buffer.\n";
@@ -435,9 +451,12 @@ class VirtualBuffer {
         dimension = to_vec(genargs.at("logical_size")->get<Json>()["capacity"]);
         for (auto& stream : nlohmann::json::iterator_wrapper(istreams)) {
             istream_name.push_back(stream.key());
-            input_start = to_vec(stream.value()["input_starting_addrs"]);
-            input_range = to_vec(stream.value()["input_range"]);
-            input_stride = to_vec(stream.value()["input_stride"]);
+            if (use_input_access_pattern){
+                input_start = to_vec(stream.value()["input_starting_addrs"]);
+                input_range = to_vec(stream.value()["input_range"]);
+                input_stride = to_vec(stream.value()["input_stride"]);
+
+            }
             input_chunk = to_vec(stream.value()["input_chunk"]);
             //TODO: update the ubuffer functional model to support multistream, right now just support single stream
             break;
@@ -455,7 +474,29 @@ class VirtualBuffer {
             //TODO: update the ubuffer functional model to support multistream, right now just support single stream
             break;
         }
-        cout << "Finish Parsing\n";
+
+        //fill in the wire with 0 after definition
+
+        std::cout << "Start Initialize the Func Kernel" << std::endl;
+
+        if (use_input_access_pattern){
+            std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
+            std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
+            func_kernel = std::make_shared<VirtualBuffer<int> >(
+            VirtualBuffer<int>(input_range, input_stride, input_start,
+              output_range, output_stride, output_start,
+              input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
+
+        }
+        else {
+            std::fill_n(std::back_inserter(in_data_wire), 1, 0);
+            std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
+            func_kernel = std::make_shared<VirtualBuffer<int> >(VirtualBuffer<int>(output_range, output_stride, output_start,
+              input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
+
+        }
+
+        std::cout << "Finish Initialize the Func Kernel" << std::endl;
 
       }
     /*
@@ -471,19 +512,6 @@ class VirtualBuffer {
       auto output_stride = get_dims(outputStrideType);
       auto output_start = get_dims(outputStartType);
 */
-
-      //fill in the wire with 0 after definition
-      std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
-      std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
-
-      std::cout << "Start Initialize the Func Kernel" << std::endl;
-
-      func_kernel = std::make_shared<VirtualBuffer<int> >(
-      VirtualBuffer<int>(input_range, input_stride, input_start,
-        output_range, output_stride, output_start,
-        input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
-
-      std::cout << "Finish Initialize the Func Kernel" << std::endl;
       //write_iterator = UnifiedBufferAddressGenerator(input_range, input_stride, input_start, width);
       //read_iterator = UnifiedBufferAddressGenerator(output_range, output_stride, output_start, width);
 

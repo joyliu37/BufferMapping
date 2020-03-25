@@ -5,8 +5,7 @@
 using namespace std;
 
 template<typename Dtype>
-VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride, vector<int> in_start,
-        vector<int> out_range, vector<int> out_stride, vector<int> out_start,
+VirtualBuffer<Dtype>::VirtualBuffer(vector<int> out_range, vector<int> out_stride, vector<int> out_start,
         vector<int> in_chunk, vector<int>out_stencil, vector<int> dimension,
         int stencil_acc_dim):
     dimensionality(dimension.size()),
@@ -14,11 +13,11 @@ VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride,
     select(false),
     is_db(isEqual(in_chunk, dimension)),
     stencil_valid_to_be_read(false),
-    write_iterator(in_range, in_stride, in_start),
     read_iterator(out_range, out_stride, out_start)
 {
     auto mul = [&](int a, int b){return a*b; };
     capacity = accumulate(dimension.begin(), dimension.end(), 1, mul);
+    write_iterator = AccessIter({capacity}, {1}, {0});
 
     //create acc_iter for read_stencil_iterator
     vector<int> stencil_range, stencil_stride, stencil_start;
@@ -51,12 +50,29 @@ template<typename Dtype>
 VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride, vector<int> in_start,
         vector<int> out_range, vector<int> out_stride, vector<int> out_start,
         vector<int> in_chunk, vector<int>out_stencil, vector<int> dimension,
+        int stencil_acc_dim):
+    VirtualBuffer(out_range, out_stride, out_start, in_chunk, out_stencil, dimension, stencil_acc_dim)
+    {write_iterator = AccessIter(in_range, in_stride, in_start);}
+
+template<typename Dtype>
+VirtualBuffer<Dtype>::VirtualBuffer(vector<int> in_range, vector<int> in_stride, vector<int> in_start,
+        vector<int> out_range, vector<int> out_stride, vector<int> out_start,
+        vector<int> in_chunk, vector<int>out_stencil, vector<int> dimension,
         vector<int> stencil_width,
         int stencil_acc_dim):
     VirtualBuffer(in_range, in_stride, in_start,
             out_range, out_stride, out_start,
             in_chunk, out_stencil, dimension,
             stencil_acc_dim)
+{
+    read_iterator = AccessIter(out_range, out_stride, out_start, stencil_width);
+}
+
+template<typename Dtype>
+VirtualBuffer<Dtype>::VirtualBuffer(vector<int> out_range, vector<int> out_stride, vector<int> out_start,
+        vector<int> in_chunk, vector<int>out_stencil, vector<int> dimension, vector<int> stencil_width,
+        int stencil_acc_dim):
+    VirtualBuffer(out_range, out_stride, out_start, in_chunk, out_stencil, dimension, stencil_acc_dim)
 {
     read_iterator = AccessIter(out_range, out_stride, out_start, stencil_width);
 }

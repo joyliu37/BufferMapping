@@ -11,6 +11,12 @@ template <typename Dtype>
 class VirtualBuffer {
     public:
         VirtualBuffer() {};
+        VirtualBuffer(std::vector<int> out_range, std::vector<int> out_stride, std::vector<int> out_start,
+                std::vector<int> in_chunk, std::vector<int> out_stencil, std::vector<int> dimension,
+                int stencil_acc_dim);
+        VirtualBuffer(std::vector<int> out_range, std::vector<int> out_stride, std::vector<int> out_start,
+                std::vector<int> in_chunk, std::vector<int> out_stencil, std::vector<int> dimension,
+                std::vector<int> stencil_width, int stencil_acc_dim);
         VirtualBuffer(std::vector<int> in_range, std::vector<int> in_stride, std::vector<int> in_start,
                 std::vector<int> out_range, std::vector<int> out_stride, std::vector<int> out_start,
                 std::vector<int> in_chunk, std::vector<int> out_stencil, std::vector<int> dimension,
