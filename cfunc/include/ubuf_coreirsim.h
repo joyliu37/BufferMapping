@@ -353,7 +353,7 @@ class VirtualBuffer {
   class UnifiedBuffer_new : public SimulatorPlugin {
   private:
     std::shared_ptr<VirtualBuffer<int>> func_kernel;
-    bool valid_wire, use_input_access_pattern;//, wen_wire, ren_wire;
+    bool valid_wire = false, use_input_access_pattern;//, wen_wire, ren_wire;
     int width, dimensionality;
     std::vector<int> in_data_wire, out_data_wire;
     std::vector<string> istream_name;
@@ -629,14 +629,10 @@ class VirtualBuffer {
 
 #if VERBOSE==1
       std::cout << "Ubuf->{" << inst->getInstname() << "} execomb.." <<std::endl;
+      std::cout << "valid: " << valid_wire << std::endl;
 #endif
 
       //assert((!read_iterator.isDone()) && "No more read allowed.\n");
-
-
-      //input signal propagate
-
-
       //output signal propagate
       simState.setValue(toSelect(inst->sel("valid")), BitVector(1, valid_wire));
 
@@ -647,6 +643,11 @@ class VirtualBuffer {
       for (size_t i=0; i<out_data_wire.size(); ++i) {
         simState.setValue(toSelect(inst->sel("dataout" + stream_suffix + std::to_string(i))), BitVector(width, out_data_wire.at(i)));
       }
+
+
+      //input signal propagate
+
+
 
     }
 
