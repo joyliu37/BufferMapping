@@ -352,10 +352,11 @@ class VirtualBuffer {
 //functional model
   class UnifiedBuffer_new : public SimulatorPlugin {
   private:
-    std::shared_ptr<VirtualBuffer<int>> func_kernel;
+    map<string, VirtualBuffer<int>> func_kernel;
     bool valid_wire = false, use_input_access_pattern;//, wen_wire, ren_wire;
     int width, dimensionality;
-    std::vector<int> in_data_wire, out_data_wire;
+    std::vector<int> in_data_wire;
+    map<string, vector<int>> out_data_wire;
     std::vector<string> istream_name;
     std::vector<string> ostream_name;
 
@@ -431,14 +432,13 @@ class VirtualBuffer {
 
         //fill in the wire with 0 after definition
         std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
-        std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
+        std::fill_n(std::back_inserter(out_data_wire["def"]), output_start.size(), 0);
 
         std::cout << "Start Initialize the Func Kernel" << std::endl;
 
-        func_kernel = std::make_shared<VirtualBuffer<int> >(
-        VirtualBuffer<int>(input_range, input_stride, input_start,
+        func_kernel["def"] = VirtualBuffer<int>(input_range, input_stride, input_start,
           output_range, output_stride, output_start,
-          input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
+          input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim);
 
         std::cout << "Finish Initialize the Func Kernel" << std::endl;
       }
@@ -471,31 +471,30 @@ class VirtualBuffer {
             stencil_width = to_vec(stream.value()["stencil_width"]);
             stencil_acc_dim = stream.value()["num_stencil_acc_dim"];
             dimensionality = output_range.size();
-            //TODO: update the ubuffer functional model to support multistream, right now just support single stream
-            break;
+
+
+            if (use_input_access_pattern){
+                std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
+                std::fill_n(std::back_inserter(out_data_wire[stream.key()]), output_start.size(), 0);
+                func_kernel[stream.key()] =
+                VirtualBuffer<int>(input_range, input_stride, input_start,
+                  output_range, output_stride, output_start,
+                  input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim);
+
+            }
+            else {
+                std::fill_n(std::back_inserter(in_data_wire), 1, 0);
+                std::fill_n(std::back_inserter(out_data_wire[stream.key()]), output_start.size(), 0);
+                func_kernel[stream.key()] = VirtualBuffer<int>(output_range, output_stride, output_start,
+                  input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim);
+            }
         }
 
         //fill in the wire with 0 after definition
 
-        std::cout << "Start Initialize the Func Kernel" << std::endl;
-
-        if (use_input_access_pattern){
-            std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
-            std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
-            func_kernel = std::make_shared<VirtualBuffer<int> >(
-            VirtualBuffer<int>(input_range, input_stride, input_start,
-              output_range, output_stride, output_start,
-              input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
-
+        for (auto func_kernel_stream: func_kernel) {
+            cout << "Virtual buffer for stream: " << func_kernel_stream.first << endl;
         }
-        else {
-            std::fill_n(std::back_inserter(in_data_wire), 1, 0);
-            std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
-            func_kernel = std::make_shared<VirtualBuffer<int> >(VirtualBuffer<int>(output_range, output_stride, output_start,
-              input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
-
-        }
-
         std::cout << "Finish Initialize the Func Kernel" << std::endl;
 
       }
@@ -594,27 +593,32 @@ class VirtualBuffer {
                 std::cout << "---------------------------------------" << std::endl;
 #endif
         }
-        func_kernel->write(in_data_wire);
+        for (auto & func_kernel_stream : func_kernel)
+            func_kernel_stream.second.write(in_data_wire);
       }
 
       if (renVal == BitVector(1, 1)){
-        auto dataout_pack = func_kernel->read();
-        valid_wire = std::get<1>(dataout_pack);
-        auto read_data= std::get<0>(dataout_pack);
+        for (auto & itr : func_kernel) {
+          auto& func_kernel_stream = itr.second;
+          auto stream_name = itr.first;
+          auto dataout_pack = func_kernel_stream.read();
+          valid_wire = std::get<1>(dataout_pack);
+          auto read_data= std::get<0>(dataout_pack);
 
 #if VERBOSE==1
-        std::cout << "valid signal = " << valid_wire << std::endl;
+          std::cout << "valid signal = " << valid_wire << std::endl;
 #endif
-
-        for (size_t i = 0; i < out_data_wire.size(); i++ ) {
-          out_data_wire[i] = read_data[i];
+          auto & out_wire_stream = out_data_wire.at(stream_name);
+          for (size_t i = 0; i < out_wire_stream.size(); i++ ) {
+            out_wire_stream[i] = read_data[i];
 #if VERBOSE==1
-          if (i == 0)
-            std::cout << "---------------read data---------------" << std::endl;
-          std::cout << "Read data[" << i << "] = " << out_data_wire[i] << std::endl;
-          if (i == in_data_wire.size()-1)
-              std::cout << "---------------------------------------" << std::endl;
+            if (i == 0)
+              std::cout << "---------------read data---------------" << std::endl;
+            std::cout << "Stream: "<< stream_name <<", Read data[" << i << "] = " << out_wire_stream[i] << std::endl;
+            if (i == in_data_wire.size()-1)
+                std::cout << "---------------------------------------" << std::endl;
 #endif
+          }
         }
       }
 
@@ -637,11 +641,14 @@ class VirtualBuffer {
       simState.setValue(toSelect(inst->sel("valid")), BitVector(1, valid_wire));
 
       string stream_suffix = "";
-      if (ostream_name.size())
-          stream_suffix = "_"+ostream_name[0]+"_";
 
-      for (size_t i=0; i<out_data_wire.size(); ++i) {
-        simState.setValue(toSelect(inst->sel("dataout" + stream_suffix + std::to_string(i))), BitVector(width, out_data_wire.at(i)));
+      for (auto itr: out_data_wire) {
+        auto out_data_wire_stream = itr.second;
+        if (ostream_name.size())
+          stream_suffix = "_"+ostream_name[0]+"_";
+        for (size_t i=0; i<out_data_wire_stream.size(); ++i) {
+          simState.setValue(toSelect(inst->sel("dataout" + stream_suffix + std::to_string(i))), BitVector(width, out_data_wire_stream.at(i)));
+        }
       }
 
 
