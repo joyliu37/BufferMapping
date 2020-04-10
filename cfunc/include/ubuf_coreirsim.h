@@ -462,6 +462,10 @@ class VirtualBuffer {
             break;
             }
 
+        if (use_input_access_pattern)
+           std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
+        else
+           std::fill_n(std::back_inserter(in_data_wire), 1, 0);
         for (auto& stream : nlohmann::json::iterator_wrapper(ostreams)) {
             ostream_name.push_back(stream.key());
             output_start = to_vec(stream.value()["output_starting_addrs"]);
@@ -474,7 +478,6 @@ class VirtualBuffer {
 
 
             if (use_input_access_pattern){
-                std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
                 std::fill_n(std::back_inserter(out_data_wire[stream.key()]), output_start.size(), 0);
                 func_kernel[stream.key()] =
                 VirtualBuffer<int>(input_range, input_stride, input_start,
@@ -483,7 +486,6 @@ class VirtualBuffer {
 
             }
             else {
-                std::fill_n(std::back_inserter(in_data_wire), 1, 0);
                 std::fill_n(std::back_inserter(out_data_wire[stream.key()]), output_start.size(), 0);
                 func_kernel[stream.key()] = VirtualBuffer<int>(output_range, output_stride, output_start,
                   input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim);
@@ -645,7 +647,7 @@ class VirtualBuffer {
       for (auto itr: out_data_wire) {
         auto out_data_wire_stream = itr.second;
         if (ostream_name.size())
-          stream_suffix = "_"+ostream_name[0]+"_";
+          stream_suffix = "_"+itr.first+"_";
         for (size_t i=0; i<out_data_wire_stream.size(); ++i) {
           simState.setValue(toSelect(inst->sel("dataout" + stream_suffix + std::to_string(i))), BitVector(width, out_data_wire_stream.at(i)));
         }
