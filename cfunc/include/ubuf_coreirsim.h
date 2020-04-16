@@ -353,7 +353,9 @@ class VirtualBuffer {
   class UnifiedBuffer_new : public SimulatorPlugin {
   private:
     map<string, VirtualBuffer<int>> func_kernel;
-    bool valid_wire = false, use_input_access_pattern;//, wen_wire, ren_wire;
+    bool valid_wire = false;
+    bool wenVal = false, renVal=false;
+    bool use_input_access_pattern, rate_matched = false;//, wen_wire, ren_wire;
     int width, dimensionality;
     std::vector<int> in_data_wire;
     map<string, vector<int>> out_data_wire;
@@ -386,7 +388,17 @@ class VirtualBuffer {
       Instance* inst = toInstance(w);
       std::cout << inst->getModuleRef()->getRefName() << std::endl;
       string module_name = inst->getModuleRef()->getRefName();
+
+      //initial the value
+
+      simState.setValue(toSelect(inst->sel("valid")), BitVector(1, false));
+      simState.setValue(toSelect(inst->sel("wen")), BitVector(1, false));
+      simState.setValue(toSelect(inst->sel("ren")), BitVector(1, false));
+
+      cout << "finish set value" << endl;
+
       if (module_name == "lakelib.unified_buffer") {
+        rate_matched = inst->getModuleRef()->getGenArgs().at("rate_matched")->get<bool>();
         width = inst->getModuleRef()->getGenArgs().at("width")->get<int>();
         dimensionality = inst->getModuleRef()->getGenArgs().at("dimensionality")->get<int>();
         stencil_width.push_back( inst->getModuleRef()->getGenArgs().at("stencil_width")->get<int>());
@@ -564,18 +576,21 @@ class VirtualBuffer {
       BitVector resetVal = simState.getBitVec(arg1);
 
       //get the wen value
-      Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
+
+      /*Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
       assert(arg_wen != nullptr);
       BitVector wenVal = simState.getBitVec(arg_wen);
-
       //get ren value
       Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
       assert(arg_ren != nullptr);
       BitVector renVal = simState.getBitVec(arg_ren);
-
+      if (rate_matched)
+          renVal = wenVal;
+*/
 
       //only update the internal state(write to buffer) if wen
-      if (wenVal == BitVector(1, 1)) {
+      //if (wenVal == BitVector(1, 1)) {
+      if (wenVal) {
 
 
         //assert((write_addr_array.size() == in_data.size()) && "Input data width not equals to port width.\n");
@@ -599,7 +614,8 @@ class VirtualBuffer {
             func_kernel_stream.second.write(in_data_wire);
       }
 
-      if (renVal == BitVector(1, 1)){
+      //if (renVal == BitVector(1, 1)){
+      if (renVal){
         for (auto & itr : func_kernel) {
           auto& func_kernel_stream = itr.second;
           auto stream_name = itr.first;
@@ -623,18 +639,53 @@ class VirtualBuffer {
           }
         }
       }
+      else
+          valid_wire = false;
 
 
     }
+    /*
+    Select* recursive_find_pred(Select* sel) {
+        auto wd = sel->getConnectedWireables();
+        assert(wd.size() == 1);
+
+    }*/
 
     void exeCombinational(vdisc vd, SimulatorState& simState) {
       auto wd = simState.getCircuitGraph().getNode(vd);
 
       Instance* inst = toInstance(wd.getWire());
       auto inSels = getInputSelects(inst);
+      //bool wenVal = false, renVal = false;
+      wenVal = simState.getBitVec(inst->sel("wen")).to_type<bool>();
+      if (rate_matched)
+          renVal = wenVal;
+      else
+          renVal = simState.getBitVec(inst->sel("ren")).to_type<bool>();
+
+      /*Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
+      assert(arg_wen != nullptr);
+      auto wen = arg_wen->getConnectedWireables();
+      assert(wen.size() == 1);
+      wenVal = simState.getBitVec(toSelect(*(wen.begin()))).to_type<bool>();
+
+    if (rate_matched) {
+        renVal = wenVal;
+    }
+    else {
+
+        //get ren value
+        Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
+        assert(arg_ren != nullptr);
+        auto ren = arg_ren->getConnectedWireables();
+        assert(ren.size() == 1);
+        renVal = simState.getBitVec(toSelect(*(ren.begin()))).to_type<bool>();
+    }
+    valid_wire &= renVal;*/
 
 #if VERBOSE==1
       std::cout << "Ubuf->{" << inst->getInstname() << "} execomb.." <<std::endl;
+      std::cout << "ren: " << renVal << ", wen: " << wenVal << endl;
       std::cout << "valid: " << valid_wire << std::endl;
 #endif
 
