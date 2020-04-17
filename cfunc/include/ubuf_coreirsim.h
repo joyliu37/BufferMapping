@@ -391,9 +391,16 @@ class VirtualBuffer {
 
       //initial the value
 
-      simState.setValue(toSelect(inst->sel("valid")), BitVector(1, false));
-      simState.setValue(toSelect(inst->sel("wen")), BitVector(1, false));
-      simState.setValue(toSelect(inst->sel("ren")), BitVector(1, false));
+      auto inSels = getInputSelects(inst);
+      Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
+      Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
+      //simState.setValue(toSelect(inst->sel("valid")), BitVector(1, false));
+      assert(arg_wen != nullptr);
+      assert(arg_ren != nullptr);
+      cout << "Setting arg_wen" << endl;
+      simState.setValue(arg_wen, BitVector(1, false));
+      cout << "Setting arg_ren" << endl;
+      simState.setValue(arg_ren, BitVector(1, false));
 
       cout << "finish set value" << endl;
 
@@ -566,6 +573,7 @@ class VirtualBuffer {
 
 #if VERBOSE == 1
       std::cout <<"Ubuf->{" << inst->getInstname() << "} exeseq.." <<std::endl;
+      std::cout << "ren: " << renVal << ", wen: " << wenVal<<endl;
 #endif
 
       auto inSels = getInputSelects(inst);
@@ -639,8 +647,6 @@ class VirtualBuffer {
           }
         }
       }
-      else
-          valid_wire = false;
 
 
     }
@@ -652,16 +658,23 @@ class VirtualBuffer {
     }*/
 
     void exeCombinational(vdisc vd, SimulatorState& simState) {
+      simState.updateInputs(vd);
       auto wd = simState.getCircuitGraph().getNode(vd);
 
       Instance* inst = toInstance(wd.getWire());
       auto inSels = getInputSelects(inst);
+      Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
+      Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
       //bool wenVal = false, renVal = false;
-      wenVal = simState.getBitVec(inst->sel("wen")).to_type<bool>();
+      wenVal = simState.getBitVec(arg_wen).to_type<bool>();
       if (rate_matched)
           renVal = wenVal;
       else
-          renVal = simState.getBitVec(inst->sel("ren")).to_type<bool>();
+          renVal = simState.getBitVec(arg_ren).to_type<bool>();
+
+      //And valid with ren
+      bool valid_for_this_cycle;
+      valid_for_this_cycle = renVal && valid_wire;
 
       /*Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
       assert(arg_wen != nullptr);
@@ -685,13 +698,13 @@ class VirtualBuffer {
 
 #if VERBOSE==1
       std::cout << "Ubuf->{" << inst->getInstname() << "} execomb.." <<std::endl;
-      std::cout << "ren: " << renVal << ", wen: " << wenVal << endl;
-      std::cout << "valid: " << valid_wire << std::endl;
+      std::cout << "ren: " << renVal << ", wen: " << wenVal;
+      std::cout << ", valid: " << valid_for_this_cycle << std::endl;
 #endif
 
       //assert((!read_iterator.isDone()) && "No more read allowed.\n");
       //output signal propagate
-      simState.setValue(toSelect(inst->sel("valid")), BitVector(1, valid_wire));
+      simState.setValue(toSelect(inst->sel("valid")), BitVector(1, valid_for_this_cycle));
 
       string stream_suffix = "";
 
