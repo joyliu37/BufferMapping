@@ -82,7 +82,7 @@ class CoreIRUnifiedBufferConfig:
         assert len(out_access_pattern.items()) <= 1, "Not Support more than one stream now"
         for key, out_stream in out_streams.items():
             start = out_stream["output_starting_addrs"]
-            output_port = out_stream["num_output_ports"]
+            output_port = len(start)#out_stream["num_output_ports"]
             stride = out_stream["output_stride"]
             rng = out_stream["output_range"]
             rng, stride = EliminateRedundancyForAccessPattern(rng, stride)

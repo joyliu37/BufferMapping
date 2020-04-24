@@ -519,46 +519,6 @@ class VirtualBuffer {
         std::cout << "Finish Initialize the Func Kernel" << std::endl;
 
       }
-    /*
-      auto outputRangeType = inst->getModuleRef()->getGenArgs().at("output_range_type")->get<Type*>();
-      auto outputStrideType = inst->getModuleRef()->getGenArgs().at("output_stride_type")->get<Type*>();
-      auto outputStartType = inst->getModuleRef()->getGenArgs().at("output_start_type")->get<Type*>();
-
-      auto inputRangeType = inst->getModuleRef()->getGenArgs().at("input_range_type")->get<Type*>();
-      auto inputStrideType = inst->getModuleRef()->getGenArgs().at("input_stride_type")->get<Type*>();
-      auto inputStartType = inst->getModuleRef()->getGenArgs().at("input_start_type")->get<Type*>();
-
-      auto output_range = get_dims(outputRangeType);
-      auto output_stride = get_dims(outputStrideType);
-      auto output_start = get_dims(outputStartType);
-*/
-      //write_iterator = UnifiedBufferAddressGenerator(input_range, input_stride, input_start, width);
-      //read_iterator = UnifiedBufferAddressGenerator(output_range, output_stride, output_start, width);
-
-      //read_iterator.setDone();
-
-      // deduce capacity from other output iterator
-      /*
-      auto mul = [&](int a, int b){return a*b; };
-      capacity = accumulate(input_range.begin(), input_range.end(), 1, mul);
-
-      size_t dimension = output_range.size();
-
-      for (size_t i = 0; i < dimension; ++i) {
-        capacity += (output_range.at(i) - 1) * max(output_stride.at(i), 0);
-      }
-
-      int max_start = 0;
-      for (const auto &start_value : output_start) {
-        max_start = max(max_start, start_value);
-      }
-      capacity += max_start;
-      */
-
-
-      // initialize data and select
-      //data = std::vector< std::vector<int> >(2, std::vector<int>(capacity, 0));
-      //select = 0;
 
     }
 
@@ -572,6 +532,7 @@ class VirtualBuffer {
       Instance* inst = toInstance(wd.getWire());
 
 #if VERBOSE == 1
+      std::cout << std::endl << "---------------------------------------------" << std::endl;
       std::cout <<"Ubuf->{" << inst->getInstname() << "} exeseq.." <<std::endl;
       std::cout << "ren: " << renVal << ", wen: " << wenVal<<endl;
 #endif
@@ -583,21 +544,6 @@ class VirtualBuffer {
       assert(arg1 != nullptr);
       BitVector resetVal = simState.getBitVec(arg1);
 
-      //get the wen value
-
-      /*Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
-      assert(arg_wen != nullptr);
-      BitVector wenVal = simState.getBitVec(arg_wen);
-      //get ren value
-      Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
-      assert(arg_ren != nullptr);
-      BitVector renVal = simState.getBitVec(arg_ren);
-      if (rate_matched)
-          renVal = wenVal;
-*/
-
-      //only update the internal state(write to buffer) if wen
-      //if (wenVal == BitVector(1, 1)) {
       if (wenVal) {
 
 
@@ -648,6 +594,9 @@ class VirtualBuffer {
         }
       }
 
+#if VERBOSE == 1
+      std::cout << "---------------------------------------------" << std::endl << std::endl;
+#endif
 
     }
     /*
@@ -666,43 +615,29 @@ class VirtualBuffer {
       Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
       Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
       //bool wenVal = false, renVal = false;
-      wenVal = simState.getBitVec(arg_wen).to_type<bool>();
+      auto wen_bc = simState.getBitVec(arg_wen);
+      wenVal = (wen_bc == BitVector(1, 1));
+
       if (rate_matched)
           renVal = wenVal;
-      else
-          renVal = simState.getBitVec(arg_ren).to_type<bool>();
+      else {
+          auto ren_bc = simState.getBitVec(arg_ren);
+          renVal = (wen_bc == BitVector(1, 1));
+      }
 
       //And valid with ren
       bool valid_for_this_cycle;
       valid_for_this_cycle = renVal && valid_wire;
 
-      /*Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
-      assert(arg_wen != nullptr);
-      auto wen = arg_wen->getConnectedWireables();
-      assert(wen.size() == 1);
-      wenVal = simState.getBitVec(toSelect(*(wen.begin()))).to_type<bool>();
-
-    if (rate_matched) {
-        renVal = wenVal;
-    }
-    else {
-
-        //get ren value
-        Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
-        assert(arg_ren != nullptr);
-        auto ren = arg_ren->getConnectedWireables();
-        assert(ren.size() == 1);
-        renVal = simState.getBitVec(toSelect(*(ren.begin()))).to_type<bool>();
-    }
-    valid_wire &= renVal;*/
 
 #if VERBOSE==1
+      std::cout << std::endl << "---------------------------------------------" << std::endl;
       std::cout << "Ubuf->{" << inst->getInstname() << "} execomb.." <<std::endl;
       std::cout << "ren: " << renVal << ", wen: " << wenVal;
       std::cout << ", valid: " << valid_for_this_cycle << std::endl;
+      std::cout << "---------------------------------------------" << std::endl << std::endl;
 #endif
 
-      //assert((!read_iterator.isDone()) && "No more read allowed.\n");
       //output signal propagate
       simState.setValue(toSelect(inst->sel("valid")), BitVector(1, valid_for_this_cycle));
 

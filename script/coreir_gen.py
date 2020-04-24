@@ -32,11 +32,13 @@ def processCoreIR(hand_craft, hw_setup):
             elif "unified_buffer" in value["genref"]:
                 #get the unified_buffer node
                 buffer_config = CoreIRUnifiedBufferConfig(value["genargs"])
-                #v_buf_config = buffer_config.getVirtualBufferConfig()
+                if "new" not in value["genref"]:
+                    v_buf_config = buffer_config.getVirtualBufferConfig()
 
-                #FIXME: not support for multiple streams
-                v_buf_config_dict = buffer_config.getVirtualBufferConfigNew()
-                v_buf_config = list(v_buf_config_dict.values())[0]
+                else:
+                    #FIXME: not support for multiple streams
+                    v_buf_config_dict = buffer_config.getVirtualBufferConfigNew()
+                    v_buf_config = list(v_buf_config_dict.values())[0]
 
                 v_buf_config.pretty_print()
 
