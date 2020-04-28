@@ -352,12 +352,27 @@ class VirtualBuffer {
 //functional model
   class UnifiedBuffer_new : public SimulatorPlugin {
   private:
-    std::shared_ptr<VirtualBuffer<int>> func_kernel;
-    bool valid_wire;//, wen_wire, ren_wire;
+    map<string, VirtualBuffer<int>> func_kernel;
+    bool valid_wire = false;
+    bool wenVal = false, renVal=false;
+    bool use_input_access_pattern, rate_matched = false;//, wen_wire, ren_wire;
     int width, dimensionality;
-    std::vector<int> in_data_wire, out_data_wire;
+    std::vector<int> in_data_wire;
+    map<string, vector<int>> out_data_wire;
+    std::vector<string> istream_name;
+    std::vector<string> ostream_name;
 
   public:
+    UnifiedBuffer_new (bool use = false) {
+        use_input_access_pattern = use;
+    }
+    vector<int> to_vec(const Json data) {
+        vector<int> tmp;
+        for (auto const & item: data)
+            tmp.push_back(item);
+        return tmp;
+    }
+
     void initialize(vdisc vd, SimulatorState& simState) {
       auto wd = simState.getCircuitGraph().getNode(vd);
       Wireable* w = wd.getWire();
@@ -365,104 +380,145 @@ class VirtualBuffer {
       assert(isInstance(w));
 
       std::cout << "start initialization" << std::endl;
+      std::vector<int> input_stride, output_stride, input_range, output_range,  input_start, output_start, input_chunk, output_stencil, dimension;
+      vector<int> stencil_width;
+      int stencil_acc_dim;
 
       // extract parameters
       Instance* inst = toInstance(w);
-      width = inst->getModuleRef()->getGenArgs().at("width")->get<int>();
-      dimensionality = inst->getModuleRef()->getGenArgs().at("dimensionality")->get<int>();
-      vector<int> stencil_width;
-      stencil_width.push_back( inst->getModuleRef()->getGenArgs().at("stencil_width")->get<int>());
-      int stencil_acc_dim = inst->getModuleRef()->getGenArgs().at("num_stencil_acc_dim")->get<int>();
+      std::cout << inst->getModuleRef()->getRefName() << std::endl;
+      string module_name = inst->getModuleRef()->getRefName();
 
-      //output range
-      std::vector<int> input_stride, output_stride, input_range, output_range,  input_start, output_start, input_chunk, output_stencil, dimension;
-      for (int i = 0; i < dimensionality; i ++) {
-        if (inst->getModuleRef()->getGenArgs().at("input_range_"+std::to_string(i))->get<int>() == 0)
-          break;
-        input_stride.push_back(inst->getModuleRef()->getGenArgs().at("input_stride_"+std::to_string(i))->get<int>());
-        input_range.push_back(inst->getModuleRef()->getGenArgs().at("input_range_"+std::to_string(i))->get<int>());
+      //initial the value
+
+      auto inSels = getInputSelects(inst);
+      Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
+      Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
+      //simState.setValue(toSelect(inst->sel("valid")), BitVector(1, false));
+      assert(arg_wen != nullptr);
+      assert(arg_ren != nullptr);
+      cout << "Setting arg_wen" << endl;
+      simState.setValue(arg_wen, BitVector(1, false));
+      cout << "Setting arg_ren" << endl;
+      simState.setValue(arg_ren, BitVector(1, false));
+
+      cout << "finish set value" << endl;
+
+      if (module_name == "lakelib.unified_buffer") {
+        rate_matched = inst->getModuleRef()->getGenArgs().at("rate_matched")->get<bool>();
+        width = inst->getModuleRef()->getGenArgs().at("width")->get<int>();
+        dimensionality = inst->getModuleRef()->getGenArgs().at("dimensionality")->get<int>();
+        stencil_width.push_back( inst->getModuleRef()->getGenArgs().at("stencil_width")->get<int>());
+        stencil_acc_dim = inst->getModuleRef()->getGenArgs().at("num_stencil_acc_dim")->get<int>();
+
+        //output range
+        for (int i = 0; i < dimensionality; i ++) {
+          if (inst->getModuleRef()->getGenArgs().at("input_range_"+std::to_string(i))->get<int>() == 0)
+            break;
+          input_stride.push_back(inst->getModuleRef()->getGenArgs().at("input_stride_"+std::to_string(i))->get<int>());
+          input_range.push_back(inst->getModuleRef()->getGenArgs().at("input_range_"+std::to_string(i))->get<int>());
+        }
+
+        for (int i = 0; i < dimensionality; i ++) {
+            output_stride.push_back(inst->getModuleRef()->getGenArgs().at("stride_"+std::to_string(i))->get<int>());
+            output_range.push_back(inst->getModuleRef()->getGenArgs().at("range_"+std::to_string(i))->get<int>());
+        }
+
+        auto output_start_json = inst->getModuleRef()->getGenArgs().at("output_starting_addrs")->get<json>();
+        for (auto const & start_val: output_start_json["output_start"]) {
+          output_start.push_back(start_val);
+        }
+
+        auto input_start_json = inst->getModuleRef()->getGenArgs().at("input_starting_addrs")->get<json>();
+        for (auto const & start_val: input_start_json["input_start"]) {
+          input_start.push_back(start_val);
+        }
+
+        auto in_chunk_json = inst->getModuleRef()->getGenArgs().at("input_chunk")->get<json>();
+        for (auto const & dim_val: in_chunk_json["input_chunk"]) {
+          input_chunk.push_back(dim_val);
+        }
+
+        auto out_stencil_json = inst->getModuleRef()->getGenArgs().at("output_stencil")->get<json>();
+        for (auto const & dim_val: out_stencil_json["output_stencil"]) {
+          output_stencil.push_back(dim_val);
+        }
+
+        auto dimension_json = inst->getModuleRef()->getGenArgs().at("logical_size")->get<json>();
+        for (auto const & dim_val: dimension_json["capacity"]) {
+          dimension.push_back(dim_val);
+        }
+
+        //fill in the wire with 0 after definition
+        std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
+        std::fill_n(std::back_inserter(out_data_wire["def"]), output_start.size(), 0);
+
+        std::cout << "Start Initialize the Func Kernel" << std::endl;
+
+        func_kernel["def"] = VirtualBuffer<int>(input_range, input_stride, input_start,
+          output_range, output_stride, output_start,
+          input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim);
+
+        std::cout << "Finish Initialize the Func Kernel" << std::endl;
       }
+      else if (module_name == "lakelib.new_unified_buffer") {
+          cout << "Parse Parameter for New Unified Buffer.\n";
+        auto genargs = inst->getModuleRef()->getGenArgs();
+        width = genargs.at("width")->get<int>();
+        Json istreams = genargs.at("istreams")->get<Json>();
+        Json ostreams = genargs.at("ostreams")->get<Json>();
+        dimension = to_vec(genargs.at("logical_size")->get<Json>()["capacity"]);
+        for (auto& stream : nlohmann::json::iterator_wrapper(istreams)) {
+            istream_name.push_back(stream.key());
+            if (use_input_access_pattern){
+                input_start = to_vec(stream.value()["input_starting_addrs"]);
+                input_range = to_vec(stream.value()["input_range"]);
+                input_stride = to_vec(stream.value()["input_stride"]);
 
-      for (int i = 0; i < dimensionality; i ++) {
-          output_stride.push_back(inst->getModuleRef()->getGenArgs().at("stride_"+std::to_string(i))->get<int>());
-          output_range.push_back(inst->getModuleRef()->getGenArgs().at("range_"+std::to_string(i))->get<int>());
+            }
+            input_chunk = to_vec(stream.value()["input_chunk"]);
+            //TODO: update the ubuffer functional model to support multistream, right now just support single stream
+            break;
+            }
+
+        if (use_input_access_pattern)
+           std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
+        else
+           std::fill_n(std::back_inserter(in_data_wire), 1, 0);
+        for (auto& stream : nlohmann::json::iterator_wrapper(ostreams)) {
+            ostream_name.push_back(stream.key());
+            output_start = to_vec(stream.value()["output_starting_addrs"]);
+            output_range = to_vec(stream.value()["output_range"]);
+            output_stride = to_vec(stream.value()["output_stride"]);
+            output_stencil = to_vec(stream.value()["output_stencil"]);
+            stencil_width = to_vec(stream.value()["stencil_width"]);
+            stencil_acc_dim = stream.value()["num_stencil_acc_dim"];
+            dimensionality = output_range.size();
+
+
+            if (use_input_access_pattern){
+                std::fill_n(std::back_inserter(out_data_wire[stream.key()]), output_start.size(), 0);
+                func_kernel[stream.key()] =
+                VirtualBuffer<int>(input_range, input_stride, input_start,
+                  output_range, output_stride, output_start,
+                  input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim);
+
+            }
+            else {
+                std::fill_n(std::back_inserter(out_data_wire[stream.key()]), output_start.size(), 0);
+                func_kernel[stream.key()] = VirtualBuffer<int>(output_range, output_stride, output_start,
+                  input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim);
+            }
+        }
+
+        //fill in the wire with 0 after definition
+
+        for (auto func_kernel_stream: func_kernel) {
+            cout << "Virtual buffer for stream: " << func_kernel_stream.first << endl;
+        }
+        std::cout << "Finish Initialize the Func Kernel" << std::endl;
+
       }
-    /*
-      auto outputRangeType = inst->getModuleRef()->getGenArgs().at("output_range_type")->get<Type*>();
-      auto outputStrideType = inst->getModuleRef()->getGenArgs().at("output_stride_type")->get<Type*>();
-      auto outputStartType = inst->getModuleRef()->getGenArgs().at("output_start_type")->get<Type*>();
-
-      auto inputRangeType = inst->getModuleRef()->getGenArgs().at("input_range_type")->get<Type*>();
-      auto inputStrideType = inst->getModuleRef()->getGenArgs().at("input_stride_type")->get<Type*>();
-      auto inputStartType = inst->getModuleRef()->getGenArgs().at("input_start_type")->get<Type*>();
-
-      auto output_range = get_dims(outputRangeType);
-      auto output_stride = get_dims(outputStrideType);
-      auto output_start = get_dims(outputStartType);
-*/
-      auto output_start_json = inst->getModuleRef()->getGenArgs().at("output_starting_addrs")->get<json>();
-      for (auto const & start_val: output_start_json["output_start"]) {
-        output_start.push_back(start_val);
-      }
-
-      auto input_start_json = inst->getModuleRef()->getGenArgs().at("input_starting_addrs")->get<json>();
-      for (auto const & start_val: input_start_json["input_start"]) {
-        input_start.push_back(start_val);
-      }
-
-      auto in_chunk_json = inst->getModuleRef()->getGenArgs().at("input_chunk")->get<json>();
-      for (auto const & dim_val: in_chunk_json["input_chunk"]) {
-        input_chunk.push_back(dim_val);
-      }
-
-      auto out_stencil_json = inst->getModuleRef()->getGenArgs().at("output_stencil")->get<json>();
-      for (auto const & dim_val: out_stencil_json["output_stencil"]) {
-        output_stencil.push_back(dim_val);
-      }
-
-      auto dimension_json = inst->getModuleRef()->getGenArgs().at("logical_size")->get<json>();
-      for (auto const & dim_val: dimension_json["capacity"]) {
-        dimension.push_back(dim_val);
-      }
-
-      //fill in the wire with 0 after definition
-      std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
-      std::fill_n(std::back_inserter(out_data_wire), output_start.size(), 0);
-
-      std::cout << "Start Initialize the Func Kernel" << std::endl;
-
-      func_kernel = std::make_shared<VirtualBuffer<int> >(
-      VirtualBuffer<int>(input_range, input_stride, input_start,
-        output_range, output_stride, output_start,
-        input_chunk, output_stencil, dimension, stencil_width, stencil_acc_dim) );
-
-      //write_iterator = UnifiedBufferAddressGenerator(input_range, input_stride, input_start, width);
-      //read_iterator = UnifiedBufferAddressGenerator(output_range, output_stride, output_start, width);
-
-      //read_iterator.setDone();
-
-      // deduce capacity from other output iterator
-      /*
-      auto mul = [&](int a, int b){return a*b; };
-      capacity = accumulate(input_range.begin(), input_range.end(), 1, mul);
-
-      size_t dimension = output_range.size();
-
-      for (size_t i = 0; i < dimension; ++i) {
-        capacity += (output_range.at(i) - 1) * max(output_stride.at(i), 0);
-      }
-
-      int max_start = 0;
-      for (const auto &start_value : output_start) {
-        max_start = max(max_start, start_value);
-      }
-      capacity += max_start;
-      */
-
-
-      // initialize data and select
-      //data = std::vector< std::vector<int> >(2, std::vector<int>(capacity, 0));
-      //select = 0;
 
     }
 
@@ -476,7 +532,9 @@ class VirtualBuffer {
       Instance* inst = toInstance(wd.getWire());
 
 #if VERBOSE == 1
+      std::cout << std::endl << "---------------------------------------------" << std::endl;
       std::cout <<"Ubuf->{" << inst->getInstname() << "} exeseq.." <<std::endl;
+      std::cout << "ren: " << renVal << ", wen: " << wenVal<<endl;
 #endif
 
       auto inSels = getInputSelects(inst);
@@ -486,26 +544,16 @@ class VirtualBuffer {
       assert(arg1 != nullptr);
       BitVector resetVal = simState.getBitVec(arg1);
 
-      //get the wen value
-      Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
-      assert(arg_wen != nullptr);
-      BitVector wenVal = simState.getBitVec(arg_wen);
-
-      //get ren value
-      Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
-      assert(arg_ren != nullptr);
-      BitVector renVal = simState.getBitVec(arg_ren);
-
-
-      //only update the internal state(write to buffer) if wen
-      if (wenVal == BitVector(1, 1)) {
+      if (wenVal) {
 
 
         //assert((write_addr_array.size() == in_data.size()) && "Input data width not equals to port width.\n");
         //FIXME: move this to execomb
         for (size_t i = 0; i < in_data_wire.size(); i++) {
-
-            Select* arg_data = toSelect(CoreIR::findSelect("datain" + std::to_string(i), inSels));
+            string stream_suffix = "";
+            if (istream_name.size())
+                stream_suffix = "_"+istream_name[0]+"_";
+            Select* arg_data = toSelect(CoreIR::findSelect("datain" + stream_suffix + std::to_string(i), inSels));
             auto in_data = simState.getBitVec(arg_data);
             in_data_wire[i] = in_data.to_type<int>();
 #if VERBOSE==1
@@ -516,55 +564,98 @@ class VirtualBuffer {
                 std::cout << "---------------------------------------" << std::endl;
 #endif
         }
-        func_kernel->write(in_data_wire);
+        for (auto & func_kernel_stream : func_kernel)
+            func_kernel_stream.second.write(in_data_wire);
       }
 
-      if (renVal == BitVector(1, 1)){
-        auto dataout_pack = func_kernel->read();
-        valid_wire = std::get<1>(dataout_pack);
-        auto read_data= std::get<0>(dataout_pack);
+      //if (renVal == BitVector(1, 1)){
+      if (renVal){
+        for (auto & itr : func_kernel) {
+          auto& func_kernel_stream = itr.second;
+          auto stream_name = itr.first;
+          auto dataout_pack = func_kernel_stream.read();
+          valid_wire = std::get<1>(dataout_pack);
+          auto read_data= std::get<0>(dataout_pack);
 
 #if VERBOSE==1
-        std::cout << "valid signal = " << valid_wire << std::endl;
+          std::cout << "valid signal = " << valid_wire << std::endl;
 #endif
-
-        for (size_t i = 0; i < out_data_wire.size(); i++ ) {
-          out_data_wire[i] = read_data[i];
+          auto & out_wire_stream = out_data_wire.at(stream_name);
+          for (size_t i = 0; i < out_wire_stream.size(); i++ ) {
+            out_wire_stream[i] = read_data[i];
 #if VERBOSE==1
-          if (i == 0)
-            std::cout << "---------------read data---------------" << std::endl;
-          std::cout << "Read data[" << i << "] = " << out_data_wire[i] << std::endl;
-          if (i == in_data_wire.size()-1)
-              std::cout << "---------------------------------------" << std::endl;
+            if (i == 0)
+              std::cout << "---------------read data---------------" << std::endl;
+            std::cout << "Stream: "<< stream_name <<", Read data[" << i << "] = " << out_wire_stream[i] << std::endl;
+            if (i == in_data_wire.size()-1)
+                std::cout << "---------------------------------------" << std::endl;
 #endif
+          }
         }
       }
 
+#if VERBOSE == 1
+      std::cout << "---------------------------------------------" << std::endl << std::endl;
+#endif
 
     }
+    /*
+    Select* recursive_find_pred(Select* sel) {
+        auto wd = sel->getConnectedWireables();
+        assert(wd.size() == 1);
+
+    }*/
 
     void exeCombinational(vdisc vd, SimulatorState& simState) {
+      simState.updateInputs(vd);
       auto wd = simState.getCircuitGraph().getNode(vd);
 
       Instance* inst = toInstance(wd.getWire());
       auto inSels = getInputSelects(inst);
+      Select* arg_wen= toSelect(CoreIR::findSelect("wen", inSels));
+      Select* arg_ren= toSelect(CoreIR::findSelect("ren", inSels));
+      //bool wenVal = false, renVal = false;
+      auto wen_bc = simState.getBitVec(arg_wen);
+      wenVal = (wen_bc == BitVector(1, 1));
+
+      if (rate_matched)
+          renVal = wenVal;
+      else {
+          auto ren_bc = simState.getBitVec(arg_ren);
+          renVal = (wen_bc == BitVector(1, 1));
+      }
+
+      //And valid with ren
+      bool valid_for_this_cycle;
+      valid_for_this_cycle = renVal && valid_wire;
+
 
 #if VERBOSE==1
+      std::cout << std::endl << "---------------------------------------------" << std::endl;
       std::cout << "Ubuf->{" << inst->getInstname() << "} execomb.." <<std::endl;
+      std::cout << "ren: " << renVal << ", wen: " << wenVal;
+      std::cout << ", valid: " << valid_for_this_cycle << std::endl;
+      std::cout << "---------------------------------------------" << std::endl << std::endl;
 #endif
 
-      //assert((!read_iterator.isDone()) && "No more read allowed.\n");
+      //output signal propagate
+      simState.setValue(toSelect(inst->sel("valid")), BitVector(1, valid_for_this_cycle));
+
+      string stream_suffix = "";
+
+      for (auto itr: out_data_wire) {
+        auto out_data_wire_stream = itr.second;
+        if (ostream_name.size())
+          stream_suffix = "_"+itr.first+"_";
+        for (size_t i=0; i<out_data_wire_stream.size(); ++i) {
+          simState.setValue(toSelect(inst->sel("dataout" + stream_suffix + std::to_string(i))), BitVector(width, out_data_wire_stream.at(i)));
+        }
+      }
 
 
       //input signal propagate
 
 
-      //output signal propagate
-      simState.setValue(toSelect(inst->sel("valid")), BitVector(1, valid_wire));
-
-      for (size_t i=0; i<out_data_wire.size(); ++i) {
-        simState.setValue(toSelect(inst->sel("dataout"+std::to_string(i))), BitVector(width, out_data_wire.at(i)));
-      }
 
     }
 

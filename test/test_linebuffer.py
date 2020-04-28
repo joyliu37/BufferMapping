@@ -7,7 +7,7 @@ from buffer_mapping.config import IR2Interface
 from buffer_mapping.virtualbuffer import VirtualBuffer
 from buffer_mapping.linebuffer import VirtualLineBuffer
 
-def test_linebuffer():
+d0ef test_linebuffer():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     with open(dir_path+'/../config/test_linebuffer.json') as json_file:
         setup= json.load(json_file)

@@ -1040,7 +1040,6 @@ Namespace* CoreIRLoadLibrary_lakelib(Context* c) {
   jostreams["output0"]["num_stencil_acc_dim"] = {0};
   jostreams["output0"]["stencil_width"] = {1};    // default: used only after hw mapping
   jostreams["output0"]["iter_cnt"] = 1;           // remove: this is the product of all ranges
-  jostreams["output0"]["num_loops"] = 1;          // remove: aka dimensionality, this can be inferred perhaps from the length of each ostream?
   jostreams["output0"]["num_output_ports"] = 1;   // remove: this is the product of output block dims
   new_unified_buffer_gen->addDefaultGenArgs({{"ostreams",Const::make(c,jostreams)}});
 
