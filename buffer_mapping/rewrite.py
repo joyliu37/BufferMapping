@@ -1,6 +1,6 @@
 from buffer_mapping.hardware import HardwareWire, BufferNode, RegNode, FlushNode, SelectorNode, ValidGenNode
 from buffer_mapping.util import AccessPattern
-from buffer_mapping.virtualbuffer import VirtualValidBuffer, VirtualRowBuffer
+from buffer_mapping.virtualbuffer import VirtualValidBuffer, VirtualRowBuffer, VirtualDoubleBuffer
 from functools import reduce
 import copy
 
@@ -49,7 +49,7 @@ def regOptmization(node_dict, connection_dict):
 def flattenValidBuffer(node_dict, connection_dict):
     for key, node in list(node_dict.items()):
         if type(node) == BufferNode:
-            if type(node.kernel) == VirtualValidBuffer:
+            if type(node.kernel) == VirtualValidBuffer or type(node.kernel) == VirtualDoubleBuffer:
                 if node.kernel.isPassThrough():
                     print ("Flatten Valid buffer!")
                     #TODO: build a graph class and make this delete node method

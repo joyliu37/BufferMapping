@@ -129,6 +129,14 @@ class VirtualBuffer:
 
         return bank_buffer
 
+
+    def isPassThrough(self):
+        read_rng_flatten, read_st_flatten = FlattenAccessPattern(self.read_iterator._rng, self.read_iterator._st)
+        write_rng_flatten, write_st_flatten = FlattenAccessPattern(self.write_iterator._rng, self.write_iterator._st)
+        isPassThrough = True
+        isPassThrough &= (read_rng_flatten == write_rng_flatten)
+        isPassThrough &= (read_st_flatten == write_st_flatten)
+        return isPassThrough
 class VirtualValidBuffer(VirtualBuffer):
     '''
     This is the buffer with read valid not synchronized for every output port.
@@ -154,13 +162,6 @@ class VirtualValidBuffer(VirtualBuffer):
                 else:
                     idx_copy //= dim
 
-    def isPassThrough(self):
-        read_rng_flatten, read_st_flatten = FlattenAccessPattern(self.read_iterator._rng, self.read_iterator._st)
-        write_rng_flatten, write_st_flatten = FlattenAccessPattern(self.write_iterator._rng, self.write_iterator._st)
-        isPassThrough = True
-        isPassThrough &= (read_rng_flatten == write_rng_flatten)
-        isPassThrough &= (read_st_flatten == write_st_flatten)
-        return isPassThrough
 
 
     def read(self, offset = 0, read_addr = 0):
