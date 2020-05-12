@@ -71,6 +71,7 @@ def processCoreIR(hand_craft, hw_setup):
                 #parse trick to sort the output port
                 output_list.sort(key = lambda name: int(name[1].split(".")[-1]))
                 buf_data["output_list"] = output_list
+                print(valid_list)
 
                 buf_data["input_port"] = input_port[0]
                 buf_data["inen_port"] = inen_port[0]
@@ -80,6 +81,7 @@ def processCoreIR(hand_craft, hw_setup):
                     buf_data["ren_port"] = buf_data["inen_port"]
                 buf_data["config"] = buffer_config
                 buf_data["v_config"] = v_buf_config
+                print(buf_data)
 
                 def rewritePass(key, data_dict):
                     valid_node_list = [OutputValidNode(valid_instance_name[0], valid_instance_name[1]) for valid_instance_name in data_dict["valid_list"]]
@@ -91,7 +93,7 @@ def processCoreIR(hand_craft, hw_setup):
                     #set of compiler pass optimize the graph
                     capacity_per_dim = data_dict["config"].config_dict["logical_size"][1]['capacity']
                     node_dict, connection_dict = banking(node_dict, connection_dict, mem_config, data_dict["config"].acc_capacity, capacity_per_dim)
-                    node_dict, connection_dict = flattenValidBuffer(node_dict, connection_dict)
+                    node_dict, connection_dict = flattenValidBuffer(node_dict, connection_dict, valid_node_list)
                     node_dict, connection_dict = regOptmization(node_dict, connection_dict)
                     node_dict, connection_dict = connectValidSignal(node_dict, connection_dict, valid_node_list)
                     node_dict, connection_dict = addFlush(node_dict, connection_dict)

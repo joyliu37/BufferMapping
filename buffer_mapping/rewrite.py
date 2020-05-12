@@ -46,12 +46,19 @@ def regOptmization(node_dict, connection_dict):
     node_dict.update(new_node_dict)
     return node_dict, connection_dict
 
-def flattenValidBuffer(node_dict, connection_dict):
+def flattenValidBuffer(node_dict, connection_dict, valid_node_list):
     for key, node in list(node_dict.items()):
         if type(node) == BufferNode:
             if type(node.kernel) == VirtualValidBuffer or type(node.kernel) == VirtualDoubleBuffer:
                 if node.kernel.isPassThrough():
                     print ("Flatten Valid buffer!")
+                    print (node.last_in_chain)
+                    if node.last_in_chain:
+                        #valid_pred_node_list.append(node)
+                        print ("Connect valid signal of [", key, "] BUF for the last bank")
+                        for valid_node in valid_node_list:
+                            connection_dict.update(valid_node.connectNode(node.pred))
+                            print(node.pred)
                     #TODO: build a graph class and make this delete node method
                     '''
                     node.pred.removeSucc(node)

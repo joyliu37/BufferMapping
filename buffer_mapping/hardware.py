@@ -146,6 +146,11 @@ class OutputValidNode(HardwareNode):
             self.input_port[self.port_name].makePred(node.output_port["out"])
             connection_dict[(self.input_port[self.port_name].key, node.output_port["out"].key)] = \
                 HardwareWire(self.input_port[self.port_name], node.output_port["out"])
+        elif type(node) == InputNode:
+            self.input_port[self.port_name].makePred(node.output_port["in_en"])
+            node.output_port["in_en"].addSucc(self.input_port[self.port_name])
+            connection_dict[(self.input_port[self.port_name].key, node.output_port["in_en"].key)] = \
+                HardwareWire(self.input_port[self.port_name], node.output_port["in_en"])
         return connection_dict
 
 class OutputNode(HardwareNode):
