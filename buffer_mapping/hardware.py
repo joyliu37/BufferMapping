@@ -578,7 +578,7 @@ class BufferNode(HardwareNode):
         if self.last_in_chain == False or type(self.kernel) != VirtualRowBuffer:
             args["stencil_width"] = ["Int", 0]
         else:
-            args["stencil_width"] = ["Int", self.child_read_delay+1]
+            args["stencil_width"] = ["Int", self.child_read_delay]
 
         for idx in range(len(self.kernel.read_iterator._st)):
             args["stride_" + str(idx)] = ["Int", self.kernel.read_iterator._st[idx]]
