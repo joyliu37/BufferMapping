@@ -468,7 +468,7 @@ class VirtualBuffer {
         Json istreams = genargs.at("istreams")->get<Json>();
         Json ostreams = genargs.at("ostreams")->get<Json>();
         dimension = to_vec(genargs.at("logical_size")->get<Json>()["capacity"]);
-        for (auto& stream : nlohmann::json::iterator_wrapper(istreams)) {
+        for (auto& stream : istreams.items()) {
             istream_name.push_back(stream.key());
             if (use_input_access_pattern){
                 input_start = to_vec(stream.value()["input_starting_addrs"]);
@@ -485,7 +485,7 @@ class VirtualBuffer {
            std::fill_n(std::back_inserter(in_data_wire), input_start.size(), 0);
         else
            std::fill_n(std::back_inserter(in_data_wire), 1, 0);
-        for (auto& stream : nlohmann::json::iterator_wrapper(ostreams)) {
+        for (auto& stream : ostreams.items()) {
             ostream_name.push_back(stream.key());
             output_start = to_vec(stream.value()["output_starting_addrs"]);
             output_range = to_vec(stream.value()["output_range"]);
