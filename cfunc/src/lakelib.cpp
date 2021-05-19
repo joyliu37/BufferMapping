@@ -982,7 +982,7 @@ Namespace* CoreIRLoadLibrary_lakelib(Context* c) {
 
       if (multiple_streams) {
         // Insert input ports for each input stream
-        for (auto& stream : nlohmann::json::iterator_wrapper(istreams)) {
+        for (auto& stream : istreams.items()) {
           //std::cout << "input: " << stream.value() << std::endl;
           for (size_t i=0; i < stream.value()["input_starting_addrs"].size(); ++i) {
             string stream_name = stream.key();
@@ -991,7 +991,7 @@ Namespace* CoreIRLoadLibrary_lakelib(Context* c) {
           }
         }
         // Insert output ports for each output stream
-        for (auto stream : nlohmann::json::iterator_wrapper(ostreams)) {
+        for (auto stream : ostreams.items()) {
           //std::cout << "output: " << stream.value() << std::endl;
           for (size_t i=0; i < stream.value()["output_starting_addrs"].size(); ++i) {
             string stream_name = stream.key();
